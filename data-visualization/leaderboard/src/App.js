@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 
+function fetch_points(param) {
+  fetch('https://fcctop100.herokuapp.com/api/fccusers/top/'+param, {
+    method: 'get' // opcional
+  }).then(function(response) {
+    response.json().then(function(result){
+        return result;
+      })
+    }).catch(function(err) {
+      console.error(err);
+    });
+}
+
 class App extends Component {
   render() {
     return (
@@ -12,13 +24,21 @@ class App extends Component {
 }
 
 class Leaderboard extends Component {
+  constructor(props) {
+    super();
+
+    this.state = {
+      recent_points: fetch_points('recent')
+    }
+  }
+
   render(){
     return (
       <div className="board">
         <header>Freecodecamp leaderboard </header>
         <table>
           <tr>
-            <th>#</th>
+            <th>{fetch_points('recent') != undefined ? this.state.recent_points[4].username : "cu"} </th>
             <th>Camper</th>
             <th>Points for the last month</th>
             <th>Lifetime points</th>
