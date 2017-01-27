@@ -1,0 +1,15 @@
+.board {
+  text-align: center;
+}
+
+table{
+  width: 100%;
+}
+
+th{
+  margin-left: 10px;
+}
+
+header {
+  margin-top: 80px;
+}
