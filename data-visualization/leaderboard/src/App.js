@@ -1,17 +1,7 @@
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 import './App.css';
-
-function fetch_points(param) {
-  fetch('https://fcctop100.herokuapp.com/api/fccusers/top/'+param, {
-    method: 'get' // opcional
-  }).then(function(response) {
-    response.json().then(function(result){
-        return result;
-      })
-    }).catch(function(err) {
-      console.error(err);
-    });
-}
 
 class App extends Component {
   render() {
@@ -28,20 +18,41 @@ class Leaderboard extends Component {
     super();
 
     this.state = {
-      recent_points: fetch_points('recent')
+      data_recent: {},
+      data_lifetime: {}
     }
   }
 
-  render(){
+  fetch_points(param) {
+    let that = this;
+    fetch('https://fcctop100.herokuapp.com/api/fccusers/top/' + param, {
+      method: 'get' // opcional
+    }).then(function(response) {
+      response.json().then(function(result) {
+        that.setState({
+          ["data_" + param]: result
+        })
+      })
+    }).catch(function(err) {
+      console.error(err);
+    });
+  }
+
+  componentDidMount() {
+    this.fetch_points('recent');
+    this.fetch_points('alltime');
+  }
+
+  render() {
     return (
       <div className="board">
-        <header>Freecodecamp leaderboard </header>
+        <header>Freecodecamp brownie leaderboard </header>
         <table>
           <tr>
-            <th>{fetch_points('recent') != undefined ? this.state.recent_points[4].username : "cu"} </th>
-            <th>Camper</th>
-            <th>Points for the last month</th>
-            <th>Lifetime points</th>
+            <th>{console.log(this.state.data_recent)}</th>
+            <th>Nickname</th>
+            <th>Last 30 days</th>
+            <th>Lifetime</th>
           </tr>
           <tr>
             <td>1</td>
@@ -54,7 +65,5 @@ class Leaderboard extends Component {
     )
   }
 }
-
-
 
 export default App;
