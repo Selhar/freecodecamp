@@ -13,7 +13,7 @@ class App extends Component {
   }
 }
 
-class Leaderboard extends Component {
+class Leaderboard_backend extends Component {
   constructor(props) {
     super();
 
@@ -45,11 +45,18 @@ class Leaderboard extends Component {
 
   render() {
     return (
+      <Leaderboard_frontend recent={this.state.data_recent}, lifetime={this.state.data_lifetimec}/>
+    )
+  }
+}
+
+class Leaderboard_frontend extends Component {
+  render(){
       <div className="board">
         <header>Freecodecamp brownie leaderboard </header>
         <table>
           <tr>
-            <th>{console.log(this.state.data_recent)}</th>
+            <th>#</th>
             <th>Nickname</th>
             <th>Last 30 days</th>
             <th>Lifetime</th>
@@ -62,8 +69,6 @@ class Leaderboard extends Component {
           </tr>
         </table>
       </div>
-    )
   }
 }
-
 export default App;
