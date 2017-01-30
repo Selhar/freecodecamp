@@ -6,8 +6,8 @@ class App extends Component {
     super();
 
     this.state = {
-      recent: {},
-      alltime: {}
+      recent: [],
+      alltime: []
     }
   }
 
@@ -16,12 +16,12 @@ class App extends Component {
 
     fetch('https://fcctop100.herokuapp.com/api/fccusers/top/' + param, {
         method: 'get'
-      }).then(function (response) {
+    }).then(function (response) {
       response.json().then(function (result) {
-          that.setState({            
-            [param]: result
-          })
+        that.setState({            
+          [param]: result
         })
+      })
     }).catch(function (err) {
         console.error(err);
       });
@@ -40,7 +40,35 @@ class App extends Component {
 }
 
 class Leaderboard extends Component {
+  
+  buildRows(){
+    let index = 0;
+    let result = { recent: [], alltime: [] };
+
+    result.recent = this.props.recent.map((data) => {
+      index++;
+      return (
+        <LeaderboardRow index={index} username={data.username} recent={data.recent}
+        alltime={data.alltime}/>
+      );
+    });
+
+    index = 0;
+    
+    result.alltime = this.props.alltime.map((data) => {
+      index++;
+      return (
+        <LeaderboardRow index={index} username={data.username} recent={data.recent}
+        alltime={data.alltime}/>
+      );
+    });
+
+    return result;
+  }
+
   render() { 
+   let results = this.buildRows();
+
     return (
       <div className="board"> 
         <header>Freecodecamp brownie leaderboard </header> 
@@ -49,16 +77,24 @@ class Leaderboard extends Component {
             <th>#</th>
             <th>Nickname</th>
             <th>Last 30 days</th>
-            <th>Alltime</th>
+            <th>Lifetime</th>
           </tr> 
-          <tr> 
-            <td>{console.log(this.props.alltime[0])}</td> 
-            <td>abc</td>
-              <td>1000</td > 
-              <td>1000</td> 
-          </tr>
+          {results.alltime}
         </table> 
     </div>
   )}
 }
+
+class LeaderboardRow extends Component {
+  render() {
+    return(
+      <tr> 
+        <td>{this.props.index}</td> 
+        <td>{this.props.username}</td>
+        <td>{this.props.recent}</td> 
+        <td>{this.props.alltime}</td> 
+      </tr>
+  )}
+}
+
 export default App;
