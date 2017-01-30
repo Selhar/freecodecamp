@@ -6,25 +6,23 @@ class App extends Component {
     super();
 
     this.state = {
-      data_recent: {},
-      data_lifetime: {}
+      recent: {},
+      alltime: {}
     }
   }
 
   fetch_points(param) {
     let that = this;
+
     fetch('https://fcctop100.herokuapp.com/api/fccusers/top/' + param, {
         method: 'get'
       }).then(function (response) {
-      response
-        .json()
-        .then(function (result) {
-          that.setState({
-            ["data_" + param]: result
+      response.json().then(function (result) {
+          that.setState({            
+            [param]: result
           })
         })
-    })
-      .catch(function (err) {
+    }).catch(function (err) {
         console.error(err);
       });
   }
@@ -35,31 +33,32 @@ class App extends Component {
   }
 
   render() {
-    return (<Leaderboard_frontend
-      recent={this.state.data_recent}
-      lifetime={this.state.data_lifetimec}/>)
+    return ( 
+      <Leaderboard recent={this.state.recent} 
+        alltime={this.state.alltime}/>)
   }
 }
 
 class Leaderboard extends Component {
   render() { 
-    <div className = "board"> 
-      <header>Freecodecamp brownie leaderboard </header> 
-      <table> 
-        <tr>
-          <th>#</th>
-          <th>Nickname</th>
-          <th>Last 30 days</th>
-          <th>Lifetime</th>
-        </tr> 
-        <tr> 
-          <td>1</td> 
-          <td>abc</td>
-            <td>1000</td > 
-            <td>1000</td> 
-        </tr>
-      </table> 
-   </div>
-  }
+    return (
+      <div className="board"> 
+        <header>Freecodecamp brownie leaderboard </header> 
+        <table> 
+          <tr>
+            <th>#</th>
+            <th>Nickname</th>
+            <th>Last 30 days</th>
+            <th>Alltime</th>
+          </tr> 
+          <tr> 
+            <td>{console.log(this.props.alltime[0])}</td> 
+            <td>abc</td>
+              <td>1000</td > 
+              <td>1000</td> 
+          </tr>
+        </table> 
+    </div>
+  )}
 }
 export default App;
