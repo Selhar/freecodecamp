@@ -16,15 +16,13 @@ class App extends Component {
 
     fetch('https://fcctop100.herokuapp.com/api/fccusers/top/' + param, {
         method: 'get'
-    }).then(function (response) {
-      response.json().then(function (result) {
-        that.setState({            
+    }).then((response) => {
+      response.json().then((result) => {
+        that.setState({
           [param]: result
         })
       })
-    }).catch(function (err) {
-        console.error(err);
-      });
+    }).catch((err) => console.error(err));
   }
 
   componentDidMount() {
@@ -39,34 +37,9 @@ class App extends Component {
   }
 }
 
-class Leaderboard extends Component {
-  
-  buildRows(){
-    let index = 0;
-    let result = { recent: [], alltime: [] };
-
-    result.recent = this.props.recent.map((data) => {
-      index++;
-      return (
-        <LeaderboardRow index={index} username={data.username} recent={data.recent}
-        alltime={data.alltime}/>
-      );
-    });
-
-    index = 0;
-    
-    result.alltime = this.props.alltime.map((data) => {
-      index++;
-      return (
-        <LeaderboardRow index={index} username={data.username} recent={data.recent}
-        alltime={data.alltime}/>
-      );
-    });
-
-    return result;
-  }
-
+class Leaderboard extends Component {  
   render() { 
+
    let results = this.buildRows();
 
     return (
@@ -79,10 +52,34 @@ class Leaderboard extends Component {
             <th>Last 30 days</th>
             <th>Lifetime</th>
           </tr> 
-          {results.alltime}
+          {results.recent}
         </table> 
     </div>
-  )}
+    )
+  }
+  
+  buildRows() {
+    let result = { 
+      recent: [],
+      alltime: [] 
+    };
+
+    result.recent = this.props.recent.map((data, index) => {
+      return (
+        <LeaderboardRow index={index+1} username={data.username} recent={data.recent}
+        alltime={data.alltime}/>
+      );
+    });
+
+    result.alltime = this.props.alltime.map((data, index) => {
+      return (
+        <LeaderboardRow index={index+1} username={data.username} recent={data.recent}
+        alltime={data.alltime}/>
+      );
+    });
+
+    return result;
+  }
 }
 
 class LeaderboardRow extends Component {
@@ -94,7 +91,8 @@ class LeaderboardRow extends Component {
         <td>{this.props.recent}</td> 
         <td>{this.props.alltime}</td> 
       </tr>
-  )}
+    )
+  }
 }
 
 export default App;
