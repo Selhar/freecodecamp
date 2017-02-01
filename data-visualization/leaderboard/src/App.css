@@ -11,6 +11,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.indexed {
+  color: darkgreen;
+  font-weight: bold; 
+  cursor: pointer;
+}
+
+.idle {
+  cursor: pointer;
+}
+
 .table-title {
   background: darkgreen;
   display: block;

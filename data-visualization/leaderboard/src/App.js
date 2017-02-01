@@ -38,6 +38,14 @@ class App extends Component {
 }
 
 class Leaderboard extends Component {  
+  constructor(props) {
+    super();
+
+    this.state = {
+      order: "recent"
+    }
+    this.onClick = this.onClick.bind(this);
+  }
   render() { 
 
    let results = this.buildRows();
@@ -46,16 +54,34 @@ class Leaderboard extends Component {
       <div className="board"> 
         <header className="table-title">Freecodecamp brownie leaderboard </header> 
         <table  className="table-fill"> 
-          <tr>
-            <th>#</th>
-            <th>Nickname</th>
-            <th>Last 30 days</th>
-            <th>Lifetime</th>
-          </tr> 
-          {results.recent}
+          <tbody>
+            <tr>
+              <th>#</th>
+              <th>Nickname</th>
+              <th onClick={this.onClick} className="indexed" id="recent">Last 30 days</th>
+              <th onClick={this.onClick} className="idle" id="alltime">Lifetime</th>
+            </tr> 
+          </tbody>
+          {results[this.state.order]}
         </table> 
     </div>
     )
+  }
+
+  onClick(event) {
+    
+    let id = event.target.id;
+    document.getElementById(id).className = "idle";
+
+    if(this.state.order === "recent"){
+      this.setState({ order: "alltime"});
+      document.getElementById("recent").className = "idle";
+      document.getElementById("alltime").className = "indexed";
+    }else{
+      this.setState({ order: "recent"});
+      document.getElementById("recent").className = "indexed";
+      document.getElementById("alltime").className = "idle";
+    }    
   }
   
   buildRows() {
@@ -67,14 +93,14 @@ class Leaderboard extends Component {
     result.recent = this.props.recent.map((data, index) => {
       return (
         <LeaderboardRow index={index+1} username={data.username} recent={data.recent}
-        alltime={data.alltime}/>
+        alltime={data.alltime} key={index}/>
       );
     });
 
     result.alltime = this.props.alltime.map((data, index) => {
       return (
         <LeaderboardRow index={index+1} username={data.username} recent={data.recent}
-        alltime={data.alltime}/>
+        alltime={data.alltime} key={index+100}/>
       );
     });
 
