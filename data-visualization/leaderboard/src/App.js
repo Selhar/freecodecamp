@@ -44,8 +44,8 @@ class Leaderboard extends Component {
 
     return (
       <div className="board"> 
-        <header>Freecodecamp brownie leaderboard </header> 
-        <table> 
+        <header className="table-title">Freecodecamp brownie leaderboard </header> 
+        <table  className="table-fill"> 
           <tr>
             <th>#</th>
             <th>Nickname</th>

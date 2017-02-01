@@ -1,15 +1,80 @@
-.board {
-  text-align: center;
+/*
+  Table style loosely inspired from:  http://codepen.io/alassetter/pen/cyrfB
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
 }
 
-table{
+.table-title {
+  background: darkgreen;
+  display: block;
+  margin: auto;
+  text-align: center;
+  padding:20px;
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-transform:uppercase;
+}
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
   width: 100%;
 }
-
-th{
-  margin-left: 10px;
+ 
+th {
+  color:#333;
+  background:white;
+  font-size:20px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  vertical-align:middle;
+}
+  
+tr {
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
 }
 
-header {
-  margin-top: 80px;
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:hover td, tr:nth-child(odd):hover td {
+  background:darkgreen;
+  color:#FFFFFF;
+  border-right: 3px solid white;
+}
+ 
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-size:18px;
 }
