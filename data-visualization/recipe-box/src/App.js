@@ -5,7 +5,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
+        <header>
+          <h1>Freecodecamp recipe list</h1>
+        </header>
       </div>
     );
   }
@@ -14,8 +16,9 @@ class App extends Component {
 class Recipe extends Component {
   render() {
     return (
-      <div className="x"> 
-      
+      <div className="recipe"> 
+        <Ingredient />
+        <Ingredient />
       </div>
     );
   }
@@ -24,7 +27,7 @@ class Recipe extends Component {
 class Ingredient extends Component {
   render() {
     return(
-      <div className="y">
+      <div className="ingredient">
       
       </div>
     );
