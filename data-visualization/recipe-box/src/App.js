@@ -8,6 +8,7 @@ class App extends Component {
         <header>
           <h1>Freecodecamp recipe list</h1>
         </header>
+        <Recipe />
       </div>
     );
   }

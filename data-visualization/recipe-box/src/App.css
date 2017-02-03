@@ -1,16 +1,17 @@
 .App {
+  
   text-align: center;
-  max-width: 600px;
-  max-height: 600px;
-}
-
-.recipe {
+  width: 60%;
+  height: 700px;
   background: #999;
+  margin: 0 auto;
 }
 
-.recipe {
+
+.ingredient {
+  display: inline-block;
   background: #333;
-  width: 40px;
-  height: 40px;
-  padding: 10px;
+  width: 350px;
+  height: 350px;
+  margin: 10px;
 }
