@@ -1,17 +1,5 @@
 .App {
-  
   text-align: center;
-  width: 60%;
-  height: 700px;
-  background: #999;
-  margin: 0 auto;
 }
 
 
-.ingredient {
-  display: inline-block;
-  background: #333;
-  width: 350px;
-  height: 350px;
-  margin: 10px;
-}
