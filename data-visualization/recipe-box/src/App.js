@@ -12,11 +12,23 @@ class App extends Component {
 }
 
 class Recipe extends Component {
-//will do the logic and render basic board structure
+  render() {
+    return (
+      <div className="x"> 
+      
+      </div>
+    );
+  }
 }
 
 class Ingredient extends Component {
-//will load ingredients based on cookie storage
+  render() {
+    return(
+      <div className="y">
+      
+      </div>
+    );
+  }
 }
 
 export default App;
