@@ -1,25 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Bevan');
 body {
     text-align: justify;
+    background-color: #026475;
+    font-family: Helvetica;
 }
 
-#main {
-    border: solid;
+p {
+    margin-top: 20px;
+    line-height: 27px;
+}
+
+#title {
+    font-family: 'Bevan', cursive;
+    margin: 80px 0 0 0;
+    text-color: #F0D800;
+}
+
+hr {
+    margin-bottom: 50px;
+    text-color: #026475;
+    box-shadow: 0 0 2px #026475;
 }
 
 h1,
 h2,
+a,
+.tribute-link,
 #img-caption {
     text-align: center;
 }
 
 .pure-img {
-    max-height: 600px;
+    max-height: 550px;
     margin: 0 auto;
 }
 
 .center {
     justify-content: center;
     margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 5px #fff;
 }
 
 @media (min-width: 768px) {
