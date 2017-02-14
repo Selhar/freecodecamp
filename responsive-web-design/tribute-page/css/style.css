@@ -42,6 +42,9 @@ h2 {
 .pure-img {
     max-height: 550px;
     margin: 0 auto;
+}
+
+.cover-img {
     box-shadow: 0 0 1px #111;
 }
 
@@ -77,4 +80,8 @@ pure-u-xl-* {
 
 #tribute-info {
     margin: auto;
+}
+
+.title-img {
+    width: 35px;
 }
