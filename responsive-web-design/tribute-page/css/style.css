@@ -18,8 +18,8 @@ p {
 
 hr {
     margin-bottom: 50px;
-    text-color: #026475;
-    box-shadow: 0 0 2px #026475;
+    text-color: #333;
+    width: 80%;
 }
 
 h1,
