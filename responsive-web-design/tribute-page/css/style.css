@@ -30,9 +30,19 @@ a,
     text-align: center;
 }
 
+#img-caption {
+    margin-top: 5px;
+}
+
+h1,
+h2 {
+    padding: 15px;
+}
+
 .pure-img {
     max-height: 550px;
     margin: 0 auto;
+    box-shadow: 0 0 1px #111;
 }
 
 .center {
