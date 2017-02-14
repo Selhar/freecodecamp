@@ -1,13 +1,50 @@
-#title{
-  text-align: center;
-  width: 100%;
+body {
+    text-align: justify;
 }
 
-.pure-img{
-  margin: 0 auto;
-  max-width: 50%;
-  max-height: 600px;
+#main {
+    border: solid;
 }
-#img-caption{
-  text-align: center;
+
+h1,
+h2,
+#img-caption {
+    text-align: center;
+}
+
+.pure-img {
+    max-height: 600px;
+    margin: 0 auto;
+}
+
+.center {
+    justify-content: center;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .center {
+        width: 90%;
+    }
+}
+
+@media (min-width: 980px) {
+    .center {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .center {
+        width: 62%;
+    }
+}
+
+pure-u-xl-* {
+    margin: 3% 15% 0 15%;
+    border: solid;
+}
+
+#tribute-info {
+    margin: auto;
 }
