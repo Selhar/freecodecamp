@@ -1,0 +1,13 @@
+#title{
+  text-align: center;
+  width: 100%;
+}
+
+.pure-img{
+  margin: 0 auto;
+  max-width: 50%;
+  max-height: 600px;
+}
+#img-caption{
+  text-align: center;
+}
