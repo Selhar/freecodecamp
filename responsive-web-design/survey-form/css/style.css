@@ -1,18 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:light');
+.center {
+    justify-content: center;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 5px #fff;
+}
+
 h1,
 p {
     font-family: 'Work Sans', 'sans-serif';
     font-weight: lighter;
     text-align: center;
+    color: white;
+}
+
+header {
+    background-color: darkgreen;
+    width: 100%;
+}
+
+body {
+    background-image: url("../images/background.png")
 }
 
 #title {
     margin-top: 50px;
-    margin-bottom: 5px;
-    background-color: darkgreen;
-    color: white;
+    margin-bottom: 0px;
 }
 
 #title+p {
-    margin-top: 5px;
+    margin-top: 0px;
+    padding-bottom: 10px;
+}
+
+.wrapper {
+    background-color: white;
+    width: 60%;
+    box-shadow: 0 0 3px #111;
 }
