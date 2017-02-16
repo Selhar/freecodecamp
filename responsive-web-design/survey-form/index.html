@@ -20,16 +20,34 @@
 <body>
     <header>
         <h1 id="title">Freecodecamp survey</h1>
-        <p>Help us improve Freecodecamp!</p>
+        <p id="description">Help us improve Freecodecamp!</p>
     </header>
     <div class="pure-g center wrapper">
         <main class="pure-u-1-1">
-
             <form id="survey-form" method="GET" action="https://crossorigin.me/https://freecodecamp.com">
+                <label for="name" id="name-label">*Name</label>
+                <input type="text" name="name" id="name" placeholder="Please insert your name" required autofocus>
+                <br>
+                <label for="email" id="email-label">*Email</label>
+                <input type="email" name="email" id="email" placeholder="your@email.com" required>
+                <br>
+                <label for="number" id="number-label">Number of children</label>
+                <input type="number" id="number" min="0" max="50" placeholder="How many children do you have?">
+                <br>
+                <label for="interest">Which course path are you most interested in?</label>
+                <select id="dropdown" name="interest">
+                    <option disabled selected>Select an option</option>
+                    <option value="responsive-web-design">Responsive web design</option>
+                    <option value="javascript-algorithms-and-data-structures">Javascript algorithms and data structures</option>
+                    <option value="front-end-libraries">Front end libraries</option>
+                    <option value="data-visualization">Data visualization</option>
+                    <option value="apis-and-microservices">Apis and microservices</option>
+                    <option value="information-security-and-quality-assurance">Information security and quality assurance</option>
+                    <option value="nonprofits">Contributing to nonprofits</option>
             </form>
         </main>
     </div>
-    <!-- <script src='https://gitcdn.link/repo/freeCodeCamp/testable-projects-fcc/master/build/bundle.js'></script> -->
+    <script src='https://gitcdn.link/repo/freeCodeCamp/testable-projects-fcc/master/build/bundle.js'></script>
 
 </body>
 
