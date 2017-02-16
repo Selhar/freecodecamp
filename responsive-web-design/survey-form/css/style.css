@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:light');
+h1,
+p {
+    font-family: 'Work Sans', 'sans-serif';
+    font-weight: lighter;
+    text-align: center;
+}
+
+#title {
+    margin-top: 50px;
+    margin-bottom: 5px;
+    background-color: darkgreen;
+    color: white;
+}
+
+#title+p {
+    margin-top: 5px;
+}
