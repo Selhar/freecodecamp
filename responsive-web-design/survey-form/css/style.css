@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:light');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 .center {
     justify-content: center;
     margin: 0 auto;
     background-color: white;
     box-shadow: 0 0 5px #fff;
+}
+
+main {
+    font-family: "Nunito", sans-serif !important;
 }
 
 h1,
@@ -37,4 +42,8 @@ body {
     background-color: white;
     width: 50%;
     box-shadow: 0 0 3px #111;
+}
+
+fieldset {
+    border: none !important;
 }
