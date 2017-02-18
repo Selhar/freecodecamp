@@ -35,7 +35,7 @@ form {
     margin: 25px auto;
     max-width: 700px;
     background-color: white;
-    box-shadow: 0 0 5px 0 inset;
+    box-shadow: 0 0 2px 0 inset;
     border-radius: 10px;
 }
 
@@ -94,7 +94,8 @@ button {
     input[type=radio] {
         margin: 3px;
     }
-    input[type=checkbox]:last-of-type {
-        color: red;
+    label:last-of-type,
+    label:nth-last-of-type(2) {
+        margin-top: 30px;
     }
 }
