@@ -13,10 +13,12 @@ body {
 
 #title {
     margin: 25px 0 0 0;
+    padding-top: 5px;
 }
 
 #title+p {
-    margin: 10px 0 0 0;
+    margin: 0;
+    padding: 5px 0 10px 0;
 }
 
 h1,
@@ -24,12 +26,15 @@ p {
     font-family: 'Work Sans', 'sans-serif';
     font-weight: lighter;
     text-align: center;
-    color: darkgreen;
+    color: white;
+    background-color: darkgreen;
 }
 
 form {
-    margin: 0 auto;
-    max-width: 750px;
+    margin: 25px auto;
+    max-width: 700px;
+    background-color: rgba(0, 100, 0, 0.04);
+    border-radius: 10px;
 }
 
 fieldset {
@@ -46,44 +51,21 @@ label {
     margin-bottom: 5px;
 }
 
-textarea,
 input,
+textarea,
 select {
-    border: none;
-    font-size: 16px !important;
-    outline: none;
     margin-bottom: 30px;
-    color: #555
-}
-
-
-/*/
- background-image: url("../images/background.png")
-
-
-
-textarea,
-input,
-select {
-    border: none;
-    font-size: 16px;
-    margin: 0;
-    outline: 0;
-    margin-bottom: 30px !important;
-    height: auto;
 }
 
 textarea,
 input:not([type=checkbox]):not([type=radio]),
 select {
-    background: rgba(255, 255, 255, 0.1);
-    background-color: #e8eeef;
+    border: none;
+    font-size: 16px !important;
+    outline: none;
+    color: #555;
+    padding: 10px;
     width: 100%;
-    padding: 15px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    border-radius: 8px;
+    background-color: rgba(0, 100, 0, 0.1);
 }
-
-input[type="radio"],
-input[type="checkbox"] {
-    margin: 0 6px 8px 0;
-}*/
