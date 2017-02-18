@@ -23,7 +23,7 @@
                 <label for="email" id="email-label">*Email</label>
                 <input type="email" name="email" id="email" placeholder="your@email.com" required>
                 <label for="number" id="number-label">Number of children</label>
-                <input type="number" id="number" min="0" max="50" placeholder="How many children do you have?">
+                <input type="number" id="number" min="0" max="50" placeholder="How many children?">
                 <label for="interest">Which course path are you most interested in?</label>
                 <select id="dropdown" name="interest" id="interest">
                     <option disabled selected>Select an option</option>
@@ -36,17 +36,18 @@
                     <option value="nonprofits">Contributing to nonprofits</option>
                 </select>
                 <label for="career">What career path do you plan to follow?</label>
-                <span class="wrapper" <input type="radio" name="career" value="front-end">Front-end developer</span>
-                <input type="radio" name="career" value="back-end">Back-end developer
-                <input type="radio" name="career" value="full-stack">Full-stack developer
-                <input type="radio" name="career" value="other">Other
+                <span class="wrapper"><input type="radio" name="career" value="front-end">Front-end developer</span>
+                <span class="wrapper"><input type="radio" name="career" value="back-end">Back-end developer</span>
+                <span class="wrapper"><input type="radio" name="career" value="full-stack">Full-stack developer</span>
+                <span class="wrapper"><input type="radio" name="career" value="other">Other</span>
+
                 <label for="availability">When are you free to work on FCC curriculae?</label>
                 <div id="avaiability">
-                    <input type="checkbox" name="availability" id="morning" value="morning">Morning
-                    <input type="checkbox" name="availability" id="noon" value="noon">Noon
-                    <input type="checkbox" name="availability" id="evening" value="evening">Evening
-                    <input type="checkbox" name="availability" id="night" value="night">Night
-                    <input type="checkbox" name="availability" id="midnight" value="midnight">Midnight
+                    <span class="wrapper"><input type="checkbox" name="availability" id="morning" value="morning">Morning</span>
+                    <span class="wrapper"><input type="checkbox" name="availability" id="noon" value="noon">Noon</span>
+                    <span class="wrapper"><input type="checkbox" name="availability" id="evening" value="evening">Evening</span>
+                    <span class="wrapper"><input type="checkbox" name="availability" id="night" value="night">Night</span>
+                    <span class="wrapper"><input type="checkbox" name="availability" id="midnight" value="midnight">Midnight</span>
                 </div>
                 <label for="comments">Anything else you'd like to add?</label>
                 <textarea rows="4" cols="50"></textarea>

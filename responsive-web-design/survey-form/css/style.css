@@ -9,7 +9,7 @@
 body {
     font-family: 'Nunito', sans-serif;
     color: #444;
-    /* background-image: url("../images/background.png") */
+    background-image: url("../images/background.png")
 }
 
 #title {
@@ -34,7 +34,8 @@ p {
 form {
     margin: 25px auto;
     max-width: 700px;
-    background-color: rgba(0, 100, 0, 0.04);
+    background-color: white;
+    box-shadow: 0 0 5px 0 inset;
     border-radius: 10px;
 }
 
@@ -85,4 +86,15 @@ button {
     margin-bottom: 10px;
 }
 
-@media screen and (max-width: 640px) {}
+@media screen and (max-width: 640px) {
+    .wrapper {
+        display: block;
+    }
+    input[type=checkbox],
+    input[type=radio] {
+        margin: 3px;
+    }
+    input[type=checkbox]:last-of-type {
+        color: red;
+    }
+}

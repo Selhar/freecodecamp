@@ -1,0 +1,12 @@
+.center {
+    justify-content: center;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 5px #fff;
+}
+
+{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
