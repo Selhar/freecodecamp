@@ -9,6 +9,7 @@
 body {
     font-family: 'Nunito', sans-serif;
     color: #444;
+    /* background-image: url("../images/background.png") */
 }
 
 #title {
@@ -66,6 +67,22 @@ select {
     color: #555;
     padding: 10px;
     width: 100%;
-    border-radius: 8px;
-    background-color: rgba(0, 100, 0, 0.1);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) inset;
+    background-color: rgba(0, 100, 0, 0.06);
 }
+
+button {
+    padding: 15px;
+    color: #FFF;
+    background-color: darkgreen;
+    font-size: 23px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid darkgreen;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 640px) {}

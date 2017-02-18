@@ -11,20 +11,21 @@
       For more personal projects, check the rest of my portfolio <placeholder link> -->
 
 <body>
-    <header>
-        <h1 id="title">Freecodecamp survey</h1>
-        <p id="description">Help us improve Freecodecamp!</p>
-    </header>
-    <form id="survey-form" method="GET" action="https://crossorigin.me/https://freecodecamp.com">
-        <fieldset>
-            <label for="name" id="name-label">*Name</label>
-            <input type="text" name="name" id="name" placeholder="Please insert your name" required autofocus>
-            <label for="email" id="email-label">*Email</label>
-            <input type="email" name="email" id="email" placeholder="your@email.com" required>
-            <label for="number" id="number-label">Number of children</label>
-            <input type="number" id="number" min="0" max="50" placeholder="How many children do you have?">
-            <label for="interest">Which course path are you most interested in?</label>
-            <select id="dropdown" name="interest" id="interest">
+    <main>
+        <header>
+            <h1 id="title">Freecodecamp survey</h1>
+            <p id="description">Help us improve Freecodecamp!</p>
+        </header>
+        <form id="survey-form" method="GET">
+            <fieldset>
+                <label for="name" id="name-label">*Name</label>
+                <input type="text" name="name" id="name" placeholder="Please insert your name" required autofocus>
+                <label for="email" id="email-label">*Email</label>
+                <input type="email" name="email" id="email" placeholder="your@email.com" required>
+                <label for="number" id="number-label">Number of children</label>
+                <input type="number" id="number" min="0" max="50" placeholder="How many children do you have?">
+                <label for="interest">Which course path are you most interested in?</label>
+                <select id="dropdown" name="interest" id="interest">
                     <option disabled selected>Select an option</option>
                     <option value="responsive-web-design">Responsive web design</option>
                     <option value="javascript-algorithms-and-data-structures">Javascript algorithms and data structures</option>
@@ -34,25 +35,26 @@
                     <option value="information-security-and-quality-assurance">Information security and quality assurance</option>
                     <option value="nonprofits">Contributing to nonprofits</option>
                 </select>
-            <label for="career">What career path do you plan to follow?</label>
-            <input type="radio" name="career" value="front-end">Front-end developer
-            <input type="radio" name="career" value="back-end">Back-end developer
-            <input type="radio" name="career" value="full-stack">Full-stack developer
-            <input type="radio" name="career" value="other">Other
-            <label for="availability">When are you free to work on FCC curriculae?</label>
-            <div id="avaiability">
-                <input type="checkbox" name="availability" value="morning">Morning
-                <input type="checkbox" name="availability" value="noon">Noon
-                <input type="checkbox" name="availability" value="evening">Evening
-                <input type="checkbox" name="availability" value="night">Night
-                <input type="checkbox" name="availability" value="midnight">Midnight
-            </div>
-            <label for="comments">Anything else you'd like to add?</label>
-            <textarea rows="4" cols="50"></textarea>
+                <label for="career">What career path do you plan to follow?</label>
+                <span class="wrapper" <input type="radio" name="career" value="front-end">Front-end developer</span>
+                <input type="radio" name="career" value="back-end">Back-end developer
+                <input type="radio" name="career" value="full-stack">Full-stack developer
+                <input type="radio" name="career" value="other">Other
+                <label for="availability">When are you free to work on FCC curriculae?</label>
+                <div id="avaiability">
+                    <input type="checkbox" name="availability" id="morning" value="morning">Morning
+                    <input type="checkbox" name="availability" id="noon" value="noon">Noon
+                    <input type="checkbox" name="availability" id="evening" value="evening">Evening
+                    <input type="checkbox" name="availability" id="night" value="night">Night
+                    <input type="checkbox" name="availability" id="midnight" value="midnight">Midnight
+                </div>
+                <label for="comments">Anything else you'd like to add?</label>
+                <textarea rows="4" cols="50"></textarea>
 
-            <button id="submit" type="submit">Submit</button>
-        </fieldset>
-    </form>
+                <button id="submit" type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </main>
     <!-- <script src='https://gitcdn.link/repo/freeCodeCamp/testable-projects-fcc/master/build/bundle.js'></script> -->
 
 </body>
