@@ -1,6 +1,6 @@
 body,
 html {
-    height: 90%;
+    height: 100%;
 }
 
 * {
@@ -21,13 +21,29 @@ html {
 }
 
 .text-left {
-    text-align: left;
     position: absolute;
-    top: 35%;
-    transform: translateY(-50%);
+    left: 0;
+    top: 25%;
+    text-align: left;
     color: white;
     width: 25%;
     margin-left: 50px;
+}
+
+.form-right {
+    position: absolute;
+    right: 0;
+    top: 25%;
+    margin-right: 50px;
+    text-align: left;
+    width: 25%;
+    height: 300px;
+    background-color: rgba(72, 72, 72, 0.4);
+    padding: 35px;
+}
+
+.input {
+    display: block;
 }
 
 .title-cover {
