@@ -1,6 +1,7 @@
 body,
 html {
     height: 100%;
+    margin: 0;
 }
 
 * {
@@ -8,7 +9,18 @@ html {
 }
 
 .menu {
-    background-color: white;
+    background-color: #1a1d25;
+    padding: 20px;
+}
+
+.menu-right {
+    position: absolute;
+    right: 20px;
+}
+
+.pure-menu-heading,
+.pure-menu-link {
+    color: white;
 }
 
 .parallax {
@@ -99,11 +111,33 @@ input:first-child {
     padding: 15px;
 }
 
-.gallery img {
-    height: auto;
+.gallery-selection {
+    text-align: center;
+}
+
+.gallery-highlighted {
     width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.gallery-highlighted img {
+    width: 100%;
+    height: 500px;
 }
 
 .gallery-title {
     text-align: center;
+}
+
+.img-selection {
+    position: relative;
+    bottom: 50px;
+    display: inline-block;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 100px;
+    height: auto;
 }

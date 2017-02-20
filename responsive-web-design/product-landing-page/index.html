@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en">
 <!-- 
+    TODO:
+    1. search another icon library
+    2. adjust fonts
+    3. cupcake images, better cover image
+    4. add image fullscreen on hover
+    5. try one huge image and a small one
+
     ****QUESTIONS BITCH DON'T FORGET TO ASK******
     1. is it ok not to use labels
     2. 
@@ -29,16 +36,16 @@
 <body>
     <header>
         <nav class="pure-menu pure-menu-horizontal pure-menu-fixed menu">
-            <a class="pure-menu-heading" href="">Your Site</a>
+            <a class="pure-menu-heading" href="">Cupcakes!</a>
 
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
+            <ul class="pure-menu-list menu-right">
+                <li class="pure-menu-item"><a href="#home" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="#features" class="pure-menu-link">Features</a></li>
+                <li class="pure-menu-item"><a href="#gallery" class="pure-menu-link">Gallery</a></li>
             </ul>
         </nav>
     </header>
-    <div class="parallax">
+    <div class="parallax" id="home">
         <div class="text-left">
             <h1 class="title-cover">Cupcake ipsum</h1>
             <div class="description-cover">
@@ -59,7 +66,7 @@
             </fieldset>
         </div>
     </div>
-    <section>
+    <section id="features">
         <div class="pure-g description-blocks">
             <div class="pure-u-1-3">
                 <h1><i class="fa fa-heart"></i></h1>
@@ -74,28 +81,21 @@
                 <p class="text-blocks">Cookie chocolate bar cotton candy marshmallow candy muffin biscuit. Topping pastry marzipan. I love bear claw toffee powder ice cream sugar plum.</p>
             </div>
     </section>
-    <section>
+    <section id="gallery">
         <div class="pure-g gallery">
             <div class="pure-u-1-1 gallery-title">
                 <h1>More of our cupcake selection!</h1>
             </div>
-            <div class="pure-u-1-6">
-                <img src="https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg" />
+            <div class="pure-u-1-1 gallery-highlighted">
+                <img class="img-selected" src="https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg" />
             </div>
-            <div class="pure-u-1-6">
-                <img src="https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg" />
-            </div>
-            <div class="pure-u-1-6">
-                <img src="https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg" />
-            </div>
-            <div class="pure-u-1-6">
-                <img src="https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg" />
-            </div>
-            <div class="pure-u-1-6">
-                <img src="https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg" />
-            </div>
-            <div class="pure-u-1-6">
-                <img src="https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg" />
+            <div class="pure-u-1-1 gallery-selection">
+                <img class="img-selection" src="img/cupcake-small.jpg" />
+                <img class="img-selection" src="img/cupcake-small.jpg" />
+                <img class="img-selection" src="img/cupcake-small.jpg" />
+                <img class="img-selection" src="img/cupcake-small.jpg" />
+                <img class="img-selection" src="img/cupcake-small.jpg" />
+                <img class="img-selection" src="img/cupcake-small.jpg" />
             </div>
     </section>
     </div>
