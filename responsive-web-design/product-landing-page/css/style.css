@@ -13,7 +13,7 @@ html {
 
 .parallax {
     background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg");
-    height: 100%;
+    height: 90%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -36,14 +36,38 @@ html {
     top: 25%;
     margin-right: 50px;
     text-align: left;
-    width: 25%;
-    height: 300px;
+    width: auto;
+    height: auto;
     background-color: rgba(72, 72, 72, 0.4);
     padding: 35px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.form-right h1 {
+    text-align: center;
+    color: white;
+    margin: 0 0 15px 0;
+}
+
+fieldset {
+    border: none;
+}
+
+.text-blocks {
+    width: 50%;
+    margin: 0 auto;
 }
 
 .input {
-    display: block;
+    border: none;
+    outline: none;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+input:first-child {
+    margin-right: 15px;
 }
 
 .title-cover {
@@ -55,4 +79,24 @@ html {
     text-align: justify;
     line-height: 1.5em;
     letter-spacing: 0.05rem;
+}
+
+.description-blocks {
+    text-align: center;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    margin: 15px 0 0 0;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 15px;
 }
