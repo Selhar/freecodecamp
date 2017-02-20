@@ -19,3 +19,24 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.text-left {
+    text-align: left;
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+    color: white;
+    width: 25%;
+    margin-left: 50px;
+}
+
+.title-cover {
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+}
+
+.description-cover {
+    text-align: justify;
+    line-height: 1.5em;
+    letter-spacing: 0.05rem;
+}
