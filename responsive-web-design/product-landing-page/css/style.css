@@ -1,12 +1,19 @@
 body,
 html {
-    height: 85%;
+    height: 90%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.menu {
+    background-color: white;
 }
 
 .parallax {
     background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg");
     height: 100%;
-    /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
