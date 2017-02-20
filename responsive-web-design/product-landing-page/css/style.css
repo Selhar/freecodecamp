@@ -83,9 +83,7 @@ input:first-child {
 
 .description-blocks {
     text-align: center;
-    margin: 0;
-    border: 0;
-    padding: 0;
+    margin: 50px 0 50px 0;
 }
 
 .button {
@@ -99,4 +97,13 @@ input:first-child {
     font-weight: 700;
     border-radius: 10px;
     padding: 15px;
+}
+
+.gallery img {
+    height: auto;
+    width: 100%;
+}
+
+.gallery-title {
+    text-align: center;
 }
