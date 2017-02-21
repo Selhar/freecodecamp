@@ -115,14 +115,6 @@ input:first-child {
     text-align: center;
 }
 
-.gallery-highlighted {
-    background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg");
-    height: 90%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .gallery-title {
     text-align: center;
 }
@@ -134,9 +126,11 @@ input:first-child {
     margin: 0 auto;
     border-radius: 50%;
     width: 100px;
-    height: auto;
+    height: 100px;
+    background-image: url("../img/thumbnail-cupcake.png");
 }
 
 .img-selected {
+    width: 106px;
     border: solid red;
 }
