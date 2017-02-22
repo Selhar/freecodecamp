@@ -128,6 +128,8 @@ input:first-child {
     height: 100px;
     background-size: cover;
     margin-top: 5px;
+    border: 6px white solid;
+    box-shadow: 4px 4px 5px 0 #333 inset;
 }
 
 #gallery {

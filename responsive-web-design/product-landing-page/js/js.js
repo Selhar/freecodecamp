@@ -2,11 +2,10 @@ ready(() => {
     mouseover_gallery();
 });
 let images_enum = {
-    /* This enum links a thumbnail to the full-sized image and vice-versa.
-        This is only hard-coded because i'm not uploading locally
-        this project will be uploaded to codepen, thus i have to upload these images somewhere
-        and since i can't predict how the links will be, i must hardcode the relation between thumb e fullscreen image.
-        In a server, this should be done in a more dynamic way, using local system's filepath instead of hardcoded enum*/
+    /* This enum solution is only necessary because i'll upload this project to codepen
+        thus, i must upload each image to a third party server, so i can't predict how the URL is gonna be.
+        Since i must have a relation between thumbnail and full image, and their links are unpredictable, i hard coded enums.
+        Ideally this would use the filepath instead of enums, that way you don't rely on hardcoded links, only generic references.*/
     'url("http://res.cloudinary.com/selhar/image/upload/v1487737607/cupcake1-thumb_hfwyi0.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737627/cupcake1_k0bvig.jpg")',
     'url("http://res.cloudinary.com/selhar/image/upload/v1487737608/cupcake2-thumb_vlza22.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737639/cupcake2_eu8jv5.jpg")',
     'url("http://res.cloudinary.com/selhar/image/upload/v1487737609/cupcake3-thumb_ehexvg.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737626/cupcake3_s5bble.jpg")',
