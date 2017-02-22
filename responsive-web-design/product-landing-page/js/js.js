@@ -7,12 +7,12 @@ let images_enum = {
         this project will be uploaded to codepen, thus i have to upload these images somewhere
         and since i can't predict how the links will be, i must hardcode the relation between thumb e fullscreen image.
         In a server, this should be done in a more dynamic way, using local system's filepath instead of hardcoded enum*/
-    'url("http://res.cloudinary.com/selhar/image/upload/v1487721126/cupcake1-thumb_cofbn6.jpg")': 'url("https://wallpaperscraft.com/image/cupcake_sprinkling_dessert_108701_2560x1440.jpg")',
-    'url("http://res.cloudinary.com/selhar/image/upload/v1487721125/cupcake2-thumb_x0xee4.jpg")': 'url("https://wallpaperscraft.com/image/coffee_coffee_beans_cupcake_candy_93301_2560x1440.jpg")',
-    'url("http://res.cloudinary.com/selhar/image/upload/v1487721126/cupcake3-thumb_qdnfs3.jpg")': 'url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-127849.jpg")',
-    'url("http://res.cloudinary.com/selhar/image/upload/v1487721127/cupcake4-thumb_bjf5xq.jpg")': 'url("https://wallpaperscraft.com/image/muffin_cupcake_dessert_108550_2560x1440.jpg")',
-    'url("http://res.cloudinary.com/selhar/image/upload/v1487721130/cupcake5-thumb_adtsiq.jpg")': 'url("https://www.bhmpics.com/wallpapers/muffins_cupcakes_heart-2560x1440.jpg")',
-    'url("http://res.cloudinary.com/selhar/image/upload/v1487721142/cupcake6-thumb_t2uow1.jpg")': 'url("https://wallpaperscraft.com/image/fruitcake_cupcake_dessert_cream_97626_2560x1440.jpg")',
+    'url("http://res.cloudinary.com/selhar/image/upload/v1487737607/cupcake1-thumb_hfwyi0.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737627/cupcake1_k0bvig.jpg")',
+    'url("http://res.cloudinary.com/selhar/image/upload/v1487737608/cupcake2-thumb_vlza22.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737639/cupcake2_eu8jv5.jpg")',
+    'url("http://res.cloudinary.com/selhar/image/upload/v1487737609/cupcake3-thumb_ehexvg.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737626/cupcake3_s5bble.jpg")',
+    'url("http://res.cloudinary.com/selhar/image/upload/v1487737621/cupcake4-thumb_gmnqr9.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737648/cupcake4_bpz3zr.jpg")',
+    'url("http://res.cloudinary.com/selhar/image/upload/v1487737628/cupcake5-thumb_gqkyz8.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737641/cupcake5_tt6f13.jpg")',
+    'url("http://res.cloudinary.com/selhar/image/upload/v1487737640/cupcake6-thumb_k9luuk.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737644/cupcake6_wynbnx.jpg")',
 }
 
 function mouseover_gallery() {
@@ -29,7 +29,6 @@ function mouseover_gallery() {
                 if (gallery_items[i] === selected_thumbnail) {
                     selected_thumbnail.className += " img-selected";
                     let new_background = retrieve_style(selected_thumbnail, "background-image");
-                    console.log(new_background);
                     change_background(new_background);
                 } else {
                     gallery_items[i].className = "img-selection";
