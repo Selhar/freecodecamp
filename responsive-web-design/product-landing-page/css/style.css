@@ -112,7 +112,8 @@ input:first-child {
 }
 
 .gallery-selection {
-    text-align: center;
+    position: absolute;
+    margin-top: 150px;
 }
 
 .gallery-title {
@@ -120,14 +121,13 @@ input:first-child {
 }
 
 .img-selection {
-    display: inline-block;
-    margin: 0 auto;
-    position: relative;
-    bottom: 120px;
+    display: block;
+    margin-left: 10px;
     border-radius: 50%;
     width: 100px;
     height: 100px;
     background-size: cover;
+    margin-top: 5px;
 }
 
 #gallery {
