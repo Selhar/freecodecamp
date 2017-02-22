@@ -24,10 +24,10 @@ html {
 }
 
 .parallax {
-    background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg");
+    background-image: url("https://wallpaperscraft.com/image/cupcakes_frosting_confetti_chocolate_110457_3840x2400.jpg");
     height: 90%;
     background-attachment: fixed;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -120,13 +120,18 @@ input:first-child {
 }
 
 .img-selection {
-    position: relative;
-    top: 50px;
     display: inline-block;
     margin: 0 auto;
+    position: relative;
+    bottom: 120px;
     border-radius: 50%;
     width: 100px;
     height: 100px;
+    background-size: cover;
+}
+
+#gallery {
+    background-color: white;
 }
 
 #cupcake1 {
@@ -153,7 +158,11 @@ input:first-child {
     background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487721142/cupcake6-thumb_t2uow1.jpg");
 }
 
+#parallax {
+    background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487721137/cupcake1_bv8sxl.jpg");
+}
+
 .img-selected {
     width: 106px;
-    border: solid red;
+    border: solid white;
 }
