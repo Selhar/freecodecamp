@@ -2,16 +2,27 @@
        Global
 ****************/
 
-@import url('https://fonts.googleapis.com/css?family=Baloo|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Baloo|Roboto|Open+Sans|Sniglet');
 body,
 html {
     height: 100%;
     margin: 0;
+    color: white;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.3em;
+    letter-spacing: 2px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
+    text-align: center;
     font-family: 'Baloo', cursive;
     font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin: 0;
 }
 
@@ -20,9 +31,9 @@ h1 {
 }
 
 
-/****************
+/********************************************************************************
        Menu Will only be used in the freecodecamp version, to pass the test suite
-
+********************************************************************************
 .pure-menu,
 .pure-menu-link:hover {
     background-color: #1a1d25;
@@ -35,7 +46,6 @@ h1 {
 
 .pure-menu-link,
 .pure-menu-heading {
-    color: white;
     height: 50%;
 }
 
@@ -63,97 +73,85 @@ h1 {
 ****************/
 
 .parallax {
-    background-image: url("https://wallpaperscraft.com/image/cupcakes_frosting_confetti_chocolate_110457_3840x2400.jpg");
-    height: 95%;
+    background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487823485/parallax_cover_d7hfwl.jpg");
     background-attachment: fixed;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 95%;
 }
 
-.text-left {
+
+/*Left-side message*/
+
+.cover-left {
     position: absolute;
-    left: 0;
-    top: 20%;
-    height: auto;
-    text-align: left;
-    color: white;
-    width: 25%;
-    padding: 35px;
-    background-color: rgba(72, 72, 72, 0.4);
+    top: 50%;
+    transform: translateY(-50%);
     margin-left: 50px;
-    border-radius: 10px;
-}
-
-.form-right {
-    position: absolute;
-    right: 0;
-    top: 25%;
-    margin-right: 50px;
-    text-align: left;
-    width: auto;
-    height: auto;
     background-color: rgba(72, 72, 72, 0.4);
-    padding: 35px;
-    border-radius: 10px;
-    text-transform: uppercase;
 }
 
-.form-right h1 {
-    text-align: center;
-    color: white;
-    margin: 0 0 15px 0;
+.cover-right,
+.cover-left {
+    padding: 25px;
+    border-radius: 15px;
+}
+
+
+/*Inputs*/
+
+.cover-right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: auto;
+    background-color: rgba(72, 72, 72, 0.4);
+    margin-right: 50px;
+}
+
+input {
+    display: inline-block;
+    margin-top: 15px;
+    outline: none;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    font-family: 'Sniglet', cursive;
+    padding: 8px;
+    color: #555;
+    box-shadow: none;
+}
+
+.button {
+    margin-top: 15px;
+    display: block;
+    width: 100%;
 }
 
 fieldset {
     border: none;
 }
 
-.text-blocks {
-    width: 50%;
-    margin: 0 auto;
-}
 
-.input {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    padding: 15px;
-    border-radius: 10px;
-}
+/*Responsivity (responsiveness...?)*/
 
-input:first-child {
-    margin-right: 15px;
-}
-
-.title-cover {
-    text-transform: uppercase;
-    letter-spacing: 0.15rem;
-}
-
-.description-cover {
-    text-align: justify;
-    line-height: 1.5em;
-    letter-spacing: 0.05rem;
-}
-
-.description-blocks {
-    text-align: center;
-    margin: 50px 0 50px 0;
-}
-
-.button {
-    display: block;
-    width: 100%;
-    margin: 15px 0 0 0;
-    cursor: pointer;
-    background-color: #3498db;
-    color: white;
-    font-size: 24px;
-    font-weight: 700;
-    border-radius: 10px;
-    padding: 15px;
-    border: none;
+@media screen and (min-width: 320px) and (max-device-width: 568px) {
+    .parallax {
+        height: 100%!important;
+        min-height: 800px;
+        background-attachment: initial !important;
+        overflow: auto!important;
+    }
+    .cover-left,
+    .cover-right {
+        background-color: rgba(72, 72, 72, 0.4) !important;
+        position: relative !important;
+        transform: none !important;
+        top: 0 !important;
+        padding: 15px !important;
+    }
 }
 
 
