@@ -64,7 +64,7 @@ h1 {
 
 .parallax {
     background-image: url("https://wallpaperscraft.com/image/cupcakes_frosting_confetti_chocolate_110457_3840x2400.jpg");
-    height: 90%;
+    height: 95%;
     background-attachment: fixed;
     background-position: center top;
     background-repeat: no-repeat;
@@ -74,11 +74,15 @@ h1 {
 .text-left {
     position: absolute;
     left: 0;
-    top: 25%;
+    top: 20%;
+    height: auto;
     text-align: left;
     color: white;
     width: 25%;
+    padding: 35px;
+    background-color: rgba(72, 72, 72, 0.4);
     margin-left: 50px;
+    border-radius: 10px;
 }
 
 .form-right {
@@ -113,6 +117,7 @@ fieldset {
 .input {
     border: none;
     outline: none;
+    box-shadow: none;
     padding: 15px;
     border-radius: 10px;
 }
@@ -148,6 +153,7 @@ input:first-child {
     font-weight: 700;
     border-radius: 10px;
     padding: 15px;
+    border: none;
 }
 
 
