@@ -134,7 +134,11 @@ input {
     color: #555;
     font-size: 1.5em;
     padding: 10px;
-    background-color: rgb(255, 209, 26)
+    background-color: rgb(255, 209, 26);
+}
+
+.button:hover {
+    background-color: rgb(255, 180, 26);
 }
 
 fieldset {
@@ -212,6 +216,9 @@ fieldset {
 
 .gallery-title {
     text-align: center;
+    background-color: #444;
+    color: rgb(255, 209, 26);
+    padding: 25px;
 }
 
 .img-selection {
@@ -222,7 +229,7 @@ fieldset {
     height: 100px;
     background-size: cover;
     margin-top: 5px;
-    border: 2px white solid;
+    border: 5px rgb(255, 209, 26) solid;
     z-index: 6;
 }
 
@@ -236,7 +243,7 @@ fieldset {
 
 .img-selected {
     width: 106px;
-    border: 5px solid white;
+    border-color: #555;
 }
 
 #cupcake1 {
