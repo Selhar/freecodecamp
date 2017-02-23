@@ -142,20 +142,20 @@ fieldset {
 }
 
 
-/*Responsivity (responsiveness...?)*/
+/*Responsivity (responsiveness?) for splash*/
 
 @media screen and (min-width: 320px) and (max-device-width: 568px) {
     .parallax {
         height: 100%!important;
         background-attachment: initial !important;
         overflow: auto!important;
-        min-height: 900px;
+        min-height: 900px!important;
     }
 }
 
 @media screen and (min-width: 320px) and (max-device-width: 1023px) {
     .parallax {
-        height: 100%;
+        height: 700px;
     }
     input {
         display: block;
@@ -170,6 +170,30 @@ fieldset {
         transform: none !important;
         top: 0 !important;
         padding: 15px !important;
+    }
+}
+
+
+/****************
+      Features
+****************/
+
+.features {
+    padding: 25px;
+    background-color: rgb(255, 209, 26);
+    color: #555;
+    font-weight: 700px;
+    text-align: center;
+}
+
+.features p {
+    width: 65%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 320px) and (max-device-width: 568px) {
+    .features div {
+        margin-bottom: 25px;
     }
 }
 
