@@ -1,6 +1,17 @@
+/****************
+       Global
+****************/
+
+@import url('https://fonts.googleapis.com/css?family=Baloo|Roboto');
 body,
 html {
     height: 100%;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Baloo', cursive;
+    font-weight: 300;
     margin: 0;
 }
 
@@ -8,20 +19,48 @@ html {
     box-sizing: border-box;
 }
 
-.menu {
+
+/****************
+       Menu Will only be used in the freecodecamp version, to pass the test suite
+
+.pure-menu,
+.pure-menu-link:hover {
     background-color: #1a1d25;
-    padding: 20px;
 }
 
-.menu-right {
-    position: absolute;
-    right: 20px;
+.pure-menu-heading {
+    padding: 15px 0 15px 0;
+    margin-left: 50px;
 }
 
-.pure-menu-heading,
-.pure-menu-link {
+.pure-menu-link,
+.pure-menu-heading {
     color: white;
+    height: 50%;
 }
+
+.pure-menu-link {
+    padding: 0;
+    margin-left: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 61200px;
+}
+
+.pure-menu-list {
+    font-size: 18px;
+    position: absolute;
+    margin: 28px 50px 0 0;
+    right: 0;
+    padding: 0;
+}
+
+
+****************/
+
+
+/****************
+      Splash
+****************/
 
 .parallax {
     background-image: url("https://wallpaperscraft.com/image/cupcakes_frosting_confetti_chocolate_110457_3840x2400.jpg");
@@ -111,9 +150,17 @@ input:first-child {
     padding: 15px;
 }
 
+
+/****************
+      Gallery
+****************/
+
 .gallery-selection {
     position: absolute;
-    margin-top: 150px;
+    margin-top: 100px;
+    width: 130px;
+    border-radius: 5px;
+    background-color: rgba(72, 72, 72, 0.4);
 }
 
 .gallery-title {
@@ -128,12 +175,21 @@ input:first-child {
     height: 100px;
     background-size: cover;
     margin-top: 5px;
-    border: 6px white solid;
-    box-shadow: 4px 4px 5px 0 #333 inset;
+    border: 2px white solid;
+    z-index: 6;
 }
 
-#gallery {
-    background-color: white;
+.img-selection:first-child {
+    margin-top: 25px;
+}
+
+.img-selection:last-child {
+    margin-bottom: 25px;
+}
+
+.img-selected {
+    width: 106px;
+    border: 5px solid white;
 }
 
 #cupcake1 {
@@ -160,11 +216,6 @@ input:first-child {
     background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487737640/cupcake6-thumb_k9luuk.jpg");
 }
 
-#parallax {
+#gallery {
     background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487737627/cupcake1_k0bvig.jpg");
-}
-
-.img-selected {
-    width: 106px;
-    border: solid white;
 }

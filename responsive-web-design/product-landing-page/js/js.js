@@ -17,8 +17,8 @@ let images_enum = {
 function mouseover_gallery() {
 
 
-    let gallery = document.getElementById("gallery");
-    let gallery_items = gallery.children[1].children[0].children;
+    let gallery = document.getElementById("gallery-menu");
+    let gallery_items = gallery.children;
 
     gallery.addEventListener("mouseover", (event) => {
         let selected_thumbnail = event.target;
@@ -38,7 +38,7 @@ function mouseover_gallery() {
 }
 
 function change_background(new_background) {
-    current_background = document.getElementById("parallax");
+    current_background = document.getElementById("gallery");
     current_background.style.backgroundImage = new_background;
 }
 

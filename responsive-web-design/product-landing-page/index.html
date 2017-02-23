@@ -16,6 +16,10 @@
     3.
 -->
 
+<!-- 
+**********************************************************************    
+    Menu will only be used for the freecodecamp version on codepen
+**********************************************************************
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,24 +28,26 @@
 
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
 
-    <!--[if lte IE 8]>
+    <!- [if lte IE 8]>
         <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-old-ie-min.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
+    <![endif] ->
+    <!- [if gt IE 8]><! ->
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
-    <!--<![endif]-->
+    <!- <![endif] ->
 
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
-    <!--<![endif]-->
+    <!- <![endif] ->
 </head>
+-->
 
 <body>
     <header>
-        <nav class="pure-menu pure-menu-horizontal menu">
-            <a class="pure-menu-heading" href="">Cupcakes!</a>
-
-            <ul class="pure-menu-list menu-right">
+        <nav class="pure-menu pure-menu-horizontal">
+            <a class="pure-menu-heading " href="#">
+                <h1 class="logo">Cupcakes!</h1>
+            </a>
+            <ul class="pure-menu-list">
                 <li class="pure-menu-item"><a href="#home" class="pure-menu-link">Home</a></li>
                 <li class="pure-menu-item"><a href="#features" class="pure-menu-link">Features</a></li>
                 <li class="pure-menu-item"><a href="#gallery" class="pure-menu-link">Gallery</a></li>
@@ -84,19 +90,20 @@
                 <p class="text-blocks">Cookie chocolate bar cotton candy marshmallow candy muffin biscuit. Topping pastry marzipan. I love bear claw toffee powder ice cream sugar plum.</p>
             </div>
     </section>
-    <section id="gallery">
+    <section>
         <h1 class="gallery-title">See more of our selection!</h1>
         <div class="pure-g gallery">
-            <div class="pure-u-1-1 gallery-selection">
-                <img class="img-selection img-selected" id="cupcake1" />
-                <img class="img-selection" id="cupcake2" />
-                <img class="img-selection" id="cupcake3" />
-                <img class="img-selection" id="cupcake4" />
-                <img class="img-selection" id="cupcake5" />
-                <img class="img-selection" id="cupcake6" />
-            </div>
     </section>
-    <div class="parallax" id="parallax"></div>
+    <section class="parallax" id="gallery">
+        <div class="pure-u-1-1 gallery-selection" id="gallery-menu">
+            <img class="img-selection img-selected" id="cupcake1" />
+            <img class="img-selection" id="cupcake2" />
+            <img class="img-selection" id="cupcake3" />
+            <img class="img-selection" id="cupcake4" />
+            <img class="img-selection" id="cupcake5" />
+            <img class="img-selection" id="cupcake6" />
+        </div>
+    </section>
     </div>
 
     </div>
