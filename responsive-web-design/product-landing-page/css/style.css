@@ -147,12 +147,24 @@ fieldset {
 @media screen and (min-width: 320px) and (max-device-width: 568px) {
     .parallax {
         height: 100%!important;
-        min-height: 800px;
         background-attachment: initial !important;
         overflow: auto!important;
+        min-height: 900px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-device-width: 1023px) {
+    .parallax {
+        height: 100%;
+    }
+    input {
+        display: block;
+        width: 100%;
     }
     .cover-left,
     .cover-right {
+        width: 100% !important;
+        margin: 0 0 25px 0!important;
         background-color: rgba(72, 72, 72, 0.4) !important;
         position: relative !important;
         transform: none !important;
