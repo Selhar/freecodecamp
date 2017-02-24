@@ -78,7 +78,7 @@ h1 {
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 95%;
+    height: 98%;
 }
 
 
@@ -218,13 +218,6 @@ fieldset {
     height: 90%;
 }
 
-.gallery-selection {
-    margin-top: 100px;
-    width: 130px;
-    background-color: rgba(72, 72, 72, 0.4);
-    border-radius: 8px;
-}
-
 .gallery-title {
     text-align: center;
     background-color: #444;
@@ -232,6 +225,13 @@ fieldset {
     padding: 15px;
     width: 100%;
     height: 10%;
+}
+
+.gallery-selection {
+    margin-top: 100px;
+    width: 130px;
+    background-color: rgba(72, 72, 72, 0.4);
+    border-radius: 8px;
 }
 
 .img-selection {
@@ -288,5 +288,12 @@ fieldset {
     }
     #splash {
         height: 80%;
+    }
+    .img-selection {
+        width: 50px;
+        height: 50px;
+    }
+    .gallery-selection {
+        width: 70px;
     }
 }
