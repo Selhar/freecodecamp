@@ -206,19 +206,32 @@ fieldset {
       Gallery
 ****************/
 
+#gallery {
+    height: 100%;
+}
+
+.gallery {
+    background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487737627/cupcake1_k0bvig.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90%;
+}
+
 .gallery-selection {
-    position: absolute;
     margin-top: 100px;
     width: 130px;
-    border-radius: 5px;
     background-color: rgba(72, 72, 72, 0.4);
+    border-radius: 8px;
 }
 
 .gallery-title {
     text-align: center;
     background-color: #444;
     color: rgb(255, 209, 26);
-    padding: 25px;
+    padding: 15px;
+    width: 100%;
+    height: 10%;
 }
 
 .img-selection {
@@ -229,7 +242,6 @@ fieldset {
     height: 100px;
     background-size: cover;
     margin-top: 5px;
-    border: 5px rgb(255, 209, 26) solid;
     z-index: 6;
 }
 
@@ -243,7 +255,7 @@ fieldset {
 
 .img-selected {
     width: 106px;
-    border-color: #555;
+    border: 5px rgb(255, 209, 26) solid;
 }
 
 #cupcake1 {
@@ -270,6 +282,11 @@ fieldset {
     background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487737640/cupcake6-thumb_k9luuk.jpg");
 }
 
-#gallery {
-    background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487737627/cupcake1_k0bvig.jpg");
+@media screen and (min-width: 320px) and (max-device-width: 568px) {
+    .gallery-title {
+        height: 20%;
+    }
+    #splash {
+        height: 80%;
+    }
 }

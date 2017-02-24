@@ -38,7 +38,7 @@ function mouseover_gallery() {
 }
 
 function change_background(new_background) {
-    current_background = document.getElementById("gallery");
+    current_background = document.getElementById("splash");
     current_background.style.backgroundImage = new_background;
 }
 
