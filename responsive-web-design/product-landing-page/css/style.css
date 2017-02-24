@@ -183,7 +183,7 @@ fieldset {
 ****************/
 
 .features {
-    padding: 25px;
+    padding: 35px;
     background-color: rgb(255, 209, 26);
     color: #555;
     font-weight: 700px;
@@ -242,7 +242,6 @@ fieldset {
     height: 100px;
     background-size: cover;
     margin-top: 5px;
-    z-index: 6;
 }
 
 .img-selection:first-child {
