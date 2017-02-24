@@ -138,7 +138,7 @@ input {
 }
 
 .button:hover {
-    background-color: rgb(255, 180, 26);
+    background-color: rgb(255, 204, 0);
 }
 
 fieldset {
@@ -267,7 +267,7 @@ fieldset {
 }
 
 #cupcake3 {
-    background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487737609/cupcake3-thumb_ehexvg.jpg");
+    background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487910173/cupcake3-thumb_ctqzwy.jpg");
 }
 
 #cupcake4 {
@@ -296,4 +296,30 @@ fieldset {
     .gallery-selection {
         width: 70px;
     }
+}
+
+
+/****************
+      Footer
+****************/
+
+footer {
+    text-align: center;
+    background-color: #444;
+    padding: 15px;
+    width: 100%;
+    font-size: 25px;
+}
+
+footer a {
+    margin-left: 25px;
+    color: rgb(255, 209, 26);
+}
+
+footer a:visited {
+    color: rgb(255, 209, 26);
+}
+
+footer a:hover {
+    color: rgb(204, 163, 0);
 }
