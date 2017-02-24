@@ -111,7 +111,7 @@ fieldset {
 
 /*Responsivity (responsiveness?) for splash*/
 
-@media screen and (min-width: 320px) and (max-device-width: 568px) {
+@media screen and (max-width: 568px) {
     .parallax {
         height: 100%!important;
         background-attachment: initial !important;
@@ -120,7 +120,7 @@ fieldset {
     }
 }
 
-@media screen and (min-width: 320px) and (max-device-width: 1023px) {
+@media screen and (max-width: 1023px) {
     .parallax {
         height: 700px;
     }
@@ -158,7 +158,7 @@ fieldset {
     margin: 0 auto;
 }
 
-@media screen and (min-width: 320px) and (max-device-width: 568px) {
+@media screen and (min-width: 320px) and (max-width: 568px) {
     .features div {
         margin-bottom: 25px;
     }
@@ -244,7 +244,7 @@ fieldset {
     background-image: url("http://res.cloudinary.com/selhar/image/upload/v1487737640/cupcake6-thumb_k9luuk.jpg");
 }
 
-@media screen and (min-width: 320px) and (max-device-width: 568px) {
+@media screen and (min-width: 320px) and (max-width: 568px) {
     .gallery-title {
         height: 20%;
     }
