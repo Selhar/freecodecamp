@@ -8,7 +8,7 @@ html {
 }
 
 .parallax {
-    background-image: url("https://res.cloudinary.com/selhar/image/upload/v1487566481/wallhaven-89416-2_qivmbr.jpg");
+    background-image: url("");
     height: 100%;
     background-attachment: fixed;
     background-position: center;
