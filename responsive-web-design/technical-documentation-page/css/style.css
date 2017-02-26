@@ -2,26 +2,9 @@
     Globals
 ***************/
 
-body,
-html {
-    height: 100%;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-h1 {
-    line-height: 1.2;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-.parallax {
-    background-image: url("");
-    height: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+@media screen and (max-width: 768px) {
+    .menu {
+        overflow: scroll;
+        height: 120px;
+    }
 }

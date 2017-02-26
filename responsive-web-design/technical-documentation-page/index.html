@@ -4,7 +4,8 @@
     TODO
     1. has to include a sidebutton to skip to the next <section>
     2. Has to have the option to hide the left bar
-    3. Optionally, serve a download file with the page's content'    
+    3. Optionally, serve a download file with the page's content'   
+    4. fix menu in 800x resolution 
 -->
 
 <head>
@@ -18,9 +19,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <header class="columns">
-        <aside class="menu column is-3">
+<body class="columns">
+    <header class="menu column is-2">
+        <aside>
             <ul class="menu-list">
                 <li>
                     <a class="is-active">Introduction</a>
@@ -51,13 +52,31 @@
                 <li>
                     <a>Structs</a>
                     <ul>
-                        <li><a>What Is Ownership?</a></li>
-                        <li><a>References and Borrowing</a></li>
-                        <li><a>Slices</a></li>
+                        <li><a>Method Syntax</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Enums and Pattern Matching</a>
+                    <ul>
+                        <li><a>Defining an Enum</a></li>
+                        <li><a>The match Control Flow Operator</a></li>
+                        <li><a>Concise Control Flow with <code>if let</code></a></li>
                     </ul>
                 </li>
             </ul>
     </header>
+    <main>
+        <section class="content column is-7 is-offset-2" id="introduction">
+            <h1>Introduction</h1>
+            <p>Welcome to “The Rust Programming Language,” an introductory book about Rust. Rust is a programming language that’s focused on safety, speed, and concurrency. Its design lets you create programs that have the performance and control of a low-level
+                language, but with the powerful abstractions of a high-level language. These properties make Rust suitable for programmers who have experience in languages like C and are looking for a safer alternative, as well as those from languages
+                like Python who are looking for ways to write code that performs better without sacrificing expressiveness.</p>
+
+            <p>Rust performs the majority of its safety checks and memory management decisions at compile time, so that your program's runtime performance isn't impacted. This makes it useful in a number of use cases that other languages aren’t good at:
+                programs with predictable space and time requirements, embedding in other languages, and writing low-level code, like device drivers and operating systems. It's also great for web applications: it powers the Rust package registry site,
+                crates.io! We're excited to see what you create with Rust.</p>
+        </section>
+    </main>
 </body>
 
 </html>
