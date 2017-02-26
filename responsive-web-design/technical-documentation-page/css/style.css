@@ -2,9 +2,18 @@
     Globals
 ***************/
 
+body {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+}
+
 @media screen and (max-width: 768px) {
     .menu {
         overflow: scroll;
         height: 120px;
     }
+}
+
+.content {
+    padding: 100px;
 }
