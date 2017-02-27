@@ -4372,7 +4372,7 @@ Rust’s modules.</p>
     "more": `
     <h1>More</h1>
     <p>For more about the Rust language you can visit <a href="https://www.rust-lang.org/en-US/">the official website</a>, you can also check out <a href="http://rust-lang.github.io/book/ch01-00-introduction.html">the rust book</a>. </p>
-    <p>For more of my work check the header of this page.
+    <p>For more of my work check the footer of this page.
     </p>
 
 `
