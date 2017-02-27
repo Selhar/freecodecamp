@@ -27,8 +27,10 @@ a {
 
 header a {
     padding-left: 1.4%;
+    padding-top: 1%;
 }
 
 .content {
-    padding: 5%;
+    padding-left: 25%;
+    padding-top: 10%;
 }

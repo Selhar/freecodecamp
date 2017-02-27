@@ -19,7 +19,11 @@ function change_selected_menu(event) {
 }
 
 function display_text(id) {
-    document.getElementById("main-content").innerHTML = chapters[id];
+    let result = " ";
+    if (id !== '') {
+        result = chapters[id];
+    }
+    document.getElementById("main-content").innerHTML = result;
 }
 
 function ready(fn) {
