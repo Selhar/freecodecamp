@@ -19,7 +19,6 @@ function change_selected_menu(event) {
 }
 
 function display_text(id) {
-    console.log(chapters[id]);
     document.getElementById("main-content").innerHTML = chapters[id];
 }
 

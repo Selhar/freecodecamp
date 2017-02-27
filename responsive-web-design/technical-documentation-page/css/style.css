@@ -19,12 +19,14 @@ a {
     }
 }
 
-.button {
+.button,
+.icon {
     border: none;
+    margin-top: 5px;
 }
 
-.contact {
-    padding: 1%;
+header a {
+    padding-left: 1.4%;
 }
 
 .content {

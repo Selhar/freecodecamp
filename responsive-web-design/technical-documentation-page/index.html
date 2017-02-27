@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="columns">
-    <aside>
-        <ul class="menu menu-list column is-narrow" id="menu">
+<body class="columns is-multiline is-flex">
+    <aside class="is-flex ">
+        <ul class="column is-11 menu menu-list " id="menu">
             <li>
                 <a class="is-active" id="introduction">Introduction</a>
                 <ul>
@@ -64,29 +64,26 @@
             </li>
             <li><a id="more">More</a></li>
         </ul>
-        <a class="button">
-            <span class="icon is-small"><i class="fa fa-bars"></i></span>
+        <a class="button column is-1">
+            <span class="icon is-normal"><i class="fa fa-bars"></i></span>
         </a>
     </aside>
-    <main>
-        <header class="column is-12 has-text-centered contact">
-            <div class="is-inline-block ">
-                <a href="https://github.com/GregoryGoncalves" target="_blank">
-                    <span class="icon is-normal"><i class="fa fa-github"></i></span>
-                </a>
-                <a href="http://codepen.io/Selhar/#" target="_blank">
-                    <span class="icon is-normal"><i class="fa fa-codepen"></i></span>
-                </a>
-                <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
-                    <span class="icon is-normal"><i class="fa fa-free-code-camp"></i></span>
-                </a>
-            </div>
+    <main class="column is-6">
+        <header class="has-text-centered">
+            <a href="https://github.com/GregoryGoncalves" target="_blank">
+                <span class="icon is-normal"><i class="fa fa-github"></i></span>
+            </a>
+            <a href="http://codepen.io/Selhar/#" target="_blank">
+                <span class="icon is-normal"><i class="fa fa-codepen"></i></span>
+            </a>
+            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+                <span class="icon is-normal"><i class="fa fa-free-code-camp"></i></span>
+            </a>
         </header>
-        <section class="content column" id="main-content">
+        <section class="content" id="main-content">
         </section>
     </main>
 </body>
-
 <script src="js/js.js"></script>
 
 </html>
