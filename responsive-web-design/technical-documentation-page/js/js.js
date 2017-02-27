@@ -19,7 +19,8 @@ function change_selected_menu(event) {
 }
 
 function display_text(id) {
-    document.getElementById("main").innerHTML = chapters[id];
+    console.log(chapters[id]);
+    document.getElementById("main-content").innerHTML = chapters[id];
 }
 
 function ready(fn) {
@@ -35,7 +36,7 @@ function ready(fn) {
 //it's in no way a correct way to store files in a real world example
 //Use common sense if you're using this page as a blueprint or something.
 const chapters = {
-    "introduction": `<section class="content">
+    "introduction": `
             <h1>Introduction</h1>
             <p>Welcome to “The Rust Programming Language,” an introductory book about Rust. Rust is a programming language that’s focused on safety, speed, and concurrency. Its design lets you create programs that have the performance and control of a low-level
                 language, but with the powerful abstractions of a high-level language. These properties make Rust suitable for programmers who have experience in languages like C and are looking for a safer alternative, as well as those from languages
@@ -48,8 +49,8 @@ const chapters = {
                 <h2>Contributing to the book</h2>
             <p>This book is open source. If you find an error, please don’t hesitate to file an issue or send a pull request <a href="https://github.com/rust-lang/book">on GitHub</a>.</p>
 
-        </section>`,
-    "installation": ` <section class="content">
+        `,
+    "installation": ` 
             <h2>Installation</h2>
             <p>The first step to using Rust is to install it. You’ll need an internet connection to run the commands in this chapter, as we’ll be downloading Rust from the internet.</p>
             <p>We’ll be showing off a number of commands using a terminal, and those lines all start with <code>$</code>. You don't need to type in the <code>$</code> character; they are there to indicate the start of each command. You’ll see many tutorials
@@ -96,8 +97,8 @@ installation page</a> for other options.</p>
             </p>
             <p>Any time there's a type or function provided by the standard library and you're not sure what it does, use the API documentation to find out!</p>
 
-        </section>`,
-    "helloworld": `<section class="content">
+        `,
+    "helloworld": `
             <h2>Hello, World!</h2>
             <p>Now that you have Rust installed, let’s write your first Rust program. It's traditional when learning a new language to write a little program to print the text “Hello, world!” to the screen, and in this section, we'll follow that tradition.
             </p>
@@ -296,9 +297,9 @@ $ cargo build
                 <p>Note: If you want to look at Cargo in more detail, check out the official
                     <a href="http://doc.crates.io/guide.html">Cargo guide</a>, which covers all of its features.</p>
             </blockquote>
-        </section>`,
+        `,
     "game": `
-        <section class="content">
+        
             <h1>Guessing Game</h1>
             <p>Let’s jump into Rust by working through a hands-on project together! This chapter introduces you to a few common Rust concepts by showing you how to use them in a real program. You’ll learn about <code>let</code>, <code>match</code>, methods,
                 associated functions, using external crates, and more! The following chapters will explore these ideas in more detail. In this chapter, you’ll practice the fundamentals.</p>
@@ -961,8 +962,8 @@ You win!
                 <code>let</code>, <code>match</code>, methods, associated functions, using external crates, and more. In the next few chapters, you’ll learn about these concepts in more detail. Chapter 3 covers concepts that most programming languages
                 have, such as variables, data types, and functions, and shows how to use them in Rust. Chapter 4 explores ownership, which is a Rust feature that is most different from other languages. Chapter 5 discusses structs and method syntax, and
                 Chapter 6 endeavors to explain enums.</p>
-        </section>`,
-    "concepts": `<section class="content">
+        `,
+    "concepts": `
                     <a class="header" href="#common-programming-concepts" name="common-programming-concepts"><h1>Common Programming Concepts</h1></a>
 <p>This chapter covers concepts that appear in almost every programming language
 and how they work in Rust. Many programming languages have much in common at
@@ -984,8 +985,8 @@ can find a list of the keywords in Appendix A.</p>
 </blockquote>
 <!-- PROD: END BOX -->
 
-                </section>`,
-    "variables": `<section class="content">
+                `,
+    "variables": `
         <a class="header" href="#variables-and-mutability" name="variables-and-mutability"><h2>Variables and Mutability</h2></a>
 <p>As mentioned in Chapter 2, by default variables are <em>immutable</em>. This is one of
 many nudges in Rust that encourages you to write your code in a way that takes
@@ -1157,8 +1158,8 @@ type:</p>
 <p>Now that we’ve explored how variables work, let’s look at more data types they
 can have.</p>
 
-                </section>`,
-    "datatypes": `<section class="content">
+                `,
+    "datatypes": `
                     <a class="header" href="#data-types" name="data-types"><h2>Data Types</h2></a>
 <p>Every value in Rust is of a certain <em>type</em>, which tells Rust what kind of data
 is being specified so it knows how to work with that data. In this section,
@@ -1444,8 +1445,8 @@ incorrect index, invalid memory can be accessed. Rust protects you against this
 kind of error by immediately exiting instead of allowing the memory access and
 continuing. Chapter 9 discusses more of Rust’s error handling.</p>
 
-                </section>`,
-    "functions": `<section class="content">
+                `,
+    "functions": `
                     <a class="header" href="#how-functions-work" name="how-functions-work"><h2>How Functions Work</h2></a>
 <p>Functions are pervasive in Rust code. You’ve already seen one of the most
 important functions in the language: the <code class="hljs">main</code> function, which is the entry
@@ -1708,8 +1709,8 @@ nothing is returned, which contradicts the function definition and results in
 an error. In this output, Rust provides a message to possibly help rectify this
 issue: it suggests removing the semicolon, which would fix the error.</p>
 
-                </section>`,
-    "comments": `<section class="content">
+                `,
+    "comments": `
                     <a class="header" href="#comments" name="comments"><h2>Comments</h2></a>
 <p>All programmers strive to make their code easy to understand, but sometimes
 extra explanation is warranted. In these cases, programmers leave notes, or
@@ -1741,8 +1742,8 @@ separate line above the code it's annotating:</p>
 </code></pre>
 <p>That’s all there is to comments. They’re not particularly complicated.</p>
 
-                </section>`,
-    "flow": `<section class="content">
+                `,
+    "flow": `
                     <a class="header" href="#control-flow" name="control-flow"><h2>Control Flow</h2></a>
 <p>Deciding whether or not to run some code depending on if a condition is true or
 deciding to run some code repeatedly while a condition is true are basic
@@ -2098,8 +2099,8 @@ taking advantage of the repetition in the song.</li>
 <p>When you’re ready to move on, we’ll talk about a concept in Rust that <em>doesn’t</em>
 commonly exist in other programming languages: ownership.</p>
 
-                </section>`,
-    "ownership": `<section class="content">
+                `,
+    "ownership": `
                     <a class="header" href="#understanding-ownership" name="understanding-ownership"><h1>Understanding Ownership</h1></a>
 <p>Ownership is Rust’s most unique feature, and it enables Rust to make memory
 safety guarantees without needing a garbage collector. Therefore, it’s
@@ -2107,8 +2108,8 @@ important to understand how ownership works in Rust. In this chapter we’ll tal
 about ownership as well as several related features: borrowing, slices, and how
 Rust lays data out in memory.</p>
 
-    </section>`,
-    "whatisownership": `<section class="content">
+    `,
+    "whatisownership": `
                     <a class="header" href="#what-is-ownership" name="what-is-ownership"><h2>What Is Ownership?</h2></a>
 <p>Rust’s central feature is <em>ownership</em>. Although the feature is straightforward
 to explain, it has deep implications for the rest of the language.</p>
@@ -2574,8 +2575,8 @@ function that we might want to return as well.</p>
 common. Luckily for us, Rust has a feature for this concept, and it’s called
 <em>references</em>.</p>
 
-    </section>`,
-    "borrowing": `<section class="content">
+    `,
+    "borrowing": `
                     <a class="header" href="#references-and-borrowing" name="references-and-borrowing"><h2>References and Borrowing</h2></a>
 <p>The issue with the tuple code at the end of the preceding section is that we
 have to return the <code class="hljs">String</code> to the calling function so we can still use the
@@ -2829,8 +2830,8 @@ deallocated.</p>
 </ol>
 <p>Next, we’ll look at a different kind of reference: slices.</p>
 
-    </section>`,
-    "slices": `<section class="content">              <a class="header" href="#slices" name="slices"><h2>Slices</h2></a>
+    `,
+    "slices": `              <a class="header" href="#slices" name="slices"><h2>Slices</h2></a>
 <p>Another data type that does not have ownership is the <em>slice</em>. Slices let you
 reference a contiguous sequence of elements in a collection rather than the
 whole collection.</p>
@@ -3127,8 +3128,8 @@ you don’t have to write and debug extra code to get this control.</p>
 these concepts further throughout the rest of the book. Let’s move on to the
 next chapter and look at grouping pieces of data together in a <code class="hljs">struct</code>.</p>
 
-    </section>`,
-    "structs": `<section class="content">
+    `,
+    "structs": `
     <a class="header" href="#structs" name="structs"><h1>Structs</h1></a>
 <p>A <code class="hljs">struct</code>, short for <em>structure</em>, is a custom data type that lets us name and
 package together multiple related values that make up a meaningful group. If
@@ -3455,8 +3456,8 @@ It would be nice to tie this behavior together more closely with our
 specifically. Let’s now look at how we can continue to refactor this code by
 turning the <code class="hljs">area</code> function into an <code class="hljs">area</code> <em>method</em> defined on our <code class="hljs">Rectangle</code>
 type.</p>
-    </section>`,
-    "methodsyntax": `<section class="content">            <a class="header" href="#method-syntax" name="method-syntax"><h2>Method Syntax</h2></a>
+    `,
+    "methodsyntax": `            <a class="header" href="#method-syntax" name="method-syntax"><h2>Method Syntax</h2></a>
 <p><em>Methods</em> are similar to functions: they’re declared with the <code class="hljs">fn</code> keyword and
 their name, they can have parameters and return values, and they contain some
 code that gets run when they’re called from somewhere else. Methods are
@@ -3662,8 +3663,8 @@ available.</p>
 <p>Structs aren’t the only way we can create custom types, though; let’s turn to
 the <code class="hljs">enum</code> feature of Rust and add another tool to our toolbox.</p>
 
-    </section>`,
-    "enums": `<section class="content">                   <a class="header" href="#enums-and-pattern-matching" name="enums-and-pattern-matching"><h1>Enums and Pattern Matching</h1></a>
+    `,
+    "enums": `                   <a class="header" href="#enums-and-pattern-matching" name="enums-and-pattern-matching"><h1>Enums and Pattern Matching</h1></a>
 <p>In this chapter we’ll look at <em>enumerations</em>, also referred to as <em>enums</em>.
 Enums allow you to define a type by enumerating its possible values. First,
 we’ll define and use an enum to show how an enum can encode meaning along with
@@ -3677,8 +3678,8 @@ enums in your code.</p>
 language. Rust’s enums are most similar to <em>algebraic data types</em> in functional
 languages like F#, OCaml, and Haskell.</p>
 
-    </section>`,
-    "defineenum": `<section class="content">       <a class="header" href="#defining-an-enum" name="defining-an-enum"><h2>Defining an Enum</h2></a>
+    `,
+    "defineenum": `       <a class="header" href="#defining-an-enum" name="defining-an-enum"><h2>Defining an Enum</h2></a>
 <p>Let’s look at a situation we might want to express in code and see why enums
 are useful and more appropriate than structs in this case. Say we need to work
 with IP addresses. Currently, two major standards are used for IP addresses:
@@ -4010,8 +4011,8 @@ just this when used with enums: it will run different code depending on which
 variant of the enum it has, and that code can use the data inside the matching
 value.</p>
 
-    </section>`,
-    "flowoperator": `<section class="content"><a class="header" href="#the-match-control-flow-operator" name="the-match-control-flow-operator"><h2>The <code class="hljs">match</code> Control Flow Operator</h2></a>
+    `,
+    "flowoperator": `<a class="header" href="#the-match-control-flow-operator" name="the-match-control-flow-operator"><h2>The <code class="hljs">match</code> Control Flow Operator</h2></a>
 <p>Rust has an extremely powerful control-flow operator called <code class="hljs">match</code> that allows
 us to compare a value against a series of patterns and then execute code based
 on which pattern matches. Patterns can be made up of literal values, variable
@@ -4262,8 +4263,8 @@ can say that we want to do nothing for all the possible values that we don’t
 list before the <code class="hljs">_</code> placeholder.</p>
 <p>However, the <code class="hljs">match</code> expression can be a bit wordy in a situation in which we
 only care about <em>one</em> of the cases. For this situation, Rust provides <code class="hljs">if let</code>.</p>
-    </section>`,
-    "iflet": `<section class="content">                    <a class="header" href="#concise-control-flow-with-if-let" name="concise-control-flow-with-if-let"><h2>Concise Control Flow with <code class="hljs">if let</code></h2></a>
+    `,
+    "iflet": `                    <a class="header" href="#concise-control-flow-with-if-let" name="concise-control-flow-with-if-let"><h2>Concise Control Flow with <code class="hljs">if let</code></h2></a>
 <p>The <code class="hljs">if let</code> syntax lets you combine <code class="hljs">if</code> and <code class="hljs">let</code> into a less verbose way to
 handle values that match one pattern and ignore the rest. Consider the program
 in Listing 6-6 that matches on an <code class="hljs">Option&lt;u8&gt;</code> value but only wants to execute
@@ -4364,13 +4365,13 @@ function expects.</p>
 to use and only exposes exactly what your users will need, let’s now turn to
 Rust’s modules.</p>
 
-    </section>`,
-    "more": `<section class="content">
+    `,
+    "more": `
     <h1>More</h1>
     <p>For more about the Rust language you can visit <a href="https://www.rust-lang.org/en-US/">the official website</a>, you can also check out <a href="http://rust-lang.github.io/book/ch01-00-introduction.html">the rust book</a>. </p>
-    <p>For more of my work check the footer of this page.
+    <p>For more of my work check the header of this page.
     </p>
 
-</section>`
+`
 
 }

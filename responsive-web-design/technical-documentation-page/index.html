@@ -15,57 +15,75 @@
     <title>Documentation</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="columns">
-    <header class="menu column is-4-tablet is-2-desktop">
-        <aside>
-            <ul class="menu-list" id="menu">
-                <li>
-                    <a class="is-active" id="introduction">Introduction</a>
-                    <ul>
-                        <li><a id="installation">Installation</a></li>
-                        <li><a id="helloworld">Hello, World!</a></li>
-                    </ul>
-                </li>
-                <li><a id="game">Guessing Game Tutorial</a></li>
-                <li>
-                    <a id="concepts">Common Programming Concepts</a>
-                    <ul>
-                        <li><a id="variables">Variables and Mutability</a></li>
-                        <li><a id="datatypes">Data Types</a></li>
-                        <li><a id="functions">How Functions Work</a></li>
-                        <li><a id="comments">Comments</a></li>
-                        <li><a id="flow">Control Flow</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a id="ownership">Understanding Ownership</a>
-                    <ul>
-                        <li><a id="whatisownership">What Is Ownership?</a></li>
-                        <li><a id="borrowing">References and Borrowing</a></li>
-                        <li><a id="slices">Slices</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a id="structs">Structs</a>
-                    <ul>
-                        <li id="methodsyntax"><a>Method Syntax</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a id="enums">Enums and Pattern Matching</a>
-                    <ul>
-                        <li><a id="defineenum">Defining an Enum</a></li>
-                        <li><a id="flowoperator">The match Control Flow Operator</a></li>
-                        <li><a id="iflet">Concise Control Flow with <code>if let</code></a></li>
-                    </ul>
-                </li>
-            </ul>
-    </header>
-    <main id="main" class="column is-6-desktop is-8-tablet is-offset-1-desktop">
+    <aside>
+        <ul class="menu menu-list column is-narrow" id="menu">
+            <li>
+                <a class="is-active" id="introduction">Introduction</a>
+                <ul>
+                    <li><a id="installation">Installation</a></li>
+                    <li><a id="helloworld">Hello, World!</a></li>
+                </ul>
+            </li>
+            <li><a id="game">Guessing Game Tutorial</a></li>
+            <li>
+                <a id="concepts">Common Programming Concepts</a>
+                <ul>
+                    <li><a id="variables">Variables and Mutability</a></li>
+                    <li><a id="datatypes">Data Types</a></li>
+                    <li><a id="functions">How Functions Work</a></li>
+                    <li><a id="comments">Comments</a></li>
+                    <li><a id="flow">Control Flow</a></li>
+                </ul>
+            </li>
+            <li>
+                <a id="ownership">Understanding Ownership</a>
+                <ul>
+                    <li><a id="whatisownership">What Is Ownership?</a></li>
+                    <li><a id="borrowing">References and Borrowing</a></li>
+                    <li><a id="slices">Slices</a></li>
+                </ul>
+            </li>
+            <li>
+                <a id="structs">Structs</a>
+                <ul>
+                    <li id="methodsyntax"><a>Method Syntax</a></li>
+                </ul>
+            </li>
+            <li>
+                <a id="enums">Enums and Pattern Matching</a>
+                <ul>
+                    <li><a id="defineenum">Defining an Enum</a></li>
+                    <li><a id="flowoperator">The match Control Flow Operator</a></li>
+                    <li><a id="iflet">Concise Control Flow with <code>if let</code></a></li>
+                </ul>
+            </li>
+            <li><a id="more">More</a></li>
+        </ul>
+        <a class="button">
+            <span class="icon is-small"><i class="fa fa-bars"></i></span>
+        </a>
+    </aside>
+    <main>
+        <header class="column is-12 has-text-centered contact">
+            <div class="is-inline-block ">
+                <a href="https://github.com/GregoryGoncalves" target="_blank">
+                    <span class="icon is-normal"><i class="fa fa-github"></i></span>
+                </a>
+                <a href="http://codepen.io/Selhar/#" target="_blank">
+                    <span class="icon is-normal"><i class="fa fa-codepen"></i></span>
+                </a>
+                <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+                    <span class="icon is-normal"><i class="fa fa-free-code-camp"></i></span>
+                </a>
+            </div>
+        </header>
+        <section class="content column" id="main-content">
+        </section>
     </main>
 </body>
 

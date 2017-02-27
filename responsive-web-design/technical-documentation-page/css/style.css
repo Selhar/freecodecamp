@@ -7,6 +7,10 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
+a {
+    outline: none;
+}
+
 @media screen and (max-width: 768px) {
     .menu {
         overflow: scroll;
@@ -15,6 +19,14 @@ body {
     }
 }
 
+.button {
+    border: none;
+}
+
+.contact {
+    padding: 1%;
+}
+
 .content {
-    padding: 10%;
+    padding: 5%;
 }
