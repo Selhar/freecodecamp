@@ -3460,7 +3460,7 @@ specifically. Let’s now look at how we can continue to refactor this code by
 turning the <code class="hljs">area</code> function into an <code class="hljs">area</code> <em>method</em> defined on our <code class="hljs">Rectangle</code>
 type.</p>
     `,
-    "methodsyntax": `            <a class="header" href="#method-syntax" name="method-syntax"><h2>Method Syntax</h2></a>
+    "syntax": `            <a class="header" href="#method-syntax" name="method-syntax"><h2>Method Syntax</h2></a>
 <p><em>Methods</em> are similar to functions: they’re declared with the <code class="hljs">fn</code> keyword and
 their name, they can have parameters and return values, and they contain some
 code that gets run when they’re called from somewhere else. Methods are
