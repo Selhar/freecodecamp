@@ -4364,6 +4364,13 @@ function expects.</p>
 to use and only exposes exactly what your users will need, let’s now turn to
 Rust’s modules.</p>
 
-    </section>`
+    </section>`,
+    "more": `<section class="content column is-6 is-offset-2">
+    <h1>More</h1>
+    <p>For more about the Rust language you can visit <a href="https://www.rust-lang.org/en-US/">the official website</a>, you can also check out <a href="http://rust-lang.github.io/book/ch01-00-introduction.html">the rust book</a>. </p>
+    <p>For more of my work check the footer of this page.
+    </p>
+
+</section>`
 
 }

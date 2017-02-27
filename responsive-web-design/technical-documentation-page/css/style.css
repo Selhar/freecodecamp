@@ -11,6 +11,7 @@ body {
     .menu {
         overflow: scroll;
         height: 120px;
+        border-bottom: 1px solid #999;
     }
 }
 
