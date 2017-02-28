@@ -2,13 +2,16 @@
     Globals
 ***************/
 
+html {
+    background-color: #e1e1db;
+}
+
 body {
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
     height: 100%;
     width: 100%;
-    padding-bottom: 15%;
-    background-color: #e1e1db;
+    padding-bottom: 5%;
 }
 
 a {
@@ -28,6 +31,12 @@ a {
     left: 260px;
     border: none;
     border-radius: 0;
+}
+
+code {
+    background-color: #f1f1f1;
+    color: #6e6b5e;
+    border-radius: 3px;
 }
 
 .menu {
@@ -76,6 +85,9 @@ a {
 }
 
 @media screen and (max-width: 768px) {
+    body {
+        padding-bottom: 15%;
+    }
     .menu {
         overflow: scroll;
         height: 120px;
