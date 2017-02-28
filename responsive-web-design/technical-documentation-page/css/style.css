@@ -21,26 +21,24 @@ a {
 
 #menu {
     position: relative;
-    transition: right 1s ease 0s;
+    transition: right 1.5s ease 0s;
     right: 0;
 }
 
-.menu-control {
+#menu-control {
+    transition: all 1s ease 0s;
     position: absolute;
     top: 15px;
-    right: 5px;
+    right: 10%;
+    left: 80%;
     border: none;
-    border-radius: 0;
+    border-radius: 7px;
 }
 
 code {
     background-color: #f1f1f1;
     color: #6e6b5e;
     border-radius: 3px;
-}
-
-.menu-control {
-    border-radius: 7px;
 }
 
 .menu {
@@ -112,14 +110,12 @@ aside {
 
 @media screen and (min-width: 769px) and (max-width: 1180px) {
     .content {
-        padding-left: 6%;
-        padding-top: 15%;
+        padding: 15% 0 0 15%;
     }
 }
 
 @media screen and (min-width: 1181px) {
     .content {
-        padding-left: 10%;
-        padding-top: 10%;
+        padding: 10% 20% 0 20%;
     }
 }

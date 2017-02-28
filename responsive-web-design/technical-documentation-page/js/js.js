@@ -5,17 +5,16 @@ ready(() => {
 
     const menu_styles = window.getComputedStyle(menu_items);
 
-
     menu_control.addEventListener("click", () => {
         let current_right = menu_styles.getPropertyValue("right").slice(0, -2);
         if (current_right === "0") {
-            menu_items.style.right = "400px";
-            menu_control.style.left = "15px";
-            menu_control.style.right = "auto";
+            menu_items.style.right = "800px";
+            menu_control.style.right = "80%";
+            menu_control.style.left = "10%";
         } else {
             menu_items.style.right = "0";
-            menu_control.style.left = "auto";
-            menu_control.style.right = "5px";
+            menu_control.style.right = "10%";
+            menu_control.style.left = "80%";
         }
     });
 
