@@ -25,7 +25,7 @@ function display_text(id) {
     }
     document.getElementById("main-content").innerHTML = result;
 }
-
+//set ofervlow hidden then width 0px
 function ready(fn) {
     if (document.readyState != 'loading') {
         fn();
@@ -34,10 +34,9 @@ function ready(fn) {
     }
 }
 
-//This whole page is just a prototype
-//so this clusterfuck of a text serves as a glorified lorem ipsum
-//it's in no way a correct way to store files in a real world example
-//Use common sense if you're using this page as a blueprint or something.
+//Copied the DOM from the rust book website directly
+//Some useless classess will show up tho, but it's irrelevant.
+//The idea is to use this data as a glorified lorem ipsum, nothing else.
 const chapters = {
     "introduction": `
             <h1>Introduction</h1>
