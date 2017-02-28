@@ -48,16 +48,6 @@ a {
     padding-bottom: 5px;
 }
 
-.arrows {
-    justify-content: space-between;
-    margin: 2% 10% 0 10%;
-}
-
-.left-arrow,
-.right-arrow {
-    border: none;
-}
-
 @media screen and (max-width: 768px) {
     .menu {
         overflow: scroll;
