@@ -1,12 +1,5 @@
 <!doctype html>
 <html lang="en">
-<!-- 
-    TODO
-    1. has to include a sidebutton to skip to the next <section>
-    2. Has to have the option to hide the left bar
-    3. Optionally, serve a download file with the page's content'   
-    4. fix menu in 800x resolution 
--->
 
 <head>
     <meta charset="utf-8">
@@ -19,9 +12,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="columns is-multiline">
+<body class="columns">
     <aside class="is-flex">
-        <ul class="column is-11 menu menu-list " id="menu">
+        <ul class="column menu menu-list is-12" id="menu">
             <li>
                 <a class="is-active" id="introduction">Introduction</a>
                 <ul>
@@ -76,7 +69,7 @@
             <span class="icon is-normal"><i class="fa fa-free-code-camp"></i></span>
         </a>
     </div>
-    <main class="column is-6">
+    <main class="column is-6-desktop is-12-mobile">
         <section class="content" id="main-content">
         </section>
     </main>

@@ -5,25 +5,13 @@
 body {
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
+    height: 100%;
+    width: 100%;
     padding-bottom: 4%;
 }
 
 a {
     outline: none;
-}
-
-@media screen and (max-width: 768px) {
-    .menu {
-        overflow: scroll;
-        height: 120px;
-        border-bottom: 1px solid #999;
-    }
-}
-
-.button,
-.icon {
-    border: none;
-    margin-top: 5px;
 }
 
 .contacts {
@@ -32,15 +20,15 @@ a {
     left: 0;
     right: 0;
     background-color: #333;
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
 }
 
-.contacts .icon {
-    padding-right: 3%;
-}
-
-.content {
-    padding-left: 25%;
-    padding-top: 10%;
+@media screen and (max-width: 768px) {
+    .menu {
+        overflow: scroll;
+        height: 120px;
+        border-bottom: 1px solid #999;
+    }
+    .column {
+        padding-right: 0;
+    }
 }
