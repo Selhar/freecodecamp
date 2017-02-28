@@ -13,7 +13,7 @@ ready(() => {
             menu_control.style.left = "15px";
         } else {
             menu_items.style.right = "0";
-            menu_control.style.left = "280px";
+            menu_control.style.left = "260px";
         }
     });
 

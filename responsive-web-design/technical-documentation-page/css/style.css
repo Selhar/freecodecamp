@@ -24,9 +24,32 @@ a {
     transition: left 1s ease 0s;
     position: absolute;
     top: 0;
-    left: 280px;
+    left: 260px;
     border: none;
     border-radius: 0;
+}
+
+.menu {
+    border-radius: 8px;
+}
+
+.menu,
+.menu-list a:hover,
+.menu-list a.is-active,
+.menu-control,
+.contact {
+    background-color: #3b2e2a;
+}
+
+.menu-list a,
+.menu-control {
+    color: #c8c9db;
+}
+
+#menu a:hover,
+.menu-list a.is-active,
+.contact a i:hover {
+    color: #e69f67;
 }
 
 .contact {
@@ -34,7 +57,10 @@ a {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #333;
+}
+
+.contact a i {
+    color: #c8c9db;
 }
 
 .contact a:first-of-type {
