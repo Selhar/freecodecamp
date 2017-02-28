@@ -14,12 +14,25 @@ a {
     outline: none;
 }
 
-.contacts {
+.contact {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: #333;
+}
+
+.contact a:first-of-type {
+    padding-right: 15px;
+}
+
+.contact a:last-of-type {
+    padding-left: 15px;
+}
+
+.contact {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -30,5 +43,23 @@ a {
     }
     .column {
         padding-right: 0;
+    }
+    .content {
+        padding-left: 25px;
+        padding-top: 15px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+    .content {
+        padding-left: 6%;
+        padding-top: 15%;
+    }
+}
+
+@media screen and (min-width: 1181px) {
+    .content {
+        padding-left: 10%;
+        padding-top: 10%;
     }
 }
