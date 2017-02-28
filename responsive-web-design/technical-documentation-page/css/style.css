@@ -15,15 +15,16 @@ a {
 }
 
 #menu {
-    transition-property: width, padding;
-    transition-duration: 0.5s;
-    transition-timing-function: linear;
+    position: relative;
+    transition: right 1s ease 0s;
+    right: 0;
 }
 
 .menu-control {
+    transition: left 1s ease 0s;
     position: absolute;
     top: 0;
-    margin-left: 15px;
+    left: 300px;
 }
 
 .contact {
@@ -45,6 +46,16 @@ a {
 .contact {
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.arrows {
+    justify-content: space-between;
+    margin: 2% 10% 0 10%;
+}
+
+.left-arrow,
+.right-arrow {
+    border: none;
 }
 
 @media screen and (max-width: 768px) {

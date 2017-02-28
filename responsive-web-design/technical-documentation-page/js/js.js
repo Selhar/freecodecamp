@@ -4,20 +4,16 @@ ready(() => {
     const menu_control = document.getElementById("menu-control");
 
     const menu_styles = window.getComputedStyle(menu_items);
-    const menu_width = menu_styles.getPropertyValue("width");
-    const menu_overflow = menu_styles.getPropertyValue("overflow");
-    const menu_padding = menu_styles.getPropertyValue("padding");
+
 
     menu_control.addEventListener("click", () => {
-        let current_width = menu_styles.getPropertyValue("width").slice(0, -2);
-        if (current_width > 0) {
-            menu_items.style.overflow = "hidden";
-            menu_items.style.width = 0;
-            menu_items.style.padding = 0;
+        let current_right = menu_styles.getPropertyValue("right").slice(0, -2);
+        if (current_right === "0") {
+            menu_items.style.right = "400px";
+            menu_control.style.left = "15px";
         } else {
-            menu_items.style.width = menu_width;
-            menu_items.style.overflow = menu_overflow;
-            menu_items.style.padding = menu_padding;
+            menu_items.style.right = "0";
+            menu_control.style.left = "300px";
         }
     });
 
@@ -43,6 +39,11 @@ function display_text(id) {
         result = chapters[id];
     }
     document.getElementById("main-content").innerHTML = result;
+}
+
+function update_arrows(previous_item, next_item) {
+    document.getElementById("left-arrow");
+    document.getElementById("right-arrow");
 }
 //set ofervlow hidden then width 0px
 function ready(fn) {
