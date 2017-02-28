@@ -1,6 +1,25 @@
 ready(() => {
     display_text("introduction");
-    menu_items = document.getElementById("menu");
+    let menu_items = document.getElementById("menu");
+    const menu_control = document.getElementById("menu-control");
+
+    const menu_styles = window.getComputedStyle(menu_items);
+    const menu_width = menu_styles.getPropertyValue("width");
+    const menu_overflow = menu_styles.getPropertyValue("overflow");
+    const menu_padding = menu_styles.getPropertyValue("padding");
+
+    menu_control.addEventListener("click", () => {
+        let current_width = menu_styles.getPropertyValue("width").slice(0, -2);
+        if (current_width > 0) {
+            menu_items.style.overflow = "hidden";
+            menu_items.style.width = 0;
+            menu_items.style.padding = 0;
+        } else {
+            menu_items.style.width = menu_width;
+            menu_items.style.overflow = menu_overflow;
+            menu_items.style.padding = menu_padding;
+        }
+    });
 
     menu_items.addEventListener("click", (event) => {
         change_selected_menu(event);
