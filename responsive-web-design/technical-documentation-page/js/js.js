@@ -11,9 +11,11 @@ ready(() => {
         if (current_right === "0") {
             menu_items.style.right = "400px";
             menu_control.style.left = "15px";
+            menu_control.style.right = "auto";
         } else {
             menu_items.style.right = "0";
-            menu_control.style.left = "260px";
+            menu_control.style.left = "auto";
+            menu_control.style.right = "5px";
         }
     });
 
