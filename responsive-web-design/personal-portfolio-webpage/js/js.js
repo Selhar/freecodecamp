@@ -4,16 +4,20 @@ ready(() => {
     const BACK_END = ["node.js", "express", "mongoDB", "mongoose", "postgres"];
     const SECURITY = ["safe code", "helmet.js", "Chai", "pentesting"];
     const data = {
-        "frontEnd": FRONT_END,
-        "dataVisualization": DATA_VISUALIZATION,
-        "backEnd": BACK_END,
-        "security": SECURITY
+        "frontEnd-techs": FRONT_END,
+        "dataVisualization-techs": DATA_VISUALIZATION,
+        "backEnd-techs": BACK_END,
+        "security-techs": SECURITY
     }
 
     inject_menu_data(data);
 
-
 });
+
+function get_css_property(element, property) {
+    let sheet = window.getComputedStyle(element);
+    return sheet.getPropertyValue(property);
+}
 
 function inject_menu_data(data) {
     for (let id of Object.keys(data)) {
