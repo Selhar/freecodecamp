@@ -34,6 +34,10 @@ body {
     width: 0;
 }
 
+.title span {
+    padding: 0 5px 0 5px;
+}
+
 .content li+li {
     margin-top: 0;
 }
@@ -56,6 +60,8 @@ body {
 
 .technology-item {
     margin: 5px 0 5px 0;
+    position: absolute;
+    display: inline-block
 }
 
 .skill-title ul {
