@@ -30,6 +30,10 @@ body {
     justify-content: center;
 }
 
+.title hr {
+    width: 0;
+}
+
 .content li+li {
     margin-top: 0;
 }
@@ -47,6 +51,7 @@ body {
 
 .skill-title {
     margin: 0 25px 0 25px;
+    text-align: center;
 }
 
 .technology-item {

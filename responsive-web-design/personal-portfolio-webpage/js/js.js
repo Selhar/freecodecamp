@@ -1,5 +1,5 @@
 ready(() => {
-    const FRONT_END = ["react.js", "gsap", "bulma", "sass", "javascript"];
+    const FRONT_END = ["html5", "css3", "react.js", "gsap", "bulma", "sass", "javascript"];
     const DATA_VISUALIZATION = ["D3.js"];
     const BACK_END = ["node.js", "express", "mongoDB", "mongoose", "postgres"];
     const SECURITY = ["safe code", "helmet.js", "Chai", "pentesting"];
