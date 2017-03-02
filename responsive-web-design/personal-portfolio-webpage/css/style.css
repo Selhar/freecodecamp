@@ -8,7 +8,6 @@ html {
 
 html,
 body {
-    font-size: 16px;
     font-family: "Open Sans", sans-serif;
     height: 100%;
     width: 100%;
@@ -26,10 +25,40 @@ body {
 .splash {
     height: 100%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content li+li {
+    margin-top: 0;
+}
+
+.skills,
+.title,
+.skill-title {
+    cursor: default;
+    text-transform: uppercase;
+}
+
+.skills {
+    display: flex;
 }
 
 .skill-title {
+    margin: 0 25px 0 25px;
+}
+
+.technology-item {
+    margin: 5px 0 5px 0;
+    color: rgba(0, 0, 0, 0);
+}
+
+.skill-title ul {
+    position: relative;
+}
+
+.skill-title,
+.technology-item {
     list-style-type: none;
 }

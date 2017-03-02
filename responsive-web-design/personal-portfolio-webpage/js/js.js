@@ -12,6 +12,14 @@ ready(() => {
 
     inject_menu_data(data);
 
+    let skill_columns = document.getElementsByClassName("skill-title");
+
+    for (let column of skill_columns) {
+        let title = column.children[0];
+        title.addEventListener("mouseover", () => {
+
+        });
+    }
 });
 
 function get_css_property(element, property) {
@@ -24,7 +32,7 @@ function inject_menu_data(data) {
         let item = document.getElementById(id);
 
         item.innerHTML = data[id].map((value) => {
-            return "<li>" + value + "</li>";
+            return '<li class="technology-item">' + value + '</li>';
         }).toString().replace(/,/g, "");
     }
 }
