@@ -1,0 +1,18 @@
+/**************
+    Globals
+***************/
+
+body {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    line-height: 1.2;
+}
+
+* {
+    box-sizing: border-box;
+}
