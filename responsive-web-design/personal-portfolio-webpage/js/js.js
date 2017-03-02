@@ -11,6 +11,8 @@ ready(() => {
     }
 
     inject_menu_data(data);
+
+
 });
 
 function inject_menu_data(data) {
@@ -20,8 +22,6 @@ function inject_menu_data(data) {
         item.innerHTML = data[id].map((value) => {
             return "<li>" + value + "</li>";
         }).toString().replace(/,/g, "");
-
-
     }
 }
 
