@@ -38,10 +38,6 @@ body {
     padding: 0 5px 0 5px;
 }
 
-.content li+li {
-    margin-top: 0;
-}
-
 .skills,
 .title,
 .skill-title {
@@ -58,18 +54,6 @@ body {
     text-align: center;
 }
 
-.technology-item {
-    margin: 5px 0 5px 0;
-    position: absolute;
-    display: inline-block
-}
-
-.skill-title ul {
-    position: relative;
-    color: rgba(0, 0, 0, 0);
-}
-
-.skill-title,
-.technology-item {
-    list-style-type: none;
+.technologies {
+    text-align: center;
 }

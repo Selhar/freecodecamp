@@ -15,24 +15,6 @@ ready(() => {
     for (let line of title_lines) {
         TweenLite.to(line, 4, { width: "100%" });
     }
-
-    inject_menu_data(data);
-
-    let skill_columns = document.getElementsByClassName("skill-title");
-
-    for (let column of skill_columns) {
-        let title = column.children[0];
-        let techs = column.children[1];
-
-        title.addEventListener("mouseover", () => {
-            console.log(techs);
-            TweenLite.fromTo(techs, 0.5, { top: 200, color: "rgba(0, 0, 0, 0)" }, { top: 0, color: "rgba(0, 0, 0, 1)" });
-        });
-        title.addEventListener("mouseout", () => {
-            console.log(techs);
-            TweenLite.fromTo(techs, 0.5, { bottom: 0, color: "rgba(0, 0, 0, 1)" }, { top: 200, color: "rgba(0, 0, 0, 0)" });
-        });
-    }
 });
 
 function get_css_property(element, property) {
@@ -45,7 +27,7 @@ function inject_menu_data(data) {
         let item = document.getElementById(id);
 
         item.innerHTML = data[id].map((value) => {
-            return '<li class="technology-item">' + value + '</li>';
+            return '<span class="technologies">' + value + '</span>';
         }).toString().replace(/,/g, "");
     }
 }
