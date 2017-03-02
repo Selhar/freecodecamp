@@ -30,9 +30,6 @@ body {
 
 .splash {
     background-color: #333;
-}
-
-.splash {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -51,6 +48,20 @@ body {
     cursor: default;
 }
 
-.skills .tag:not(:last-child) {
-    margin-right: 5rem;
+.skills ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.skills ul li {
+    margin-left: 1.5rem;
+}
+
+.skills ul,
+.skills li {
+    list-style-type: none;
+}
+
+.content li+li {
+    margin-top: 0px;
 }
