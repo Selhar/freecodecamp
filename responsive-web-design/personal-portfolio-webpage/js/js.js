@@ -16,8 +16,15 @@ ready(() => {
 
     for (let column of skill_columns) {
         let title = column.children[0];
-        title.addEventListener("mouseover", () => {
+        let techs = column.children[1];
 
+        title.addEventListener("mouseover", () => {
+            console.log(techs);
+            TweenLite.fromTo(techs, 1, { top: 200, color: "rgba(0, 0, 0, 0)" }, { top: 0, color: "rgba(0, 0, 0, 1)" });
+        });
+        title.addEventListener("mouseout", () => {
+            console.log(techs);
+            TweenLite.fromTo(techs, 1, { bottom: 0, color: "rgba(0, 0, 0, 1)" }, { top: 200, color: "rgba(0, 0, 0, 0)" });
         });
     }
 });
