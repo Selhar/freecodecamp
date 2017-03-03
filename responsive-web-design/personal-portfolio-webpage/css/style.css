@@ -126,11 +126,9 @@ footer {
 }
 
 .hover-layer {
-    display: none;
-    opacity: 0.5;
+    opacity: 0;
     background-color: red;
     position: absolute;
     width: 256px;
-    height: 256px;
-    bottom: 256px;
+    height: 0;
 }

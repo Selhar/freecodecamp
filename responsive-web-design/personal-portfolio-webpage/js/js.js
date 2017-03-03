@@ -1,7 +1,20 @@
 ready(() => {
 
-    animate_arrow();
     animate_title();
+    animate_arrow();
+
+    let gallery = document.getElementsByClassName("image-node")[0].children;
+    for (let figure of gallery) {
+        let hover_layer = figure.children[0];
+        let from = { height: "256px", opacity: 0.5 };
+        let to = { height: "0px", opacity: 0 };
+        figure.addEventListener("mouseover", () => {
+            TweenLite.to(hover_layer, 0.4, from);
+        });
+        figure.addEventListener("mouseout", () => {
+            TweenLite.to(hover_layer, 0.4, to);
+        });
+    }
 
 });
 
