@@ -29,16 +29,8 @@ body {
     align-items: center;
 }
 
-.title {
-    text-align: center;
-}
-
-.title hr {
-    width: 0;
-}
-
-.title span {
-    padding: 0 5px 0 5px;
+.splash header {
+    margin: 150px 0 0 0;
 }
 
 .skills,
@@ -46,17 +38,14 @@ body {
 .skill-title {
     cursor: default;
     text-transform: uppercase;
-}
-
-.skills {
-    display: flex;
-}
-
-.skill-title {
-    margin: 0 25px 0 25px;
     text-align: center;
 }
 
-.technologies {
-    text-align: center;
+.title span {
+    padding: 0 25px 0 25px;
+}
+
+#splash-text {
+    padding: 0 25px 0 25px;
+    margin: 100px 0 0 0;
 }
