@@ -2,8 +2,8 @@
     Globals
 ***************/
 
-html {
-    font-size: 100%;
+body {
+    padding: 0 20px 0 20px;
 }
 
 html,
@@ -17,7 +17,22 @@ body {
     box-sizing: border-box;
 }
 
+section {
+    height: 100%;
+}
+
 
 /**************
     Splash
 ***************/
+
+#splash header {
+    margin: 50px auto 0 auto;
+    text-align: center;
+    width: 40%;
+    height: fit-content;
+}
+
+#splash header hr {
+    width: 0;
+}

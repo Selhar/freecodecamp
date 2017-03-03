@@ -1,5 +1,10 @@
 ready(() => {
 
+    let title_lines = document.getElementsByClassName("title-lines");
+
+    for (let line of title_lines) {
+        TweenLite.to(line, 5, { width: "100%" });
+    }
 
 });
 
