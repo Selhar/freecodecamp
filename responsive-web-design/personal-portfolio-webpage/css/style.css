@@ -5,6 +5,7 @@
 html,
 body {
     height: 100%;
+    margin: 0;
 }
 
 body {
@@ -20,20 +21,36 @@ body {
     Splash
 ***************/
 
+#splash {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #splash header {
-    margin: 50px auto 0 auto;
     text-align: center;
     width: 40%;
-    height: fit-content;
+    margin: 0 auto;
 }
 
-#splash header hr {
+#splash header *:hover {
+    cursor: default;
+}
+
+.title-lines {
     width: 0;
+    margin: 0;
 }
 
-.description {
-    margin-top: 100px;
-    flex-direction: column;
+.title-lines:first-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.title-lines:last-of-type {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .description p {
@@ -41,5 +58,16 @@ body {
 }
 
 .scroll-button {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
     text-align: center;
+}
+
+.scroll-button a {
+    border: none;
+}
+
+.scroll-button .icon {
+    font-size: 2rem;
 }
