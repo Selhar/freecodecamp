@@ -118,8 +118,19 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .image.is-256x256 {
     padding: 5px;
+}
+
+.hover-layer {
+    display: none;
+    opacity: 0.5;
+    background-color: red;
+    position: absolute;
+    width: 256px;
+    height: 256px;
+    bottom: 256px;
 }
