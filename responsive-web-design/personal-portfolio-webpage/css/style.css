@@ -2,23 +2,17 @@
     Globals
 ***************/
 
-body {
-    padding: 0 20px 0 20px;
-}
-
 html,
 body {
-    font-family: "Open Sans", sans-serif;
     height: 100%;
-    width: 100%;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
 }
 
 * {
     box-sizing: border-box;
-}
-
-section {
-    height: 100%;
 }
 
 
@@ -35,4 +29,17 @@ section {
 
 #splash header hr {
     width: 0;
+}
+
+.description {
+    margin-top: 100px;
+    flex-direction: column;
+}
+
+.description p {
+    margin-top: 15px;
+}
+
+.scroll-button {
+    text-align: center;
 }
