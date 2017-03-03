@@ -2,21 +2,29 @@ ready(() => {
 
     animate_title();
     animate_arrow();
+    animate_gallery_layer();
+});
 
+function animate_gallery_layer() {
     let gallery = document.getElementsByClassName("image-node")[0].children;
+
     for (let figure of gallery) {
         let hover_layer = figure.children[0];
-        let from = { height: "256px", opacity: 0.5 };
-        let to = { height: "0px", opacity: 0 };
+        let tags = hover_layer.children[0];
+        let from = { height: "256px", backgroundColor: "rgba(0,0,0,0.5)" };
+        let to = { height: "0px", backgroundColor: 0 };
+
         figure.addEventListener("mouseover", () => {
             TweenLite.to(hover_layer, 0.4, from);
+            TweenLite.to(tags, 0.4, { opacity: 1 });
         });
         figure.addEventListener("mouseout", () => {
             TweenLite.to(hover_layer, 0.4, to);
+            TweenLite.to(tags, 0.4, { opacity: 0 });
         });
     }
 
-});
+}
 
 function animate_title() {
     let title_lines = document.getElementsByClassName("title-lines");

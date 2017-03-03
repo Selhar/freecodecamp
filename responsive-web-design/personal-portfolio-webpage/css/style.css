@@ -127,11 +127,15 @@ footer {
 
 .hover-layer {
     color: white;
-    background-color: black;
     position: absolute;
     width: 256px;
-    height: 256px;
+    height: 0;
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.tags {
+    opacity: 0;
 }
 
 .tag {
