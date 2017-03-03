@@ -21,31 +21,3 @@ body {
 /**************
     Splash
 ***************/
-
-.splash {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.splash header {
-    margin: 150px 0 0 0;
-}
-
-.skills,
-.title,
-.skill-title {
-    cursor: default;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.title span {
-    padding: 0 25px 0 25px;
-}
-
-#splash-text {
-    padding: 0 25px 0 25px;
-    margin: 100px 0 0 0;
-}
