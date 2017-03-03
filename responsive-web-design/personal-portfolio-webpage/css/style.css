@@ -53,10 +53,6 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.description p {
-    margin-top: 15px;
-}
-
 .scroll-button {
     position: absolute;
     bottom: 2rem;
@@ -71,3 +67,19 @@ body {
 .scroll-button .icon {
     font-size: 2rem;
 }
+
+@media screen and (max-width: 1180px) {
+    .title.is-1 {
+        font-size: 2rem;
+    }
+    .subtitle.is-3 span {
+        font-size: 1.5rem;
+    }
+    #splash header {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1180px) {}
+
+@media screen and (min-width: 1181px) {}
