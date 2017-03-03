@@ -29,8 +29,8 @@ function animate_arrow() {
     let timeline = new TimelineMax({ repeat: -1 });
     let arrow = document.getElementById("arrow-button");
 
-    timeline.add(TweenLite.to(arrow, 0.5, { bottom: "1rem" }));
-    timeline.add(TweenLite.to(arrow, 0.5, { bottom: "2rem" }));
+    timeline.add(TweenLite.to(arrow, 0.5, { bottom: "1rem", ease: Power0.easeNone }));
+    timeline.add(TweenLite.to(arrow, 0.5, { bottom: "2rem", ease: Power0.easeNone }));
 }
 
 function get_css_property(element, property) {
