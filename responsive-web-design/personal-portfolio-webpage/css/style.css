@@ -20,6 +20,7 @@ body {
 section {
     height: 100%;
     position: relative;
+    overflow: scroll;
 }
 
 
@@ -88,30 +89,14 @@ section {
     font-size: 2rem;
 }
 
-@media screen and (max-width: 1180px) {
-    .title.is-1 {
-        font-size: 2rem;
-    }
-    .subtitle.is-3 span {
-        font-size: 1.5rem;
-    }
-    #splash header {
-        width: 90%;
-    }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1180px) {}
-
-@media screen and (min-width: 1181px) {}
-
 
 /**************
     Gallery
 ***************/
 
 #gallery {
-    padding-top: 5%;
-    height: 90%;
+    padding-top: 10%;
+    height: 100%;
 }
 
 .image-node {
@@ -151,6 +136,12 @@ section {
 
 .contact {
     text-align: center;
+    padding: 15px;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
 }
 
 footer a {
@@ -164,4 +155,39 @@ footer a:focus {
 
 footer a:hover {
     color: #666;
+}
+
+
+/**********************
+Responsivitynessissity
+**********************/
+
+@media screen and (max-width: 550px) {
+    .image-node {
+        width: 264px;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 803px) {
+    .image-node {
+        width: 532px;
+    }
+}
+
+@media screen and (min-width: 804px) and (max-width: 1063px) {
+    .image-node {
+        width: 798px;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .title.is-1 {
+        font-size: 2rem;
+    }
+    .subtitle.is-3 span {
+        font-size: 1.5rem;
+    }
+    #splash header {
+        width: 90%;
+    }
 }

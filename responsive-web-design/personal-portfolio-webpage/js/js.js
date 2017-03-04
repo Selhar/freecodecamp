@@ -14,10 +14,16 @@ function animate_gallery_layer() {
     let gallery = document.getElementsByClassName("image-node")[0].children;
 
     for (let figure of gallery) {
+
         let hover_layer = figure.children[0];
         let tags = hover_layer.children[0];
         let from = { height: "256px", backgroundColor: "rgba(0,0,0,0.5)" };
         let to = { height: "0px", backgroundColor: 0 };
+        let clickCount = 0;
+
+        figure.addEventListener("click", () => {
+            TweenLite.to(hover_layer, 0.4, from);
+        });
 
         figure.addEventListener("mouseover", () => {
             TweenLite.to(hover_layer, 0.4, from);
