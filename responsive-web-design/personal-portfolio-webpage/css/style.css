@@ -22,10 +22,6 @@ section {
     position: relative;
 }
 
-footer {
-    height: 10%;
-}
-
 
 /**************
     Splash
@@ -108,7 +104,7 @@ footer {
 ***************/
 
 #gallery {
-    padding-top: 10%;
+    padding-top: 5%;
     height: 90%;
 }
 
@@ -140,4 +136,26 @@ footer {
 
 .tag {
     margin: 5px;
+}
+
+
+/**************
+     Footer
+***************/
+
+.contact {
+    text-align: center;
+}
+
+footer a {
+    margin: 15px;
+    color: black;
+}
+
+footer a:focus {
+    outline: none;
+}
+
+footer a:hover {
+    color: #666;
 }

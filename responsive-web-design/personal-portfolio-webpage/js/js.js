@@ -3,6 +3,11 @@ ready(() => {
     animate_title();
     animate_arrow();
     animate_gallery_layer();
+    let arrow = document.getElementById("arrow-button");
+    arrow.addEventListener("click", () => {
+        TweenLite.to(window, 1.5, { scrollTo: "#gallery" });
+    })
+
 });
 
 function animate_gallery_layer() {
