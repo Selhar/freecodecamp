@@ -20,7 +20,6 @@ body {
 section {
     height: 100%;
     position: relative;
-    overflow: scroll;
 }
 
 
@@ -163,12 +162,20 @@ Responsivitynessissity
 **********************/
 
 @media screen and (max-width: 550px) {
+    #gallery {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
     .image-node {
         width: 264px;
     }
 }
 
 @media screen and (min-width: 551px) and (max-width: 803px) {
+    #gallery {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
     .image-node {
         width: 532px;
     }
