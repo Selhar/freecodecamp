@@ -1,31 +1,31 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Freecodecamp survey</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tribute page">
+    <title>Transmetropolitan</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style/css/style.css">
 </head>
 
-<!-- This is a project for www.freecodecamp.com and a lot of these design decisions are necessary
-      For more personal projects, check the rest of my portfolio <placeholder link> -->
-
 <body>
-    <main>
-        <header>
-            <h1 id="title">Freecodecamp survey</h1>
-            <p id="description">Help us improve Freecodecamp!</p>
-        </header>
-        <form id="survey-form" method="GET">
-            <fieldset>
-                <label for="name" id="name-label">*Name</label>
-                <input type="text" name="name" id="name" placeholder="Please insert your name" required autofocus>
-                <label for="email" id="email-label">*Email</label>
-                <input type="email" name="email" id="email" placeholder="your@email.com" required>
-                <label for="number" id="number-label">Number of children</label>
-                <input type="number" id="number" min="0" max="50" placeholder="How many children?">
-                <label for="interest">Which course path are you most interested in?</label>
-                <select id="dropdown" name="interest" id="interest">
+    <header>
+        <h1 id="title">Freecodecamp survey</h1>
+        <p id="description">Help us improve Freecodecamp!</p>
+    </header>
+    <form id="survey-form" method="GET">
+        <fieldset>
+            <label for="name" id="name-label">*Name</label>
+            <input type="text" name="name" id="name" placeholder="Please insert your name" required autofocus>
+            <label for="email" id="email-label">*Email</label>
+            <input type="email" name="email" id="email" placeholder="your@email.com" required>
+            <label for="number" id="number-label">Number of children</label>
+            <input type="number" id="number" min="0" max="50" placeholder="How many children?">
+            <label for="interest">Which course path are you most interested in?</label>
+            <select id="dropdown" name="interest" id="interest">
                     <option disabled selected>Select an option</option>
                     <option value="responsive-web-design">Responsive web design</option>
                     <option value="javascript-algorithms-and-data-structures">Javascript algorithms and data structures</option>
@@ -36,29 +36,24 @@
                     <option value="nonprofits">Contributing to nonprofits</option>
                 </select>
 
-                <label for="career">What career path do you plan to follow?</label>
-                <span class="wrapper"><input type="radio" name="career" value="front-end">Front-end developer</span>
-                <span class="wrapper"><input type="radio" name="career" value="back-end">Back-end developer</span>
-                <span class="wrapper"><input type="radio" name="career" value="full-stack">Full-stack developer</span>
-                <span class="wrapper"><input type="radio" name="career" value="other">Other</span>
+            <label for="career">What career path do you plan to follow?</label>
+            <span><input type="radio" name="career" value="front-end">Front-end developer</span>
+            <span><input type="radio" name="career" value="back-end">Back-end developer</span>
+            <span><input type="radio" name="career" value="full-stack">Full-stack developer</span>
+            <span><input type="radio" name="career" value="other">Other</span>
 
-                <label for="availability">When are you free to work on FCC curriculae?</label>
-                <div id="avaiability">
-                    <span class="wrapper"><input type="checkbox" name="availability" id="morning" value="morning">Morning</span>
-                    <span class="wrapper"><input type="checkbox" name="availability" id="noon" value="noon">Noon</span>
-                    <span class="wrapper"><input type="checkbox" name="availability" id="evening" value="evening">Evening</span>
-                    <span class="wrapper"><input type="checkbox" name="availability" id="night" value="night">Night</span>
-                    <span class="wrapper"><input type="checkbox" name="availability" id="midnight" value="midnight">Midnight</span>
-                </div>
-                <label for="comments">Anything else you'd like to add?</label>
-                <textarea rows="4" cols="50"></textarea>
+            <label for="availability">When are you free to work on FCC curriculae?</label>
+            <div id="avaiability">
+                <span><input type="checkbox" name="availability" id="morning" value="morning">Morning</span>
+                <span><input type="checkbox" name="availability" id="noon" value="noon">Noon</span>
+                <span><input type="checkbox" name="availability" id="evening" value="evening">Evening</span>
+                <span><input type="checkbox" name="availability" id="night" value="night">Night</span>
+                <span><input type="checkbox" name="availability" id="midnight" value="midnight">Midnight</span>
+            </div>
+            <label for="comments">Anything else you'd like to add?</label>
+            <textarea rows="4" cols="50"></textarea>
 
-                <button id="submit" type="submit">Submit</button>
-            </fieldset>
-        </form>
-    </main>
-    <script src='https://gitcdn.link/repo/freeCodeCamp/testable-projects-fcc/master/build/bundle.js'></script>
-
+            <button id="submit" type="submit">Submit</button>
+        </fieldset>
+    </form>
 </body>
-
-</html>
