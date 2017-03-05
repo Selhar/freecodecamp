@@ -21,11 +21,23 @@ header {
 /********
    form
 ********/
-form {
+.form {
   flex-direction: column;
   background-color: white;
   border-radius: 5px;
-  height: 100%; }
+  padding: 15px; }
+
+.input-text {
+  display: block;
+  margin-bottom: 25px;
+  outline: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none; }
+
+.input-click {
+  display: block; }
 
 fieldset {
   border: none; }
