@@ -38,23 +38,25 @@
                 </select>
 
             <label for="career">What career path do you plan to follow?</label>
-            <span class="input-click"><input type="radio" name="career" value="front-end">Front-end developer</span>
-            <span class="input-click"><input type="radio" name="career" value="full-stack">Full-stack developer</span>
-            <span class="input-click"><input type="radio" name="career" value="other">Other</span>
-            <span class="input-click"><input type="radio" name="career" value="back-end">Back-end developer</span>
+            <div class="input-click">
+                <span><input type="radio" name="career" value="front-end">Front-end developer</span>
+                <span><input type="radio" name="career" value="full-stack">Full-stack developer</span>
+                <span><input type="radio" name="career" value="other">Other</span>
+                <span><input type="radio" name="career" value="back-end">Back-end developer</span>
+            </div>
 
             <label for="availability">When are you free to work on FCC curriculae?</label>
-            <div id="avaiability">
-                <span class="input-click"><input type="checkbox" name="availability" id="morning" value="morning">Morning</span>
-                <span class="input-click"><input type="checkbox" name="availability" id="noon" value="noon">Noon</span>
-                <span class="input-click"><input type="checkbox" name="availability" id="evening" value="evening">Evening</span>
-                <span class="input-click"><input type="checkbox" name="availability" id="night" value="night">Night</span>
-                <span class="input-click"><input type="checkbox" name="availability" id="midnight" value="midnight">Midnight</span>
+            <div id="availability" class="input-click">
+                <span><input type="checkbox" name="availability" id="morning" value="morning">Morning</span>
+                <span><input type="checkbox" name="availability" id="noon" value="noon">Noon</span>
+                <span><input type="checkbox" name="availability" id="evening" value="evening">Evening</span>
+                <span><input type="checkbox" name="availability" id="night" value="night">Night</span>
+                <span><input type="checkbox" name="availability" id="midnight" value="midnight">Midnight</span>
             </div>
             <label for="comments">Anything else you'd like to add?</label>
             <textarea class="input-text" rows="4" cols="50"></textarea>
-            <button id="submit" type="submit">Submit</button>
+            <button id="submit" class="button is-primary" type="submit">Submit</button>
         </fieldset>
-        Note: ID's and placeholders are a requirement for the freecodecamp project, not design decisions.
+        <span class="footnote">Note: ID's and placeholders are a requirement for the freecodecamp project, not design decisions.</span>
     </form>
 </body>
