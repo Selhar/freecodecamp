@@ -41,7 +41,7 @@ function display_text(id) {
     }
     document.getElementById("main-content").innerHTML = result;
 }
-//set ofervlow hidden then width 0px
+
 function ready(fn) {
     if (document.readyState != 'loading') {
         fn();
