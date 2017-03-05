@@ -1,0 +1,54 @@
+/************* 
+    Globals
+ ************/
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #333; }
+
+* {
+  box-sizing: border-box; }
+
+section {
+  height: 100%; }
+
+/*********** 
+    header 
+ ***********/
+.title {
+  text-align: center; }
+
+main {
+  overflow-x: hidden !important;
+  border-radius: 5px;
+  overflow: scroll;
+  color: #111;
+  background-color: white;
+  box-shadow: 0 0 8px white;
+  margin: 5px 0 5px 0; }
+  main header .image {
+    height: 35px;
+    width: 35px;
+    display: inline-block; }
+  main header .title {
+    padding-top: 25px;
+    padding-bottom: 15px; }
+  main header img {
+    height: 501px;
+    width: 321px;
+    margin-top: 155px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px; }
+  main p {
+    margin: 15px 50px; }
+    @media screen and (max-width: 768px) {
+      main p {
+        margin: 15px 20px; } }
+    main p:first-of-type {
+      margin-top: 50px; }
+    main p a {
+      color: royalblue; }
+
+/*# sourceMappingURL=style.css.map */
