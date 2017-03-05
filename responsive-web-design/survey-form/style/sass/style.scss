@@ -6,12 +6,36 @@ html,
 body {
     height: 100%;
     margin: 0;
+    padding-top: 25px;
+    background-color: dimgrey;
 }
 
 * {
     box-sizing: border-box;
 }
 
-section {
+
+/********
+  header
+*********/
+
+header {
+    text-align: center;
+    padding: 10px 0 25px 0;
+}
+
+
+/********
+   form
+********/
+
+form {
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
     height: 100%;
+}
+
+fieldset {
+    border: none;
 }
