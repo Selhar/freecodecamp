@@ -31,7 +31,7 @@ header {
    form and inputs
 **********************/
 
-$margin-bottom: 25px;
+$margin-bottom: 30px;
 .form {
     flex-direction: column;
     background-color: white;
@@ -51,11 +51,11 @@ $margin-bottom: 25px;
     background-color: #EEE;
 }
 
-.input-click>* {
-    display: block;
-    margin: 5px 0 5px 0;
-    &:last-child {
-        margin-bottom: $margin-bottom;
+.input-click {
+    margin-bottom: $margin-bottom;
+    &>* {
+        display: block;
+        margin: 5px 0 5px 0;
     }
 }
 

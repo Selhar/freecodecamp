@@ -32,7 +32,7 @@ header {
 
 .input-text {
   display: block;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   outline: none;
   width: 100%;
   padding: 12px;
@@ -40,11 +40,11 @@ header {
   border: none;
   background-color: #EEE; }
 
-.input-click > * {
-  display: block;
-  margin: 5px 0 5px 0; }
-  .input-click > *:last-child {
-    margin-bottom: 25px; }
+.input-click {
+  margin-bottom: 30px; }
+  .input-click > * {
+    display: block;
+    margin: 5px 0 5px 0; }
 
 .button.is-primary {
   background-color: #333;
