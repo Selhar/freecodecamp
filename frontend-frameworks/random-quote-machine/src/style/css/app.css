@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Playfair+Display:400i");
 @keyframes spinAround {
   from {
     transform: rotate(0deg); }
@@ -651,10 +652,13 @@
   width: 1000px;
   border-radius: 8px;
   background-color: white;
-  padding: 25px; }
+  padding: 25px;
+  color: #666; }
 
 .title {
-  margin: 0; }
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
 
 .footer-quote {
   position: absolute;
@@ -664,5 +668,23 @@
   .footer-quote .button:last-of-type {
     position: absolute;
     right: 0; }
+
+.quote {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 2.1rem;
+  width: calc(100% - 50px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.tick {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  color: #444; }
+
+.author {
+  font-size: 1.5rem; }
 
 /*# sourceMappingURL=app.css.map */

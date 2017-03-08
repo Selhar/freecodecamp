@@ -3,6 +3,8 @@
 @import '../../../node_modules/bulma/sass/utilities/_all';
 @import '../../../node_modules/bulma/sass/elements/title';
 @import '../../../node_modules/bulma/sass/elements/button';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Playfair+Display:400i');
+
 $board-padding: 25px;
 
 .board{
@@ -13,10 +15,13 @@ $board-padding: 25px;
     border-radius: 8px;
     background-color: white;
     padding: $board-padding;
+    color: #666;
 }
 
 .title{
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
 
 .footer-quote{
@@ -28,4 +33,25 @@ $board-padding: 25px;
         position: absolute;
         right:0;
     }
+}
+
+.quote{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 2.1rem;
+    width: calc(100% - #{$board-padding * 2});
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tick{
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: #444;
+}
+
+.author{
+    font-size: 1.5rem;
 }
