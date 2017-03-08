@@ -1,6 +1,7 @@
 .board {
   width: 500px;
   height: 500px;
-  border-radius: 8px; }
+  border-radius: 8px;
+  background-color: white; }
 
 /*# sourceMappingURL=app.css.map */
