@@ -1,6 +1,31 @@
+
+
+@import '../../../node_modules/bulma/sass/utilities/_all';
+@import '../../../node_modules/bulma/sass/elements/title';
+@import '../../../node_modules/bulma/sass/elements/button';
+$board-padding: 25px;
+
 .board{
-    width: 500px;
+    position: relative;
+    text-align: center;
     height: 500px;
+    width: 1000px;
     border-radius: 8px;
     background-color: white;
+    padding: $board-padding;
+}
+
+.title{
+    margin: 0;
+}
+
+.footer-quote{
+    position: absolute;
+    width: calc(100% - #{$board-padding * 2});
+    bottom: calc(0% + #{$board-padding});
+    text-align: left;
+    .button:last-of-type{
+        position: absolute;
+        right:0;
+    }
 }
