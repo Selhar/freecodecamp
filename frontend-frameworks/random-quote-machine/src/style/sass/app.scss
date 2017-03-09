@@ -6,6 +6,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Playfair+Display:400i');
 
 $board-padding: 25px;
+$main-color: #1f4b5b;
+$secondary-color: #2c6b81;
+$optional-color: #4da7c6;
 
 .board{
     position: relative;
@@ -13,15 +16,17 @@ $board-padding: 25px;
     height: 500px;
     width: 1000px;
     border-radius: 8px;
-    background-color: white;
+    background-color: $main-color;
     padding: $board-padding;
-    color: #666;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .title{
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+    color: white;
 }
 
 .footer-quote{
@@ -36,10 +41,9 @@ $board-padding: 25px;
 }
 
 .quote{
-    font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     font-size: 2.1rem;
-    width: calc(100% - #{$board-padding * 2});
+    width:  calc(80% - #{$board-padding * 2});
     position: absolute;
     top: 50%;
     left: 50%;
@@ -49,9 +53,19 @@ $board-padding: 25px;
 .tick{
     font-family: 'Playfair Display', serif;
     font-size: 5rem;
-    color: #444;
 }
 
 .author{
     font-size: 1.5rem;
+}
+
+.button{
+    background-color: $secondary-color;
+    border: $secondary-color;
+    color: white;
+    border-radius: 8px;
+    &:hover{
+        color: $main-color;
+        background-color: $optional-color;
+    }
 }
