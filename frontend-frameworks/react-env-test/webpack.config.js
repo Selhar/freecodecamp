@@ -1,10 +1,10 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const path = require("path");
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: "public",
+        path: path.resolve(__dirname, "public"),
         filename: 'main.js'
     },
     module: {
@@ -25,7 +25,7 @@ module.exports = {
             minify: {
                 collapseWhitespace: false
             },
-            hash: false,
+            hash: true,
             template: './src/helpers/index.html', 
         }), 
         new ExtractTextPlugin({
