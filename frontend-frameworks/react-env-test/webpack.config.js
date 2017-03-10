@@ -1,21 +1,29 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
+const public_folder = "public";
+
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, "public"),
+        path: path.resolve(__dirname, public_folder),
         filename: 'main.js'
+    },
+    devServer: {
+        contentBase: path.join(__dirname, public_folder),
+        compress: true,
+        port: 9000,
+        stats: "errors-only"
     },
     module: {
         rules: [
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: ['css-loader','sass-loader'],
-                        publicPath: '/public'
-                    })
+                    fallback: 'style-loader',
+                    use: ['css-loader','sass-loader'],
+                    publicPath: '/'+public_folder
+                })
             }
         ]
     },
