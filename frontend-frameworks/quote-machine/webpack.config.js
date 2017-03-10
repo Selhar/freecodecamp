@@ -34,7 +34,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'REPLACE ME YOU DEVILISH FUCKHEAD IM AT /WEBPACK.CONFIG.JS LINE 9 REPLACE ME FUCKEHAD',
+            title: 'Random quote generator',
             minify: {
                 collapseWhitespace: false
             },
