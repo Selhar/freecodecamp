@@ -515,7 +515,8 @@ body {
   height: 100%;
   margin: 0;
   background-color: #132c34;
-  font-size: 16px; }
+  font-size: 16px;
+  color: white; }
 
 body {
   display: flex;

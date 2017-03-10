@@ -653,7 +653,6 @@
   border-radius: 8px;
   background-color: #1f4b5b;
   padding: 25px;
-  color: white;
   font-family: 'Open Sans', sans-serif; }
 
 .title {
@@ -690,8 +689,8 @@
 .button {
   background-color: #2c6b81;
   border: #2c6b81;
-  color: white;
-  border-radius: 8px; }
+  border-radius: 8px;
+  color: white; }
   .button:hover {
     color: #1f4b5b;
     background-color: #4da7c6; }

@@ -1,2 +1,0 @@
-To install these projects just run [these instructions](https://facebook.github.io/react/docs/installation.html) to install `create-react-app`.
-Afterwards just copy and paste everything, run `npm update` and you're good to go.
