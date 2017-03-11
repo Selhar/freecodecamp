@@ -2,29 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 const css = require('./main.scss');
 
-console.log(React);
-class TextField extends React.Component {
-    render(){
-        return (
-            <div className="quote">
-                <span className="tick">"</span><span className="content">This is a quote this is a quote this is a quote this is a quote</span>
-                <br/>
-                <span className="author">Fulano</span>
-            </div>
-        )
-    }
-}
-
-class Footer extends React.Component{
-    render(){
-        return (
-            <footer className="footer-quote">
-                <a className="button">Tweet</a>
-                <a className="button">New quote</a>
-            </footer>
-        )
-    }
-}
+//add proptypes check, bitch
 
 class App extends React.Component {
     getQuotes(){
@@ -50,6 +28,30 @@ class App extends React.Component {
         );
     }
 }
+
+class TextField extends React.Component {
+    render(){
+        return (
+            <div className="quote">
+                <span className="tick">"</span><span className="content">This is a quote this is a quote this is a quote this is a quote</span>
+                <br/>
+                <span className="author">Fulano</span>
+            </div>
+        )
+    }
+}
+
+class Footer extends React.Component{
+    render(){
+        return (
+            <footer className="footer-quote">
+                <a className="button">Tweet</a>
+                <a className="button">New quote</a>
+            </footer>
+        )
+    }
+}
+
 
 ReactDOM.render(
   <App/>,
