@@ -1,8 +1,9 @@
 const defaultState = {
-    quote: "Fetching data..."
+    quote: "Fetching data...",
+    author: ""
 };
 
-export const actions = {
+const actions = {
     NEW_QUOTE: 'NEW_QUOTE'
 }
 
