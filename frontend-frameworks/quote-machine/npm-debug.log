@@ -1,5 +1,5 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start', 'dev' ]
 2 info using npm@3.10.10
 3 info using node@v6.9.5
 4 verbose stack Error: missing script: start
@@ -14,7 +14,7 @@
 4 verbose stack     at FSReqWrap.readFileAfterOpen [as oncomplete] (fs.js:365:13)
 5 verbose cwd /home/selhar/Documents/projetos/freecodecamp/frontend-frameworks/quote-machine
 6 error Linux 4.9.6-200.fc25.x86_64
-7 error argv "/usr/bin/node" "/usr/bin/npm" "start"
+7 error argv "/usr/bin/node" "/usr/bin/npm" "start" "dev"
 8 error node v6.9.5
 9 error npm  v3.10.10
 10 error missing script: start
