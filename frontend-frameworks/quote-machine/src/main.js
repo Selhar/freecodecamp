@@ -1,16 +1,16 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {quote} from './redux/store';
 import {createStore} from 'redux';
-import {App} from './react/components/components';
 import {Provider} from 'react-redux';
+import Index from './components/index';
+import reduceQuote from './reducers/reduceIndex';
 
 const css = require('./main.scss');
-let store = createStore(quote);
+let store = createStore(reduceQuote);
 
 render(
   <Provider store={store}>
-    <App />
+    <Index />
   </Provider>,
   
   document.getElementById('main')

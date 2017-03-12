@@ -56,6 +56,8 @@ section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+  .quote .content {
+    color: white; }
 
 .tick {
   font-family: 'Playfair Display', serif;
