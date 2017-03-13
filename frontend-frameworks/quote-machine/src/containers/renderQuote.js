@@ -8,4 +8,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default QuoteRender = connect (mapStateToProps)(Quote);
+export default connect (mapStateToProps)(Quote);

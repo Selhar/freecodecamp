@@ -10,4 +10,4 @@ const mapDispatchProps = (dispatch) => {
     }
 }
 
-export default FooterRender = connect (mapDispatchProps)(Footer);
+export default connect (mapDispatchProps)(Footer);

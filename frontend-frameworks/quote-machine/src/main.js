@@ -4,10 +4,9 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import Index from './components/index';
 import reduceQuote from './reducers/reduceIndex';
-import {defaultState} from './actions/actionsIndex'
 
 const css = require('./main.scss');
-let store = createStore(reduceQuote, defaultState);
+let store = createStore(reduceQuote );
 
 console.log(store.getState());
 render(
