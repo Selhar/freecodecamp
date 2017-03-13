@@ -1,12 +1,12 @@
 import React from 'react';
-import FooterRender from '../containers/requestQuote';
-import QuoteRender from '../containers/renderQuote';
+import Footer from '../components/footer';
+import Quote from '../components/quote';
 
 const Index = () => (
     <div className="board">
         <h3 className="title is-3">Quote generator</h3>
-        <QuoteRender />
-        <FooterRender />
+        <Quote />
+        <Footer />
     </div>
 )
 

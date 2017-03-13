@@ -1,18 +1,26 @@
+import axios from 'axios';
+
+var httpRequest = axios.create({
+  headers: {
+      'X-Mashape-Key': 'C1ClHWkKf2mshdgqX3WHbrxy6xoLp14C6ApjsnYVc7QuPm9oyb', 
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json'
+    }
+});
+
 export const actionTypes = {
-    ADD_QUOTE: 'ADD_QUOTE'
+    fetch_success: "FETCH_QUOTE_SUCCESS",
+    fetch_failure: "FETCH_QUOTE_FAILURE"
 }
 
-const ADD_QUOTE = (quote, author) => {
-    return {
-        type: ADD_QUOTE,
-        quote,
-        author
+export default function fetchQuote() {
+    return function(dispatch) {
+        httpRequest.get("https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous")
+            .then((response) => {
+                dispatch({type: actionTypes.fetch_success, payload: response.data});
+            })
+            .catch((error) => {
+                dispatch({type: actionTypes.fetch_failure, payload: error});
+            });
     }
 }
-
-export const defaultState = {
-    quote: "Fetching data...",
-    author: "--"
-};
-
-export default ADD_QUOTE;

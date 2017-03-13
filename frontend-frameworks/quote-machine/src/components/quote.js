@@ -1,17 +1,25 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
 
-const Quote = ({quote, author}) => (
- 
-    <div className="quote">
-        <span className="tick">"</span><span className="content">{quote}</span>
-        <br/>
-        <span className="author">{author}</span>
-    </div>
-)
 
-Quote.propTypes = {
-    quote: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired
+@connect((store) => {
+    return{
+        quote: store.quote,
+        author: store.author
+    };
+})
+
+export default class Quote extends Component{
+    
+    render(){
+        const {quote, author} = this.props;
+
+    return (
+        <div className="quote">
+            <span className="tick">"</span><span className="content">{quote}</span>
+            <br/>
+            <span className="author">{author}</span>
+        </div>
+        )
+    }
 }
-
-export default Quote;

@@ -1,14 +1,28 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import fetchQuote from '../actions/actionsIndex';
 
-const Footer = ({onClick}) => (
-    <footer onClick={onClick} className="footer-quote">
-        <a className="button">Tweet</a>
-        <a className="button">New quote</a>
-    </footer>
-);
+@connect((store) => {
+    return{
+        fetchQuote: store.fetchQuote
+    };
+})
 
-Footer.PropTypes = {
-    onClick: PropTypes.func.isRequired
+export default class Footer extends Component{
+    fetchQuote(){
+        this.props.dispatch(fetchQuote());
+    }
+    componentDidMount(){
+        this.props.dispatch(fetchQuote());
+    }
+
+    
+    render(){
+        return(
+        <footer className="footer-quote">
+            <a className="button">Tweet</a>
+            <a onClick={this.fetchQuote.bind(this)} className="button">New quote</a>
+        </footer>
+    )}
 }
 
-export default Footer;
