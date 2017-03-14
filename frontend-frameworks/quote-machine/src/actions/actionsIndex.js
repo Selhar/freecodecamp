@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-var httpRequest = axios.create({
+//Necessary headings for mashape's API, otherwise using axiom.get(url) on fetchquote()
+//would have been enough
+let httpRequest = axios.create({
   headers: {
       'X-Mashape-Key': 'C1ClHWkKf2mshdgqX3WHbrxy6xoLp14C6ApjsnYVc7QuPm9oyb', 
       'Content-Type': 'application/x-www-form-urlencoded',

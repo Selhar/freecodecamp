@@ -12087,13 +12087,13 @@ var Footer = (_dec = (0, _reactRedux.connect)(function (store) {
     }
 
     _createClass(Footer, [{
-        key: 'ComponentWillMount',
-        value: function ComponentWillMount() {
+        key: 'fetchQuote',
+        value: function fetchQuote() {
             this.props.dispatch((0, _actionsIndex2.default)());
         }
     }, {
-        key: 'fetchQuote',
-        value: function fetchQuote() {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
             this.props.dispatch((0, _actionsIndex2.default)());
         }
     }, {
@@ -12215,8 +12215,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _actionsIndex = __webpack_require__(64);
 
 var defaultState = {
-    author: "null",
-    quote: "nulala"
+    author: "Fetching quotes..",
+    quote: " "
 };
 
 exports.default = function () {
@@ -12226,8 +12226,13 @@ exports.default = function () {
     switch (action.type) {
         case _actionsIndex.actionTypes.fetch_success:
             return _extends({}, state, {
-                quote: action.payload[0].content,
+                quote: action.payload.quote,
                 author: action.payload.author
+            });
+        case _actionsIndex.actionTypes.fetch_failure:
+            return _extends({}, state, {
+                quote: "This API's free access has an upper limit of 100 requests/day, it exceeded",
+                author: "broke ass dev"
             });
         default:
             return state;
