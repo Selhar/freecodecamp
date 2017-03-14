@@ -1,16 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-
-@connect((store) => {
-    return{
-        quote: store.quote,
-        author: store.author
-    };
-})
-
-export default class Quote extends Component{
-    
+class Quote extends Component{
     render(){
         const {quote, author} = this.props;
 
@@ -23,3 +14,7 @@ export default class Quote extends Component{
         )
     }
 }
+
+export default connect(
+   state => ({quote: state.quote, author: state.author})
+)(Quote);

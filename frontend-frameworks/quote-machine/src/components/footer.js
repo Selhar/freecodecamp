@@ -1,28 +1,23 @@
 import React, {Component, PropTypes} from 'react';
+import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import fetchQuote from '../actions/actionsIndex';
 
-@connect((store) => {
-    return{
-        fetchQuote: store.fetchQuote
-    };
-})
-
-export default class Footer extends Component{
-    fetchQuote(){
-        this.props.dispatch(fetchQuote());
+class Footer extends Component{
+    componentDidMount(){  
+        this.props.teste();
     }
-    componentDidMount(){
-        this.props.dispatch(fetchQuote());
-    }
-
     
     render(){
         return(
         <footer className="footer-quote">
             <a className="button">Tweet</a>
-            <a onClick={this.fetchQuote.bind(this)} className="button">New quote</a>
+            <a onClick={this.props.teste} className="button">New quote</a>
         </footer>
     )}
 }
 
+export default connect(
+   state => state,
+   dispatch =>({teste: bindActionCreators(fetchQuote, dispatch)})
+)(Footer);
