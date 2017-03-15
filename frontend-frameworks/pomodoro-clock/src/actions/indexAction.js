@@ -4,10 +4,12 @@ export const actionTypes = {
     tickClock: "TICK_CLOCK"
 }
 
-export const changeClock = (event) => {console.log(status);
+export const changeClock = (input) => {
+    let sanitizedData = input.target  ? validateInput(input.target.value) : input;
+    
     return {
         type: actionTypes.changeClock,
-        clock: validateInput(event.target.value)
+        clock: sanitizedData
     }
 }
 

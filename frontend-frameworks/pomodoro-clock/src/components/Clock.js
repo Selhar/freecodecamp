@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {changeClock, toggleStatus} from '../actions/indexAction';
 import {bindActionCreators} from 'redux';
+import {defaultState} from '../reducers/indexReducer';
 
 class Clock extends Component{
     render(){
@@ -9,7 +10,7 @@ class Clock extends Component{
         return(
         <div>
             <input type="text" value={clock} onChange={changeClock} />
-            <a className="button">RESET</a>
+            <a className="button" onClick={() => changeClock(defaultState.clock)}>RESET</a>
             <a className="button" onClick={(event) => {
                 toggleStatus(isActive);
                 }}
