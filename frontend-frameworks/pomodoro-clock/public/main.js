@@ -10391,23 +10391,27 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function () {
+var Clock = function Clock() {
     return _react2.default.createElement(
         "div",
-        { "class": "clock" },
-        _react2.default.createElement("input", { type: "text" }),
+        { className: "clock" },
+        _react2.default.createElement("input", { type: "text", defaultValue: "25:00" }),
         _react2.default.createElement(
             "a",
             { className: "button" },
-            "Reset"
+            "RESET"
         ),
         _react2.default.createElement(
             "a",
             { className: "button" },
-            "Start"
+            "START"
         )
     );
 };
+
+exports.default = connect(function (state) {
+    return { clock: state.clock, isActive: state.isActive };
+})(Clock);
 
 /***/ }),
 /* 94 */
@@ -10484,11 +10488,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var actionTypes = exports.actionTypes = {};
+var actionTypes = exports.actionTypes = {
+    changeClock: "CHANGE_CLOCK",
+    isActive: "CHANGE_STATUS"
+};
 
-//TODO
-exports.default = function () {
-    //TODO
+var changeClock = exports.changeClock = function changeClock(input) {
+    return { time: /^(10|11|12|[1-9]):[0-5][0-9]$/.test(input) ? input : "" };
+};
+
+var isActive = exports.isActive = function isActive(_isActive) {
+    return { isActive: !state.isActive };
 };
 
 /***/ }),
@@ -10507,7 +10517,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _indexAction = __webpack_require__(98);
 
 var defaultState = {
-    //TODO
+    clock: "25:00",
+    isActive: false
 };
 
 exports.default = function () {
@@ -10515,9 +10526,9 @@ exports.default = function () {
     var action = arguments[1];
 
     switch (action.type) {
-        case "actionTypes.TODO":
+        case _indexAction.actionTypes.changeClock:
             return _extends({}, state);
-        case "actionTypes.TODO":
+        case _indexAction.actionTypes.isActive:
             return _extends({}, state);
         default:
             return state;

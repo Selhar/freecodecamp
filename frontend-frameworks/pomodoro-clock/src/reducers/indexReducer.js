@@ -1,20 +1,21 @@
 import {actionTypes} from '../actions/indexAction'
 
 const defaultState = {
-    //TODO
+    clock: "25:00",
+    isActive: false
 };
 
 export default (state = defaultState, action) => {
     switch (action.type){
-        case "actionTypes.TODO":
-            return {
-                ...state
-                //TODO
-            }
-        case "actionTypes.TODO":
+        case actionTypes.changeClock:
             return {
                 ...state,
-                //TODO
+                clock: action.clock                
+            }
+        case actionTypes.isActive:
+            return {
+                ...state,
+                isActive: action.isActive
             }
         default: 
             return state;

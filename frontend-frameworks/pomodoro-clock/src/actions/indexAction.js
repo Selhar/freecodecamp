@@ -1,7 +1,12 @@
 export const actionTypes = {
-    //TODO
+    changeClock: "CHANGE_CLOCK",
+    isActive: "CHANGE_STATUS"
 }
 
-export default () => {
-    //TODO
+export const changeClock = (input) => {
+    return input + "x";
+}
+
+export const isActive = (isActive) => {
+    return {isActive: !state.isActive};
 }
