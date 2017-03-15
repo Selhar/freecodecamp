@@ -22,7 +22,7 @@ export const tickClock = (status, clock) => {
     let result = {
         type: actionTypes.tickClock,
         clock: clock,
-        isActive: !status
+        isActive: status
     }
     if (result.isActive === true && clock !== "00:00"){
         let minutes = clock.slice(0,2);
@@ -30,22 +30,20 @@ export const tickClock = (status, clock) => {
         
         if(seconds == 0 && minutes > 0){   
             minutes--;
-            seconds = 60;
-        }else if(seconds == 1){
+            seconds = 59;
+        }else if(minutes == 0 && seconds == 1){
             seconds--;
             result.isActive = false;
         }else{
             seconds--;
         }
-
-        result.clock = validateTime(minutes, 60, 0) + ":" + validateTime(seconds, 60, 0);
+        result.clock = validateInput(minutes + ":" + seconds);
         
     }
     return result;
 }
 
 const validateInput = (input) => {
-    console.log(input);
     let minutes = input.slice(0,2);
     let seconds = input.slice(-2);
     seconds = seconds[0] == ":" ? "0" + seconds[1] : seconds;

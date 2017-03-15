@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {changeClock, tickClock, toggleStatus} from '../actions/indexAction';
+import {changeClock, toggleStatus} from '../actions/indexAction';
 import {bindActionCreators} from 'redux';
 
 class Clock extends Component{
     render(){
-        const {clock, changeClock, isActive, tickClock, toggleStatus} = this.props;
+        const {clock, changeClock, isActive, toggleStatus} = this.props;
         return(
         <div>
             <input type="text" value={clock} onChange={changeClock} />
@@ -25,7 +25,6 @@ export default connect(
     }),
    dispatch => ({
        changeClock: bindActionCreators(changeClock, dispatch), 
-       toggleStatus: bindActionCreators(toggleStatus, dispatch),
-       tickClock: bindActionCreators(tickClock, dispatch)
+       toggleStatus: bindActionCreators(toggleStatus, dispatch)
     })
 )(Clock);
