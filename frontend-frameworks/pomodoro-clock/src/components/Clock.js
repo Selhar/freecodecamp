@@ -5,17 +5,18 @@ import {bindActionCreators} from 'redux';
 
 class Clock extends Component{
     render(){
+        const {clock, changeClock, isActive} = this.props;
         return(
         <div>
-            <input type="text" defaultValue="25:00"/>
+            <input type="text" value={clock} onChange={changeClock}/>
             <a className="button">RESET</a>
-            <a className="button" onClick={this.props.isActive}>START</a> 
+            <a className="button" onClick={isActive}>START</a> 
         </div>
     )}
 }
 
 export default connect(
-   state => state,
+   state => ({clock: state.clock}),
    dispatch => ({
        changeClock: bindActionCreators(changeClock, dispatch), 
        isActive: bindActionCreators(isActive, dispatch)
