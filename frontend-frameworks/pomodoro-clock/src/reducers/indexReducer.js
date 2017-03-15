@@ -1,6 +1,6 @@
 import {actionTypes} from '../actions/indexAction'
 
-const defaultState = {
+export const defaultState = {
     clock: "25:00",
     isActive: false
 };
@@ -12,9 +12,15 @@ export default (state = defaultState, action) => {
                 ...state,
                 clock: action.clock                
             }
-        case actionTypes.isActive:
+        case actionTypes.toggleStatus:
             return {
                 ...state,
+                isActive: action.isActive
+            }
+        case actionTypes.tickClock:
+            return {
+                ...state,
+                clock: action.clock,
                 isActive: action.isActive
             }
         default: 
