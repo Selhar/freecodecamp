@@ -4,9 +4,14 @@ export const actionTypes = {
 }
 
 export const changeClock = (input) => {
-    return input + "x";
+    return {
+        type: actiontypes.changeClock,
+        clock: input + "x"
+    }
 }
 
 export const isActive = (isActive) => {
-    return {isActive: !state.isActive};
+    return {
+        type: actiontypes.isActive,
+        isActive: !isActive};
 }
