@@ -7,6 +7,7 @@ import {defaultState} from '../reducers/indexReducer';
 class Clock extends Component{
     render(){
         const {clock, changeClock, isActive, toggleStatus} = this.props;
+        const buttonTitle = isActive ? "PAUSE" : "START";
         return(
         <div>
             <input type="text" value={clock} onChange={changeClock} />
@@ -14,7 +15,7 @@ class Clock extends Component{
             <a className="button" onClick={(event) => {
                 toggleStatus(isActive);
                 }}
-            >START</a> 
+            >{buttonTitle}</a> 
         </div>
     )}
 }

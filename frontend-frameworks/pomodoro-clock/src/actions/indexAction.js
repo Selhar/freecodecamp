@@ -50,7 +50,7 @@ const validateInput = (input) => {
     let seconds = input.slice(-2);
     seconds = seconds[0] == ":" ? "0" + seconds[1] : seconds;
     minutes = minutes[1] == ":" ? "0" + minutes[0] : minutes;
-    return validateTime(minutes, 60, 0) + ":" + validateTime(seconds, 60, 0);
+    return validateTime(minutes, 59, 0) + ":" + validateTime(seconds, 59, 0);
 }
 
 const validateTime = (input, max, min) => {
