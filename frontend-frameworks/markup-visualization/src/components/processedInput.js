@@ -12,7 +12,7 @@ class processedInput extends Component{
         }
         console.log(createMarkup.__html)
         return(
-            <div dangerouslySetInnerHTML={createMarkup} disabled></ div>
+            <div className="text-box" dangerouslySetInnerHTML={createMarkup} disabled></ div>
     )}
 }
 

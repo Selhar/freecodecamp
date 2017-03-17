@@ -3,7 +3,7 @@ import ProcessedInput from './processedInput';
 import UserInput from './userInput';
 
 export default () => (
-    <div className="">
+    <div className="container">
         <UserInput />
         <ProcessedInput />
     </div>

@@ -1,16 +1,22 @@
-/************* 
-    Globals
- ************/
-html,
-body {
-    height: 100%;
-    margin: 0;
-    font-size: 16px;
+//custom normalize, global rules are in there
+@import "./helpers/normalize.css";
+$primary: #ceece6;
+
+body{
+    background-color: $primary;
 }
-* {
-    box-sizing: border-box;
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-section {
-    height: 100%;
+.text-box{
+    background-color: white;
+    width: 500px;
+    height: 375px;
+    overflow: auto;
+    max-width: 570px;
+    padding: 15px;
 }

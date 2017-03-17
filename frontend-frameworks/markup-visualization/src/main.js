@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import Index from './components/indexComponent';
 import store from './store';
 
-const css = require('./main.scss');
+require('./main.scss');
 
 render(
   <Provider store={store}>

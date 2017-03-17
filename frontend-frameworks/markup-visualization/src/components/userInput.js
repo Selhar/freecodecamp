@@ -7,7 +7,7 @@ class UserInput extends Component{
     render(){
         const {text, updateInput} = this.props;
         return(
-            <textarea cols="60" rows="18" value={text} onChange={(event) => updateInput(event.target.value)}></ textarea>
+            <textarea className="text-box" cols="60" rows="18" value={text} onChange={(event) => updateInput(event.target.value)}></ textarea>
     )}
 }
 
