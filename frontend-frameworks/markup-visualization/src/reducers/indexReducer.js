@@ -1,20 +1,20 @@
-import {actionTypes} from '../actions/indexAction'
+import actionTypes from '../actions/indexAction'
 
 const defaultState = {
-    //TODO
+    text: `
+                Github markdown previewer
+                =======
+                You can type github markdown text in here and get the output instantly.  
+                For Github's markdown full documentation go [here](https://guides.github.com/features/mastering-markdown/).
+            `
 };
 
 export default (state = defaultState, action) => {
     switch (action.type){
-        case "actionTypes.TODO":
-            return {
-                ...state
-                //TODO
-            }
-        case "actionTypes.TODO":
+        case actionTypes.processUserInput:
             return {
                 ...state,
-                //TODO
+                text: action.userInput
             }
         default: 
             return state;

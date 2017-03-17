@@ -1,7 +1,11 @@
+
 export const actionTypes = {
-    //TODO
+    processUserInput: "PROCESS_USER_INPUT"
 }
 
-export default () => {
-    //TODO
+export default (input) => {
+    return{
+        type: actionTypes.processUserInput,
+        userInput: input
+    }
 }
