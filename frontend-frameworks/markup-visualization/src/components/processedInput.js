@@ -10,6 +10,7 @@ class processedInput extends Component{
         const createMarkup = {
             __html: marked(text)
         }
+        console.log(createMarkup.__html)
         return(
             <div dangerouslySetInnerHTML={createMarkup} disabled></ div>
     )}

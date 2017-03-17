@@ -1,4 +1,4 @@
-import actionTypes from '../actions/indexAction'
+import {actionTypes} from '../actions/indexAction'
 
 const defaultState = {
     text: `
