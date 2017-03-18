@@ -1,20 +1,27 @@
 //custom normalize, global rules are in there
 @import "./helpers/normalize.css";
 $board-size: 600px;
-$button-size: 50px;
+$button-size: 75px;
 
-.board{
+h1{
+    margin-bottom: 1rem;
+}
+.board{    
+    text-align: center;
+    color: white;
     background-color: black;
     width: $board-size;
-    height: $board-size;
-    padding: 15px;
+    padding: 35px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pad{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 200px;
+    width: 275px;
     color: white;
     background-color: #333;
     padding: 15px;
@@ -24,8 +31,38 @@ $button-size: 50px;
     width: $button-size;
     height: $button-size;
     background-color: white;
-    
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p{
+        font-size: 2rem;
+    }
+    &:hover{
+        background-color: #555;
+    }
     &:nth-child(1n+4){
-        margin-top: 5px;
+        margin-top: 7px;
+    }
+}
+
+.controls{
+    width: 100%;
+    margin-bottom: 25px;
+    background-color: #333;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    .type{
+        display: inline-flex;
+        input{
+            margin-right: 10px;
+        }           
+    }
+    .output{
+        color: orange;
+        font-size: 2rem;
+        margin: 0.7rem;
     }
 }

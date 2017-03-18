@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import Button from './buttonComponent';
 const bankOne = [{
     keyCode: 81,
     keyTrigger: 'Q',
@@ -100,28 +100,17 @@ class Pad extends Component{
     render(){
         return(
         <div className="pad">
-          <Button />
-          <Button />
-          <Button />
-          <Button />
-          <Button />
-          <Button />
-          <Button />
-          <Button />
-          <Button />
+          <Button name="Q"/>
+          <Button name="W"/>
+          <Button name="E"/>
+          <Button name="A"/>
+          <Button name="S"/>
+          <Button name="D"/>
+          <Button name="Z"/>
+          <Button name="X"/>
+          <Button name="C"/>
         </div>
     )}
-}
-
-
-class Button extends Component {
-  render() {
-    return (
-      <div className="button">
-        
-      </div>
-    );
-  }
 }
 
 export default connect(

@@ -4,7 +4,8 @@ import Controls from './controlsComponent';
 
 export default () => (
     <div  className="board">
-        <Pad/>
+        <h1>Freecodecamp drum kit</h1>
         <Controls />
+        <Pad/>
     </div>
 )
