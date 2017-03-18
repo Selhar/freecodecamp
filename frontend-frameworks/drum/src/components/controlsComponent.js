@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-class Placeholder extends Component{
+class Controls extends Component{
     render(){
         return(
         <div>
@@ -13,4 +14,4 @@ export default connect(
     }),
    dispatch => ({
     })
-)(Clock);
+)(Controls);

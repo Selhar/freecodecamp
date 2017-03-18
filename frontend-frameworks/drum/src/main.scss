@@ -1,2 +1,31 @@
 //custom normalize, global rules are in there
 @import "./helpers/normalize.css";
+$board-size: 600px;
+$button-size: 50px;
+
+.board{
+    background-color: black;
+    width: $board-size;
+    height: $board-size;
+    padding: 15px;
+}
+
+.pad{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 200px;
+    color: white;
+    background-color: #333;
+    padding: 15px;
+}
+
+.button{
+    width: $button-size;
+    height: $button-size;
+    background-color: white;
+    
+    &:nth-child(1n+4){
+        margin-top: 5px;
+    }
+}
