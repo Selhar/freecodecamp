@@ -100,7 +100,7 @@ class Pad extends Component{
     render(){
         return(
         <div className="pad">
-          <Button name="Q"/>
+          <Button tabIndex="q" name="Q"/>
           <Button name="W"/>
           <Button name="E"/>
           <Button name="A"/>
