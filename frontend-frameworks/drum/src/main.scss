@@ -2,14 +2,21 @@
 @import "./helpers/normalize.css";
 $board-size: 600px;
 $button-size: 75px;
+$primary-color: #52271d;
+$secondary-color: #78382a;
+$inner-background: #9f4936;
+$font-color: #ccc;
 
 h1{
     margin-bottom: 1rem;
 }
+body{
+    background-color: $secondary-color;
+}
 .board{    
     text-align: center;
-    color: white;
-    background-color: black;
+    color: $font-color;
+    background-color: $primary-color;
     width: $board-size;
     padding: 35px;
     display:flex;
@@ -22,25 +29,28 @@ h1{
     flex-wrap: wrap;
     justify-content: space-around;
     width: 275px;
-    color: white;
-    background-color: #333;
+    color: $font-color;
+    background-color: $inner-background;
     padding: 15px;
 }
 
 .button{
     width: $button-size;
     height: $button-size;
-    background-color: white;
-    color: red;
+    background-color: $primary-color;
+    color: $font-color;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    cursor: pointer;
+    
     p{
         font-size: 2rem;
+        text-transform: uppercase;
     }
-    &:hover{
-        background-color: #555;
+    &:active{
+        background-color: $secondary-color;
+        
     }
     &:nth-child(1n+4){
         margin-top: 7px;
@@ -48,9 +58,10 @@ h1{
 }
 
 .controls{
+    text-transform: uppercase;
     width: 100%;
     margin-bottom: 25px;
-    background-color: #333;
+    background-color: $inner-background;
     display:flex;
     justify-content: space-around;
     align-items: center;
@@ -61,7 +72,7 @@ h1{
         }           
     }
     .output{
-        color: orange;
+        color: $font-color;
         font-size: 2rem;
         margin: 0.7rem;
     }
