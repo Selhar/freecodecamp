@@ -1,7 +1,10 @@
 export const actionTypes = {
-    //TODO
+    changeLabel: "CHANGE_LABEL"
 }
 
-export default () => {
-    //TODO
+export default (label) => {
+    return {
+        type: actionTypes.changeLabel,
+        label
+    }
 }

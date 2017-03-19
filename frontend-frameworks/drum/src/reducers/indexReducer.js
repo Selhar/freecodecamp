@@ -1,20 +1,15 @@
 import {actionTypes} from '../actions/indexAction'
 
 const defaultState = {
-    //TODO
+    label: "OUTPUT"
 };
 
 export default (state = defaultState, action) => {
     switch (action.type){
-        case "actionTypes.TODO":
-            return {
-                ...state
-                //TODO
-            }
-        case "actionTypes.TODO":
+        case actionTypes.changeLabel:
             return {
                 ...state,
-                //TODO
+                label: action.label
             }
         default: 
             return state;

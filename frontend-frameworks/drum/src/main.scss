@@ -6,6 +6,7 @@ $primary-color: #52271d;
 $secondary-color: #78382a;
 $inner-background: #9f4936;
 $font-color: #ccc;
+$pad-size: 275px;
 
 h1{
     margin-bottom: 1rem;
@@ -28,7 +29,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 275px;
+    width: $pad-size;
     color: $font-color;
     background-color: $inner-background;
     padding: 15px;
@@ -59,18 +60,12 @@ body{
 
 .controls{
     text-transform: uppercase;
-    width: 100%;
+    width: $pad-size;
     margin-bottom: 25px;
     background-color: $inner-background;
     display:flex;
     justify-content: space-around;
     align-items: center;
-    .type{
-        display: inline-flex;
-        input{
-            margin-right: 10px;
-        }           
-    }
     .output{
         color: $font-color;
         font-size: 2rem;
