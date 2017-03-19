@@ -2,7 +2,7 @@ export const actionTypes = {
     changeLabel: "CHANGE_LABEL"
 }
 
-export default (label) => {
+export const changeLabel = (label) => {
     return {
         type: actionTypes.changeLabel,
         label

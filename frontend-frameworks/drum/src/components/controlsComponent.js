@@ -5,13 +5,14 @@ class Controls extends Component{
     render(){
         return(
         <div className="controls">
-            <span className="output">output</span>
+            <span className="output">{this.props.label}</span>
         </div>
     )}
 }
 
 export default connect(
    state => ({
+       label: state.label
     }),
    dispatch => ({
     })

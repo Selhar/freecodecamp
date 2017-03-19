@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Button from './buttonComponent';
 import audioFiles from './audioFiles';
+import {changeLabel} from '../actions/indexAction';
+import {bindActionCreators} from 'redux';
 
 class Pad extends Component{
     componentDidMount(){
      window.addEventListener("keydown", (event) => {
-        const id = "button_"+String.fromCharCode(event.keyCode.toString());
+        const key = String.fromCharCode(event.keyCode.toString());
+        const id = "button_"+key;
         const button = document.getElementById(id);
-        if(button != undefined)
-        button.click();        
+        if(button != undefined){
+            button.click();        
+            this.props.label(audioFiles[key].title);
+        }
     });
   }
     render(){
@@ -32,5 +37,6 @@ export default connect(
    state => ({
     }),
    dispatch => ({
+     label: bindActionCreators(changeLabel, dispatch)
     })
 )(Pad);
