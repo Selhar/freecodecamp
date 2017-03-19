@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 
 export default class Button extends Component {
-  play(event) {
-        const audio = event.target.children[1];
+  render() {
+      const {name, audio} = this.props;
+      const play = () => {
+        const audio = document.getElementById(name);
         console.log(audio);
         audio.play();
       }
-  render() {
-      const {name, audio} = this.props;
     return (
-      <div className="button" onClick={this.play}>
+      <div className="button" onClick={play}>
+        <audio src={audio.url} id={name}/>
         <p>{name}</p>
-        <audio src={audio.url}/>
       </div>
     );
   }
