@@ -8,6 +8,7 @@ class Pad extends Component{
      window.addEventListener("keydown", (event) => {
         const id = "button_"+String.fromCharCode(event.keyCode.toString());
         const button = document.getElementById(id);
+        if(button != undefined)
         button.click();        
     });
   }
