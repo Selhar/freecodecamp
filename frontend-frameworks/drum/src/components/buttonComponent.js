@@ -5,7 +5,6 @@ export default class Button extends Component {
       const {name, audio} = this.props;
       const play = () => {
         const audio = document.getElementById(name);
-        console.log(audio);
         audio.play();
       }
     return (
