@@ -4,6 +4,13 @@ import Button from './buttonComponent';
 import audioFiles from './audioFiles';
 
 class Pad extends Component{
+    componentDidMount(){
+     window.addEventListener("keydown", (event) => {
+        const id = "button_"+String.fromCharCode(event.keyCode.toString());
+        const button = document.getElementById(id);
+        button.click();        
+    });
+  }
     render(){
         return(
         <div className="pad">
