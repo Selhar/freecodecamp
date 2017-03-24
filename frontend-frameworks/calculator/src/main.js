@@ -8,14 +8,20 @@ const css = require('./main.scss');
 /*
 Visuals/Components:
   Board []
-  Display []
-  Numbers []
-  Modifiers []
-Functionality:
-  State:
-    Display []
-  Actions:
-    changeState() []    
+  
+  Display{
+    State{
+      value;
+    }
+    Actions{
+      changeState;
+    }
+  } []
+  
+  Buttons{
+    Numbers(changeState) []
+    Modifiers(changeState) []
+    } []
 */
 render(
   <Provider store={store}>
