@@ -7,4 +7,6 @@ server.get('/', (request, response) => {
     response.sendFile(root + '/views/index.html');
 });
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3000, () => {
+    console.log("Listening");
+});
