@@ -8,7 +8,7 @@ server.get('/', (request, response) => {
 });
 
 server.get('/api/timestamp/:date?', (request, response) => {
-    response.send("1");
+    response.json({'timestamp': + new Date(), 'Date': "1 de abril"});
 });
 
 server.use( (request, response, next) => {

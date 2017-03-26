@@ -1,10 +1,6 @@
 /**************
      Global
 ***************/
-a{
-    outline: none;
-    text-decoration: none;
-}
 #main{
     display: flex;
     justify-content: center;
@@ -16,7 +12,6 @@ a{
     position: absolute;
     top: 15px;
     padding: 0 15px 0 15px;
-    border-bottom: 1px solid black;
 }
 
 /**************
@@ -29,16 +24,5 @@ footer {
 }
 
 footer a {
-    margin: 15px;
-    color: black;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
 }
-
-footer a:focus {
-    outline: none;
-}
-
-footer a:hover {
-    color: #666;
-}
-
