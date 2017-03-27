@@ -20,4 +20,8 @@ server.get('/api/timestamp/:date_string?', (request, response) => {
     }
 });
 
+server.get('*', (request, response) => {
+    response.send('<p>Bad, bad user. No donuts for you.</p>');
+});
+
 server.listen(process.env.PORT || 3000);
