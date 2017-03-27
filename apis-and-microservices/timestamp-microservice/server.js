@@ -8,11 +8,9 @@ server.get('/', (request, response) => {
 });
 
 server.get('/api/timestamp/:date?', (request, response) => {
-    response.json({'timestamp': + new Date(), 'Date': "1 de abril"});
-});
-
-server.use( (request, response, next) => {
-    response.send("2");
+    let timestamp = new Date();
+    let date = timestamp.toUTCString();
+    response.json({'timestamp': timestamp, 'Date': date});
 });
 
 server.listen(process.env.PORT || 3000);
