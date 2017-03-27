@@ -4,7 +4,7 @@ const root = process.cwd();
 server.use('/public', express.static(root + '/public'));
 
 server.get('/', (request, response) => {
-    response.sendFile(root + '/views/index.html');
+    response.render(root + '/views/index.ejs');
 });
 
 server.get('/whoami', (request, response) => {
