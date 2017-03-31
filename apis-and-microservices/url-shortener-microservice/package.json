@@ -9,6 +9,7 @@
     "express": "^4.15.2",
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0"
   }
 }
