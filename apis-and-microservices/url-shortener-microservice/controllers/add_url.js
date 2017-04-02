@@ -13,29 +13,27 @@ exports.addUrl = (request, response) => {
     }
 };
 
-function output_error(error){
-    return console.log("\n\n******ERROR: "+error)
-}
-
 function findShortUrl(url){
-    let result = UrlModel.findOne({short_url: url}, (error, result) => {
+    let result = false;
+    UrlModel.findOne({short_url: url}, (error, result) => {
         if(!error && result){
-            return true;
-        }{
-            return false;
+            result = true;
         }
     });
+
     return result;
 }
 
 function isUrlValid(url){
-    return http_request(url, (error, response) => {
+    let result = false;
+    
+    http_request(url, (error, response) => {
         if(!error && response.statusCode === 200){
-            return true;
-        }else{
-            return false;
+            result = true;
         }
     });
+
+    return result;
 }
 
 
