@@ -4,31 +4,21 @@ const url = require("url");
 
 exports.addUrl = (request, response) => {
     const full_url = request.body.url;
-
-    if(isUrlValid(full_url)){
-        const sanitized_url = full_url.replace(/(^\w+:|^)\/\/(w{3}.)?/, '');
-        return response.json({sanitized: sanitized_url});
-      }else{
-        return response.json({error: "The provided URL is either invalid or currently offline."});
-    }
+    
+    http_request(full_url, (error, reply) => {
+        if(!error && reply.statusCode === 200){
+            const sanitized_url = full_url.replace(/(^\w+:|^)\/\/(w{3}.)?/, '');
+            return response.json({sanitized: sanitized_url});
+        }else{
+            return response.json({error: "The provided URL is either invalid or currently offline."});
+        }
+    });
 };
 
 function findShortUrl(url){
     let result = false;
     UrlModel.findOne({short_url: url}, (error, result) => {
         if(!error && result){
-            result = true;
-        }
-    });
-
-    return result;
-}
-
-function isUrlValid(url){
-    let result = false;
-    
-    http_request(url, (error, response) => {
-        if(!error && response.statusCode === 200){
             result = true;
         }
     });
