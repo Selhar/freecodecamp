@@ -14,41 +14,45 @@ exports.addUrl = (request, response) => {
                     }
                     if(result.statusCode === 200){
                         const sanitized_url = full_url.replace(/(^\w+:|^)\/\/(w{3}.)?/, '');
-                        return callback(null, {full_url: sanitized_url});
+                        return callback(null, sanitized_url);
                     }
                 });
-        },function isUrlInDatabase(data, callback) {
+        },function isUrlInDatabase(sanitized_url, callback) {
 
-            UrlModel.findOne({original_url: data.sanitized_url}, (error, result) => {
+            UrlModel.findOne({original_url: sanitized_url}, (error, result) => {
                 if(error){
                     return callback(error);
                 } else if(result){
                     return done(null, {original_url: result.original_url, short_url: result.short_url}, response);
                 } else{
-                    return callback(null, data.sanitized_url);
+                    return callback(null, {sanitized_url: sanitized_url});
                 }
             });
         },function processShortUrl(data, callback) {
-                
             let isShortUrlUnique = data.unique || false;
-            let short_url = data.sanitized_url || data.sanitized_url.slice(0, 3);
+            let short_url = data.short_url || data.sanitized_url.slice(0, 3);
             let index = data.index || 0;
-            
+
+            if(isShortUrlUnique) 
+                return callback(null, data.short_url, data.sanitized_url);
+            console.log(short_url);
             UrlModel.findOne({short_url: short_url}, (error, result) => {
-                if(error){
+                if(error) 
                     return callback(error);
-                } 
+            
                 if(result){    
-                    if(short_url.length > 3){
+                    if(short_url.length > 3)
                         short_url = short_url.replace(index, ++index);
-                    }else{
+                    else
                         short_url += index++;
-                    }
+
+                    return processShortUrl({unique: isShortUrlUnique, short_url: short_url, index: index, sanitized_url: data.sanitized_url}, callback);
                 }else{
                     isShortUrlUnique = true;
+                    return processShortUrl({unique: isShortUrlUnique, short_url: short_url, index: index, sanitized_url: data.sanitized_url}, callback);
                 }   
             });
-                return callback(null, short_url, sanitized_url);
+
         },function saveToDatabase(short_url, sanitized_url, callback) {
             
             let new_url = new UrlModel({
