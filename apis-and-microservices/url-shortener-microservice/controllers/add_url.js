@@ -35,17 +35,16 @@ exports.addUrl = (request, response) => {
 
             if(isShortUrlUnique) 
                 return callback(null, data.short_url, data.sanitized_url);
-            console.log(short_url);
+
             UrlModel.findOne({short_url: short_url}, (error, result) => {
                 if(error) 
                     return callback(error);
             
                 if(result){    
                     if(short_url.length > 3)
-                        short_url = short_url.replace(index, ++index);
+                        short_url = short_url.replace(index-1, index++);
                     else
-                        short_url += index++;
-
+                        short_url += index;
                     return processShortUrl({unique: isShortUrlUnique, short_url: short_url, index: index, sanitized_url: data.sanitized_url}, callback);
                 }else{
                     isShortUrlUnique = true;
