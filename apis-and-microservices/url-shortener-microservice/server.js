@@ -16,9 +16,8 @@ server.use('/public', express.static(root + '/public'));
 server.get('/', (request, response) => {
     response.render(root + '/views/index.ejs');
 });
-server.post('/api/shorturl/add', controller.add);
-server.get('/api/shorturl/:url', controller.add); //TODO
-server.delete('/api/shorturl/:url', controller.add); //TODO
+server.post('/api/shorturl/new', controller.add);
+server.get('/api/shorturl/:short_url', controller.redirect)
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');
