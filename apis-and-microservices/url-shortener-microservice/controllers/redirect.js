@@ -5,10 +5,10 @@ exports.redirect = (request, response) => {
         if(error)
             return response.json({error:"An unidentified error ocurred."});
         
-        if(data)
-            return response.redirect(data.original_url);    
-        else{
-            return response.json({error:"This url is not registered in our system."});
+        if(data){
+            response.redirect(data.original_url);    
+        }else{
+            response.json({error:"This url is not registered in our system."});
         }
     });
 }

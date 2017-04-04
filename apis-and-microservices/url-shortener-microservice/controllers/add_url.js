@@ -19,7 +19,7 @@ exports.addUrl = (request, response) => {
                 });
         },function isUrlInDatabase(sanitized_url, callback) {
 
-            UrlModel.findOne({original_url: sanitized_url}, (error, result) => {
+            UrlModel.findOne({original_url: full_url}, (error, result) => {
                 if(error){
                     return callback(error);
                 } else if(result){
@@ -55,7 +55,7 @@ exports.addUrl = (request, response) => {
         },function saveToDatabase(short_url, sanitized_url, callback) {
             
             let new_url = new UrlModel({
-                original_url: sanitized_url,
+                original_url: full_url,
                 short_url: short_url
             });
             new_url.save((error) => {
@@ -63,7 +63,7 @@ exports.addUrl = (request, response) => {
                     return callback(error);
                 }
 
-                return callback(null, {original_url: sanitized_url, short_url: short_url});
+                return callback(null, {original_url: full_url, short_url: short_url});
             });
         }
     ],done);
