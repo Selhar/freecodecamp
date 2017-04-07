@@ -13,25 +13,37 @@
 </head>
 <body>
     <div id="main">
-        <h1>Exercise tracker</h1>
+        <header>
+            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/timestamp-microservice" target="_blank">github</a></p>
+        </header>
+
+        <h1>Create a new user:</h1>
+        <p><code>POST: /api/exercise/new-user</code></p>
         <form action="/api/exercise/new-user" method="post">
-            <h3>Create a New User</h3>
-            <p><code>POST /api/exercise/new-user</code></p>
-            <input id="uname" type="text" name="username" placeholder="username">
+            <input id="username" type="text" name="username" placeholder="You can also use this form.">
             <input type="submit" value="Submit">
         </form>
+
+        <h1>Create a new exercise</h1>
+        <p><code>POST: /api/exercise/add</code></p>
         <form action="/api/exercise/add" method="post">
-            <h3>Add exercises</h3>
-            <p><code>POST /api/exercise/add</code></p>
-            <input id="uid" type="text" name="userId" placeholder='userId*'>
-            <input id="desc" type="text" name="description" placeholder="description*">
-            <input id="dur" type="text" name="duration" placeholder="duration* (mins.)">
-            <input id="dur" type="text" name="date" placeholder="date (yyyy-mm-dd)">
+            <input id="username" type="text" name="username" placeholder='username*'>
+            <input id="description" type="text" name="description" placeholder="description*">
+            <input id="duration" type="text" name="duration" placeholder="duration* (minutes)">
+            <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd, defaults to today)">
             <input type="submit" value="Submit">
         </form>
-        <p><strong>GET users's exercise log: </strong><code>GET /api/exercise/log?{userId}[&amp;from][&amp;to][&amp;limit]</code></p>
-        <p><strong>{ }</strong> = required, <strong>[ ]</strong> = optional</p>
-        <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number</p>
+        <footer>
+            <a href="https://github.com/GregoryGoncalves" target="_blank">
+                <span class="icon"><i class="fa fa-github"></i></span>
+            </a>
+            <a href="http://codepen.io/Selhar/#" target="_blank">
+                <span class="icon"><i class="fa fa-codepen"></i></span>
+            </a>
+            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+            </a>
+        </footer>
     </div>
 </body>
 </html>

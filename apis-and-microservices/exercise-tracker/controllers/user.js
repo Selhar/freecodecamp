@@ -1,18 +1,14 @@
 const UserModel = require('../models/user');
 const ExerciseModel = require('../models/exercise');
+const waterfall = require("async/waterfall");
 
 exports.add_user = (request, response) => {
-        
-        let new_user = new UrlModel({
-            username: request.body.username            
-        });
-        
-        new_url.save((error) => {
-            if(error){
-                return callback(error);
-            }
-
-            return callback(null, {original_url: full_url, short_url: short_url});
     
-        });
+    function done(error, result) {
+        if(error){
+            console.log('\n\n\n **** error ***** \n\n\n'+error+'\n\n\n');
+            return response.json({error: "an unidentified error ocurred."});
+        }
+        return response.json(result);
+    }
 }

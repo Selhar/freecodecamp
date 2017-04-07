@@ -74,7 +74,7 @@ exports.addUrl = (request, response) => {
             case 'ENOTFOUND':
                 return response.json({error: "invalid URL."});
             default:
-                console.log(error);
+                console.log('\n\n\n **** error ***** \n\n\n'+error+'\n\n\n');
                 return response.json({error: "an unidentified error ocurred."});
             }
         }
