@@ -8,21 +8,4 @@ const Exercises = new Schema({
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-Exercises.pre('save', function(next) {
-  mongoose.model('Users').findById(this.userId, (err, user) => {
-    if(err) return next(err)
-    if(!user) {
-      const err = new Error('unknown userId')
-      err.status = 400
-      return next(err)
-    }
-    this.username = user.username
-    if(!this.date) {
-      this.date = Date.now()
-    }
-    next();
-  })
-})
-
-
 module.exports = mongoose.model('Exercises', Exercises)
