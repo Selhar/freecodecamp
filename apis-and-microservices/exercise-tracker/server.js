@@ -10,6 +10,7 @@ mongoose.connect("mongodb://localhost:27017/exercisetracker");
 
 
 server.use(bodyParser.json()); 
+server.use(bodyParser.urlencoded({'extended': true}));
 server.use('/public', express.static(root + '/public'));
 
 server.get('/', (request, response) => {

@@ -10,13 +10,15 @@ exports.add_user = (request, response) => {
                     return callback(error);
                 }else if(user){
                     return done(null, user);
+                }else{
+                    callback(null);
                 }
             });
         }, function saveUser(callback){
+            console.log(request.body+"\n");
             let new_user = new UserModel({
                 username: request.body.username
             });
-
             new_user.save((error) => {
                 if(error){
                     return callback(error);
