@@ -37,8 +37,6 @@ exports.add_exercise = (request, response) => {
                 }
                 return callback(null, exercise);
             });
-
-            return response.json({date: date});
         }
     ], done);
 
