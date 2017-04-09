@@ -5,7 +5,7 @@ const errors = {
     userNotInDB: "User is not in the database."
 };
 
-exports.addExercise = (request, response) => {
+exports.add_exercise = (request, response) => {
     waterfall([
          function isUserInDB(callback){
             UserModel.findOne({username: request.body.username}, (error, user) =>{
@@ -17,6 +17,8 @@ exports.addExercise = (request, response) => {
                     done(errors.userNotInDB);
                 }
             });
+        }, function saveExercise(user, callback){
+            return response.json({user: user});
         }
     ], done);
 
