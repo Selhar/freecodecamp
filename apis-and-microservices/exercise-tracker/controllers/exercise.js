@@ -18,7 +18,27 @@ exports.add_exercise = (request, response) => {
                 }
             });
         }, function saveExercise(user, callback){
-            return response.json({user: user});
+            const description = request.body.description;
+            const duration = request.body.duration;
+            const date = request.body.date;
+            let new_exercise = {};
+
+            if(description && duration){
+                new_exercise = {description: description, duration: duration};
+                if(date){
+                    new_exercise.date = date;
+                }
+            }
+            let exercise_model = new ExerciseModel(new_exercise);
+
+            exercise_model.save((error, exercise) => {
+                if(error){
+                    callback(error);
+                }
+                return callback(null, exercise);
+            });
+
+            return response.json({date: date});
         }
     ], done);
 
