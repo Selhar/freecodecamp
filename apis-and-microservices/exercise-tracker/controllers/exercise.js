@@ -25,7 +25,12 @@ exports.add_exercise = (request, response) => {
             let new_exercise = {};
 
             if(description && duration){
-                new_exercise = {description: description, duration: duration};
+                new_exercise = {
+                    description: description,
+                    duration: duration,
+                    _user: user._id
+
+                };
                 if(date){
                     new_exercise.date = date;
                 }
