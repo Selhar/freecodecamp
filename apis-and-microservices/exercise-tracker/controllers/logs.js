@@ -6,6 +6,7 @@ exports.fetch_logs = (request, response) => {
     const username = request.params.username;
     const initial_date = request.params.from || 0;
     const final_date = request.params.to || Date.now();
+    const limit = request.params.limit || 0;
 
     waterfall([ 
         function isUserInDB(callback){
@@ -19,7 +20,18 @@ exports.fetch_logs = (request, response) => {
                 }
             });
         }, function fetchLog(user, callback){
-            
+            ExerciseModel.find({
+                _user: user._id,
+                date: {
+                    $gt: initial_date,
+                    $lt: final_date
+                }
+            })
+            .sort('-date')
+            .limit(limit)
+            .exec((error, data) => {
+                return callback(null, data);
+            });
         }
     ], done);
 
