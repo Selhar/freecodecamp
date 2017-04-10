@@ -1,6 +1,7 @@
 const UserModel = require('../models/user');
 const ExerciseModel = require('../models/exercise');
 const waterfall = require("async/waterfall");
+
 const errors = {
     userNotInDB: "User is not in the database."
 };

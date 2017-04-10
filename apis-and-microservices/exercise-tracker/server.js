@@ -19,7 +19,7 @@ server.get('/', (request, response) => {
 
 server.post('/api/exercise/new-user', controller.add_user);
 server.post('/api/exercise/add', controller.add_exercise);
-//server.get('/api/exercise/log', controller.fetch_log);
+server.get('/api/exercise/log/:id/:from/:to', controller.fetch_log);
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');
