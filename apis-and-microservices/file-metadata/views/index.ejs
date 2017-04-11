@@ -16,10 +16,16 @@
         <header>
             <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
         </header>
-        <h1>Example input</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <h1>Example output</h1>
-        <p><code>PLACEHOLDER</code></p>
+        <p>
+          Please Upload a File ...
+        </p>
+        <div class="view">
+          <h4 id="output"></h4>
+          <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+            <input id="inputfield" type="file" name="upfile">
+            <input id="button" type="submit" value="Upload">
+          </form>
+        </div>
         <footer>
             <a href="https://github.com/GregoryGoncalves" target="_blank">
                 <span class="icon"><i class="fa fa-github"></i></span>
