@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha tests/*.js"
+    "test": "mocha --ui tdd tests/*.js"
   },
   "dependencies": {
     "chai": "^3.5.0",
