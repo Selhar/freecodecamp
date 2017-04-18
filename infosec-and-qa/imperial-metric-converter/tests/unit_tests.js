@@ -10,14 +10,14 @@ suite('Unit testing', () => {
     test('Validate input', (done) => {
       
       for(type of converter.conversion_types){
-        assert.equal(converter.validateInput('1'+type), true);
+        assert.equal(converter.isInputValid('1'+type), true);
       }
 
-      assert.equal(converter.validateInput('gal1'),true);
-      assert.equal(converter.validateInput('gal'), false);
-      assert.equal(converter.validateInput('1'), false);
-      assert.equal(converter.validateInput('-1'), false);
-      assert.equal(converter.validateInput(1), false);
+      assert.equal(converter.isInputValid('gal1'),true);
+      assert.equal(converter.isInputValid('gal'), false);
+      assert.equal(converter.isInputValid('1'), false);
+      assert.equal(converter.isInputValid('-1'), false);
+      assert.equal(converter.isInputValid(1), false);
       done();
     });
   });
@@ -25,8 +25,8 @@ suite('Unit testing', () => {
   suite('Input processing', () => {
     test('Expected data types', (done) => {
       // assert.typeOf(converter.processInput('1gal'), 'object');
-      // assert.typeOf(converter.processInput('1gal').value, 'number');
-      // assert.typeOf(converter.processInput('1gal').type, 'string');
+      // assert.typeOf(converter.processInput('5lbs').value, 'number');
+      // assert.typeOf(converter.processInput('114km').type, 'string');
       done();
     });
     
@@ -41,10 +41,10 @@ suite('Unit testing', () => {
     }); 
     
     test('Expected invalid inputs', (done) => {
-      // assert.deepEqual(converter.processInput('x'),   converter.input_format_error);
-      // assert.deepEqual(converter.processInput('1'),   converter.input_format_error);
-      // assert.deepEqual(converter.processInput('km'),  converter.input_format_error);
-      // assert.deepEqual(converter.processInput('km5'), converter.input_format_error);
+      assert.deepEqual(converter.processInput('x'),   converter.error.input_format_error);
+      assert.deepEqual(converter.processInput('1'),   converter.error.input_format_error);
+      assert.deepEqual(converter.processInput('km'),  converter.error.input_format_error);
+      assert.deepEqual(converter.processInput('km5'), converter.error.input_format_error);
       done();
     });
   });

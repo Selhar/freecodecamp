@@ -2,13 +2,15 @@ function converter (){
     const galToL = 3.78541;
     const lbsToKg = 0.45359237;
     const miToKm = 1.60934;
-    const error = {input_format_error: 'Invalid input format'};
+    this.error = {input_format_error: 'Invalid input format'};
     this.conversion_types = ['mi', 'km', 'lbs', 'kg','l', 'gal'];
 
     this.processInput = (input) => {
-
+        if(!this.isInputValid(input))
+            return this.error.input_format_error;
+        
     }
-    this.validateInput = (input) => {
+    this.isInputValid = (input) => {
 
         if(typeof input !== 'string')
             return false;
