@@ -21,11 +21,11 @@ suite('Unit testing', () => {
       assert.deepEqual(converter.processInput('1km'),  {value: 1, type: 'km'});
       done();
     }); 
-    test('Expected invalid input', (done) => {
-      assert.equal(converter.processInput('x'),   {error: 'Invalid input format'});
-      assert.equal(converter.processInput('1'),   {error: 'Invalid input format'});
-      assert.equal(converter.processInput('km'),  {error: 'Invalid input format'});
-      assert.equal(converter.processInput('km5'), {error: 'Invalid input format'});
+    test('Expected invalid inputs', (done) => {
+      assert.deepEqual(converter.processInput('x'),   {error: 'Invalid input format'}, '1 char');
+      assert.deepEqual(converter.processInput('1'),   {error: 'Invalid input format'}, '1 number');
+      assert.deepEqual(converter.processInput('km'),  {error: 'Invalid input format'}, '"km"');
+      assert.deepEqual(converter.processInput('km5'), {error: 'Invalid input format'}, 'string+number out of order');
     });
   });
 });

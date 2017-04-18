@@ -7,8 +7,10 @@ function converter (){
         const value = Number(input.replace(/\D/g,''));
         const type = input.match(/\D/g).join('');
 
-        if(typeof value === 'number' && typeof type === 'string'){
+        if(typeof value === 'number' && value > 0 && typeof type === 'string'){
             return {value: value, type: type};
+        }else{
+            return {error: 'Invalid input format'}
         }
     }
 }
