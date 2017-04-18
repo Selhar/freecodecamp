@@ -8,7 +8,11 @@ suite('Unit testing', () => {
   
   suite('Sanitization', () => {
     test('Validate input', (done) => {
-      assert.equal(converter.validateInput('1gal'), true);
+      
+      for(type of converter.conversion_types){
+        assert.equal(converter.validateInput('1'+type), true);
+      }
+
       assert.equal(converter.validateInput('gal1'),true);
       assert.equal(converter.validateInput('gal'), false);
       assert.equal(converter.validateInput('1'), false);
