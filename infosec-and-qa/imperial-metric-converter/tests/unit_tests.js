@@ -6,13 +6,13 @@ converter = new converter();
 
 suite('Unit testing', () => {
   suite('Input processing', () => {
-    test('Typeof', (done) => {
+    test('Expected data types', (done) => {
       assert.typeOf(converter.processInput('1gal'), 'object');
       assert.typeOf(converter.processInput('1gal').value, 'number');
       assert.typeOf(converter.processInput('1gal').type, 'string');
       done();
     });
-    test('Object returned', function(done) {
+    test('Expected object values', (done) => {
       assert.deepEqual(converter.processInput('1gal'), {value: 1, type: 'gal'});
       assert.deepEqual(converter.processInput('1lbs'), {value: 1, type: 'lbs'});
       assert.deepEqual(converter.processInput('1mi'),  {value: 1, type: 'mi'});
@@ -21,5 +21,11 @@ suite('Unit testing', () => {
       assert.deepEqual(converter.processInput('1km'),  {value: 1, type: 'km'});
       done();
     }); 
+    test('Expected invalid input', (done) => {
+      assert.equal(converter.processInput('x'),   {error: 'Invalid input format'});
+      assert.equal(converter.processInput('1'),   {error: 'Invalid input format'});
+      assert.equal(converter.processInput('km'),  {error: 'Invalid input format'});
+      assert.equal(converter.processInput('km5'), {error: 'Invalid input format'});
+    });
   });
 });

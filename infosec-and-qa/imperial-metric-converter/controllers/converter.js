@@ -7,7 +7,9 @@ function converter (){
         const value = Number(input.replace(/\D/g,''));
         const type = input.match(/\D/g).join('');
 
-        return {value: value, type: type};
+        if(typeof value === 'number' && typeof type === 'string'){
+            return {value: value, type: type};
+        }
     }
 }
 
