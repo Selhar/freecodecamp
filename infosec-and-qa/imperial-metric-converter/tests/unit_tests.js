@@ -8,11 +8,13 @@ suite('Unit testing', () => {
   
   suite('Sanitization', () => {
     test('Validate input', (done) => {
-      assert.equal(converter.validateInput('1gal'), '1gal');
-      assert.deepEqual(converter.validateInput('gal1'), converter.error);
-      assert.deepEqual(converter.validateInput('gal'), converter.error);
-      assert.deepEqual(converter.validateInput('1'), converter.error)
-      assert.deepEqual(converter.validateInput(1), converter.error);
+      assert.equal(converter.validateInput('1gal'), true);
+      assert.equal(converter.validateInput('gal1'),true);
+      assert.equal(converter.validateInput('gal'), false);
+      assert.equal(converter.validateInput('1'), false);
+      assert.equal(converter.validateInput('-1'), false);
+      assert.equal(converter.validateInput(1), false);
+      done();
     });
   });
 
@@ -35,10 +37,11 @@ suite('Unit testing', () => {
     }); 
     
     test('Expected invalid inputs', (done) => {
-      // assert.deepEqual(converter.processInput('x'),   converter.error);
-      // assert.deepEqual(converter.processInput('1'),   converter.error);
-      // assert.deepEqual(converter.processInput('km'),  converter.error);
-      // assert.deepEqual(converter.processInput('km5'), converter.error);
+      // assert.deepEqual(converter.processInput('x'),   converter.input_format_error);
+      // assert.deepEqual(converter.processInput('1'),   converter.input_format_error);
+      // assert.deepEqual(converter.processInput('km'),  converter.input_format_error);
+      // assert.deepEqual(converter.processInput('km5'), converter.input_format_error);
+      done();
     });
   });
 });
