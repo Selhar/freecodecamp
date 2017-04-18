@@ -4,7 +4,10 @@ function converter (){
     const miToKm = 1.60934;
     
     this.processInput = (input) => {
-        
+        const value = input.replace(/\D/g,'');
+        const type = input.find(/\D/g);
+
+        return {value: value, type: type};
     }
 }
 
