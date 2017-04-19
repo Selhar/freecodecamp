@@ -60,10 +60,10 @@ suite('Unit testing', () => {
       assert.deepEqual(converter.convert('10.5mi'), 
       {"initNum":"10.5","initUnit":"mi","returnNum":16.89807,"returnUnit":"km","string":"10.5 miles converts to 16.89807 kilometers"});
 
-      assert.deepEqual(converter.convert('105li'), 
+      assert.deepEqual(converter.convert('105l'), 
       {"initNum":"105","initUnit":"l","returnNum":27.738078570088838,"returnUnit":"gal","string":"105 liters converts to 27.73808 gallons"});
 
-      assert.deepEqual(converter.convert('105.3li'), 
+      assert.deepEqual(converter.convert('105.3l'), 
       {"initNum":"105.3","initUnit":"l","returnNum":27.817330223146236,"returnUnit":"gal","string":"105.3 liters converts to 27.81733 gallons"});
 
       assert.deepEqual(converter.convert('10.2kg'), 
