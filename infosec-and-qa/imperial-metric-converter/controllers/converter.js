@@ -10,17 +10,20 @@ class Converter {
         if(typeof input !== 'string')
             return this.error.invalid_input;
 
-        let value = input.match(/\d+/g);
+        let value = input.match(/-?\d+/g);
         let type = input.match(/[a-zA-Z]/g);
-
-        value = Number(value) > 0 ? Number(value) : null;
         
+        if(value)
+            value = Number(value) > 0 ? Number(value) : null;
+        if(type)
+            type = this.conversion_types.indexOf(type.join('')) >= 0 ? type.join('') : null;
+
         if(!value && !type)
             return this.error.invalid_input;
         else if(!value)
             return this.error.invalid_number;
-        else if(!type || this.conversion_types.indexOf(type.join('') <= 0))
-            return this.conversion_types.indexOf(type.join('') <= 0);
+        else if(!type)
+            return this.error.invalid_unit;
 
         return true;
 

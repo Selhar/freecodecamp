@@ -13,11 +13,11 @@ suite('Unit testing', () => {
         assert.equal(converter.isInputValid(input), true, "Testing against all valid types of input, current input is '"+input+"'");
       }
       assert.equal(converter.isInputValid('gal1'), true, "valid input");
-      assert.equal(converter.isInputValid('gal'), converter.error.invalid_number, "valid text, no number");
-      assert.equal(converter.isInputValid('1test'), converter.error.invalid_unit, "valid number, invalid text");
-      assert.equal(converter.isInputValid('1'), converter.error.invalid_unit, "valid number, no text");
-      assert.equal(converter.isInputValid('-1'), converter.error.invalid_input, "invalid number, no text");
-      assert.equal(converter.isInputValid(1), converter.error.invalid_input, "not a string");
+      assert.equal(converter.isInputValid('gal'), converter.error.invalid_number, "no number, input is 'gal'");
+      assert.equal(converter.isInputValid('1test'), converter.error.invalid_unit, "invalid unit type, input is '1test'");
+      assert.equal(converter.isInputValid('1'), converter.error.invalid_unit, "inexistent unit type, input is '1'");
+      assert.equal(converter.isInputValid('-1'), converter.error.invalid_input, "invalid number, inexistent unit type, input is '-1'");
+      assert.equal(converter.isInputValid(1), converter.error.invalid_input, "number 1, not a string");
       done();
     });
   });
