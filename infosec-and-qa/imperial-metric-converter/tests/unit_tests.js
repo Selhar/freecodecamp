@@ -9,14 +9,15 @@ suite('Unit testing', () => {
     test('Validate input', (done) => {
       
       for(type of converter.conversion_types){
-        assert.equal(converter.isInputValid('1'+type), true);
+        let input = '1'+type;
+        assert.equal(converter.isInputValid(input), true, "Testing against all valid types of input, current input is '"+input+"'");
       }
-
-      assert.equal(converter.isInputValid('gal1'),true);
-      assert.equal(converter.isInputValid('gal'), false);
-      assert.equal(converter.isInputValid('1'), false);
-      assert.equal(converter.isInputValid('-1'), false);
-      assert.equal(converter.isInputValid(1), false);
+      assert.equal(converter.isInputValid('gal1'), true, "valid input");
+      assert.equal(converter.isInputValid('gal'), converter.error.invalid_number, "valid text, no number");
+      assert.equal(converter.isInputValid('1test'), converter.error.invalid_unit, "valid number, invalid text");
+      assert.equal(converter.isInputValid('1'), converter.error.invalid_unit, "valid number, no text");
+      assert.equal(converter.isInputValid('-1'), converter.error.invalid_input, "invalid number, no text");
+      assert.equal(converter.isInputValid(1), converter.error.invalid_input, "not a string");
       done();
     });
   });
