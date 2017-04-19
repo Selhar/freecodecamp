@@ -20,7 +20,7 @@ class Converter {
         value = Number(value);
         type = type.join('');
 
-        if(value <= 0 || conversion_types.indexOf(type) < 0)
+        if(value <= 0 || this.conversion_types.indexOf(type) < 0)
             return false;
 
         return true;
