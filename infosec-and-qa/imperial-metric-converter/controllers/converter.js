@@ -1,8 +1,37 @@
 class Converter {
   constructor() {
-    this.galToL = 3.78541;
-    this.lbsToKg = 0.45359237;
-    this.miToKm = 1.60934;
+    this.conversion_values = {
+      "gal": {
+        to: "l",
+        ratio: 3.79,
+        string: "gallon(s)"
+      },
+      "l": {
+        to: "gal",
+        ratio: 0.26,
+        string: "liter(s)"
+      },
+      "lbs": {
+        to: "kg",
+        ratio: 0.45,
+        string: "pound(s)"
+      },
+      "kg": {
+        to: "lbs",
+        ratio: 2.20,
+        string: "kilo(s)"
+      },
+      "mi": {
+        to: "km",
+        ratio: 1.61,
+        string: "mile(s)"
+      },
+      "km": {
+        to: "mi",
+        ratio: 0.62,
+        string: "kilometer(s)"
+      }
+    }    
     this.error = { invalid_number: 'Invalid number', invalid_unit: "Invalid unit", invalid_input: "Invalid number and unit" };
     this.conversion_types = ['mi', 'km', 'lbs', 'kg', 'l', 'gal'];
   }
@@ -39,6 +68,25 @@ class Converter {
     let type = input.match(/[a-zA-Z]/g).join('');
 
     return {value: value, type: type};
+  }
+
+  convert(input){
+    const processed_input = processInput(input);
+    const conversion_object = this.conversion_values[processed_input.type];
+    const value = processed_input.value;
+    const type = processed_input.type;
+
+    const output = {
+      initNum: value,
+      initUnit: type,
+      returnNum: value * conversion_object.ratio,
+      returnUnit: conversion_object.to,
+      string: value + " " + conversion_object.string 
+                    + " converts to " + value & conversion_object.ratio 
+                    + " " + this.conversion_values[conversion_object.to].string
+    }
+
+    return output;
   }
 
 }
