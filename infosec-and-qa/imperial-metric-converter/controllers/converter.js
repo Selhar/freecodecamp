@@ -1,16 +1,12 @@
-function converter (){
-    const galToL = 3.78541;
-    const lbsToKg = 0.45359237;
-    const miToKm = 1.60934;
-    this.error = {input_format_error: 'Invalid input format'};
-    this.conversion_types = ['mi', 'km', 'lbs', 'kg','l', 'gal'];
-
-    this.processInput = (input) => {
-        if(!this.isInputValid(input))
-            return this.error.input_format_error;
-        
+class Converter {
+    constructor(){
+        this.galToL = 3.78541;
+        this.lbsToKg = 0.45359237;
+        this.miToKm = 1.60934;
+        this.error = {invalid_number: 'Invalid number', invalid_unit: "Invalid input", invalid_input: "Invalid number and unit"};
+        this.conversion_types = ['mi', 'km', 'lbs', 'kg','l', 'gal'];
     }
-    this.isInputValid = (input) => {
+    isInputValid(input){
 
         if(typeof input !== 'string')
             return false;
@@ -24,12 +20,19 @@ function converter (){
         value = Number(value);
         type = type.join('');
 
-        if(value <= 0 || this.conversion_types.indexOf(type) < 0)
+        if(value <= 0 || conversion_types.indexOf(type) < 0)
             return false;
 
         return true;
 
     }
+
+    processInput(input){
+        if(!this.isInputValid(input))
+            return this.error.input_format_error;
+        
+    }
+
 }
 
-module.exports = converter;
+module.exports = Converter;

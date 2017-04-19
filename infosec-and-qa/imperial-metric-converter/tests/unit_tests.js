@@ -1,7 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
 let converter = require('../controllers/converter');
-
 converter = new converter();
 
 suite('Unit testing', () => {
@@ -46,6 +45,14 @@ suite('Unit testing', () => {
       assert.deepEqual(converter.processInput('km'),  converter.error.input_format_error);
       assert.deepEqual(converter.processInput('km5'), converter.error.input_format_error);
       done();
+    });
+  });
+  suite('Output processing', () => {
+    test('Expected data types', (done) => {
+          // assert.typeOf(converter.processInput('1gal'), 'object');
+          // assert.typeOf(converter.processInput('5lbs').value, 'number');
+          // assert.typeOf(converter.processInput('114km').type, 'string');
+          done();
     });
   });
 });
