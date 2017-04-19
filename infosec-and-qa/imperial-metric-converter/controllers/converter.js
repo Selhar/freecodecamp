@@ -20,7 +20,7 @@ class Converter {
         else if(!value)
             return this.error.invalid_number;
         else if(!type || this.conversion_types.indexOf(type.join('') <= 0))
-            return this.error.invalid_unit;
+            return this.conversion_types.indexOf(type.join('') <= 0);
 
         return true;
 
