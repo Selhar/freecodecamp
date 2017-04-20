@@ -1,7 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
 let converter = require('../controllers/converter');
-converter = new converter();
 
 suite('Unit testing', () => {
   
