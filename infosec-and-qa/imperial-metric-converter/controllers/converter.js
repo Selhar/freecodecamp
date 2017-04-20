@@ -88,5 +88,5 @@ exports.convert = (request, response) => {
                   + " " + final_string
   }
 
-  return output;
+  return response.json(output);
 }
