@@ -40,7 +40,7 @@ class Converter {
     if (typeof input !== 'string')
       return this.error.invalid_input;
 
-    let value = input.match(/-?\d+/g);
+    let value = input.match(/-?\d+.?\d?/g);
     let type = input.match(/[a-zA-Z]/g);
 
     if (value)
@@ -64,26 +64,29 @@ class Converter {
     if (!isInputValid)
       return isInputValid;
         
-    let value = Number(input.match(/-?\d+/g));
+    let value = Number(input.match(/-?\d+.?\d+/g));
     let type = input.match(/[a-zA-Z]/g).join('');
 
     return {value: value, type: type};
   }
 
   convert(input){
-    const processed_input = processInput(input);
+    const processed_input = this.processInput(input);
     const conversion_object = this.conversion_values[processed_input.type];
-    const value = processed_input.value;
-    const type = processed_input.type;
+    const initial_value = processed_input.value;
+    const final_value = initial_value * conversion_object.ratio;
+    const initial_type = processed_input.type;
+    const final_type = conversion_object.to
+    const final_string = this.conversion_values[final_type].string;
 
     const output = {
-      initNum: value,
-      initUnit: type,
-      returnNum: value * conversion_object.ratio,
-      returnUnit: conversion_object.to,
-      string: value + " " + conversion_object.string 
-                    + " converts to " + value & conversion_object.ratio 
-                    + " " + this.conversion_values[conversion_object.to].string
+      initNum: initial_value.toString(),
+      initUnit: initial_type,
+      returnNum: final_value,
+      returnUnit: final_type,
+      string: initial_value + " " + conversion_object.string 
+                    + " converts to " + final_value
+                    + " " + final_string
     }
 
     return output;

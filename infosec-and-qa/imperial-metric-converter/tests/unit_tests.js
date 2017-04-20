@@ -9,7 +9,7 @@ suite('Unit testing', () => {
     test('Validate input', (done) => {
       
       for(type of converter.conversion_types){
-        let input = '1'+type;
+        let input = '1.5'+type;
         assert.equal(converter.isInputValid(input), true, "Testing against all valid types of input, current input is '"+input+"'");
       }
       assert.equal(converter.isInputValid('gal1'), true, "valid input");
@@ -37,6 +37,12 @@ suite('Unit testing', () => {
       assert.deepEqual(converter.processInput('1l'),   {value: 1, type: 'l'});
       assert.deepEqual(converter.processInput('1kg'),  {value: 1, type: 'kg'});
       assert.deepEqual(converter.processInput('1km'),  {value: 1, type: 'km'});
+      assert.deepEqual(converter.processInput('1.5gal'), {value: 1.5, type: 'gal'});
+      assert.deepEqual(converter.processInput('1.5lbs'), {value: 1.5, type: 'lbs'});
+      assert.deepEqual(converter.processInput('1.5mi'),  {value: 1.5, type: 'mi'});
+      assert.deepEqual(converter.processInput('1.5l'),   {value: 1.5, type: 'l'});
+      assert.deepEqual(converter.processInput('1.5kg'),  {value: 1.5, type: 'kg'});
+      assert.deepEqual(converter.processInput('1.5km'),  {value: 1.5, type: 'km'});
       done();
     }); 
   });
