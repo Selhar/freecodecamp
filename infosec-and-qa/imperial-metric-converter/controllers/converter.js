@@ -19,7 +19,7 @@ class Converter {
       "kg": {
         to: "lbs",
         ratio: 2.20,
-        string: "kilo(s)"
+        string: "kilogram(s)"
       },
       "mi": {
         to: "km",
@@ -40,7 +40,7 @@ class Converter {
     if (typeof input !== 'string')
       return this.error.invalid_input;
 
-    let value = input.match(/-?\d\.?\d?/g);
+    let value = input.match(/-?\d+\.?\d?/g);
     let type = input.match(/[a-zA-Z]/g);
 
     if (value)
@@ -64,7 +64,7 @@ class Converter {
     if (!isInputValid)
       return isInputValid;
         
-    let value = Number(input.match(/-?\d\.?\d?/g));
+    let value = Number(input.match(/-?\d+\.?\d?/g));
     let type = input.match(/[a-zA-Z]/g).join('');
 
     return {value: value, type: type};
