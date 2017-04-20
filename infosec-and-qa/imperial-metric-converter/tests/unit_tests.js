@@ -52,7 +52,7 @@ suite('Unit testing', () => {
       {"initNum":"4","initUnit":"gal","returnNum":15.16,"returnUnit":"l","string":"4 gallon(s) converts to 15.16 liter(s)"});
       
       assert.deepEqual(converter.convert('4.5gal'), 
-      {"initNum":"4.5","initUnit":"gal","returnNum":17.55,"returnUnit":"l","string":"4.5 gallon(s) converts to 17.055 liter(s)"});
+      {"initNum":"4.5","initUnit":"gal","returnNum":17.055,"returnUnit":"l","string":"4.5 gallon(s) converts to 17.055 liter(s)"});
       
       assert.deepEqual(converter.convert('5km'), 
       {"initNum":"5","initUnit":"km","returnNum":3.1,"returnUnit":"mi","string":"5 kilometer(s) converts to 3.1 mile(s)"});
