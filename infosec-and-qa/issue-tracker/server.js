@@ -3,6 +3,9 @@ const server = express();
 const root = process.cwd();
 const helmet = require('helmet');
 const body_parser = require('body-parser');
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/issuetracker");
 
 server.use(helmet());
 server.use('/public', express.static(root + '/public'));
