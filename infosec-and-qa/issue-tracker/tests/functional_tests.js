@@ -7,7 +7,16 @@ const converter = require('../controllers/projects');
 chai.use(chai_http);
 
 suite('Functional testing', () => {
-  suite('Output processing', () => {
+  suite('Creating a new issue', () => {
+    
+  });
+  suite('Deleting an issue', () => {
+    
+  });
+  suite('Updating an issue', () => {
+    
+  });
+  suite('Fetching an issue', () => {
     
   });
 });
