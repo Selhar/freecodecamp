@@ -1,11 +1,17 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const Project = require('./project');
 
-// const Exercises = new Schema({
-//   description: { type: String, required: true },
-//   duration: { type: Number, required: true},
-//   date: { type: Date, default: Date.now },
-//   _user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
-// });
+const Issue = new Schema({
+  title: { type: String, required: true },
+  text: { type: String, required: true },
+  creation: { date: Date, default: Date.now },
+  author: { type: String },
+  assignee: { type: String },
+  open: { type: Boolean },
+  status: { type: String },
+  _project: { type: Schema.Types.ObjectId, ref: 'Project', required: true }
+});
 
-// module.exports = mongoose.model('Exercises', Exercises)
+module.exports = mongoose.model('Issue', Issue)
+  
