@@ -8,6 +8,7 @@
     "test": "mocha --ui tdd tests/*.js"
   },
   "dependencies": {
+    "async": "^2.3.0",
     "body-parser": "^1.17.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",

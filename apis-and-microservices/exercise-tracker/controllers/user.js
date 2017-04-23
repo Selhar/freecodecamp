@@ -15,7 +15,6 @@ exports.add_user = (request, response) => {
                 }
             });
         }, function saveUser(callback){
-            console.log(request.body+"\n");
             let new_user = new UserModel({
                 username: request.body.username
             });
