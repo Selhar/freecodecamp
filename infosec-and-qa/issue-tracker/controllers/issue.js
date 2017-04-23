@@ -5,13 +5,13 @@ const waterfall = require("async/waterfall");
 exports.create = (request, response) => {
     waterfall([ 
         function isProjectInDB(callback){
-            ProjectModel.findOne( {name: request.param.project}, (error, project) =>{
+            ProjectModel.findOne( {name: request.params.project}, (error, project) =>{
                 if(error){
                     return callback(error);
                 }else if(project){
-                    return callback(null, false, project);
+                    return callback(null, true, project);
                 }else{
-                    return callback(null, true, null);
+                    return callback(null, false, null);
                 }
             });
         }, function saveProject(isProjectInDB, project, callback){
@@ -19,7 +19,7 @@ exports.create = (request, response) => {
               return callback(null, project);
             }else{
               let new_project = new ProjectModel({
-                  name: request.param.project
+                  name: request.params.project
               });
               new_project.save((error) => {
                   if(error){
@@ -40,6 +40,8 @@ exports.create = (request, response) => {
               status: request.body.status,
               _project: project._id
             }
+
+            return callback(null, issue_object);
         }   
     ], done);
 
@@ -59,7 +61,7 @@ exports.create = (request, response) => {
     //     }else if(project){
     //       return callback(null, false, project._id);
     //     }else{
-    //       return callback(null, true, request.param.project);          
+    //       return callback(null, true, request.params.project);          
     //     }
     //   });
     // }, function create_project(isProjectInDB, project_name, callback){
