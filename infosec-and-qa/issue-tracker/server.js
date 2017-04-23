@@ -4,6 +4,7 @@ const root = process.cwd();
 const helmet = require('helmet');
 const body_parser = require('body-parser');
 const mongoose = require('mongoose');
+const issue = require('./controllers/issue');
 
 mongoose.connect("mongodb://localhost:27017/issuetracker");
 
@@ -16,10 +17,10 @@ server.get('/', (request, response) => {
     response.render(root + '/views/index.ejs');
 });
 
-server.POST('/api/issues/:project/:title/:text/:author/:assignee?/:status?', TODO.temp);
-server.PUT('/api/issues/:project/:title?/:text?/:author?/:assignee?/:status?', TODO.temp);
-server.DELETE('/api/issues/:project/:id', TODO.tempo);
-server.get('/api/issues/:project/:title?/:text?/:author?/:assignee?/:status?', TODO.temp);
+server.post('/api/issues/:project', issue.create);
+// server.put('/api/issues/:project', TODO.temp);
+// server.delete('/api/issues/:project/:id', TODO.tempo);
+// server.get('/api/issues/:project', TODO.temp);
 
 
 server.get('*', (request, response) => {

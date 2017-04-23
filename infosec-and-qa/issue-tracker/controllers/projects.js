@@ -1,4 +1,0 @@
-exports.conversion_values = {
-  
-  
-}

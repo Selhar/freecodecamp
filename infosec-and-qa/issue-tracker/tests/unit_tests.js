@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
-let converter = require('../controllers/projects');
+const issue = require('../controllers/issue');
 
 suite('Unit testing', () => {
   suite('Input sanitization', () => {
