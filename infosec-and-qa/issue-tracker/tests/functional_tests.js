@@ -25,22 +25,22 @@ suite('Functional testing', () => {
         assert.property(response.body, 'assignee');
         assert.property(response.body, 'status');
 
-        assert.equal(response.body.title, dummy_data.title);
-        assert.equal(response.body.text, dummy_data.text);
-        assert.equal(response.body.author, dummy_data.author);
-        assert.equal(response.body.assignee, dummy_data.assignee);
-        assert.equal(response.body.status, dummy_data.status);
+        assert.deepEqual(response.body.title, dummy_data.title);
+        assert.deepEqual(response.body.text, dummy_data.text);
+        assert.deepEqual(response.body.author, dummy_data.author);
+        assert.deepEqual(response.body.assignee, dummy_data.assignee);
+        assert.deepEqual(response.body.status, dummy_data.status);
         done();
       });   
     });
   });
-  suite('Deleting an issue', () => {
-    
-  });
-  suite('Updating an issue', () => {
-    
-  });
-  suite('Fetching an issue', () => {
-    
-  });
+  // suite('Deleting an issue', () => {
+    // 
+  // });
+  // suite('Updating an issue', () => {
+    // 
+  // });
+  // suite('Fetching an issue', () => {
+    // 
+  // });
 });
