@@ -1,48 +1,58 @@
 const mongoose = require('mongoose');
 const ProjectModel = require('../models/project');
 const waterfall = require("async/waterfall");
+const IssueModel = require('../models/issue');
 
 exports.create = (request, response) => {
     waterfall([ 
-        function isProjectInDB(callback){
-            ProjectModel.findOne( {name: request.params.project}, (error, project) =>{
+      function isProjectInDB(callback){
+
+        ProjectModel.findOne( {name: request.params.project}, (error, project) =>{
+          if(error){
+              return callback(error);
+          }else if(project){
+              return callback(null, true, project);
+          }else{
+              return callback(null, false, null);
+          }
+        });
+      }, function saveProject(isProjectInDB, project, callback){
+
+          if(isProjectInDB){
+            return callback(null, project);
+          }else{
+            let new_project = new ProjectModel({
+                name: request.params.project
+            });
+            new_project.save((error) => {
                 if(error){
                     return callback(error);
-                }else if(project){
-                    return callback(null, true, project);
-                }else{
-                    return callback(null, false, null);
                 }
+                return callback(null, new_project);
             });
-        }, function saveProject(isProjectInDB, project, callback){
-            if(isProjectInDB){
-              return callback(null, project);
-            }else{
-              let new_project = new ProjectModel({
-                  name: request.params.project
-              });
-              new_project.save((error) => {
-                  if(error){
-                      return callback(error);
-                  }
-                  return callback(null, new_project);
-              });
-            }
-        }, function create_issue(project, callback){
-            const issue_object = {
-              title: request.body.title,
-              text: request.body.text,
-              creation_date: request.body.creation_date,
-              latest_update: request.body.latest_update,
-              author: request.body.author,
-              assignee: request.body.assignee,
-              isOpen: true,
-              status: request.body.status,
-              _project: project._id
-            }
+          }
+      }, function create_issue(project, callback){
 
-            return callback(null, issue_object);
-        }   
+          const issue_object = {
+            title: request.body.title,
+            text: request.body.text,
+            author: request.body.author,
+            status: request.body.status,
+            assignee: request.body.assignee,
+            latest_update: null,
+            isOpen: true,
+            _project: project._id
+          }
+
+          const issue = new IssueModel(issue_object);
+
+          issue.save((error) => {
+            if(error)
+              return callback(error);
+            else
+              return callback(null, issue);
+          });
+      }   
     ], done);
 
     function done(error, result) {
@@ -53,40 +63,3 @@ exports.create = (request, response) => {
         return response.json(result);
     }
 }
-
-// function is_project_in_db(callback){
-    //   ProjectModel.findOne( {_id: request.body._project}, (error, project) => {
-    //     if(error){
-    //       return callback(error);
-    //     }else if(project){
-    //       return callback(null, false, project._id);
-    //     }else{
-    //       return callback(null, true, request.params.project);          
-    //     }
-    //   });
-    // }, function create_project(isProjectInDB, project_name, callback){
-
-    //     if(isProjectInDB){
-    //       return callback(null);
-    //     }else{
-    //       const project = new ProjectModel({name: project_name});
-    //       project.save((error) => {
-    //         if(error){
-    //           return callback(error);
-    //         }else
-    //         return callback(null, project._id);
-    //       });
-    //     }
-    // }, function create_issue_model(project, callback){
-    
-    //     const issue_object = {
-    //       title: request.body.title,
-    //       text: request.body.text,
-    //       creation_date: request.body.creation_date,
-    //       latest_update: request.body.latest_update,
-    //       author: request.body.author,
-    //       assignee: request.body.assignee,
-    //       isOpen: true,
-    //       status: request.body.status,
-    //       _project: project._id
-    //     }
