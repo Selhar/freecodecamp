@@ -4,7 +4,7 @@ const assert = chai.assert;
 const server = require('../server');
 
 chai.use(chai_http);
-const project_id = "";
+let project_id = "";
 
 suite('Functional testing', () => {
   suite('Creating a new issue', () => {
