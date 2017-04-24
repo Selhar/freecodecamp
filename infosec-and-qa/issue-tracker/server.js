@@ -4,7 +4,7 @@ const root = process.cwd();
 const helmet = require('helmet');
 const body_parser = require('body-parser');
 const mongoose = require('mongoose');
-const issue = require('./controllers/issue');
+const issue = require('./controllers/issue/index');
 
 mongoose.connect("mongodb://localhost:27017/issuetracker");
 
