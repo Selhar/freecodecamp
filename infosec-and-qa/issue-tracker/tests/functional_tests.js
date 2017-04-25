@@ -85,8 +85,9 @@ suite('Functional testing', () => {
       });
     });
     test('search with parameters', (done) => {
-      chai.request(server).get('/api/issues/test/').query({status: 'hi', isOpen: true}).end( (error, response) => {
-        assert.deepEqual(response.body.author, 'Fenthick moss');
+      chai.request(server).get('/api/issues/test/').query({status: 'Looking for aribeth', isOpen: true}).end( (error, response) => {
+        assert.deepEqual(response.body[0].author, 'Fenthick Moss');
+        done();
       });
     });
   });

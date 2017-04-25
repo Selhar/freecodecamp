@@ -19,7 +19,7 @@ exports.fetch = (request, response) => {
             let query = request.query;
             query._project = project._id;
             IssueModel.find(query).exec((error, issues) => {
-                console.log(issues);
+                return callback(null, issues);
             });
       }
     ], done);
@@ -29,6 +29,6 @@ exports.fetch = (request, response) => {
             console.log('\n\n\n **** error ***** \n\n\n'+error+'\n\n\n');
             return response.send(error);
         }
-        return response.send(result);
+        return response.json(result);
     }
 }
