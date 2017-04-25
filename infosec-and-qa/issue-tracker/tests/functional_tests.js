@@ -2,6 +2,7 @@ const chai_http = require('chai-http');
 const chai = require('chai');
 const assert = chai.assert;
 const server = require('../server');
+const ObjectID = require('mongodb').ObjectID;
 
 chai.use(chai_http);
 let project_id = "";
@@ -40,24 +41,22 @@ suite('Functional testing', () => {
       const new_status = "Looking for aribeth";
       const isOpen = false;
       chai.request(server).put('/api/issues/test').send({new_issue: {_id: project_id, status: new_status, open: isOpen}}).end((error, response) => {
-        assert.equal(res.status, 200);
-        assert.equal(res.text, 'successfully updated');
-        assert.deepEqual(response.body.status, new_status);
-        assert.deepEqual(response.body.open, isOpen);
+        assert.equal(response.status, 200);
+        assert.equal(response.text, 'successfully updated');
         done();
       });   
     });
     test('Updating with no parameters', function(done) {
-      chai.request(server).put('/api/issues/test').send({_id: project_id}).end( (error, res) => {
-        assert.equal(res.status, 200);
-        assert.equal(res.text, 'no updated field sent');
+      chai.request(server).put('/api/issues/test').send({new_issue: {_id: project_id}}).end( (error, response) => {
+        assert.equal(response.status, 200);
+        assert.equal(response.text, 'no fields were provided for update');
         done();
       });        
     });
     test('Updating with inexistent ID', function(done) {
-      chai.request(server).put('/api/issues/test').send({_id: 'inexistent_id'}).end( (error, res) => {
-        assert.equal(res.status, 200);
-        assert.equal(res.text, 'no updated field sent');
+      chai.request(server).put('/api/issues/test').send({new_issue: {_id: new ObjectID("00feb000000d00000c0c0000"), status: "hi"}}).end( (error, response) => {
+        assert.equal(response.status, 200);
+        assert.equal(response.text, 'issue does not exist');
         done();
       });        
     });

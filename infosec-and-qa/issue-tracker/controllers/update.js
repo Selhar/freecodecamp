@@ -16,15 +16,24 @@ exports.update = (request, response) => {
               return done("project does not exist");
           }
         });
-      }, function isIssueInDB(callback){
-            let issue = new IssueModel(request.body.new_issue);
-            issue.findOneAndUpdate({_id:issue._id}, {$set: request.body.new_issue}, (error) => {
-                if(error){
-                    callback("could not update");
-                }else{
-                    callback(null, "successfully updated")
-                }
-            });
+      }, function updateIssue(callback){
+            let update_parameters = request.body.new_issue;
+            console.log(update_parameters);
+            if(Object.keys(update_parameters).length > 1){
+                update_parameters.latest_update = Date.now();
+                IssueModel.findOneAndUpdate({_id: update_parameters._id}, {$set: update_parameters}, (error, data) => {
+                    if(error){
+                        console.log(error);
+                        callback("could not update");
+                    }else if(data){
+                        callback(null, "successfully updated")
+                    }else{
+                        callback("issue does not exist");
+                    }
+                });
+            }else{
+                callback("no fields were provided for update");
+            }
       }
     ], done);
 
