@@ -39,7 +39,7 @@ suite('Functional testing', () => {
     test('Existing issue update', (done) => {
       const new_status = "Looking for aribeth";
       const isOpen = false;
-      chai.request(server).put('/api/issues/test').send({_id: project_id, status: new_status, open: isOpen}).end((error, response) => {
+      chai.request(server).put('/api/issues/test').send({new_issue: {_id: project_id, status: new_status, open: isOpen}}).end((error, response) => {
         assert.equal(res.status, 200);
         assert.equal(res.text, 'successfully updated');
         assert.deepEqual(response.body.status, new_status);

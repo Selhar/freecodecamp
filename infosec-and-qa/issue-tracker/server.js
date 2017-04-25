@@ -18,7 +18,7 @@ server.get('/', (request, response) => {
 });
 
 server.post('/api/issues/:project', issue.create);
-// server.put('/api/issues/:project', TODO.temp);
+server.put('/api/issues/:project', issue.update);
 // server.delete('/api/issues/:project/:id', TODO.tempo);
 // server.get('/api/issues/:project', TODO.temp);
 
