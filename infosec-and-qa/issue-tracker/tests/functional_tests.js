@@ -64,7 +64,7 @@ suite('Functional testing', () => {
   suite('Fetching an issue', () => {
     test('Inexistent project', (done) => {
       const project_name = 'dqnw1o2k3jnj1l';
-      chai.request(server).get('/api/issues/'+name).end( (error, response) => {
+      chai.request(server).get('/api/issues/'+project_name).end( (error, response) => {
         assert.equal(response.text, 'there are no projects with the name '+project_name);
         done();
       })

@@ -18,7 +18,6 @@ exports.update = (request, response) => {
         });
       }, function updateIssue(callback){
             let update_parameters = request.body.new_issue;
-            console.log(update_parameters);
             if(Object.keys(update_parameters).length > 1){
                 update_parameters.latest_update = Date.now();
                 IssueModel.findOneAndUpdate({_id: update_parameters._id}, {$set: update_parameters}, (error, data) => {

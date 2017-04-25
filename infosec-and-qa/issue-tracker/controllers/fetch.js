@@ -12,11 +12,15 @@ exports.fetch = (request, response) => {
                 }else if(project){
                     return callback(null, project);
                 }else{
-                    return done("project does not exist");
+                    return done("there are no projects with the name "+request.params.project);
                 }
             });
       }, function fetchQuery(project, callback){
-
+            let query = request.query;
+            query._project = project._id;
+            IssueModel.find(query).toArray((error, issues) => {
+                console.log(issues);
+            });
       }
     ], done);
 
