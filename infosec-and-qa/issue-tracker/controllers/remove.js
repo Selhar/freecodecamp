@@ -22,9 +22,7 @@ exports.remove = (request, response) => {
                 if(error)
                     return callback(error)
                 else if (issue)
-                    return callback(null, issue);
-                else
-                    return callback(null, id);
+                    return callback(null, issue._id);
             });
       }
     ], done);
@@ -34,6 +32,6 @@ exports.remove = (request, response) => {
             console.log('\n\n\n **** error ***** \n\n\n'+error+'\n\n\n');
             return response.send(error);
         }
-        return response.send('deleted issue of id ' + id);
+        return response.send('deleted issue of id: ' + result);
     }
 }

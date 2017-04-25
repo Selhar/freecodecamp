@@ -97,6 +97,7 @@ suite('Functional testing', () => {
     test('deleted data', (done) => {
       chai.request(server).delete('/api/issues/test').send({id: issue_id}).end((error, response) => {
         assert.equal(response.text, 'deleted issue of id: '+issue_id);
+        done();
       });
     });
   });

@@ -20,7 +20,7 @@ server.get('/', (request, response) => {
 server.post('/api/issues/:project', issue.create);
 server.put('/api/issues/:project', issue.update);
 server.get('/api/issues/:project', issue.fetch);
-server.delete('/api/issues/:project/:id', issue.remove);
+server.delete('/api/issues/:project', issue.remove);
 
 
 
