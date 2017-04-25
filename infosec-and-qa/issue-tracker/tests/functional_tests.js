@@ -61,9 +61,35 @@ suite('Functional testing', () => {
       });        
     });
   });
-  // suite('Fetching an issue', () => {
-    // 
-  // });
+  suite('Fetching an issue', () => {
+    test('Inexistent project', (done) => {
+      const project_name = 'dqnw1o2k3jnj1l';
+      chai.request(server).get('/api/issues/'+name).end( (error, response) => {
+        assert.equal(response.text, 'there are no projects with the name '+project_name);
+        done();
+      })
+    });
+    test('Broad search for a whole project', (done) => {
+      chai.request(server).get('/api/issues/test').end( (error, response) => {
+        assert.isArray(response.body);
+        assert.property(response.body[0], 'title');
+        assert.property(response.body[0], 'text');
+        assert.property(response.body[0], 'creation_date');
+        assert.property(response.body[0], 'latest_update');
+        assert.property(response.body[0], 'author');
+        assert.property(response.body[0], 'assignee');
+        assert.property(response.body[0], 'isOpen');
+        assert.property(response.body[0], 'status');
+        assert.property(response.body[0], '_project');
+        done();
+      });
+    });
+    test('search with parameters', (done) => {
+      chai.request(server).get('/api/issues/test/').query({status: 'hi', isOpen: true}).end( (error, response) => {
+        assert.deepEqual(response.body.author, 'Fenthick moss');
+      });
+    });
+  });
   // suite('Deleting an issue', () => {
     // 
   // });
