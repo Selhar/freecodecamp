@@ -6,6 +6,7 @@ const ObjectID = require('mongodb').ObjectID;
 
 chai.use(chai_http);
 let project_id = "";
+let issue_id = "";
 
 suite('Functional testing', () => {
   suite('Creating a new issue', () => {
@@ -87,11 +88,16 @@ suite('Functional testing', () => {
     test('search with parameters', (done) => {
       chai.request(server).get('/api/issues/test/').query({status: 'Looking for aribeth', isOpen: true}).end( (error, response) => {
         assert.deepEqual(response.body[0].author, 'Fenthick Moss');
+        issue_id = response.body[0]._id;
         done();
       });
     });
   });
-  // suite('Deleting an issue', () => {
-    // 
-  // });
+  suite('Deleting an issue', () => {
+    test('deleted data', (done) => {
+      chai.request(server).delete('/api/issues/test').send({id: issue_id}).end((error, response) => {
+        assert.equal(response.text, 'deleted issue of id: '+issue_id);
+      });
+    });
+  });
 });
