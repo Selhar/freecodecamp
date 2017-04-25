@@ -86,7 +86,7 @@ suite('Functional testing', () => {
       });
     });
     test('search with parameters', (done) => {
-      chai.request(server).get('/api/issues/test/').query({status: 'Looking for aribeth', isOpen: true}).end( (error, response) => {
+      chai.request(server).get('/api/issues/test').query({status: 'Looking for aribeth', isOpen: true}).end( (error, response) => {
         assert.deepEqual(response.body[0].author, 'Fenthick Moss');
         issue_id = response.body[0]._id;
         done();
