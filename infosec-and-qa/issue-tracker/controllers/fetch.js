@@ -18,7 +18,7 @@ exports.fetch = (request, response) => {
       }, function fetchQuery(project, callback){
             let query = request.query;
             query._project = project._id;
-            IssueModel.find(query).toArray((error, issues) => {
+            IssueModel.find(query).exec((error, issues) => {
                 console.log(issues);
             });
       }
