@@ -1,0 +1,33 @@
+const mongoose = require('mongoose');
+const waterfall = require("async/waterfall");
+const PLACEHOLDERMODEL = require('PLACEHOLDERMODEL');
+
+exports.fetch = (request, response) => {
+    waterfall([
+        function isPLACEHOLDERInDB(callback){
+            PLACEHOLDERMODEL.findOne( {PARAMETER: request.params.DATA}, (error, project) =>{
+                if(error){
+                    return callback(error);
+                }else if(project){
+                    return callback(null, project);
+                }else{
+                    return done("there are no PLACEHOLDERS with the parameters provided "+request.params.project);
+                }
+            });
+      }, function fetchPLACEHOLDER(project, callback){
+            let query = request.params.PARAMETERS;
+            
+            IssueModel.find(query).exec((error, issues) => {
+                return callback(null, issues);
+            });
+      }
+    ], done);
+
+    function done(error, result) {
+        if(error){
+            console.log('\nError during fetch process: '+error+'\n');
+            return response.send(error);
+        }
+        return response.json(result);
+    }
+}
