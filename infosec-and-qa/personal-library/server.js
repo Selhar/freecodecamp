@@ -4,6 +4,8 @@ const body_parser = require('body-parser');
 const mongoose = require('mongoose');
 const server = express();
 const root = process.cwd();
+const api_root = '/api/books/';
+const library = require('./controllers/index');
 
 mongoose.connect('mongodb://localhost:/27017/personallibrary');
 /*
@@ -23,10 +25,12 @@ server.get('/', (request, response) => {
     response.render(root + '/views/index.ejs');
 });
 
-server.post('', TO.do);
-server.put('', TO.do);
-server.get('', TO.do);
-server.delete('', TO.do);
+server.post(api_root, library.create);
+server.post(api_root+':id', library.create);
+server.put(api_root+':id', library.update);
+server.get(api_root, library.fetch);
+server.get(api_root+':id', TO.do);
+server.delete(api_root+':id', library.delete);
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');
