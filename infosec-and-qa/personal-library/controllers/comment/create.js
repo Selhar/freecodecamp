@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const BookModel = require('../models/book');
+const BookModel = require('../../models/book');
 const waterfall = require("async/waterfall");
 const IssueModel = require('../models/issue');
 
