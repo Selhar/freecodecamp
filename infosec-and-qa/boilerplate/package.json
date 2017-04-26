@@ -5,13 +5,18 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha tests/*.js"
+    "test": "mocha --ui tdd tests/*.js"
   },
   "dependencies": {
+    "async": "^2.3.0",
+    "body-parser": "^1.17.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
-    "mocha": "^3.2.0"
+    "helmet": "^3.5.0",
+    "mocha": "^3.2.0",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.5"
   }
 }
