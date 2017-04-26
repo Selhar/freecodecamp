@@ -5,7 +5,7 @@ const PLACEHOLDERMODEL = require('PLACEHOLDERMODEL');
 exports.fetch = (request, response) => {
     waterfall([
         function isPLACEHOLDERInDB(callback){
-            PLACEHOLDERMODEL.findOne( {PARAMETER: request.params.DATA}, (error, project) =>{
+            PLACEHOLDERMODEL.findOne( {PARAMETER: PLACEHOLDERDATA}, (error, project) =>{
                 if(error){
                     return callback(error);
                 }else if(project){
@@ -15,10 +15,10 @@ exports.fetch = (request, response) => {
                 }
             });
       }, function fetchPLACEHOLDER(project, callback){
-            let query = request.params.PARAMETERS;
+            let query = request.params.PLACEHOLDERPARAMETERS;
             
-            IssueModel.find(query).exec((error, issues) => {
-                return callback(null, issues);
+            IssueModel.find(query).exec((error, PLACEHOLDER) => {
+                return callback(null, PLACEHOLDER);
             });
       }
     ], done);
