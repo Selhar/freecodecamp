@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
-const PLACEHOLDERMODEL = require('PLACEHOLDER');
 const waterfall = require("async/waterfall");
-const IssueModel = require('../models/issue');
+const PLACEHOLDERMODEL = require('PLACEHOLDERMODEL');
 
-exports.create = (request, response) => {
-    waterfall([ 
+exports.fetch = (request, response) => {
+    waterfall([
         function isPLACEHOLDERInDB(callback){
             PLACEHOLDERMODEL.findOne( {PARAMETER: PLACEHOLDERDATA}, (error, project) =>{
                 if(error){
@@ -15,21 +14,12 @@ exports.create = (request, response) => {
                     return done("there are no PLACEHOLDERS with the parameters provided "+request.params.project);
                 }
             });
-      }, function savePLACEHOLDER(isPLACEHOLDERInDB, PLACEHOLDER, callback){
-
-          if(isPLACEHOLDERInDB){
-            return callback(null, PLACEHOLDER);
-          }else{
-            let new_PLACEHOLDER = new PLACEHOLDERMODEL({
-                FIELD: request.params.PLACEHOLDER
+      }, function fetchPLACEHOLDER(project, callback){
+            let query = request.params.PLACEHOLDERPARAMETERS;
+            
+            IssueModel.find(query).exec((error, PLACEHOLDER) => {
+                return callback(null, PLACEHOLDER);
             });
-            new_PLACEHOLDER.save((error) => {
-                if(error){
-                    return callback(error);
-                }
-                return callback(null, new_PLACEHOLDER);
-            });
-          }
       }
     ], done);
 
