@@ -6,7 +6,7 @@ const waterfall = require("async/waterfall");
 exports.create = (request, response) => {
     waterfall([ 
         function isBookInDB(callback){
-            BookModel.findOne( {title: request.params.id}, (error, book) =>{
+            BookModel.findById(request.params.id, (error, book) =>{
                 if(error){
                     return callback(error);
                 }else if(book){

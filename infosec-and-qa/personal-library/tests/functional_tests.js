@@ -34,9 +34,7 @@ suite('Functional testing', () => {
     suite('Create a comment', () => {
         test('Comment 1', (done) => {
             chai.request(server).post('/api/books/'+book1.id).send({comment: book1.comment}).end((request, response) => {
-                assert.deepEqual(response.body.title, book1.title);
-                assert.property('commentcount');
-                assert.property('_id');
+                assert.deepEqual(response.body.comment, book1.comment);
                 done();
             });
         });
