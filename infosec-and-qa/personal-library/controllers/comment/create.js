@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const BookModel = require('../../models/book');
+const CommentModel = require('../../models/comment');
 const waterfall = require("async/waterfall");
-const IssueModel = require('../models/issue');
 
 exports.create = (request, response) => {
     waterfall([ 
@@ -10,15 +10,15 @@ exports.create = (request, response) => {
                 if(error){
                     return callback(error);
                 }else if(book){
-                    return done("A book with this name already exists");
+                    return callback(book);
                 }else{
                     return callback(null);
                 }
             });
       }, function saveBook(callback){
 
-            let new_book = new BookModel({
-                title: request.body.title
+            let new_comment = new CommentModel({
+                comment: request.body.comment
             });
             new_book.save((error) => {
                 if(error){
