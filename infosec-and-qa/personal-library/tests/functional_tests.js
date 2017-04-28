@@ -34,5 +34,11 @@ suite('Functional testing', () => {
                 });
             });
         }
+        test('Comment with invalid ID', (done) => {
+           chai.request(server).post('/api/books/'+'00feb000000d00000c0c0000').send({comment:' book.comment'}).end((request, response) => {
+                    assert.equal(response.text, 'Book ID not found.');                   
+                    done();                     
+            });
+        });
     });
 });

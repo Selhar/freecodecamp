@@ -43,8 +43,10 @@ exports.createComment = (request, response) => {
             BookModel.findByIdAndUpdate(request.params.id, {$push: {comment: request.body.comment}, $inc: {commentCount: 1}}, (error, book) => {
                 if(error){
                     callback(error);
-                }else{
+                }else if(book){
                     callback(null, book);
+                }else{
+                    callback("Book ID not found.");
                 }
             });
         }
