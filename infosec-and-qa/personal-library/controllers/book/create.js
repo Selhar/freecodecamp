@@ -33,7 +33,6 @@ exports.create = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        console.log(result);
         return response.json({title: result.title, _id: result._id});
     }
 }
@@ -56,6 +55,6 @@ exports.createComment = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        return response.json({title: result.title, _id: result._id, commentcount: result.commentcount});
+        return response.json({title: result.title, _id: result._id, commentCount: result.commentCount});
     }
 }

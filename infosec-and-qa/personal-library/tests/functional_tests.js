@@ -22,6 +22,17 @@ suite('Functional testing', () => {
                     done();                     
                 });
             });
+            test('Add a comment', (done) => {
+                chai.request(server).post('/api/books/'+book.id).send({comment: book.comment}).end((request, response) => {
+                    expect(response.body).to.have.property('title');
+                    expect(response.body).to.have.property('_id');
+                    expect(response.body).to.have.property('commentCount');
+                    assert.isString(response.body.title);
+                    assert.deepEqual(response.body.title, book.title);                      
+                    assert.isNumber(response.body.commentCount);
+                    done();                     
+                });
+            });
         }
     });
 });
