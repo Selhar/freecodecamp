@@ -6,7 +6,6 @@ const server = express();
 const root = process.cwd();
 const api_root = '/api/books/';
 const library = require('./controllers/book/index');
-const comments = require('./controllers/comment/create');
 
 mongoose.connect("mongodb://localhost:27017/personallibrary");
 /*
@@ -27,7 +26,7 @@ server.get('/', (request, response) => {
 });
 
 server.post(api_root, library.create);
-server.post(api_root+':id', comments.create);
+server.post(api_root+':id', library.createComment);
 //server.put(api_root+':id', library.update);
 //server.get(api_root, library.fetch);
 //server.get(api_root+':id', TO.do);

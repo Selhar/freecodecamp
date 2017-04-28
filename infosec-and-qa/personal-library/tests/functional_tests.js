@@ -12,49 +12,14 @@ suite('Functional testing', () => {
     suite('Create a new book', () => {
         test('Create book 1', (done) => {
             chai.request(server).post('/api/books').send({title: book1.title}).end((request, response) => {
+                console.log(response.body);
                 assert.deepEqual(response.body.title, book1.title);  
+                assert.isArray(response.body.comment);
+                assert.deepEqual(response.body.title, book1.title);                
+                assert.isNumber(response.body.commentcount);
                 book1.id = response.body._id;   
                 done();                     
             });
         });
-        test('Create book 2', (done) => {
-            chai.request(server).post('/api/books').send({title: book2.title}).end((request, response) => {
-                assert.deepEqual(response.body.title, book2.title);   
-                book2.id = response.body._id;
-                done();             
-            });
-        });
-        test('Create a book with repeated title', (done) => {
-            chai.request(server).post('/api/books').send({title: book1.title}).end((request, response) => {
-                assert.equal(response.text, 'A book with this name already exists');
-                done();
-            });
-        });
     });
-    suite('Create a comment', () => {
-        test('Comment 1', (done) => {
-            chai.request(server).post('/api/books/'+book1.id).send({comment: book1.comment}).end((request, response) => {
-                assert.deepEqual(response.body.comment, book1.comment);
-                assert.property('commentcount');
-                assert.isNumber(response.body.commentcount);
-                done();
-            });
-        });
-        test('Invalid book ID input', (done) => {
-            chai.request(server).put('/api/books/'+book1.id).send({id: new ObjectID("00feb000000d00000c0c0000")}).end( (error, response) => {
-                assert.equal(response.status, 200);
-                assert.equal(response.text, 'issue does not exist');
-                done();
-            })
-        });
-    });
-    // suite('Fetching books', () => {
-    //     test('Fetch all books', (done) => {
-    //         chai.request(server).get('/api/books').end((request, response) => {
-    //             assert.isArray(response.body);
-    //             assert.equal(response.text, 'A book with this name already exists');
-    //             done();
-    //         });
-    //     });
-    // });
 });
