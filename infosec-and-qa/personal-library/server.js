@@ -8,10 +8,7 @@ const api_root = '/api/books/';
 const library = require('./controllers/book/index');
 
 mongoose.connect("mongodb://localhost:27017/personallibrary");
-/*
-    security
-    GET api/books/:id return book, id, array of comments
-*/
+
 server.use(helmet({
     noCache: true
 }));
