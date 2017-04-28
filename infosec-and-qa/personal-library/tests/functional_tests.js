@@ -2,6 +2,7 @@ const chai_http = require('chai-http');
 const chai = require('chai');
 const server = require('../server');
 const assert = chai.assert;
+const expect = chai.expect;
 
 chai.use(chai_http);
 
@@ -12,11 +13,10 @@ suite('Functional testing', () => {
     suite('Create a new book', () => {
         test('Create book 1', (done) => {
             chai.request(server).post('/api/books').send({title: book1.title}).end((request, response) => {
-                console.log(response.body);
+                expect(response.body).to.have.property('title');
+                expect(response.body).to.have.property('_id');
+                assert.isString(response.body.title);
                 assert.deepEqual(response.body.title, book1.title);  
-                assert.isArray(response.body.comment);
-                assert.deepEqual(response.body.title, book1.title);                
-                assert.isNumber(response.body.commentcount);
                 book1.id = response.body._id;   
                 done();                     
             });
