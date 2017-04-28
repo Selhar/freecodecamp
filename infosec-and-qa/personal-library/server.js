@@ -12,7 +12,10 @@ mongoose.connect("mongodb://localhost:27017/personallibrary");
     security
     GET api/books/:id return book, id, array of comments
 */
-server.use(helmet());
+server.use(helmet({
+    noCache: true
+}));
+
 server.use('/public', express.static(root + '/public'));
 server.use(body_parser.json());
 server.use(body_parser.urlencoded( {extended: true} ));
