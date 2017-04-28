@@ -36,3 +36,39 @@ exports.create = (request, response) => {
         return response.json({title: result.title, _id: result._id});
     }
 }
+
+
+exports.createComment = (request, response) => {
+    waterfall([ 
+        function isBookInDB(callback){
+            BookModel.findById( {id: request.body.id}, (error, book) =>{
+                if(error){
+                    return callback(error);
+                }else if(book){
+                    return callback(null, book);
+                }else{
+                    return callback("Book ID not found");
+                }
+            });
+      }, function saveBook(callback){
+
+            let new_book = new BookModel({
+                title: request.body.title
+            });
+            new_book.save((error) => {
+                if(error){
+                    return callback(error);
+                }
+                return callback(null, new_book);
+            });
+          }
+    ], done);
+
+    function done(error, result) {
+        if(error){
+            console.log('\nError during fetch process: '+error+'\n');
+            return response.send(error);
+        }
+        return response.json({title: result.title, _id: result._id});
+    }
+}

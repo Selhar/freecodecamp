@@ -7,3 +7,4 @@ exports.create = create.create;
 exports.fetch = fetch.fetch;
 exports.remove = remove.remove;
 exports.update = update.update;
+exports.createComment = create.createComment;

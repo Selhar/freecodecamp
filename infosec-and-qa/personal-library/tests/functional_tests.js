@@ -35,9 +35,17 @@ suite('Functional testing', () => {
         test('Comment 1', (done) => {
             chai.request(server).post('/api/books/'+book1.id).send({comment: book1.comment}).end((request, response) => {
                 assert.deepEqual(response.body.comment, book1.comment);
+                assert.property('commentcount');
+                assert.isNumber(response.body.commentcount);
                 done();
             });
         });
+        test('Invalid book ID input', (done) => {
+            chai.request(server).put('/api/books/'+book1.id).send({id: new ObjectID("00feb000000d00000c0c0000")}).end( (error, response) => {
+                assert.equal(response.status, 200);
+                assert.equal(response.text, 'issue does not exist');
+                done();
+        })
     });
     // suite('Fetching books', () => {
     //     test('Fetch all books', (done) => {
