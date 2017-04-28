@@ -27,10 +27,11 @@ server.get('/', (request, response) => {
 
 server.post(api_root, library.create);
 server.post(api_root+':id', library.createComment);
+server.delete(api_root+':id', library.remove);
 //server.put(api_root+':id', library.update);
 //server.get(api_root, library.fetch);
 //server.get(api_root+':id', TO.do);
-//server.delete(api_root+':id', library.delete);
+
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');

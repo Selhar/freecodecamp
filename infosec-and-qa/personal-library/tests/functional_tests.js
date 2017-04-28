@@ -41,4 +41,15 @@ suite('Functional testing', () => {
             });
         });
     });
+    suite('Delete a book', () => {
+        for(let book of books){
+            test('delete a book', (done) => {
+                //DELETE /api/books/:id, return 'delete successful'
+                chai.request(server).delete('/api/books/'+book.id).end((request, response) => {
+                    assert.equal(response.text, 'Book successfully deleted.');
+                    done();
+                });
+            });
+        }
+    });
 });
