@@ -44,20 +44,26 @@ suite('Functional testing', () => {
 
     suite('Fetch books', () => {
         test('Fetch all books', (done) => {
-            
-        });
-        for (let book of books){
-            test('Fetch by ID', (done) => {
-                chai.request(server).post('/api/books').send({title: book.title}).end((request, response) => {
-                    expect(response.body).to.have.property('title');
-                    expect(response.body).to.have.property('_id');
-                    assert.isString(response.body.title);
-                    assert.deepEqual(response.body.title, book.title);  
-                    book.id = response.body._id;   
-                    done();                     
-                });
+            chai.request(server).get('/api/books').end((request, response) => {
+                assert.isArray(response.body);
+                expect(response.body[0]).to.have.property('title');
+                expect(response.body[0]).to.have.property('id');
+                expect(response.body[0]).to.have.property('commentCount');
+                done();
             });
-        }
+        });
+        // for (let book of books){
+        //     test('Fetch by ID', (done) => {
+        //         chai.request(server).post('/api/books').send({title: book.title}).end((request, response) => {
+        //             expect(response.body).to.have.property('title');
+        //             expect(response.body).to.have.property('_id');
+        //             assert.isString(response.body.title);
+        //             assert.deepEqual(response.body.title, book.title);  
+        //             book.id = response.body._id;   
+        //             done();                     
+        //         });
+        //     });
+        // }
     });
 
     suite('Delete a book', () => {

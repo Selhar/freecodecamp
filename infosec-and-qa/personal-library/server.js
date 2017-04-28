@@ -25,8 +25,8 @@ server.get('/', (request, response) => {
 server.post(api_root, library.create);
 server.post(api_root+':id', library.createComment);
 server.delete(api_root+':id', library.remove);
-//server.get(api_root, library.fetch);
-server.get(api_root+':id', TO.do);
+server.get(api_root, library.fetch);
+server.get(api_root+':id', library.fetchByID);
 
 
 server.get('*', (request, response) => {
