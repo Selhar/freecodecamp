@@ -10,7 +10,6 @@ const library = require('./controllers/book/index');
 mongoose.connect("mongodb://localhost:27017/personallibrary");
 /*
     security
-    GET api/books return title, id and comment count
     GET api/books/:id return book, id, array of comments
 */
 server.use(helmet());
@@ -26,7 +25,7 @@ server.post(api_root, library.create);
 server.post(api_root+':id', library.createComment);
 server.delete(api_root+':id', library.remove);
 server.get(api_root, library.fetch);
-server.get(api_root+':id', library.fetchByID);
+server.get(api_root+':id', library.fetchById);
 
 
 server.get('*', (request, response) => {

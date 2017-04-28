@@ -52,18 +52,17 @@ suite('Functional testing', () => {
                 done();
             });
         });
-        // for (let book of books){
-        //     test('Fetch by ID', (done) => {
-        //         chai.request(server).post('/api/books').send({title: book.title}).end((request, response) => {
-        //             expect(response.body).to.have.property('title');
-        //             expect(response.body).to.have.property('_id');
-        //             assert.isString(response.body.title);
-        //             assert.deepEqual(response.body.title, book.title);  
-        //             book.id = response.body._id;   
-        //             done();                     
-        //         });
-        //     });
-        // }
+        for (let book of books){
+            test('Fetch by ID', (done) => {
+                chai.request(server).get('/api/books/'+book.id).end((request, response) => {
+                    expect(response.body).to.have.property('title');
+                    expect(response.body).to.have.property('id');
+                    expect(response.body).to.have.property('comment');
+                    assert.isArray(response.body.comment);
+                    done();                     
+                });
+            });
+        }
     });
 
     suite('Delete a book', () => {

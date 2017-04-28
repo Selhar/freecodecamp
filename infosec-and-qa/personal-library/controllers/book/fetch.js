@@ -28,18 +28,15 @@ exports.fetch = (request, response) => {
     }
 }
 
-exports.fetchByID = (request, response) => {
+exports.fetchById = (request, response) => {
     waterfall([
-        function fetchAllBooks(callback){
-            BookModel.find({}, (error, books) =>{
+        function fetchBookByID(callback){
+            BookModel.findById(request.params.id, (error, book) =>{
                 if(error){
                     return callback(error);
-                }else if(books){
-                    let book_list = [];
-                    for(let book of books){
-                        book_list.push({title: book.title, id: book._id, commentCount: book.commentCount});
-                    }
-                    return callback(null, book_list);
+                }else if(book){
+                    console.log(book);
+                    return callback(null, {title: book.title, id: book._id, comment: book.comment});
                 }
             });
         }
@@ -50,7 +47,6 @@ exports.fetchByID = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        console.log(result);
         return response.json(result);
     }
 }
