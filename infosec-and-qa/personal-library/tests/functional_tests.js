@@ -45,7 +45,8 @@ suite('Functional testing', () => {
                 assert.equal(response.status, 200);
                 assert.equal(response.text, 'issue does not exist');
                 done();
-        })
+            })
+        });
     });
     // suite('Fetching books', () => {
     //     test('Fetch all books', (done) => {
