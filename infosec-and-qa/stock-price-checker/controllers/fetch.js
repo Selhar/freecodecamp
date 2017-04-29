@@ -5,14 +5,13 @@ exports.fetch = (request, response) => {
     const isLiked = request.query.like;
     const API = 'https://finance.google.com/finance/info?q=NASDAQ%3aGOOG';
 
-    request({url: API, json: true}, (error, response, data) => {
-        if (error) {
-            throw error;
-        } else if (response.statusCode !== 200) {
-            console.log('Status:', response.statusCode);
-        } else {
-            return response.json(data);
-        }
-    });
+ request(API, (error, response, body)=> {
+  if (!error && response.statusCode === 200) {
+    const fbResponse = JSON.parse(body)
+    console.log("Got a response: ", fbResponse.picture)
+  } else {
+    console.log("Got an error: ", error, ", status code: ", response.statusCode)
+  }
+})
 }
 

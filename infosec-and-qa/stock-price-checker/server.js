@@ -9,12 +9,12 @@ const index = require('./controllers/index');
 //GET api/stock/prices, send(stock(string), likes(boolean)) -> stock(string), price(string), likes(number)
 //can send multiple stocks
 
-server.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'"],
-        styleSrc: ["'self'"]
-    }
-}));
+// server.use(helmet.contentSecurityPolicy({
+//     directives: {
+//         defaultSrc: ["'self'"],
+//         styleSrc: ["'self'"]
+//     }
+// }));
 
 server.use('/public', express.static(root + '/public'));
 server.use(body_parser.json());
