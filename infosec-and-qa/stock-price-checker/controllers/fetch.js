@@ -9,9 +9,10 @@ exports.fetch = (request, response) => {
         if (error) {
             throw error;
         } else if (res.statusCode !== 200) {
-            console.log('Status:', res.statusCode);
+            return console.log('Status:', res.statusCode);
         } else {
-            return response.json(data);
+            const what_the_fuck_is_up_with_this_endpoint = JSON.parse(data.substring(4))[0];
+            return response.json({stock: what_the_fuck_is_up_with_this_endpoint.t, price: what_the_fuck_is_up_with_this_endpoint.l});
         }
     });
 }

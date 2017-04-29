@@ -6,7 +6,7 @@ chai.use(chai_http);
 
 suite('Functional testing', () => {
     test('send in 1 stock', (done) => {
-        chai.request(server).get('/api/stock-prices').query('GOOG').end((error, response) => {
+        chai.request(server).get('/api/stock-prices').query({stock: 'GOOG'}).end((error, response) => {
             assert.property(response.body, 'price');
             assert.property(response.body, 'stock');
             assert.property(response.body, 'likes');
