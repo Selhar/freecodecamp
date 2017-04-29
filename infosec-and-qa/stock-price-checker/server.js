@@ -5,7 +5,6 @@ const server = express();
 const root = process.cwd();
 const api_root = '/api/stock-prices/';
 const index = require('./controllers/index');
-
 //GET api/stock/prices, send(stock(string), likes(boolean)) -> stock(string), price(string), likes(number)
 //can send multiple stocks
 
