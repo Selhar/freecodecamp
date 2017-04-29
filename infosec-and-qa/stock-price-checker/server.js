@@ -16,7 +16,7 @@ server.use(helmet.contentSecurityPolicy({
     }
 }));
 
-mongoose.connect('mongodb://localhost:27017/'+api_root);
+mongoose.connect('mongodb://localhost:27017/stock-prices');
 
 server.use('/public', express.static(root + '/public'));
 server.use(body_parser.json());

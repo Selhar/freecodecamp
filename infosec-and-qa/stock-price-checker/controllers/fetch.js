@@ -1,6 +1,7 @@
+const mongoose = require('mongoose');
+const waterfall = require("async/waterfall");
 const req = require('request');
 const StockModel = require('../models/stock');
-const waterfall = require("async/waterfall");
 
 exports.fetch = (request, response) => {
     const stock_name = request.query.stock;
@@ -13,12 +14,13 @@ exports.fetch = (request, response) => {
         function findStockAndUpdate(callback){
             let updateData = isLiked ? {$inc: {likes: 1}} : {};
             StockModel.findOneAndUpdate({stock: stock_name}, updateData, (error, stock) => {
-                if(error)
-                    callback(error);
-                else if(stock)
-                    callback(null, stock);
-                else
-                    callback(null);
+                if(error){
+                    return callback(error);
+                }else if(stock){
+                    return callback(null, stock);
+                }else{
+                    return callback(null, null);
+                }
             });
         }, function retrieveApiData(stock, callback){
             req.get({url: API,json: true,headers: {'User-Agent': 'request'}}, (error, res, data) => {
@@ -34,7 +36,7 @@ exports.fetch = (request, response) => {
             }); 
         }, function saveNewStock(stock_data, isStockInDB, callback){
                 if(isStockInDB)
-                    callback(null, {stock: isStockInDB, stock_data: stock_data});
+                    return callback(null, {stock: isStockInDB, stock_data: stock_data});
                 else{
                     const stock = new StockModel({stock: stock_name, likes: isLiked ? 1 : 0});
                     stock.save((error) => {
