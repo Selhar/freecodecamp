@@ -13,4 +13,12 @@ suite('Functional testing', () => {
             done();
         });
     });
+    test('send in 1 stock with like', (done) => {
+        chai.request(server).get('/api/stock-prices').query({stock: 'GOOG', like: true}).end((error, response) => {
+            assert.property(response.body, 'price');
+            assert.property(response.body, 'stock');
+            assert.property(response.body, 'likes');
+            done();
+        });
+    });
 });

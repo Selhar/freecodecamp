@@ -16,6 +16,8 @@
     "express": "^4.15.2",
     "helmet": "^3.5.0",
     "mocha": "^3.2.0",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.6",
     "request": "^2.81.0",
     "request-json": "^0.6.2"
   }

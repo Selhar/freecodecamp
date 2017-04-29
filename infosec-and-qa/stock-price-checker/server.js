@@ -4,6 +4,7 @@ const body_parser = require('body-parser');
 const server = express();
 const root = process.cwd();
 const api_root = '/api/stock-prices/';
+const mongoose = require('mongoose');
 const index = require('./controllers/index');
 //GET api/stock/prices, send(stock(string), likes(boolean)) -> stock(string), price(string), likes(number)
 //can send multiple stocks
@@ -14,6 +15,8 @@ server.use(helmet.contentSecurityPolicy({
         styleSrc: ["'self'"]
     }
 }));
+
+mongoose.connect('mongodb://localhost:27017/'+api_root);
 
 server.use('/public', express.static(root + '/public'));
 server.use(body_parser.json());
