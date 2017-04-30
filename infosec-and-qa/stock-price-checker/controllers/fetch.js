@@ -3,17 +3,38 @@ const waterfall = require("async/waterfall");
 const req = require('request');
 const StockModel = require('../models/stock');
 
-exports.fetch = (request, response) => {
-    const stock_name = request.query.stock;
+exports.fetch_manager = (request, response) => {
+    let isDoubleStock = false
+    if( Object.prototype.toString.call( request.query.stock ) === '[object Array]' ) {
+        isDoubleStock = true;
+    }
+    let stock_name = request.query.stock;
     const isLiked = request.query.like || false;
-    const API = 'https://finance.google.com/finance/info?q=NASDAQ%3a'+stock_name;
+    let API = 'https://finance.google.com/finance/info?q=NASDAQ%3a';
     const IP = request.connection.remoteAddress;
     let isIpRepeated = false;
     let stock_price = '';
+    
+    let iteration = 0;
+    let current_stock = isDoubleStock ? stock_name[iteration] : stock_name;
+    let data = {
+        stock_name: current_stock,
+        isDoubleStock: isDoubleStock,
+        isLiked: isLiked,
+        API: API+current_stock,
+        IP: IP,
+        isIpRepeated: isIpRepeated,
+        stock_price: stock_price
+    }
+    console.log(data);
+    response.send(data);
+}
+
+function fetch(request, response, Data) {
     waterfall([ 
         function retrieveApiData(callback){
             req.get({
-                url: API,json: true,
+                url: Data.API,json: true,
                 headers: {'User-Agent': 'request'}}, 
                 (error, res, data) => {
                     if (error) {
@@ -22,7 +43,7 @@ exports.fetch = (request, response) => {
                         return callback('Status: '+res.statusCode);
                     } else {
                         const stock_data = JSON.parse(data.substring(4))[0];
-                        stock_price = stock_data.l;
+                        Data.stock_price = stock_data.l;
                         return callback(null);
                     }
                 }
