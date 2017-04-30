@@ -52,7 +52,7 @@ exports.fetch = (request, response) => {
                 if(!isIpRepeated){
                     update_stock.$push = {IPs: IP};
                 }
-                
+                console.log(update_stock);
                 StockModel.findByIdAndUpdate(isStockInDB._id, update_stock, (error, data) => {
                     if(error){
                         callback(error);
