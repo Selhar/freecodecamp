@@ -26,8 +26,7 @@ exports.fetch_manager = (request, response) => {
         isIpRepeated: isIpRepeated,
         stock_price: stock_price
     }
-    console.log(data);
-    response.send(data);
+    response.send(fetch(request, response, data));
 }
 
 function fetch(request, response, Data) {
@@ -49,13 +48,13 @@ function fetch(request, response, Data) {
                 }
             );
         }, function isStockInDB(callback){
-            StockModel.findOne({stock: stock_name}, (error, stock) => {
+            StockModel.findOne({stock: Data.stock_name}, (error, stock) => {
                 if(error){
                     return callback(error);
                 }else if(stock){
                     const isIpInDB = stock.IPs.indexOf(IP) >= 0;
                     if(isIpInDB){
-                        isIpRepeated = true;
+                        Data.isIpRepeated = true;
                     }
                     return callback(null, stock);
                 }else{                    
@@ -63,15 +62,13 @@ function fetch(request, response, Data) {
                 }
             });
         }, function saveNewStock(stock, callback){
-            const shouldAddLike = isLiked && !isIpRepeated ? true : false;
+            const shouldAddLike = Data.isLiked && !Data.isIpRepeated ? true : false;
 
             if(stock){
                 let update_stock = {};
-                StockModel.findByIdAndUpdate(
-                stock._id, 
+                StockModel.findByIdAndUpdate(stock._id, 
                 shouldAddLike ? {$push: {IPs: IP}, $inc: {likes: 1}} : {}, 
                 (error, data) => {
-
                     if(error){
                         callback(error);
                     }else if(data){
@@ -85,7 +82,7 @@ function fetch(request, response, Data) {
                 });
             }else{
                 const new_stock = new StockModel({
-                    stock: stock_name,
+                    stock: Data.stock_name,
                     IPs: shouldAddLike ? [IP] : [],
                     likes: shouldAddLike ? 1 : 0
                 });
@@ -104,6 +101,6 @@ function fetch(request, response, Data) {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        return response.send({price: stock_price, stock: stock_name, likes: result.likes});
+        return {price: Data.stock_price, stock: Data.stock_name, likes: result.likes};
     }
 }
