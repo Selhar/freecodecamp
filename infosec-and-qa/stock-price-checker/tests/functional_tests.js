@@ -21,4 +21,10 @@ suite('Functional testing', () => {
             done();
         });
     });
+    test('Send a repeated like from the same IP', (done) => {
+        chai.request(server).get('/api/stock-prices').query({stock: 'GOOG', like: true}).end((error, response) => {
+            assert.equal(response.body.likes, 1);
+            done();
+        });
+    });
 });

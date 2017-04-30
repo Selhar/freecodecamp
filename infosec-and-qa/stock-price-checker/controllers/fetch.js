@@ -7,21 +7,27 @@ exports.fetch = (request, response) => {
     const stock_name = request.query.stock;
     const isLiked = request.query.like;
     const API = 'https://finance.google.com/finance/info?q=NASDAQ%3a'+stock_name;
-    
+    const IP = request.connection.remoteAddress;
+    let isIpRepeated = false;
     waterfall([ 
-        //I attempt to update the "likes" field first, that way i can discover if the stock is already in the db or not
-        //If i tried to save it first, it would throw an error if the stock was already in the DB
-        function findStockAndUpdate(callback){
-            let updateData = isLiked ? {$inc: {likes: 1}} : {};
-            StockModel.findOneAndUpdate({stock: stock_name}, updateData, (error, stock) => {
-                if(error){
-                    return callback(error);
-                }else if(stock){
-                    return callback(null, stock);
-                }else{
-                    return callback(null, null);
-                }
-            });
+        function isIpRepeated(callback){
+            if(isLiked){
+                StockModel.findOne({stock: stock_name}, (error, stock) => {
+                    if(error){
+                        callback(error);
+                    }else if(stock){
+                        if(stock.IPs.indexOf(IP) == -1){
+                            isIpRepeated = false;
+                        }                            
+                        else{
+                            isIpRepeated = true;
+                        }
+                        callback(null, stock)
+                    }
+                });
+            }else{
+                callback(null, null);
+            }
         }, function retrieveApiData(stock, callback){
             req.get({url: API,json: true,headers: {'User-Agent': 'request'}}, (error, res, data) => {
                 if (error) {
@@ -38,7 +44,7 @@ exports.fetch = (request, response) => {
                 if(isStockInDB)
                     return callback(null, {stock: isStockInDB, stock_data: stock_data});
                 else{
-                    const stock = new StockModel({stock: stock_name, likes: isLiked ? 1 : 0});
+                    const stock = new StockModel({stock: stock_name, likes: isLiked ? 1 : 0, $push : {IPs: isIpRepeated ? [] : IP}});
                     stock.save((error) => {
                         if(error)
                             return callback(error);
