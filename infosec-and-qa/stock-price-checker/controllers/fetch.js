@@ -9,47 +9,61 @@ exports.fetch = (request, response) => {
     const API = 'https://finance.google.com/finance/info?q=NASDAQ%3a'+stock_name;
     const IP = request.connection.remoteAddress;
     let isIpRepeated = false;
+    let stock_price = '';
     waterfall([ 
-        function isIpRepeated(callback){
-            if(isLiked){
-                StockModel.findOne({stock: stock_name}, (error, stock) => {
-                    if(error){
-                        callback(error);
-                    }else if(stock){
-                        if(stock.IPs.indexOf(IP) == -1){
-                            isIpRepeated = false;
-                        }                            
-                        else{
-                            isIpRepeated = true;
-                        }
-                        callback(null, stock)
+        function retrieveApiData(callback){
+            req.get({
+                url: API,json: true,
+                headers: {'User-Agent': 'request'}}, 
+                (error, res, data) => {
+                    if (error) {
+                        return callback(error);
+                    } else if (res.statusCode !== 200) {
+                        return callback('Status: '+res.statusCode);
+                    } else {
+                        const stock_data = JSON.parse(data.substring(4))[0];
+                        console.log("stock_price = stock_data.price;");
+                        return done(stock_price);
                     }
-                });
-            }else{
-                callback(null, null);
-            }
-        }, function retrieveApiData(stock, callback){
-            req.get({url: API,json: true,headers: {'User-Agent': 'request'}}, (error, res, data) => {
-                if (error) {
-                    callback(error);
-                } else if (res.statusCode !== 200) {
-                    return callback('Status: '+res.statusCode);
-                } else {
-                    const what_the_fuck_is_up_with_this_endpoint = JSON.parse(data.substring(4))[0];
-                    let stock_data = {stock_name: what_the_fuck_is_up_with_this_endpoint.t, price: what_the_fuck_is_up_with_this_endpoint.l};
-                    return callback(null, stock_data, stock);
                 }
-            }); 
-        }, function saveNewStock(stock_data, isStockInDB, callback){
-                if(isStockInDB)
-                    return callback(null, {stock: isStockInDB, stock_data: stock_data});
-                else{
-                    const stock = new StockModel({stock: stock_name, likes: isLiked ? 1 : 0, $push : {IPs: isIpRepeated ? [] : IP}});
+            );
+        }, function isStockInDB(callback){
+            StockModel.findOne({stock: stock_name}, (error, stock) => {
+                if(error){
+                    return callback(error);
+                }else if(stock){
+                    if(stock.IPs.indexOf(IP) == -1){
+                        stock.IPs.push(IP);
+                    }else{
+                        isIpRepeated = true;
+                    }
+                    return callback(null, stock)
+                }else{                    
+                    return callback(null, null);
+                }
+            });
+        }, function saveNewStock(isStockInDB, callback){
+                let increment = isLiked && !isIpRepeated ? 1 : 0;
+                let new_stock = {
+                        $inc: {likes: increment}                        
+                };
+
+                if(!isIpRepeated){
+                    new_stock.$push = {IPs: IP}
+                }
+
+                if(isStockInDB){
+                    StockModel.findByIdAndUpdate(isStockInDB._id, new_stock);
+                    return callback(null, {likes: new_stock.likes, stock: new_stock.stock});
+                }else{
+                    new_stock.stock = stock_name;
+                    
+                    const stock = new StockModel(new_stock);
                     stock.save((error) => {
                         if(error)
                             return callback(error);
                         else
-                            return callback(null, {stock: stock, stock_data: stock_data});
+                            return callback(null, {likes: new_stock.likes, stock: new_stock.stock});
                     });
                 }                
             }
@@ -60,6 +74,6 @@ exports.fetch = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        return response.json({stock: result.stock.stock, price: result.stock_data.price, likes: result.stock.likes});
+        return response.send(result);
     }
 }
