@@ -75,7 +75,7 @@ exports.fetch = (request, response) => {
                         return callback(null, stock);
                 });
             }                
-        }
+        } 
     ], done);
 
     function done(error, result) {
