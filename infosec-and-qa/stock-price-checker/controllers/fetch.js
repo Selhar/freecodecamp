@@ -3,37 +3,17 @@ const waterfall = require("async/waterfall");
 const req = require('request');
 const StockModel = require('../models/stock');
 
-exports.fetch_manager = (request, response) => {
-    let isDoubleStock = false
-    if( Object.prototype.toString.call( request.query.stock ) === '[object Array]' ) {
-        isDoubleStock = true;
-    }
-    let stock_name = request.query.stock;
+exports.fetch = (request, response) => {
+    const stock_name = request.query.stock;
     const isLiked = request.query.like || false;
-    let API = 'https://finance.google.com/finance/info?q=NASDAQ%3a';
+    const API = 'https://finance.google.com/finance/info?q=NASDAQ%3a'+stock_name;
     const IP = request.connection.remoteAddress;
     let isIpRepeated = false;
     let stock_price = '';
-    
-    let iteration = 0;
-    let current_stock = isDoubleStock ? stock_name[iteration] : stock_name;
-    let data = {
-        stock_name: current_stock,
-        isDoubleStock: isDoubleStock,
-        isLiked: isLiked,
-        API: API+current_stock,
-        IP: IP,
-        isIpRepeated: isIpRepeated,
-        stock_price: stock_price
-    }
-    response.send(fetch(request, response, data));
-}
-
-function fetch(request, response, Data) {
     waterfall([ 
         function retrieveApiData(callback){
             req.get({
-                url: Data.API,json: true,
+                url: API,json: true,
                 headers: {'User-Agent': 'request'}}, 
                 (error, res, data) => {
                     if (error) {
@@ -42,19 +22,19 @@ function fetch(request, response, Data) {
                         return callback('Status: '+res.statusCode);
                     } else {
                         const stock_data = JSON.parse(data.substring(4))[0];
-                        Data.stock_price = stock_data.l;
+                        stock_price = stock_data.l;
                         return callback(null);
                     }
                 }
             );
         }, function isStockInDB(callback){
-            StockModel.findOne({stock: Data.stock_name}, (error, stock) => {
+            StockModel.findOne({stock: stock_name}, (error, stock) => {
                 if(error){
                     return callback(error);
                 }else if(stock){
                     const isIpInDB = stock.IPs.indexOf(IP) >= 0;
                     if(isIpInDB){
-                        Data.isIpRepeated = true;
+                        isIpRepeated = true;
                     }
                     return callback(null, stock);
                 }else{                    
@@ -62,13 +42,15 @@ function fetch(request, response, Data) {
                 }
             });
         }, function saveNewStock(stock, callback){
-            const shouldAddLike = Data.isLiked && !Data.isIpRepeated ? true : false;
+            const shouldAddLike = isLiked && !isIpRepeated ? true : false;
 
             if(stock){
                 let update_stock = {};
-                StockModel.findByIdAndUpdate(stock._id, 
+                StockModel.findByIdAndUpdate(
+                stock._id, 
                 shouldAddLike ? {$push: {IPs: IP}, $inc: {likes: 1}} : {}, 
                 (error, data) => {
+
                     if(error){
                         callback(error);
                     }else if(data){
@@ -82,7 +64,7 @@ function fetch(request, response, Data) {
                 });
             }else{
                 const new_stock = new StockModel({
-                    stock: Data.stock_name,
+                    stock: stock_name,
                     IPs: shouldAddLike ? [IP] : [],
                     likes: shouldAddLike ? 1 : 0
                 });
@@ -101,6 +83,6 @@ function fetch(request, response, Data) {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        return {price: Data.stock_price, stock: Data.stock_name, likes: result.likes};
+        return response.send({price: stock_price, stock: stock_name, likes: result.likes});
     }
 }

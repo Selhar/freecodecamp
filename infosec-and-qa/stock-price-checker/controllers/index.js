@@ -1,3 +1,3 @@
 const fetch = require('./fetch');
 
-exports.fetch = fetch.fetch_manager;
+exports.fetch = fetch.fetch;
