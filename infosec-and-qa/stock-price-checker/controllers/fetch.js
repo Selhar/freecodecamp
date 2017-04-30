@@ -22,8 +22,8 @@ exports.fetch = (request, response) => {
                         return callback('Status: '+res.statusCode);
                     } else {
                         const stock_data = JSON.parse(data.substring(4))[0];
-                        console.log("stock_price = stock_data.price;");
-                        return done(stock_price);
+                        stock_price = stock_data.l;
+                        return callback(null);
                     }
                 }
             );
@@ -32,9 +32,10 @@ exports.fetch = (request, response) => {
                 if(error){
                     return callback(error);
                 }else if(stock){
-                    if(stock.IPs.indexOf(IP) == -1){
+                    let isIpInDB = stock.IPs.indexOf(IP) == -1;
+                    if(isLiked && !isIpInDB){
                         stock.IPs.push(IP);
-                    }else{
+                    }else if(isIpInDB){
                         isIpRepeated = true;
                     }
                     return callback(null, stock)
@@ -43,30 +44,36 @@ exports.fetch = (request, response) => {
                 }
             });
         }, function saveNewStock(isStockInDB, callback){
-                let increment = isLiked && !isIpRepeated ? 1 : 0;
-                let new_stock = {
-                        $inc: {likes: increment}                        
-                };
-
-                if(!isIpRepeated){
-                    new_stock.$push = {IPs: IP}
+            if(isStockInDB){
+                if(isLiked && !isIpRepeated){
+                    isStockInDB.$inc = {likes: increment}  
                 }
 
-                if(isStockInDB){
-                    StockModel.findByIdAndUpdate(isStockInDB._id, new_stock);
-                    return callback(null, {likes: new_stock.likes, stock: new_stock.stock});
-                }else{
-                    new_stock.stock = stock_name;
-                    
-                    const stock = new StockModel(new_stock);
-                    stock.save((error) => {
-                        if(error)
-                            return callback(error);
-                        else
-                            return callback(null, {likes: new_stock.likes, stock: new_stock.stock});
-                    });
-                }                
-            }
+                if(!isIpRepeated){
+                    isStockInDB.$push = {IPs: IP}
+                }
+                StockModel.findByIdAndUpdate(isStockInDB._id, isStockInDB, (error, data) => {
+                    if(error){
+                        callback(error);
+                    }else if(data){
+                        callback(null, data);
+                    }
+                });
+            }else{
+                const stock = new StockModel({
+                    stock: stock_name,
+                    IPs: [IP],
+                    likes: isLiked ? 1 : 0
+                });
+
+                stock.save((error, stock) => {
+                    if(error)
+                        return callback(error);
+                    else
+                        return callback(null, stock);
+                });
+            }                
+        }
     ], done);
 
     function done(error, result) {
@@ -74,6 +81,6 @@ exports.fetch = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        return response.send(result);
+        return response.send({price: stock_price, stock: stock_name, likes: result.likes});
     }
 }
