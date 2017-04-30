@@ -5,7 +5,7 @@ const StockModel = require('../models/stock');
 
 exports.fetch = (request, response) => {
     const stock_name = request.query.stock;
-    const isLiked = request.query.like;
+    const isLiked = request.query.like || false;
     const API = 'https://finance.google.com/finance/info?q=NASDAQ%3a'+stock_name;
     const IP = request.connection.remoteAddress;
     let isIpRepeated = false;
@@ -32,39 +32,41 @@ exports.fetch = (request, response) => {
                 if(error){
                     return callback(error);
                 }else if(stock){
-                    let isIpInDB = stock.IPs.indexOf(IP) >= 0;
-                    
+                    const isIpInDB = stock.IPs.indexOf(IP) >= 0;
                     if(isIpInDB){
                         isIpRepeated = true;
                     }
-                    return callback(null, stock)
+                    return callback(null, stock);
                 }else{                    
                     return callback(null, null);
                 }
             });
-        }, function saveNewStock(isStockInDB, callback){
-            if(isStockInDB){
-                let update_stock = {};
+        }, function saveNewStock(stock, callback){
+            const shouldAddLike = isLiked && !isIpRepeated ? true : false;
 
-                if(isLiked && !isIpRepeated){
-                    update_stock.$inc = {likes: 1}  
-                }
-                if(!isIpRepeated){
-                    update_stock.$push = {IPs: IP};
-                }
-                console.log(update_stock);
-                StockModel.findByIdAndUpdate(isStockInDB._id, update_stock, (error, data) => {
+            if(stock){
+                let update_stock = {};
+                StockModel.findByIdAndUpdate(
+                stock._id, 
+                shouldAddLike ? {$push: {IPs: IP}, $inc: {likes: 1}} : {}, 
+                (error, data) => {
+
                     if(error){
                         callback(error);
                     }else if(data){
-                        callback(null, data);
+                        //This is a workaround, since the findbyidandupdate method 
+                        //returns the found object, not the updated object
+                        //thus i must manually update the data.
+                        callback(null, {likes: shouldAddLike ? data.likes+1 : data.likes});
+                    }else{
+                        callback("ID not found");
                     }
                 });
             }else{
                 const new_stock = new StockModel({
                     stock: stock_name,
-                    IPs: [IP],
-                    likes: isLiked ? 1 : 0
+                    IPs: shouldAddLike ? [IP] : [],
+                    likes: shouldAddLike ? 1 : 0
                 });
                 new_stock.save((error, stock) => {
                     if(error)
