@@ -33,9 +33,7 @@ exports.fetch = (request, response) => {
                     return callback(error);
                 }else if(stock){
                     let isIpInDB = stock.IPs.indexOf(IP) == -1;
-                    if(isLiked && !isIpInDB){
-                        stock.IPs.push(IP);
-                    }else if(isIpInDB){
+                    if(isIpInDB){
                         isIpRepeated = true;
                     }
                     return callback(null, stock)
@@ -45,14 +43,17 @@ exports.fetch = (request, response) => {
             });
         }, function saveNewStock(isStockInDB, callback){
             if(isStockInDB){
-                if(isLiked && !isIpRepeated){
-                    isStockInDB.$inc = {likes: increment}  
-                }
+                let update_stock = {
 
-                if(!isIpRepeated){
-                    isStockInDB.$push = {IPs: IP}
                 }
-                StockModel.findByIdAndUpdate(isStockInDB._id, isStockInDB, (error, data) => {
+                if(isLiked && !isIpRepeated){
+                    update_stock.$inc = {likes: 1}  
+                }
+                if(isIpRepeated){
+                    update_stock.$push = {IPs: IP};
+                }
+                
+                StockModel.findByIdAndUpdate(isStockInDB._id, update_stock, (error, data) => {
                     if(error){
                         callback(error);
                     }else if(data){
