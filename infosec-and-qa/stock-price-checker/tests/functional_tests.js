@@ -18,6 +18,7 @@ suite('Functional testing', () => {
             assert.property(response.body, 'price');
             assert.property(response.body, 'stock');
             assert.property(response.body, 'likes');
+            assert.equal(response.body.likes, 1);
             done();
         });
     });
