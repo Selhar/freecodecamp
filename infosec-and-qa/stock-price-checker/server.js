@@ -6,8 +6,6 @@ const root = process.cwd();
 const api_root = '/api/stock-prices/';
 const mongoose = require('mongoose');
 const index = require('./controllers/index');
-//GET api/stock/prices, send(stock(string), likes(boolean)) -> stock(string), price(string), likes(number)
-//can send multiple stocks
 
 server.use(helmet.contentSecurityPolicy({
     directives: {
