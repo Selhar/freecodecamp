@@ -30,7 +30,8 @@ server.get('/:board/:id', (request, response) => {
     response.render(root + '/views/thread.ejs');
 });
 
-//server.post(api_root, index.create);
+//Saved will be _id, text, created_on(date&time), bumped_on(date&time, starts same as created_on), reported(boolean), delete_password, & replies(array).
+server.post(api_root+':board/:thread', index.create); 
 //server.delete(api_root, index.remove);
 //server.get(api_root, index.fetch);
 //server.put(api_root, index.update);
