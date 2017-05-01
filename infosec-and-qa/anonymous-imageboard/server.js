@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const server = express();
 const root = process.cwd();
 const api_root = '/api/anonymous-imageboard/';
-const index = require('./controllers/index');
+const thread_controller = require('./controllers/thread/index');
+const replies_controller = require('./controllers/replies/index');
 
 mongoose.connect("mongodb://localhost:27017/anonymous-imageboard");
 
@@ -31,7 +32,7 @@ server.get('/:board/:id', (request, response) => {
 });
 
 //Saved will be _id, text, created_on(date&time), bumped_on(date&time, starts same as created_on), reported(boolean), delete_password, & replies(array).
-server.post(api_root+':board/:thread', index.create); 
+server.get(api_root+':board/:thread', thread_controller.teste); 
 //server.delete(api_root, index.remove);
 //server.get(api_root, index.fetch);
 //server.put(api_root, index.update);
