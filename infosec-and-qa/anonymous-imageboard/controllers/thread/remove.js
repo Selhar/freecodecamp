@@ -4,11 +4,16 @@ const ThreadModel = require('../../models/Thread');
 exports.remove = (request, response) => {
     waterfall([
         function deleteThread(callback){
-            ThreadModel.findByIdAndRemove(request.params.id, (error, thread) => {
+            ThreadModel.findOneAndRemove({
+                _id: request.params.id,
+                password: request.body.password
+            }, (error, thread) => {
                 if(error)
                     return callback(error)
-                else
+                else if(thread)
                     return callback(null, "Thread successfully deleted.");
+                else
+                    return callback("Thread not found");
             });
       }
     ], done);
