@@ -5,7 +5,7 @@ exports.remove = (request, response) => {
     waterfall([
         function deleteThread(callback){
             ThreadModel.findOneAndRemove({
-                _id: request.params.thread_id,
+                _id: request.body.thread_id,
                 password: request.body.password
             }, (error, thread) => {
                 if(error)

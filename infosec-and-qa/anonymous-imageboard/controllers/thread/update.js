@@ -4,7 +4,7 @@ const ThreadModel = require('../../models/Thread');
 exports.report = (request, response) => {
     waterfall([ 
         function reportThread(callback){
-            ThreadModel.findByIdAndUpdate(request.params.thread_id, 
+            ThreadModel.findByIdAndUpdate(request.body.thread_id, 
             {isReported: true}, (error, thread) => {
                 if(error)
                     return callback(error);

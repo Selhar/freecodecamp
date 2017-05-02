@@ -36,15 +36,16 @@ server.use(body_parser.urlencoded( {extended: true} ));
 // });
 
 //threads
-server.get(api_root+':thread_id', thread_controller.fetchById);
 server.get(api_root, thread_controller.fetch); 
+server.get(api_root+':thread_id', thread_controller.fetchById);
 server.post(api_root, thread_controller.create); 
-server.delete(api_root+':thread_id', thread_controller.remove);
+server.delete(api_root, thread_controller.remove);
 server.put(api_root, thread_controller.report);
 
 //replies
 server.post(api_root+':thread', replies_controller.create); 
 server.put(api_root+':thread_id', replies_controller.report);
+server.delete(api_root+':thread_id', replies_controller.remove);
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');
