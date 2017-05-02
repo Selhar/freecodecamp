@@ -10,8 +10,7 @@ suite('Functional testing', () => {
     suite('Boards', () => { 
         for(let thread of threads){
             test('Create threads', (done) => {
-                chai.request(server).post('/b/'+new ObjectID()).send({title: thread.title}).end((request, response) => {
-                    assert.property()
+                chai.request(server).post(+new ObjectID()).send({title: thread.title}).end((request, response) => {
                     assert.equal(res.status, 200);
                     done();
                 });                
