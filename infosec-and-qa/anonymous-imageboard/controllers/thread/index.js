@@ -11,21 +11,21 @@ exports.remove = remove.remove;
 
 const Thread = require('../../models/Thread');
 
-exports.teste = (request, response) => {
-    let thread = new Thread({
-        title: "teste",
-        password: "boga",
-        replies: [
-            {
-                text: "teste1"
-            },
-            {
-                text: "teste2"
-            }
-        ]
-    });
+// exports.teste = (request, response) => {
+//     let thread = new Thread({
+//         title: "teste",
+//         password: "boga",
+//         replies: [
+//             {
+//                 text: "teste1"
+//             },
+//             {
+//                 text: "teste2"
+//             }
+//         ]
+//     });
 
-    thread.save((error, data) => {
-        console.log(data);
-    })
-}
+//     thread.save((error, data) => {
+//         console.log(data);
+//     })
+// }

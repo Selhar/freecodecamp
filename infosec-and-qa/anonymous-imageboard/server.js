@@ -22,17 +22,15 @@ server.use(body_parser.json());
 server.use(body_parser.urlencoded( {extended: true} ));
 
 server.get('/', (request, response) => {
-    response.render(root + '/views/index.ejs');
-});
-server.get('/:board', (request, response) => {
     response.render(root + '/views/board.ejs');
 });
-server.get('/:board/:id', (request, response) => {
+server.get('/:id', (request, response) => {
     response.render(root + '/views/thread.ejs');
 });
 
 //Saved will be _id, text, created_on(date&time), bumped_on(date&time, starts same as created_on), reported(boolean), delete_password, & replies(array).
-server.get(api_root+':board/:thread', thread_controller.teste); 
+server.post(api_root+':thread', thread_controller.create); 
+// server.get(api_root+':board/:thread', thread_controller.teste); 
 //server.delete(api_root, index.remove);
 //server.get(api_root, index.fetch);
 //server.put(api_root, index.update);
