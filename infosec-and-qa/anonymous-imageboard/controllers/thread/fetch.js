@@ -1,42 +1,41 @@
-const mongoose = require('mongoose');
 const waterfall = require('async/waterfall');
-//const Model = require('../../models/');
+const ThreadModel = require('../../models/Thread');
 
 exports.fetch = (request, response) => {
-    // waterfall([
-    //     function fetchAllBooks(callback){
-    //         BookModel.find({}, (error, books) =>{
-    //             if(error){
-    //                 return callback(error);
-    //             }else if(books){
-    //                 let book_list = [];
-    //                 for(let book of books){
-    //                     book_list.push({title: book.title, id: book._id, commentCount: book.commentCount});
-    //                 }
-    //                 return callback(null, book_list);
-    //             }
-    //         });
-    //     }
-    // ], done);
+    waterfall([
+        function fetchThreadList(callback){
+            ThreadModel.find({}, (error, thread) =>{
+                if(error){
+                    return callback(error);
+                }else if(thread){
+                    let thread = [];
+                    for(let thread of threads){
+                        thread.push({title: thread.title, id: thread._id, replies: thread.replies});
+                    }
+                    return callback(null, thread);
+                }
+            });
+        }
+    ], done);
 
-    // function done(error, result) {
-    //     if(error){
-    //         console.log('\nError during fetch process: '+error+'\n');
-    //         return response.send(error);
-    //     }
-    //     return response.json(result);
-    // }
+    function done(error, result) {
+        if(error){
+            console.log('\nError during fetch process: '+error+'\n');
+            return response.send(error);
+        }
+        return response.json(result);
+    }
 }
 
 exports.fetchById = (request, response) => {
     // waterfall([
-    //     function fetchBookByID(callback){
-    //         BookModel.findById(request.params.id, (error, book) =>{
+    //     function fetchthreadByID(callback){
+    //         threadModel.findById(request.params.id, (error, thread) =>{
     //             if(error){
     //                 return callback(error);
-    //             }else if(book){
-    //                 console.log(book);
-    //                 return callback(null, {title: book.title, id: book._id, comment: book.comment});
+    //             }else if(thread){
+    //                 console.log(thread);
+    //                 return callback(null, {title: thread.title, id: thread._id, comment: thread.comment});
     //             }
     //         });
     //     }
