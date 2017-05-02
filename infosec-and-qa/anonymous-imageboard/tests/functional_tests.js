@@ -92,6 +92,16 @@ suite('Functional testing', () => {
                 done();
             });
         });
+    });   
+    suite('Replies', () => {
+        for(let comment of comments){
+            test('Create a comment', (done) => {
+                chai.request(server).post('/'+thread_id_2).send({comment}).end((request, response) => {
+                    assert.equal(response.status, 200);
+                    done();
+                });
+            });
+        }
         test('Fetch individual thread', (done) => {
             chai.request(server).get('/'+thread_id_2).end((request, response) => {
                 assert.equal(response.status, 200);
@@ -108,15 +118,5 @@ suite('Functional testing', () => {
                 done();
             });
         });
-    });   
-    suite('Replies', () => {
-        for(let comment of comments){
-            test('Create a comment', (done) => {
-                chai.request(server).post('/'+thread_id_2).send({comment}).end((request, response) => {
-                    assert.equal(response.status, 200);
-                    done();
-                });
-            });
-        }
     });
 });

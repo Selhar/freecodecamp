@@ -9,7 +9,8 @@ exports.create = (request, response) => {
         function saveThread(callback){
             let new_thread = new ThreadModel({
                 title: title,
-                text: text
+                text: text,
+                replies: [{text: "OHCANADA"}]
             });
 
             new_thread.save((error) => {
