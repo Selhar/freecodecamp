@@ -47,7 +47,6 @@ exports.fetchById = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        console.log(result.replies);
         return response.json(result);
     }
 }
