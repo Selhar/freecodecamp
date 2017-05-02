@@ -1,19 +1,20 @@
-const waterfall = require("async/waterfall");
+const waterfall = require('async/waterfall');
 const ThreadModel = require('../../models/Thread');
 
 exports.remove = (request, response) => {
+    console.log("id:"+request.params.thread_id+"\npass:"+request.body.password);
     waterfall([
         function deleteThread(callback){
             ThreadModel.findOneAndRemove({
-                _id: request.params.id,
+                _id: request.params.thread_id,
                 password: request.body.password
             }, (error, thread) => {
                 if(error)
                     return callback(error)
                 else if(thread)
-                    return callback(null, "Thread successfully deleted.");
+                    return callback(null, 'Thread successfully deleted.');
                 else
-                    return callback("Thread not found");
+                    return callback(null, 'Thread not found');
             });
       }
     ], done);

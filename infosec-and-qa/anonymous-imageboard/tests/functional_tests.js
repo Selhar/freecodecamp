@@ -12,7 +12,8 @@ suite('Functional testing', () => {
     suite('Threads', () => { 
         for(let thread of threads){
             test('Create threads', (done) => {
-                chai.request(server).post('/'+thread.title).send({thread}).end((request, response) => {
+                chai.request(server).post('/'+thread.title).send(
+                    {thread}).end((request, response) => {
                     assert.equal(response.status, 200);
                     done();
                 });                
@@ -38,9 +39,18 @@ suite('Functional testing', () => {
             });
         });
         test('Delete thread with incorrect password', (done) => {
-            chai.request(server).delete('/'+thread_id).send({password: 'nicht'}).end((request, response) => {
+            chai.request(server).delete('/'+thread_id).send(
+                {password: 'nicht'}).end((request, response) => {
                 assert.equal(response.status, 200);
                 assert.equal(response.text, 'Thread not found');
+                done();
+            });
+        });    
+        test('Delete thread with correct password', (done) => {
+            chai.request(server).delete('/'+thread_id).send(
+                {password: 'wrathofthegods'}).end((request, response) => {
+                assert.equal(response.status, 200);
+                assert.equal(response.text, 'Thread successfully deleted.');
                 done();
             });
         });
