@@ -40,7 +40,7 @@ server.get(api_root+':thread_id', thread_controller.fetchById);
 server.get(api_root, thread_controller.fetch); 
 server.post(api_root, thread_controller.create); 
 server.delete(api_root+':thread_id', thread_controller.remove);
-server.put(api_root+':thread_id', thread_controller.report);
+server.put(api_root, thread_controller.report);
 
 //replies
 server.post(api_root+':thread', replies_controller.create); 
