@@ -102,5 +102,23 @@ suite('Functional testing', () => {
                 });
             });
         }
+        test('Fetch individual thread', (done) => {
+            chai.request(server).get('/'+thread_id_2).end((request, response) => {
+                assert.equal(response.status, 200);
+                assert.property(response.body, '_id');
+                assert.property(response.body, 'text');
+                assert.property(response.body, 'password');
+                assert.property(response.body, 'reported');
+                assert.property(response.body, 'creation_date');
+                assert.property(response.body, 'last_post');
+                assert.property(response.body, 'replies');
+                assert.property(response.body, 'title');
+                assert.property(response.body.replies[0], '_id');
+                assert.property(response.body.replies[0], 'text');
+                assert.property(response.body.replies[0], 'password');
+                assert.property(response.body.replies[0], 'reported');
+                done();
+            });
+        });
     });
 });

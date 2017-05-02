@@ -43,7 +43,7 @@ server.put(api_root+':thread_id', thread_controller.report);
 
 //replies
 server.post(api_root+':thread', replies_controller.create); 
-
+server.get(api_root+':thread_id', replies_controller.fetch);
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');
