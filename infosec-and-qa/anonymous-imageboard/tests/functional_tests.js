@@ -33,8 +33,9 @@ const comments = [{text: "What the fuck did you just fucking say about me, you l
                     "'clever' comment was about to bring down upon you, maybe you would have held your fucking tongue. Mildly remorseful: you couldn't,"+
                     " you didn't, and now you're paying the price, you goddamn idiot. With barely contained excitement, I will shit fury all over you "+
                     "and you will drown in it. You're fucking dead, kiddo."}]
-let thread_id = '';
-let thread_id_2 = '';
+let thread_to_be_deleted = '';
+let thread_to_be_modified = '';
+let reply_to_be_modified = '';
 
 chai.use(chai_http);
 
@@ -64,13 +65,13 @@ suite('Functional testing', () => {
                 assert.notProperty(response.body[0], 'delete_password');
                 assert.isArray(response.body[0].replies);
                 assert.isAtMost(response.body[0].replies.length, 3);
-                thread_id = response.body[0]._id;
-                thread_id_2 = response.body[1]._id;
+                thread_to_be_deleted = response.body[0]._id;
+                thread_to_be_modified = response.body[1]._id;
                 done();
             });
         });
         test('Delete thread with incorrect password', (done) => {
-            chai.request(server).delete('/'+thread_id).send(
+            chai.request(server).delete('/'+thread_to_be_deleted).send(
                 {password: 'nicht'}).end((request, response) => {
                 assert.equal(response.status, 200);
                 assert.equal(response.text, 'Thread not found');
@@ -78,14 +79,14 @@ suite('Functional testing', () => {
             });
         }); 
         test('Report a thread', (done) => {
-            chai.request(server).put('/'+thread_id).end((request, response) => {
+            chai.request(server).put('/'+thread_to_be_deleted).end((request, response) => {
                 assert.equal(response.status, 200);
                 assert.equal(response.text, 'Derezzed');
                 done();
             });
         });
         test('Delete thread with correct password', (done) => {
-            chai.request(server).delete('/'+thread_id).send(
+            chai.request(server).delete('/'+thread_to_be_deleted).send(
                 {password: 'wrathofthegods'}).end((request, response) => {
                 assert.equal(response.status, 200);
                 assert.equal(response.text, 'Thread successfully deleted.');
@@ -96,14 +97,14 @@ suite('Functional testing', () => {
     suite('Replies', () => {
         for(let comment of comments){
             test('Create a comment', (done) => {
-                chai.request(server).post('/'+thread_id_2).send({comment}).end((request, response) => {
+                chai.request(server).post('/'+thread_to_be_modified).send({comment}).end((request, response) => {
                     assert.equal(response.status, 200);
                     done();
                 });
             });
         }
         test('Fetch individual thread', (done) => {
-            chai.request(server).get('/'+thread_id_2).end((request, response) => {
+            chai.request(server).get('/'+thread_to_be_modified).end((request, response) => {
                 assert.equal(response.status, 200);
                 assert.property(response.body, '_id');
                 assert.property(response.body, 'text');
@@ -115,6 +116,14 @@ suite('Functional testing', () => {
                 assert.property(response.body.replies[0], '_id');
                 assert.property(response.body.replies[0], 'text');
                 assert.property(response.body.replies[0], 'password');
+                reply_to_be_modified = response.body.replies[0]._id;
+                done();
+            });
+        });
+        test('Report a reply', (done) => {
+            chai.request(server).put('/'+thread_to_be_modified).send({reply_id: reply_to_be_modified}).end((request, response) => {
+                assert.equal(response.status, 200);
+                assert.equal(response.text, 'Derezzed');
                 done();
             });
         });
