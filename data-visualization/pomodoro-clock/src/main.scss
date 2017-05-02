@@ -1,0 +1,55 @@
+/************* 
+    Globals
+ ************/
+$main-color: #281439;
+$secondary-color: #828282;
+$optional-color: #682877;
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-size: 16px;
+    background-color: $main-color;
+}
+* {
+    box-sizing: border-box;
+}
+
+#main {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/************* 
+    Clock
+ ************/
+.clock{
+    position: relative;
+    padding: 1px;
+    text-align: center;
+    input[type="text"]{
+        background-color: $main-color;
+        color: $secondary-color;
+        text-align: center;
+        font-size: 55px;
+        width: 300px;
+        padding: 15px;
+        border: none;
+        display: block;
+        outline: none;
+    }
+    .button{
+        font-size: 25px;
+        color: $secondary-color;
+        background-color: $main-color;
+        margin: 0 5px 0 5px;
+        border: 2px $optional-color solid;
+        &:active{
+            box-shadow: none;
+        }
+    }
+}
