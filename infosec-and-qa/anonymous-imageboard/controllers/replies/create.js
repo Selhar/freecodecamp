@@ -1,38 +1,40 @@
 const mongoose = require('mongoose');
 const waterfall = require("async/waterfall");
-//const Model = require('../../models/book');
+const ThreadModel = require('../../models/Thread');
 
 exports.create = (request, response) => {
-    // waterfall([ 
-    //     function isBookInDB(callback){
-    //         BookModel.findOne( {title: request.body.title}, (error, book) =>{
-    //             if(error){
-    //                 return callback(error);
-    //             }else if(book){
-    //                 return done("A book with this name already exists");
-    //             }else{
-    //                 return callback(null);
-    //             }
-    //         });
-    //   }, function saveBook(callback){
+    const id = request.params.thread;
 
-    //         let new_book = new BookModel({
-    //             title: request.body.title
-    //         });
-    //         new_book.save((error) => {
-    //             if(error){
-    //                 return callback(error);
-    //             }
-    //             return callback(null, new_book);
-    //         });
-    //       }
-    // ], done);
+    waterfall([ 
+        function isThreadInDB(callback){
+            ThreadModel.findOne( {title: request.body.title}, (error, thread) =>{
+                if(error){
+                    return callback(error);
+                }else if(thread){
+                    return callback(null, thread);
+                }else{
+                    return callback(null);
+                }
+            });
+      }, function saveThread(thread, callback){
 
-    // function done(error, result) {
-    //     if(error){
-    //         console.log('\nError during fetch process: '+error+'\n');
-    //         return response.send(error);
-    //     }
-    //     return response.json({title: result.title, _id: result._id});
-    // }
+            let new_thread = new ThreadModel({
+                title: request.body.title
+            });
+            new_thread.save((error) => {
+                if(error){
+                    return callback(error);
+                }
+                return callback(null, new_thread);
+            });
+          }
+    ], done);
+
+    function done(error, result) {
+        if(error){
+            console.log('\nError during fetch process: '+error+'\n');
+            return response.send(error);
+        }
+        return response.json({title: result.title, _id: result._id});
+    }
 }
