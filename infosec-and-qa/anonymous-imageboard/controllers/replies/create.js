@@ -7,7 +7,7 @@ exports.create = (request, response) => {
     waterfall([
         function saveComment(callback){
             ThreadModel.findByIdAndUpdate(thread_id, {
-                replies: [{$push: {text: "oi"}}]
+                $push: {replies: {text: text}}
                 
             }, (error, data) => {
                 if(error)
