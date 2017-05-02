@@ -1,3 +1,10 @@
+/*
+    Author: Selhar
+    Date: 2017
+    Contact: selhar@protonmail.com
+    License: GPL
+*/
+
 const express = require('express');
 const mongoose = require('mongoose');
 const server = express();

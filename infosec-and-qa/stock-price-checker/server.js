@@ -1,3 +1,10 @@
+/* 
+    Author: Selhar
+    Date: 2017
+    Contact: selhar@protonmail.com
+    License: GPL
+*/
+
 const express = require('express');
 const helmet = require('helmet');
 const body_parser = require('body-parser');
