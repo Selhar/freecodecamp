@@ -4,7 +4,7 @@ const server = require('../server');
 const assert = chai.assert;
 const ObjectID = require('mongodb').ObjectID;
 const threads = [{title: "First thread", text: "fgsfds"}, 
-                 {title: "Second thread", text: "Has Anyone Really Been Far Even as Decided to Use Even Go Want to do Look More Like?"}];
+                 {title: "Second thread", text: "Has anyone really been far even as decided to use even go want to do look more like?"}];
 let thread_id = '';
 chai.use(chai_http);
 
@@ -38,8 +38,9 @@ suite('Functional testing', () => {
             });
         });
         test('Delete thread with incorrect password', (done) => {
-            chai.request(server).get('/').end((request, response) => {
-                
+            chai.request(server).delete('/'+thread_id).send({password: 'nicht'}).end((request, response) => {
+                assert.equal(response.status, 200);
+                assert.equal(response.text, 'Thread not found');
                 done();
             });
         });

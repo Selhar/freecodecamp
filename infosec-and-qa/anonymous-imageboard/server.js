@@ -38,7 +38,7 @@ server.get('/:id', (request, response) => {
 //Saved will be _id, text, created_on(date&time), bumped_on(date&time, starts same as created_on), reported(boolean), delete_password, & replies(array).
 server.post(api_root+':thread', thread_controller.create); 
 server.get(api_root, thread_controller.fetch); 
-//server.delete(api_root, index.remove);
+server.delete(api_root+':thread_id', thread_controller.remove);
 //server.get(api_root, index.fetch);
 //server.put(api_root, index.update);
 
