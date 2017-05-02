@@ -4,11 +4,11 @@ const ThreadModel = require('../../models/Thread');
 exports.report = (request, response) => {
     waterfall([ 
         function reportThread(callback){
-            ThreadModel.findByIdAndUpdate(this.params.thread_id, 
+            ThreadModel.findByIdAndUpdate(request.params.thread_id, 
             {isReported: true}, (error, thread) => {
                 if(error)
                     return callback(error);
-                else if(thread && thread.isReported === true)
+                else if(thread)
                     return callback(null, 'Derezzed');
                 else
                     return callback('Thread not found');
@@ -21,6 +21,6 @@ exports.report = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        return response.json(result);
+        return response.send(result);
     }
 }

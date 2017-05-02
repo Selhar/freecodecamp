@@ -49,7 +49,7 @@ suite('Functional testing', () => {
         test('Report a thread', (done) => {
             chai.request(server).put('/'+thread_id).end((request, response) => {
                 assert.equal(response.status, 200);
-                assert.equal(resposne.text, 'Derezzed');
+                assert.equal(response.text, 'Derezzed');
                 done();
             });
         });
