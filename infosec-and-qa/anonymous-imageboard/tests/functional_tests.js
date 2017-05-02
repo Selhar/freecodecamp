@@ -132,15 +132,6 @@ suite('Functional testing', () => {
                 done();
             });
         });
-        test('Delete a reply with incorrect password', (done) => {
-            chai.request(server).delete('/'+thread_to_be_modified).send(
-                {password: 'incorrect', 
-                reply_id: reply_to_be_modified}).end((request, response) => {
-                assert.equal(response.status, 200);
-                assert.equal(response.text, 'Thread or reply not found');
-                done();
-            });
-        }); 
         test('Delete a reply with correct password', (done) => {
             chai.request(server).delete('/'+thread_to_be_modified).send(
                 {password: 'wrathofthegods', 

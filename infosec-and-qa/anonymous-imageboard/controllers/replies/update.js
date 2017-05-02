@@ -5,6 +5,7 @@ exports.report = (request, response) => {
     console.log("request.body.reply_idrequest.body.reply_idrequest.body.reply_id");
     waterfall([ 
         function reportReply(callback){
+            console.log(request.body.reply_id);
             ThreadModel.update({'replies._id': request.body.reply_id}, 
                 {'$set': {'replies.$.isReported': true}}, (error) => {
                     if(error){

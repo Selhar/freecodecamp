@@ -1,7 +1,8 @@
 const waterfall = require('async/waterfall');
 const ThreadModel = require('../../models/Thread');
+
 exports.remove = (request, response) => {
-    console.log(request.params.thread_id, request.body.reply_id);
+    
     waterfall([
         function deleteReply(callback){
             ThreadModel.update({'_id': request.params.thread_id}, 
