@@ -13,7 +13,7 @@ const Thread = new Schema({
     _id: {type: Schema.Types.ObjectId, default: new ObjectId()},
     text: {type: String, required: true},
     password: {type: String, default: "wrathofthegods"},
-    reported: {type: Boolean, default: false}
+    isReported: {type: Boolean, default: false}
   }]
 });
 
