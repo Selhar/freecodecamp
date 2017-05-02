@@ -5,22 +5,13 @@ exports.fetch = (request, response) => {
     console.log("oi3uh123ui1h2o3i21uj");
     waterfall([
         function fetchThreadList(callback){
-            ThreadModel.find({}).limit(10).exec((error, threads) =>{
+            ThreadModel.find({}).select(
+                '_id creation_date last_post text title replies'
+                ).limit(10).exec((error, threads) =>{
                 if(error){
                     return callback(error);
                 }else if(threads){
-                    let thread_list = [];
-                    for(let thread of threads){
-                        thread_list.push({
-                            id: thread._id,
-                            creation_date: thread.creation_date,
-                            last_post: thread.last_post,
-                            text: thread.text,
-                            title: thread.title, 
-                            replies: thread.replies,
-                        });
-                    }
-                    return callback(null, thread_list);
+                    return callback(null, threads);
                 }
             });
         }
@@ -31,7 +22,6 @@ exports.fetch = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
-        console.log("resultresultresultresultresultresultresultresult\ns"+result);
         return response.json(result);
     }
 }

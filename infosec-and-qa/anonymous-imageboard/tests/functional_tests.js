@@ -22,7 +22,7 @@ suite('Functional testing', () => {
                 assert.equal(response.status, 200);
                 assert.isArray(response.body);
                 assert.isAtMost(response.body.length, 10);
-                assert.property(response.body[0], 'id');
+                assert.property(response.body[0], '_id');
                 assert.property(response.body[0], 'creation_date');
                 assert.property(response.body[0], 'last_post');
                 assert.property(response.body[0], 'text');
@@ -31,7 +31,7 @@ suite('Functional testing', () => {
                 assert.notProperty(response.body[0], 'reported');
                 assert.notProperty(response.body[0], 'delete_password');
                 assert.isArray(response.body[0].replies);
-                assert.isAtMost(response.body[0].replies.body.length, 3);
+                assert.isAtMost(response.body[0].replies.length, 3);
                 done();
             });
         });
