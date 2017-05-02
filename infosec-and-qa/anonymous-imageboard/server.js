@@ -39,8 +39,9 @@ server.get('/:id', (request, response) => {
 server.post(api_root+':thread', thread_controller.create); 
 server.get(api_root, thread_controller.fetch); 
 server.delete(api_root+':thread_id', thread_controller.remove);
+server.put(api_root+':thread_id', thread_controller.report);
 //server.get(api_root, index.fetch);
-//server.put(api_root, index.update);
+
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');

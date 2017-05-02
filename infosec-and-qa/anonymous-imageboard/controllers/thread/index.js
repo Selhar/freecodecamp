@@ -5,7 +5,7 @@ const update = require('./update');
 
 exports.create = create.create;
 exports.fetch = fetch.fetch;
-exports.update = update.update;
+exports.update = update.report;
 exports.remove = remove.remove;
 exports.fetchById = fetch.fetchById;
 

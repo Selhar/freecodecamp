@@ -45,7 +45,14 @@ suite('Functional testing', () => {
                 assert.equal(response.text, 'Thread not found');
                 done();
             });
-        });    
+        }); 
+        test('Report a thread', (done) => {
+            chai.request(server).put('/'+thread_id).end((request, response) => {
+                assert.equal(response.status, 200);
+                assert.equal(resposne.text, 'Derezzed');
+                done();
+            });
+        });
         test('Delete thread with correct password', (done) => {
             chai.request(server).delete('/'+thread_id).send(
                 {password: 'wrathofthegods'}).end((request, response) => {
