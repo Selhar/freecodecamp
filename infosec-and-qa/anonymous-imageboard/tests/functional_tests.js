@@ -35,5 +35,23 @@ suite('Functional testing', () => {
                 done();
             });
         });
+        test('Delete threads', (done) => {
+            chai.request(server).get('/').end((request, response) => {
+                assert.equal(response.status, 200);
+                assert.isArray(response.body);
+                assert.isAtMost(response.body.length, 10);
+                assert.property(response.body[0], '_id');
+                assert.property(response.body[0], 'creation_date');
+                assert.property(response.body[0], 'last_post');
+                assert.property(response.body[0], 'text');
+                assert.property(response.body[0], 'title');
+                assert.property(response.body[0], 'replies');
+                assert.notProperty(response.body[0], 'reported');
+                assert.notProperty(response.body[0], 'delete_password');
+                assert.isArray(response.body[0].replies);
+                assert.isAtMost(response.body[0].replies.length, 3);
+                done();
+            });
+        });
     });    
 });
