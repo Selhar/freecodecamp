@@ -4,15 +4,22 @@ const ThreadModel = require('../../models/Thread');
 exports.fetch = (request, response) => {
     waterfall([
         function fetchThreadList(callback){
-            ThreadModel.find({}, (error, thread) =>{
+            ThreadModel.find({}).limit(10).exec((error, threads) =>{
                 if(error){
                     return callback(error);
-                }else if(thread){
-                    let thread = [];
+                }else if(threads){
+                    let thread_list = [];
                     for(let thread of threads){
-                        thread.push({title: thread.title, id: thread._id, replies: thread.replies});
+                        thread.push({
+                            id: thread._id,
+                            creation_date: thread.creation_date,
+                            last_post: thread.last_post,
+                            text: thread.text,
+                            title: thread.title, 
+                            replies: thread.replies,
+                        });
                     }
-                    return callback(null, thread);
+                    return callback(null, thread_list);
                 }
             });
         }

@@ -3,7 +3,8 @@ const ObjectId = require('mongodb').ObjectID;
 const Schema = mongoose.Schema;
 
 const Thread = new Schema({
-  title: {type: String, required: true, unique: true},
+  title: {type: String},
+  text: {type: String, required: true},
   creation_date: {type: Date, default: Date.now},
   last_post: {type: Date, default: Date.now},
   password: {type: String, default: "wrathofthegods"},

@@ -2,23 +2,16 @@ const waterfall = require("async/waterfall");
 const ThreadModel = require('../../models/Thread');
 
 exports.create = (request, response) => {
-    const title = request.params.thread;
-    waterfall([ 
-        function isThreadInDB(callback){
-            ThreadModel.findOne( {title: title}, (error, thread) =>{
-                if(error){
-                    return callback(error);
-                }else if(thread){
-                    return callback(null, thread);
-                }else{
-                    return callback(null, null);
-                }
-            });
-      }, function saveThread(thread, callback){
-
+    const title = request.body.thread.title;
+    const text = request.body.thread.text;
+    
+    waterfall([
+        function saveThread(callback){
             let new_thread = new ThreadModel({
-                title: title
+                title: title,
+                text: text
             });
+
             new_thread.save((error) => {
                 if(error){
                     return callback(error);
