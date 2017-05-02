@@ -1,38 +1,38 @@
-const mongoose = require('mongoose');
 const waterfall = require("async/waterfall");
-//const Model = require('../../models/book');
+const ThreadModel = require('../../models/Thread');
 
 exports.create = (request, response) => {
-    // waterfall([ 
-    //     function isBookInDB(callback){
-    //         BookModel.findOne( {title: request.body.title}, (error, book) =>{
-    //             if(error){
-    //                 return callback(error);
-    //             }else if(book){
-    //                 return done("A book with this name already exists");
-    //             }else{
-    //                 return callback(null);
-    //             }
-    //         });
-    //   }, function saveBook(callback){
+    const title = request.params.thread;
+    waterfall([ 
+        function isThreadInDB(callback){
+            ThreadModel.findOne( {title: title}, (error, thread) =>{
+                if(error){
+                    return callback(error);
+                }else if(thread){
+                    return callback(null, thread);
+                }else{
+                    return callback(null, null);
+                }
+            });
+      }, function saveThread(thread, callback){
 
-    //         let new_book = new BookModel({
-    //             title: request.body.title
-    //         });
-    //         new_book.save((error) => {
-    //             if(error){
-    //                 return callback(error);
-    //             }
-    //             return callback(null, new_book);
-    //         });
-    //       }
-    // ], done);
+            let new_thread = new ThreadModel({
+                title: title
+            });
+            new_thread.save((error) => {
+                if(error){
+                    return callback(error);
+                }
+                return callback(null, new_thread);
+            });
+          }
+    ], done);
 
-    // function done(error, result) {
-    //     if(error){
-    //         console.log('\nError during fetch process: '+error+'\n');
-    //         return response.send(error);
-    //     }
-    //     return response.json({title: result.title, _id: result._id});
-    // }
+    function done(error, result) {
+        if(error){
+            console.log('\nError during fetch process: '+error+'\n');
+            return response.send(error);
+        }
+        return response.redirect('/'+result._id);
+    }
 }

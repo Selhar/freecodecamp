@@ -7,14 +7,19 @@ const threads = [{title: "First thread"}, {title: "Second thread"}];
 chai.use(chai_http);
 
 suite('Functional testing', () => {
-    suite('Boards', () => { 
+    suite('Threads', () => { 
         for(let thread of threads){
             test('Create threads', (done) => {
                 chai.request(server).post('/'+thread.title).send({title: thread.title}).end((request, response) => {
-                    assert.equal(res.status, 200);
+                    assert.equal(response.status, 200);
                     done();
                 });                
             });
         }
-    });
+        test('Fetch threads', (done) => {
+            chai.request(server).get('/').end((request, response) => {
+
+            });
+        });
+    });    
 });
