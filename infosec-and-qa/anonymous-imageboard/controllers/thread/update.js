@@ -1,43 +1,26 @@
-// const mongoose = require('mongoose');
-// const waterfall = require("async/waterfall");
+const waterfall = require('async/waterfall');
+const ThreadModel = require('../../models/Thread');
 
-exports.update = (request, response) => {
-    // waterfall([ 
-    //     function isPLACEHOLDERInDB(callback){
-    //         PLACEHOLDERMODEL.findOne( {PARAMETER: PLACEHOLDERDATA}, (error, project) =>{
-    //             if(error){
-    //                 return callback(error);
-    //             }else if(project){
-    //                 return callback(null, project);
-    //             }else{
-    //                 return done("there are no PLACEHOLDERS with the parameters provided "+request.params.project);
-    //             }
-    //         });
-    //   }, function updatePLACEHOLDER(callback){
-    //         let update_parameters = request.body.new_PLACEHOLDER;
-    //         if(Object.keys(update_parameters).length > 1){
-    //             update_parameters.latest_update = Date.now();
-    //             PLACEHOLDERModel.findOneAndUpdate({_id: update_parameters._id}, {$set: update_parameters}, (error, data) => {
-    //                 if(error){
-    //                     console.log(error);
-    //                     callback("could not update");
-    //                 }else if(data){
-    //                     callback(null, "successfully updated")
-    //                 }else{
-    //                     callback("PLACEHOLDER does not exist");
-    //                 }
-    //             });
-    //         }else{
-    //             callback("no fields were provided for update");
-    //         }
-    //   }
-    // ], done);
+exports.report = (request, response) => {
+    waterfall([ 
+        function reportThread(callback){
+            ThreadModel.findByIdAndUpdate(this.params.thread_id, 
+            {isReported: true}, (error, thread) => {
+                if(error)
+                    return callback(error);
+                else if(thread && thread.isReported === true)
+                    return callback(null, 'Derezzed');
+                else
+                    return callback('Thread not found');
+            });
+        }
+    ], done);
 
-    // function done(error, result) {
-    //     if(error){
-    //         console.log('\nError during fetch process: '+error+'\n');
-    //         return response.send(error);
-    //     }
-    //     return response.json(result);
-    // }
+    function done(error, result) {
+        if(error){
+            console.log('\nError during fetch process: '+error+'\n');
+            return response.send(error);
+        }
+        return response.json(result);
+    }
 }
