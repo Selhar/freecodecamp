@@ -2,7 +2,6 @@ const waterfall = require('async/waterfall');
 const ThreadModel = require('../../models/Thread');
 
 exports.fetch = (request, response) => {
-    console.log("oi3uh123ui1h2o3i21uj");
     waterfall([
         function fetchThreadList(callback){
             ThreadModel.find({}).select(

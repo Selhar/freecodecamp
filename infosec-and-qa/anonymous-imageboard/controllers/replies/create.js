@@ -3,10 +3,10 @@ const ThreadModel = require('../../models/Thread');
 
 exports.create = (request, response) => {
     const text = request.body.comment.text;
-    console.log(request.params.thread_id_2);
+    const thread_id = request.params.thread;
     waterfall([
         function saveComment(callback){
-            ThreadModel.findByIdAndUpdate(request.params.thread_id_2, {
+            ThreadModel.findByIdAndUpdate(thread_id, {
                 replies: {
                     $push: {text: text}
                 }
