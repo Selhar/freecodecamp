@@ -2,6 +2,7 @@ const waterfall = require('async/waterfall');
 const ThreadModel = require('../../models/Thread');
 
 exports.fetch = (request, response) => {
+    console.log("oi3uh123ui1h2o3i21uj");
     waterfall([
         function fetchThreadList(callback){
             ThreadModel.find({}).limit(10).exec((error, threads) =>{
@@ -10,7 +11,7 @@ exports.fetch = (request, response) => {
                 }else if(threads){
                     let thread_list = [];
                     for(let thread of threads){
-                        thread.push({
+                        thread_list.push({
                             id: thread._id,
                             creation_date: thread.creation_date,
                             last_post: thread.last_post,
@@ -30,6 +31,7 @@ exports.fetch = (request, response) => {
             console.log('\nError during fetch process: '+error+'\n');
             return response.send(error);
         }
+        console.log("resultresultresultresultresultresultresultresult\ns"+result);
         return response.json(result);
     }
 }

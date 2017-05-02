@@ -21,9 +21,9 @@ server.use('/public', express.static(root + '/public'));
 server.use(body_parser.json());
 server.use(body_parser.urlencoded( {extended: true} ));
 
-server.get('/', (request, response) => {
-    response.render(root + '/views/board.ejs');
-});
+// server.get('/', (request, response) => {
+//     response.render(root + '/views/board.ejs');
+// });
 server.get('/:id', (request, response) => {
     response.render(root + '/views/thread.ejs');
 });
