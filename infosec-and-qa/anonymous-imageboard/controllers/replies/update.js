@@ -6,11 +6,11 @@ exports.report = (request, response) => {
         function reportReply(callback){
             ThreadModel.findOneAndUpdate(
                 {'replies._id': request.body.reply_id}, 
-                {isReported: true}, 
+                {'replies.$.isReported': true}, 
                 (error, thread) => {
                     if(error)
                         return callback(error);
-                    else if(data)
+                    else if(thread)
                         return callback(null, 'Derezzed');
                     else
                         return callback('Reply not found.');
