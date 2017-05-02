@@ -1,39 +1,31 @@
-// const waterfall = require("async/waterfall");
-// const ThreadModel = require('../../models/Thread');
+const waterfall = require("async/waterfall");
+const ThreadModel = require('../../models/Thread');
 
-// exports.create = (request, response) => {
-//     const title = request.params.thread;
-//     console.log("oi");
-//     waterfall([ 
-//         function isThreadInDB(callback){
-//             ThreadModel.findOne( {title: title}, (error, thread) =>{
-//                 if(error){
-//                     return callback(error);
-//                 }else if(thread){
-//                     return callback(null, thread);
-//                 }else{
-//                     return callback(null);
-//                 }
-//             });
-//       }, function saveThread(thread, callback){
+exports.create = (request, response) => {
+    const text = request.body.comment.text;
+    console.log(request.params.thread_id_2);
+    waterfall([
+        function saveComment(callback){
+            ThreadModel.findByIdAndUpdate(request.params.thread_id_2, {
+                replies: {
+                    $push: {text: text}
+                }
+            }, (error, data) => {
+                if(error)
+                    callback(error);
+                else if(data)
+                    callback(null, data);
+                else
+                    callback("Thread not found");
+            });
+          }
+    ], done);
 
-//             let new_thread = new ThreadModel({
-//                 title: title
-//             });
-//             new_thread.save((error) => {
-//                 if(error){
-//                     return callback(error);
-//                 }
-//                 return callback(null, new_thread);
-//             });
-//           }
-//     ], done);
-
-//     function done(error, result) {
-//         if(error){
-//             console.log('\nError during fetch process: '+error+'\n');
-//             return response.send(error);
-//         }
-//         return response.redirect('/'+result._id);
-//     }
-// }
+    function done(error, result) {
+        if(error){
+            console.log('\nError during fetch process: '+error+'\n');
+            return response.send(error);
+        }
+        return response.redirect('/'+result._id);
+    }
+}

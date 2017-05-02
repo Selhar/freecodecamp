@@ -35,12 +35,14 @@ server.get('/:id', (request, response) => {
     response.render(root + '/views/thread.ejs');
 });
 
-//Saved will be _id, text, created_on(date&time), bumped_on(date&time, starts same as created_on), reported(boolean), delete_password, & replies(array).
-server.post(api_root+':thread', thread_controller.create); 
+//threads
+server.post(api_root, thread_controller.create); 
 server.get(api_root, thread_controller.fetch); 
 server.delete(api_root+':thread_id', thread_controller.remove);
 server.put(api_root+':thread_id', thread_controller.report);
-//server.get(api_root, index.fetch);
+
+//replies
+server.post(api_root+':thread', replies_controller.create); 
 
 
 server.get('*', (request, response) => {
