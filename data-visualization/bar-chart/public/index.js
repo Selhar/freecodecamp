@@ -1,7 +1,25 @@
-let data = [5,11,18];
+let width = 700;
+let height = 500;
 
-let canvas = d3.select('body').append('svg')
-                              .attr('height','100%')
-                              .attr('width','100%');
+let x = d3.scaleBand().range([0, width]).padding(0.1);
+let y = d3.scaleBand().range([height, 0]);
 
-svg.selectAll('rect').data(data).enter().append('rect');
+let svg = d3.select('graph')
+                .append('svg')
+                    .attr('width', width)
+                    .attr('height', height)
+                .append('g');
+d3.csv('data.csv', (error, data) => {
+    if(error)
+        throw error;
+    
+    data.forEach((d) => {
+        d.sales += d.sales;
+    });
+    
+    x.domain(data.map((d) => {return d.salesperson}))
+
+});
+
+
+                    
