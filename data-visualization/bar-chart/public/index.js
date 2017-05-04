@@ -68,7 +68,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     
     minGdp = d3.min(gdp);
     maxGdp = d3.max(gdp);
-    bar_width = svg_dimensions.width / gdp.length;
+    bar_width = (svg_dimensions.width - svg_dimensions.padding_right) / gdp.length;
 
     let xAxis_data = d3.scaleLinear()
                     .domain([d3.min(years), d3.max(years)])
@@ -83,7 +83,10 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     
     let linearScale = d3.scaleLinear()
                         .domain([minGdp, maxGdp])
-                        .range([(minGdp/maxGdp) * svg_dimensions.height, svg_dimensions.height - svg_dimensions.padding]);
+                        .range([
+                            (minGdp/maxGdp) * svg_dimensions.height, 
+                            svg_dimensions.height - svg_dimensions.padding
+                        ]);
 
     let gdpScale = gdp.map((value) => {return linearScale(value)});
 
@@ -114,7 +117,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                         .attr('date-date', (gdp_array_item, index) => {return data.data[index][0]})
                         .attr('date-gdp', (gdp_array_item, index) => {return data.data[index][1]})
                         .attr('class', 'bar')
-                            .attr('x', (gdp_array_item, index) => {return ((index * bar_width) - svg_dimensions.padding_right)})
+                            .attr('x', (gdp_array_item, index) => {return (index * bar_width)})
                             .attr('y', (gdp_array_item, index) => {return (svg_dimensions.height- gdp_array_item) - svg_dimensions.padding})
                             .attr('width', bar_width)
                             .attr('height', (gdp_array_item) => {return gdp_array_item})
