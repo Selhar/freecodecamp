@@ -16,8 +16,25 @@ d3.csv('data.csv', (error, data) => {
     data.forEach((d) => {
         d.sales += d.sales;
     });
+
+    x.domain(data.map((d) => {return d.salesperson; }));
+    y.domain([0, d3.max(data, (d) => {return d.sales; })]);
+
+    svg.selectAll('.bar')
+            .data(data)
+        .enter().append('rect')
+            .attr('class','bar')
+            .attr('x',(d) => {return x(d.salesperson);})
+            .attr('width', x.bandwidth)
+            .attr('y',(d) => {return y(d.sales);})
+            .attr('height', (d) => { return height - y(d.sales); });
     
-    x.domain(data.map((d) => {return d.salesperson}))
+    svg.append('g')
+        .attr('transform', 'translate(0,'+height+')')
+        .call(d3.axisBottom(x));
+    
+    svg.append('g')
+        .call(d3.axisLeft(y));
 
 });
 
