@@ -88,8 +88,8 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     
     container.append('text')
                 .attr('transform', 'rotate(-90)')
-                .attr('x', -250)
-                .attr('y', 80)
+                .attr('x', (-svg_dimensions.height / 2))
+                .attr('y', svg_dimensions.padding + 20)
                 .text('Gross domestic product');
     
     container.append('g')
@@ -98,6 +98,6 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     
     container.append('g')
         .call(yAxis)
-            .attr('transform', 'translate(60, 0)');
+            .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
 });
         
