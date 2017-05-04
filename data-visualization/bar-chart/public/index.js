@@ -16,6 +16,11 @@ const svg_dimensions = {
     padding_right: 60
 }
 
+let tooltip_block = d3.select("body").append("div")	
+                        .attr("class", "tooltip")				
+                        .style("opacity", 0);
+
+
 let fallback_data = {};
 
 d3.json('./data_fallback.json', (error, data) => {
@@ -110,7 +115,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         .call(yAxis_line)
             .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
 
-    let rectangles = d3.select('svg').selectAll('rect')
+    let data_bars = d3.select('svg').selectAll('rect')
                         .data(gdpScale)
                         .enter()
                         .append('rect')
@@ -121,6 +126,19 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                             .attr('y', (gdp_array_item, index) => {return (svg_dimensions.height- gdp_array_item) - svg_dimensions.padding})
                             .attr('width', bar_width)
                             .attr('height', (gdp_array_item) => {return gdp_array_item})
-                            .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
+                            .attr('transform', 'translate('+svg_dimensions.padding+', 0)')
+                        .on('mouseover', (d) => {
+                            tooltip_block.transition()
+                                .duration(200)
+                                .style('opacity', 0.9);
+                            tooltip_block.html(years[i] + '<br>' + '$' + GDP[i].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' Billion')
+                                            .style("left", (d3.event.pageX) + "px")		
+                                            .style("top", (d3.event.pageY - 28) + "px")
+                            .on('mouseout', (d) => {
+                                tooltip_block.transition()
+                                                .duration(200)
+                                                .style('opacity', 0);
+                            })
+                        })
 });
         
