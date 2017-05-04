@@ -40,6 +40,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     let gdp = [];
     let minGdp = '';
     let maxGdp = '';
+    let bar_width = 0;
 
     data.data.map((value) => {
             const year = value[0].substring(0, 4);
@@ -67,7 +68,8 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     
     minGdp = d3.min(gdp);
     maxGdp = d3.max(gdp);
-    
+    bar_width = svg_dimensions.width / gdp.length;
+
     let xScale = d3.scaleLinear()
                     .domain([d3.min(years), d3.max(years)])
                     .range([0, (svg_dimensions.width - svg_dimensions.padding_right)]);
@@ -79,7 +81,8 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     let xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format('d'));
     let yAxis = d3.axisLeft(yScale);
 
-
+    let gdpScale = gdp.map((value) => {return d3.scaleLinear(value)});
+console.log(gdpScale);
     /* Rendering on page */
     let container = d3.select('.graph')
     .append('svg')
@@ -99,5 +102,21 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     container.append('g')
         .call(yAxis)
             .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
+    
+
+    let rectangles = d3.select('svg').selectAll('rect')
+                        .data(gdpScale)
+                        .enter()
+                        .append('rect')
+                        .attr('date-date', (gdp_array_item, index) => {return gdp_array_item.data[index][0]})
+                        .attr('date-gdp', (gdp_array_item, index) => {return gdp_array_item.data[index][1]})
+                        .attr('class', 'bar')
+                        .attr('x', (gdp_array_item, index) => {return index * bar_width})
+                        .attr('y', (gdp_array_item, index) => {return height - gdp_array_item})
+                        .attr('width', bar_width)
+                        .attr('height', (gdp_array_item) => {return gdp_array_item});
+
+    
+
 });
         
