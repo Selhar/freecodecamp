@@ -35,7 +35,11 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     let tooltip = {
         quarter: []
     }
+
     let years = [];
+    let gdp = [];
+    let minGdp = '';
+    let maxGdp = '';
 
     data.data.map((value) => {
             const year = value[0].substring(0, 4);
@@ -58,13 +62,23 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
             }
             tooltip.quarter.push(output);
             years.push(year);
+            gdp.push(value[1]);
     });
-
+    
+    minGdp = d3.min(gdp);
+    maxGdp = d3.max(gdp);
+    
     let xScale = d3.scaleLinear()
                     .domain([d3.min(years), d3.max(years)])
                     .range([0, (svg_dimensions.width - svg_dimensions.padding_right)]);
     
+    let yScale = d3.scaleLinear()
+                    .domain([minGdp, maxGdp])
+                    .range([svg_dimensions.height - svg_dimensions.padding, (minGdp/maxGdp) * svg_dimensions.height]);
+
     let xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format('d'));
+    let yAxis = d3.axisLeft(yScale);
+
 
     /* Rendering on page */
     let container = d3.select('.graph')
@@ -81,5 +95,9 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     container.append('g')
             .call(xAxis)
             .attr('transform', 'translate('+ svg_dimensions.padding +','+ (svg_dimensions.height - svg_dimensions.padding) +')');
+    
+    container.append('g')
+        .call(yAxis)
+            .attr('transform', 'translate(60, 0)');
 });
         
