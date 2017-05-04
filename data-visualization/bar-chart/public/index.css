@@ -5,11 +5,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: darkslateblue;
 }
 
 * {
     box-sizing: border-box;
 }
 
-
-.bar { fill: steelblue; }
+svg{
+    background-color: white;
+}
+.bar { fill: #484d8b; }
