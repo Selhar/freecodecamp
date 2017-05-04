@@ -12,7 +12,8 @@ const container_dimensions = {
 const svg_dimensions = {
     width: container_dimensions.width-100,
     height: container_dimensions.height-100,
-    padding: 40
+    padding: 40,
+    padding_right: 60
 }
 
 let fallback_data = {};
@@ -61,7 +62,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
 
     let xScale = d3.scaleLinear()
                     .domain([d3.min(years), d3.max(years)])
-                    .range([0, svg_dimensions.width]);
+                    .range([0, (svg_dimensions.width - svg_dimensions.padding_right)]);
     
     let xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format('d'));
 
@@ -79,7 +80,6 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     
     container.append('g')
             .call(xAxis)
-            .attr('transform', 'translate('+ svg_dimensions.padding +','+ svg_dimensions.height - svg_dimensions.padding +')');
-    
+            .attr('transform', 'translate('+ svg_dimensions.padding +','+ (svg_dimensions.height - svg_dimensions.padding) +')');
 });
         
