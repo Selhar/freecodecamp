@@ -10,26 +10,23 @@ d3.json('./data_fallback.json', (error, data) => {
     fallback_data = data;
 });
 
-const margin = {
-    top: 50, 
-    right: 25, 
-    bottom: 30, 
-    left: 40
-};
+//Fetch current CSS dimensions of container div
+const container_div = document.querySelector(".container");
+const container_styles = window.getComputedStyle(container_div);
+const container_dimensions = {
+    width: container_styles.getPropertyValue("width"),
+    height: container_styles.getPropertyValue("height")
+}
 
-const dimensions = {
-    width: 720 - (margin.left + margin.right),
-    height: 500 - (margin.top + margin.bottom)
-};
+const svg_dimensions = {
+    width: container_dimensions.width-100,
+    height: container_dimensions.height-100
+}
 
-let xAxis = d3.scaleLinear().range([0, dimensions.width]).padding(0.15);
-let yAxis = d3.scaleLinear().range([dimensions.height, 0]);
-
-let container = d3.select('body').append('svg')
-        .attr('width', dimensions.width + margin.left + margin.right)
-        .attr('height', dimensions.height + margin.top + margin.bottom)
-    .append('g')
-        .attr('transform','translate('+margin.left+','+margin.top+')');
+let container = d3.select('graph')
+    .append('svg')
+        .attr('height',svg_dimensions.height)
+        .attr('width',svg_dimensions.width);
 
 /* 
     Configuration variables
@@ -41,8 +38,5 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         console.log(error+"\n\nAn error ocurred with the remote API, using local fallback data from march 2017");
         data = fallback_data;
     }
-
-    xAxis.domain([data.from_date, data.to_date]);
-    yAxis.domain([]);
 });
         
