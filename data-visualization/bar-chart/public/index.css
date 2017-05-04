@@ -12,7 +12,11 @@ body {
     box-sizing: border-box;
 }
 
-svg{
+.container{
+    text-align: center;
+    width: 960px;
+    height: 600px;
     background-color: white;
 }
+
 .bar { fill: #484d8b; }
