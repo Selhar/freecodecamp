@@ -70,19 +70,23 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     maxGdp = d3.max(gdp);
     bar_width = svg_dimensions.width / gdp.length;
 
-    let xScale = d3.scaleLinear()
+    let xAxis_line = d3.scaleLinear()
                     .domain([d3.min(years), d3.max(years)])
                     .range([0, (svg_dimensions.width - svg_dimensions.padding_right)]);
     
-    let yScale = d3.scaleLinear()
+    let yAxis_line = d3.scaleLinear()
                     .domain([minGdp, maxGdp])
                     .range([svg_dimensions.height - svg_dimensions.padding, (minGdp/maxGdp) * svg_dimensions.height]);
 
-    let xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format('d'));
-    let yAxis = d3.axisLeft(yScale);
+    let xAxis_data = d3.axisBottom().scale(xAxis_line).tickFormat(d3.format('d'));
+    let yAxis_data = d3.axisLeft(yAxis_line);
+    
+    let linearScale = d3.scaleLinear()
+                        .domain([minGdp, maxGdp])
+                        .range([(minGdp/maxGdp) * svg_dimensions.height, svg_dimensions.height]);
 
-    let gdpScale = gdp.map((value) => {return d3.scaleLinear(value)});
-console.log(gdpScale);
+    let gdpScale = gdp.map((value) => {return linearScale(value)});
+
     /* Rendering on page */
     let container = d3.select('.graph')
     .append('svg')
@@ -96,25 +100,25 @@ console.log(gdpScale);
                 .text('Gross domestic product');
     
     container.append('g')
-            .call(xAxis)
+            .call(xAxis_data)
             .attr('transform', 'translate('+ svg_dimensions.padding +','+ (svg_dimensions.height - svg_dimensions.padding) +')');
     
     container.append('g')
-        .call(yAxis)
+        .call(yAxis_data)
             .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
-    
 
     let rectangles = d3.select('svg').selectAll('rect')
                         .data(gdpScale)
                         .enter()
                         .append('rect')
-                        .attr('date-date', (gdp_array_item, index) => {return gdp_array_item.data[index][0]})
-                        .attr('date-gdp', (gdp_array_item, index) => {return gdp_array_item.data[index][1]})
+                        .attr('date-date', (gdp_array_item, index) => {return data.data[index][0]})
+                        .attr('date-gdp', (gdp_array_item, index) => {return data.data[index][1]})
                         .attr('class', 'bar')
                         .attr('x', (gdp_array_item, index) => {return index * bar_width})
-                        .attr('y', (gdp_array_item, index) => {return height - gdp_array_item})
+                        .attr('y', (gdp_array_item, index) => {return (svg_dimensions.height - svg_dimensions.padding) - gdp_array_item})
                         .attr('width', bar_width)
-                        .attr('height', (gdp_array_item) => {return gdp_array_item});
+                        .attr('height', (gdp_array_item) => {return gdp_array_item})
+                        .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
 
     
 
