@@ -127,11 +127,11 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                             .attr('width', bar_width)
                             .attr('height', (gdp_array_item) => {return gdp_array_item})
                             .attr('transform', 'translate('+svg_dimensions.padding+', 0)')
-                        .on('mouseover', (d) => {
+                        .on('mouseover', (d, index) => {
                             tooltip_block.transition()
                                 .duration(200)
                                 .style('opacity', 0.9);
-                            tooltip_block.html(years[i] + '<br>' + '$' + GDP[i].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' Billion')
+                            tooltip_block.html(years[index] + '<br>' + '$' + gdp[index].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' Billion')
                                             .style("left", (d3.event.pageX) + "px")		
                                             .style("top", (d3.event.pageY - 28) + "px")
                             .on('mouseout', (d) => {
