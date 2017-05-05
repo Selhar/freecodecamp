@@ -89,9 +89,21 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
         .attr('transform', (d,i) => {return 'translate(0,' + (container_dimensions.height/2 - i * 20)+')';});
     
     legend.append('rect')
-        .attr('x', svg_dimensions.width - 20)
-        .attr('width', 20)
-        .attr('height', 20)
+        .attr('x', svg_dimensions.width - 18)
+        .attr('width', 18)
+        .attr('height', 18)
         .style('fill', color);
+
+    legend.append('text')
+            .attr("x", svg_dimensions.width - 25)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+        .style("text-anchor", "end")
+            .text((isDopingPositive) => {
+                if(isDopingPositive) 
+                    return 'Dopping accusations';
+                else
+                    return 'No accusations'
+            })
     
 });
