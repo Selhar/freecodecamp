@@ -30,83 +30,32 @@ d3.json('./data_fallback.json', (error, data) => {
     fallback_data = data;
 });
 
-d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json', (error, data) => {
+d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json', (error, data) => {
     if(error){
-        console.log(error+"\n\nAn error ocurred with the remote API, using local fallback data from march 2017");
+        console.log(error);
+        alert('An error ocurred with the remote API, using local fallback data from march 2017');
         data = fallback_data;
     }
         
     /* Data formatting */
-    let tooltip = {
-        quarter: []
-    }
 
-    let years = [];
-    let gdp = [];
-    let minGdp = '';
-    let maxGdp = '';
-    let bar_width = 0;
-
-    data.data.map((value) => {
-            const year = value[0].substring(0, 4);
-            let output = year;
-            const quarter = value[0].substring(5,7);
-
-            switch(quarter){
-                case '01':
-                    output += ' Q1';
-                    break;
-                case '04':
-                    output += ' Q2';
-                    break;
-                case '07':
-                    output += ' Q3';
-                    break;
-                case '10':
-                    output += ' Q4';
-                    break;
-            }
-            tooltip.quarter.push(output);
-            years.push(year);
-            gdp.push(value[1]);
-    });
-    
-    minGdp = d3.min(gdp);
-    maxGdp = d3.max(gdp);
-    bar_width = (svg_dimensions.width - svg_dimensions.padding_right) / gdp.length;
-
-    let xAxis_data = d3.scaleLinear()
+    let xAxis = d3.scaleLinear()
                     .domain([d3.min(years), d3.max(years)])
                     .range([0, (svg_dimensions.width - svg_dimensions.padding_right)]);
     
-    let yAxis_data = d3.scaleLinear()
+    let yAxis = d3.scaleLinear()
                     .domain([minGdp, maxGdp])
                     .range([svg_dimensions.height - svg_dimensions.padding, (minGdp/maxGdp) * svg_dimensions.height]);
 
-    let xAxis_line = d3.axisBottom().scale(xAxis_data).tickFormat(d3.format('d'));
-    let yAxis_line = d3.axisLeft(yAxis_data);
-    
-    let linearScale = d3.scaleLinear()
-                        .domain([minGdp, maxGdp])
-                        .range([
-                            (minGdp/maxGdp) * svg_dimensions.height, 
-                            svg_dimensions.height - svg_dimensions.padding
-                        ]);
-
-    let gdpScale = gdp.map((value) => {return linearScale(value)});
+    let xAxis_line = d3.axisBottom().scale(xAxis).tickFormat(d3.format('d'));
+    let yAxis_line = d3.axisLeft(yAxis);
 
     /* Rendering on page */
     let container = d3.select('.graph')
     .append('svg')
         .attr('height', svg_dimensions.height)
         .attr('width', svg_dimensions.width);
-    
-    container.append('text')
-                .attr('transform', 'rotate(-90)')
-                .attr('x', (-svg_dimensions.height / 2))
-                .attr('y', svg_dimensions.padding + 20)
-                .text('Gross domestic product');
-    
+        
     container.append('g')
             .call(xAxis_line)
             .attr('transform', 'translate('+ svg_dimensions.padding +','+ (svg_dimensions.height - svg_dimensions.padding) +')');
@@ -115,30 +64,5 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         .call(yAxis_line)
             .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
 
-    let data_bars = d3.select('svg').selectAll('rect')
-                        .data(gdpScale)
-                        .enter()
-                        .append('rect')
-                        .attr('date-date', (gdp_array_item, index) => {return data.data[index][0]})
-                        .attr('date-gdp', (gdp_array_item, index) => {return data.data[index][1]})
-                        .attr('class', 'bar')
-                            .attr('x', (gdp_array_item, index) => {return (index * bar_width)})
-                            .attr('y', (gdp_array_item, index) => {return (svg_dimensions.height- gdp_array_item) - svg_dimensions.padding})
-                            .attr('width', bar_width)
-                            .attr('height', (gdp_array_item) => {return gdp_array_item})
-                            .attr('transform', 'translate('+svg_dimensions.padding+', 0)')
-                        .on('mouseover', (d, index) => {
-                            tooltip_block.transition()
-                                .duration(200)
-                                .style('opacity', 0.9);
-                            tooltip_block.html(tooltip.quarter[index] + '<br>' + '$' + gdp[index].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' Billion')
-                                            .style("left", (d3.event.pageX) + "px")		
-                                            .style("top", (d3.event.pageY - 28) + "px")
-                            .on('mouseout', (d) => {
-                                tooltip_block.transition()
-                                                .duration(200)
-                                                .style('opacity', 0);
-                            })
-                        })
 });
         
