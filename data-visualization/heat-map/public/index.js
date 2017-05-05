@@ -16,13 +16,7 @@ const svg_dimensions = {
     padding_right: 60
 }
 
-let timeParse = d3.timeParse("%M:%S");
-let timeFormat = d3.timeFormat("%M:%S");
-
-let tooltip_block = d3.select("body").append("div")	
-                        .attr("class", "tooltip")				
-                        .style("opacity", 0);
-
+let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 
 let fallback_data = {};
 
@@ -33,7 +27,7 @@ d3.json('./data_fallback.json', (error, data) => {
     fallback_data = data;
 });
 
-d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json', (error, data) => {
+d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json', (error, data) => {
     if(error){
         console.log(error);
         alert('An error ocurred with the remote API, using local fallback data from march 2017');
@@ -42,32 +36,23 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
         
     /* Data formatting */
 
-    data.forEach((d) => {
-        d.Place = +d.Place;
-        d.Time = timeParse(d.Time);
-    });
-    
-    let x_axis_builder = d3.scaleLinear()
-                .domain([d3.min(data, (d) => {return d.Year-1;}),
-                         d3.max(data, (d) => {return d.Year+1;})])
-                .range([0, (svg_dimensions.width - svg_dimensions.padding)]);
+    let xScale = d3.scaleLinear()
+                    .domain([min, max])
+                    .range([min, max]);
 
-    let y_axis_builder = d3.scaleTime()
-                .domain(d3.extent(data, (d) => {return d.Time;}))
-                .range([0, (svg_dimensions.height - svg_dimensions.padding)]);
+    let yScale = d3.scaleTime()
+                    .domain([min,max])
+                    .range([min, max]);
 
-    let xAxis = d3.axisBottom(x_axis_builder).tickFormat(d3.format('d'));
-    let yAxis = d3.axisLeft(y_axis_builder).tickFormat(timeFormat);
+    let xAxis = d3.axisBottom(xScale);
+    let yAxis = d3.axisLeft(yScale);
 
     let container = d3.select('.graph').append('svg')
                         .attr('width', svg_dimensions.width)
                         .attr('height', svg_dimensions.height );
     
     container.append('g')
-                .attr('transform', 'translate(0, '+(svg_dimensions.height - svg_dimensions.padding)+')')
-                .call(xAxis)
-                .attr('x', (svg_dimensions.width - svg_dimensions.padding))
-                .attr('y', 600 );
+                .call(xAxis);
     
     container.append('g')
                 .call(yAxis);
