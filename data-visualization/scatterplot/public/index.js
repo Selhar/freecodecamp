@@ -77,6 +77,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
         .data(data)
         .enter().append('circle')
         .attr('class', 'circle')
+        .attr('opacity', 0.75)
         .attr('r', 6)
         .attr('cx', (d) => {return x_axis_builder(d.Year);})
         .attr('cy', (d) => {return y_axis_builder(d.Time);})
@@ -85,8 +86,11 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
             tooltip_block.transition().duration(150)
                             .style('opacity', 0.9);
             tooltip_block.html(d.Name + ": " + d.Nationality + "<br/>"
-                                 + "Year: " +  d.Year + ", Time: " + timeFormat(d.Time) 
+                                 + "Year: " +  d.Year + ", Time: " + timeFormat(d.Time)
                                  + (d.Doping?"<br/><br/>" + d.Doping:""))
+                                 .style("left", (d3.event.pageX) + "px")		
+                                 .style("top", (d3.event.pageY - 28) + "px")
+                                 
         })
         .on('mouseout', (d) => {
             tooltip_block.transition()
