@@ -80,7 +80,20 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
         .attr('r', 6)
         .attr('cx', (d) => {return x_axis_builder(d.Year);})
         .attr('cy', (d) => {return y_axis_builder(d.Time);})
-        .style('fill', (d) => {return color(d.Doping != "");});
+        .style('fill', (d) => {return color(d.Doping != "");})
+        .on('mouseover', (d) => {
+            tooltip_block.transition().duration(150)
+                            .style('opacity', 0.9);
+            tooltip_block.html(d.Name + ": " + d.Nationality + "<br/>"
+                                 + "Year: " +  d.Year + ", Time: " + timeFormat(d.Time) 
+                                 + (d.Doping?"<br/><br/>" + d.Doping:""))
+        })
+        .on('mouseout', (d) => {
+            tooltip_block.transition()
+                        .duration(150)
+                        .style('opacity', 0);
+            });
+        
 
     let legend = container.selectAll('.legend')
         .data(color.domain())
