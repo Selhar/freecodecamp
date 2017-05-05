@@ -33,7 +33,7 @@ d3.json('./data_fallback.json', (error, data) => {
     fallback_data = data;
 });
 
-d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json', (error, data) => {
+d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json', (error, data) => {
     if(error){
         console.log(error);
         alert('An error ocurred with the remote API, using local fallback data from march 2017');
