@@ -52,7 +52,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     let x_axis_builder = d3.scaleLinear()
                 .domain([d3.min(data, (d) => {return d.Year-1;}),
                          d3.max(data, (d) => {return d.Year+1;})])
-                .range([0, (svg_dimensions.width - svg_dimensions.padding - svg_dimensions.padding_left)]);
+                .range([0, (svg_dimensions.width - svg_dimensions.padding)]);
 
     let y_axis_builder = d3.scaleTime()
                 .domain(d3.extent(data, (d) => { return d.Time;}))
@@ -72,6 +72,15 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     container.append('g')
                 .attr('transform', 'translate('+svg_dimensions.padding_left+', 0)')
                 .call(yAxis);
+    
+    container.selectAll('.circle')
+        .data(data)
+        .enter().append('circle')
+        .attr('class', 'circle')
+        .attr('r', 6)
+        .attr('cx', (d) => {return x_axis_builder(d.Year);})
+        .attr('cy', (d) => {return y_axis_builder(d.Time);})
+        .style('fill', (d) => {return color(d.Doping != "");});
 
     let legend = container.selectAll('.legend')
         .data(color.domain())
@@ -81,8 +90,8 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     
     legend.append('rect')
         .attr('x', svg_dimensions.width - 20)
-        .attr('width', 20456)
-        .attr('height', 24560)
+        .attr('width', 20)
+        .attr('height', 20)
         .style('fill', color);
     
 });
