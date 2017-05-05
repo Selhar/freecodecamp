@@ -17,6 +17,7 @@ const svg_dimensions = {
     padding_left: 35
 }
 
+let color = d3.scaleOrdinal(d3.schemeCategory10);
 let timeParse = d3.timeParse("%M:%S");
 let timeFormat = d3.timeFormat("%M:%S");
 
@@ -71,4 +72,17 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     container.append('g')
                 .attr('transform', 'translate('+svg_dimensions.padding_left+', 0)')
                 .call(yAxis);
+
+    let legend = container.selectAll('.legend')
+        .data(color.domain())
+        .enter().append('g')
+        .attr('class', 'legend')
+        .attr('transform', (d,i) => {return 'translate(0,' + (container_dimensions.height/2 - i * 20)+')';});
+    
+    legend.append('rect')
+        .attr('x', svg_dimensions.width - 20)
+        .attr('width', 20456)
+        .attr('height', 24560)
+        .style('fill', color);
+    
 });
