@@ -47,21 +47,28 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
         d.Time = timeParse(d.Time);
     });
     
-    let x = d3.scaleLinear()
+    let x_axis_builder = d3.scaleLinear()
                 .domain([d3.min(data, (d) => {return d.Year-1;}),
                          d3.max(data, (d) => {return d.Year+1;})])
-                .range([0, svg_dimensions.width]);
+                .range([0, (svg_dimensions.width - svg_dimensions.padding)]);
 
-    let y = d3.scaleTime()
+    let y_axis_builder = d3.scaleTime()
                 .domain(d3.extent(data, (d) => {return d.Time;}))
-                .range([0, svg_dimensions.height]);
+                .range([0, (svg_dimensions.height - svg_dimensions.padding)]);
 
-    let xAxis = d3.axisBottom(x).tickFormat(d3.format('d'));
-    let yAxis = d3.axisLeft(y).tickFormat(timeFormat);
+    let xAxis = d3.axisBottom(x_axis_builder).tickFormat(d3.format('d'));
+    let yAxis = d3.axisLeft(y_axis_builder).tickFormat(timeFormat);
 
     let container = d3.select('.graph').append('svg')
                         .attr('width', svg_dimensions.width)
-                        .attr('height', svg_dimensions.height);
-                    
-                        
+                        .attr('height', svg_dimensions.height );
+    
+    container.append('g')
+                .attr('transform', 'translate(0, '+(svg_dimensions.height - svg_dimensions.padding)+')')
+                .call(xAxis)
+                .attr('x', (svg_dimensions.width - svg_dimensions.padding))
+                .attr('y', 600 );
+    
+    container.append('g')
+                .call(yAxis);
 });
