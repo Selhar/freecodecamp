@@ -69,6 +69,6 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
                 .call(xAxis)
     
     container.append('g')
-                .attr('transform', 'translate(35, 0)')
+                .attr('transform', 'translate('+svg_dimensions.padding_left+', 0)')
                 .call(yAxis);
 });
