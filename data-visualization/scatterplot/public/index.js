@@ -52,11 +52,11 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     let x_axis_builder = d3.scaleLinear()
                 .domain([d3.min(data, (d) => {return d.Year-1;}),
                          d3.max(data, (d) => {return d.Year+1;})])
-                .range([0, (svg_dimensions.width - svg_dimensions.padding)]);
+                .range([svg_dimensions.padding_left, (svg_dimensions.width - svg_dimensions.padding)]);
 
     let y_axis_builder = d3.scaleTime()
                 .domain(d3.extent(data, (d) => { return d.Time;}))
-                .range([0, (svg_dimensions.height - svg_dimensions.padding)]);
+                .range([10, (svg_dimensions.height - svg_dimensions.padding)]);
 
     let xAxis = d3.axisBottom(x_axis_builder).tickFormat(d3.format('d'));
     let yAxis = d3.axisLeft(y_axis_builder).tickFormat(timeFormat);
@@ -66,7 +66,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
                         .attr('height', svg_dimensions.height );
     
     container.append('g')
-                .attr('transform', 'translate('+svg_dimensions.padding_left+', '+(svg_dimensions.height - svg_dimensions.padding)+')')
+                .attr('transform', 'translate(0, '+(svg_dimensions.height - svg_dimensions.padding)+')')
                 .call(xAxis)
     
     container.append('g')
