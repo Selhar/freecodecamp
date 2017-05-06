@@ -12,11 +12,9 @@ const container_dimensions = {
 const svg = {
     width: container_dimensions.width,
     height: container_dimensions.height,
-    padding_height: container_dimensions.width / 10,
-    padding_width: container_dimensions.width / 10
+    padding_height: container_dimensions.width / 20,
+    padding_width: container_dimensions.width / 20
 }
-
-console.log(svg);
 
 let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 
@@ -40,7 +38,8 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     let api_data = {
         year: [],
         variance: [],
-        month: []
+        month: [],
+        processedYears: []
         
     };
 
@@ -48,17 +47,16 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         api_data.year.push(item.year);
         api_data.variance.push(item.variance);
     });
-    
-    let xScale = d3.scaleOrdinal()
-                    .domain([d3.min(api_data.year), d3.max(api_data.year)])
-                    .range(0, svg.width - svg.padding_width);
-                    
+
+    let xScale = d3.scaleLinear()
+                    .domain([d3.min(api_data.processedYears), d3.max(api_data.processedYears)])
+                    .range([0, svg.width - svg.padding_width]);
+
     let yScale = d3.scaleTime()
                     .domain([new Date(2012, 0, 1), new Date(2012, 11, 31)])
                     .range([0, svg.height - svg.padding_height]);
 
-    let xAxis = d3.axisBottom(xScale).tickValues(api_data.year.filter((item) => {return item % 10 === 0;}))
-                                     .tickFormat(d3.timeFormat('%Y'));
+    let xAxis = d3.axisBottom(xScale);
     
     let yAxis = d3.axisLeft(yScale).ticks(d3.timeMonth).tickFormat(d3.timeFormat('%b'));
 
@@ -66,11 +64,11 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                         .attr('width', svg.width)
                         .attr('height', svg.height);
     
-    // container.append('g')
-    //             .attr("transform", 'translate('0)')
-    //             .call(xAxis);
-    
     container.append('g')
-                .attr('transform', 'translate('+svg.padding_width/2+','+svg.padding_height/2+')')
+                .attr('transform', 'translate('+svg.padding_width+','+(svg.height - svg.padding_height/2)+')')
+                .call(xAxis);
+
+    container.append('g')
+                .attr('transform', 'translate('+svg.padding_width+','+svg.padding_height+')')
                 .call(yAxis);
 });
