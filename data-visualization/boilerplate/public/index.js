@@ -22,7 +22,7 @@ let fallback_data = {};
 
 d3.json('./data_fallback.json', (error, data) => {
     if(error){
-        console.log(error);
+        console.log("Fallback error: "+error);
     }
     fallback_data = data;
 });
