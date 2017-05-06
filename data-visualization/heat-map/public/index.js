@@ -56,6 +56,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         width: (svg.width - svg.padding.width) / (api_data.year.length / 12),
         height:  (svg.height - svg.padding.height) / 12
     }
+    
     let colors = ['#313695', '#4575B4', '#74ADD1', '#ABD9E9', '#E0F3F8', '#FFFFBF', '#FEE090', '#FDAE61', '#F46D43', '#D73027', '#A50026'];
     let step = (Math.abs(d3.min(api_data.variance)) + d3.max(api_data.variance)) / 11
     let threshold = [];
@@ -64,7 +65,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         threshold.push(current);
         current += step;
     }
-    console.log(threshold);
+
     let color = d3.scaleThreshold()
                     .domain(threshold)
                     .range(colors)
@@ -83,7 +84,6 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     let container = d3.select('.graph').append('svg')
                         .attr('width', svg.width)
                         .attr('height', svg.height);
-    
 
     container.append('g')
                 .attr('transform', 'translate('+svg.padding.width_side+','+(svg.height - svg.padding.height_side)+')')
@@ -100,5 +100,16 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
             .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node.width)
             .attr('width', node.width)
             .attr('height', node.height)
-            .style('fill', (d, i) => color(d.variance));
+            .style('fill', (d, i) => color(d.variance))
+        .on('mouseover', (d) => {
+            tooltip_block.transition().duration(150).style('opacity', 0.9);
+            
+            let date = new Date(d.year, d.month);
+            tooltip_block.html("<span class='date'>" + d3.timeFormat("%Y - %B")(date) + "</span>" + "<br />"
+                                + "<span class='temperature'>" + d3.format(".1f")(data.baseTemperature + d.variance) 
+                                + "&#8451;" + "</span>" + "<br />"
+                                + "<span class='variance'>" + d3.format("+.1f")(d.variance) + "&#8451;" + "</span>")
+                            .style("left", (d3.event.pageX) + "px")		
+                            .style("top", (d3.event.pageY - 28) + "px")
+        })
 });
