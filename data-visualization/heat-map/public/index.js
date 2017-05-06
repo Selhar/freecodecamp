@@ -12,8 +12,8 @@ const container_dimensions = {
 const svg = {
     width: container_dimensions.width,
     height: container_dimensions.height,
-    padding_height: container_dimensions.width / 20,
-    padding_width: container_dimensions.width / 20
+    padding_height: container_dimensions.width / 10,
+    padding_width: container_dimensions.width / 10
 }
 
 let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
@@ -63,10 +63,10 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                         .attr('height', svg.height);
     
     container.append('g')
-                .attr('transform', 'translate('+svg.padding_width+','+(svg.height - svg.padding_height/2)+')')
+                .attr('transform', 'translate('+svg.padding_width/2+','+(svg.height - svg.padding_height/2)+')')
                 .call(xAxis);
 
     container.append('g')
-                .attr('transform', 'translate('+svg.padding_width+','+svg.padding_height/2+')')
+                .attr('transform', 'translate('+svg.padding_width/2+','+svg.padding_height/2+')')
                 .call(yAxis);
 });
