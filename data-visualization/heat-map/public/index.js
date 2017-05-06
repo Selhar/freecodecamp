@@ -52,8 +52,10 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
 
     });
     
-    let node_width = (svg.width - svg.padding.width) / (api_data.year.length / 12);
-
+    let node = {
+        width: (svg.width - svg.padding.width) / (api_data.year.length / 12),
+        height:  (svg.height - svg.padding.height) / 12
+    }
     let xScale = d3.scaleLinear()
                     .domain([d3.min(api_data.year), d3.max(api_data.year)])
                     .range([0, svg.width - svg.padding.width]);
@@ -79,12 +81,13 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                 .attr('transform', 'translate('+svg.padding.width_side+','+svg.padding.height_side+')')
                 .call(yAxis);
     
-    // container.append('g')
-    //         .attr('transform', 'translate('+svg.padding.width/2+','+(0)+')')
-    //     .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
-    //         .attr('y', (item, index) => item.month * 35)
-    //         .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node_width)
-    //         .attr('width', node_width)
-    //         .attr('height', 35)
-    //         .style('fill', '#553');
+    container.append('g')
+            .attr('transform', 'translate('+(svg.padding.width_side - node.width)+','+(- svg.padding.height_side/2)+')')
+        .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
+            .attr('y', (item, index) => item.month * node.height)
+            .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node.width)
+            .attr('width', node.width)
+            .attr('height', node.height)
+            .style('fill', '#553')
+            .style('opacity', 0.7);
 });
