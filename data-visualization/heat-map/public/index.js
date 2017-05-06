@@ -73,7 +73,9 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                 .call(yAxis);
     
     container.append('g')
-            .attr('transform', 'translate('+svg.padding_width/2+','+(svg.padding_height/2)+')')
+            .attr('transform', 'translate('+svg.padding_width/5.5+','+(svg.padding_height/6)+')')
+            .attr('width', 100)
+            .attr('height', 100)
         .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
             .attr('y', (item, index) => item.month * node_size)
             .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node_size)
