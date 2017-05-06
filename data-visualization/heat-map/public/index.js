@@ -38,9 +38,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     let api_data = {
         year: [],
         variance: [],
-        month: [],
-        processedYears: []
-        
+        month: []
     };
 
     data.monthlyVariance.forEach((item) => {
@@ -49,7 +47,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     });
 
     let xScale = d3.scaleLinear()
-                    .domain([d3.min(api_data.processedYears), d3.max(api_data.processedYears)])
+                    .domain([d3.min(api_data.year), d3.max(api_data.year)])
                     .range([0, svg.width - svg.padding_width]);
 
     let yScale = d3.scaleTime()
