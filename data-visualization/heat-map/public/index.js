@@ -8,12 +8,17 @@ const container_dimensions = {
     width: container_styles.getPropertyValue("width").slice(0,-2),
     height: container_styles.getPropertyValue("height").slice(0,-2)
 }
-
+const padding_divisor = 10;
 const svg = {
     width: container_dimensions.width,
     height: container_dimensions.height,
-    padding_height: container_dimensions.width / 15,
-    padding_width: container_dimensions.width / 15
+    padding: {
+        height: container_dimensions.height / padding_divisor,
+        width: container_dimensions.width / padding_divisor,
+        //total padding divided by 2 = padding from each individual side
+        width_side: (container_dimensions.width / padding_divisor) / 2,
+        height_side: (container_dimensions.height / padding_divisor) / 2
+    }
 }
 
 let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
@@ -47,15 +52,15 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
 
     });
     
-    let node_width =  (svg.width - svg.padding_width) / (api_data.year.length / 12);
-    let node_height = svg.height / 12;
+    let node_width = (svg.width - svg.padding.width) / (api_data.year.length / 12);
+
     let xScale = d3.scaleLinear()
                     .domain([d3.min(api_data.year), d3.max(api_data.year)])
-                    .range([0, svg.width - svg.padding_width]);
+                    .range([0, svg.width - svg.padding.width]);
 
     let yScale = d3.scaleTime()
                     .domain([new Date(2012, 0, 1), new Date(2012, 11, 31)])
-                    .range([0, svg.height - svg.padding_height]);
+                    .range([0, svg.height - svg.padding.height]);
 
     let xAxis = d3.axisBottom(xScale);
     
@@ -65,24 +70,21 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                         .attr('width', svg.width)
                         .attr('height', svg.height);
     
+
     container.append('g')
-                .attr('transform', 'translate('+svg.padding_width/2+','+(svg.height - svg.padding_height/2)+')')
+                .attr('transform', 'translate('+svg.padding.width_side+','+(svg.height - svg.padding.height_side)+')')
                 .call(xAxis);
 
     container.append('g')
-                .attr('transform', 'translate('+svg.padding_width/2+','+svg.padding_height/2+')')
+                .attr('transform', 'translate('+svg.padding.width_side+','+svg.padding.height_side+')')
                 .call(yAxis);
     
-    container.append('g')
-            .attr('transform', 'translate('+svg.padding_width/2+','+svg.padding_height/2+')')
-            .attr('width', 100)
-            .attr('height', 100)
-        .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
-            .attr('y', (item, index) => item.month * 22)
-            .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node_width)
-            .attr('width', 22)
-            .attr('height', 22)
-            .style('fill', '#553');
-
-
+    // container.append('g')
+    //         .attr('transform', 'translate('+svg.padding.width/2+','+(0)+')')
+    //     .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
+    //         .attr('y', (item, index) => item.month * 35)
+    //         .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node_width)
+    //         .attr('width', node_width)
+    //         .attr('height', 35)
+    //         .style('fill', '#553');
 });
