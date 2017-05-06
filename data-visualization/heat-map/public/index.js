@@ -47,7 +47,8 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
 
     });
     
-    let node_size = Math.floor((api_data.year.length * 12) / svg.width);
+    let node_width =  (svg.width - svg.padding_width) / (api_data.year.length / 12);
+    let node_height = svg.height / 12;
     let xScale = d3.scaleLinear()
                     .domain([d3.min(api_data.year), d3.max(api_data.year)])
                     .range([0, svg.width - svg.padding_width]);
@@ -73,14 +74,14 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                 .call(yAxis);
     
     container.append('g')
-            .attr('transform', 'translate('+svg.padding_width/5.5+','+(svg.padding_height/6)+')')
+            .attr('transform', 'translate('+svg.padding_width/2+','+svg.padding_height/2+')')
             .attr('width', 100)
             .attr('height', 100)
         .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
-            .attr('y', (item, index) => item.month * node_size)
-            .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node_size)
-            .attr('width', node_size)
-            .attr('height', node_size)
+            .attr('y', (item, index) => item.month * 22)
+            .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node_width)
+            .attr('width', 22)
+            .attr('height', 22)
             .style('fill', '#553');
 
 
