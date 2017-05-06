@@ -19,8 +19,6 @@ body {
     background-color: white;
 }
 
-.bar { fill: #484d8b; }
-
 div.tooltip {	
     position: absolute;			
     text-align: center;			
