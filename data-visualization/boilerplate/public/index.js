@@ -35,7 +35,11 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     }
         
     /* Data formatting */
+    let api_data = {};
 
+    data.forEach({
+        
+    });
     let xScale = d3.scaleLinear()
                     .domain([min, max])
                     .range([min, max]);

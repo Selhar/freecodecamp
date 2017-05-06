@@ -9,7 +9,7 @@ const container_dimensions = {
     height: container_styles.getPropertyValue("height").slice(0,-2)
 }
 
-const svg_dimensions = {
+const svg = {
     width: container_dimensions.width-100,
     height: container_dimensions.height-100,
     padding: 40,
@@ -35,21 +35,33 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     }
         
     /* Data formatting */
+    let api_data = {
+        year: [],
+        variance: [],
+        month: []
+        
+    };
 
-    let xScale = d3.scaleLinear()
-                    .domain([min, max])
-                    .range([min, max]);
+    data.monthlyVariance.forEach((d) => {
+        api_data.year.push(d.year);
+        api_data.variance.push(d.variance);
+    });
+    console.log(api_data.years);
+
+    let xScale = d3.scaleOrdinal()
+                    .domain([d3.min(api_data.year), d3.max(api_data.year)])
+                    .range(0, svg.width);
 
     let yScale = d3.scaleTime()
-                    .domain([min,max])
-                    .range([min, max]);
+                    .domain([new Date(2012, 0, 1), new Date(2012, 11, 31)])
+                    .range([0, svg.height]);
 
     let xAxis = d3.axisBottom(xScale);
     let yAxis = d3.axisLeft(yScale);
 
     let container = d3.select('.graph').append('svg')
-                        .attr('width', svg_dimensions.width)
-                        .attr('height', svg_dimensions.height );
+                        .attr('width', svg.width)
+                        .attr('height', svg.height );
     
     container.append('g')
                 .call(xAxis);
