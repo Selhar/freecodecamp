@@ -23,8 +23,6 @@ const svg = {
 
 let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 
-let colors = d3.scaleOrdinal( ['#A50026', '#D73027', '#F46D43', '#FDAE61', '#FEE090', '#FFFFBF', '#E0F3F8', '#ABD9E9', '#74ADD1', '#4575B4', '#313695']);
-
 let fallback_data = {};
 
 d3.json('./data_fallback.json', (error, data) => {
@@ -58,6 +56,18 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         width: (svg.width - svg.padding.width) / (api_data.year.length / 12),
         height:  (svg.height - svg.padding.height) / 12
     }
+    let colors = ['#313695', '#4575B4', '#74ADD1', '#ABD9E9', '#E0F3F8', '#FFFFBF', '#FEE090', '#FDAE61', '#F46D43', '#D73027', '#A50026'];
+    let step = (Math.abs(d3.min(api_data.variance)) + d3.max(api_data.variance)) / 11
+    let threshold = [];
+    let current = d3.min(api_data.variance);
+    for(let i = 0; i < 11; i++){
+        threshold.push(current);
+        current += step;
+    }
+    console.log(threshold);
+    let color = d3.scaleThreshold()
+                    .domain(threshold)
+                    .range(colors)
     let xScale = d3.scaleLinear()
                     .domain([d3.min(api_data.year), d3.max(api_data.year)])
                     .range([0, svg.width - svg.padding.width]);
@@ -82,7 +92,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     container.append('g')
                 .attr('transform', 'translate('+svg.padding.width_side+','+svg.padding.height_side+')')
                 .call(yAxis);
-    console.log(colors(-1), colors(0), colors(5))
+
     container.append('g')
             .attr('transform', 'translate('+(svg.padding.width_side - node.width)+','+(- svg.padding.height_side/2)+')')
         .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
@@ -90,5 +100,5 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
             .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node.width)
             .attr('width', node.width)
             .attr('height', node.height)
-            .style('fill', (d,i) => colors(d.variance))
+            .style('fill', (d, i) => color(d.variance));
 });
