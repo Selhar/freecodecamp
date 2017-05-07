@@ -66,26 +66,27 @@ function ready (error, county, education) {
                 .attr('d', d3.geoPath())
                 .attr('fill', (d) => {
                     let county_data = county_education(d.id);
-                    
+
                     if(county_data[0]){ 
                         return color(county_data[0].bachelorsOrHigher);
                     }
                     //if no data is found, paint it black
                     return "#000";
                 })
-        //         .on('mouseover', (d) => {
-        //             tooltip_block.transition().duration(150).style('opacity', 0.9);
-        //             let date = new Date(d.year, d.month-1);
-        //             tooltip_block.html("<span class='date'>" + d3.timeFormat("%Y - %B")(date) + "</span>" + "<br />"
-        //                         + "<span class='temperature'>" + d3.format(".1f")(data.baseTemperature + d.variance) 
-        //                         + "&#8451;" + "</span>" + "<br />"
-        //                         + "<span class='variance'>" + d3.format("+.1f")(d.variance) + "&#8451;" + "</span>")
-        //                     .style("left", (d3.event.pageX) + "px")		
-        //                     .style("top", (d3.event.pageY - 28) + "px")})
-        //         .on('mouseout', (d) => {
-        //     tooltip_block.transition().duration(150).style('opacity', 0);
-        // });
-
-
-
+                .on('mouseover', (d) => {
+                    tooltip_block.transition().duration(150).style('opacity', 0.9);
+                    tooltip_block.html(
+                        () => {
+                            let county_data = county_education(d.id);
+                            if(county_data[0]){ 
+                                return  county_data[0]['area_name'] + 
+                                        ', ' + county_data[0]['state'] + 
+                                        ': ' + county_data[0].bachelorsOrHigher + '%'
+                            }
+                        })
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px")
+                }).on('mouseout', (d) => {
+                    tooltip_block.transition().duration(150).style('opacity', 0);
+                });
 }
