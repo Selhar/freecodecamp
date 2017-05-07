@@ -25,8 +25,9 @@ let tooltip_block = d3.select("body")
                         .append("div")
                         .attr("class", "tooltip")
                         .style("opacity", 0);
+let path = d3.geoPath();
 
-const json_data= {
+const json_data = {
     education: 'https://raw.githubusercontent.com/no-stack-dub-sack/testable-projects-fcc/master/src/data/choropleth_map/for_user_education.json',
     county: 'https://raw.githubusercontent.com/no-stack-dub-sack/testable-projects-fcc/master/src/data/choropleth_map/counties.json'
 }
@@ -38,8 +39,7 @@ d3.queue()
     
 function ready (error, county, education) {
     if(error){ throw error}
-        
-    console.log(county, education);
+    
     /* Data formatting */
     let container = d3.select('.graph').append('svg')
                     .attr('width', svg.width)
@@ -47,9 +47,9 @@ function ready (error, county, education) {
     /* Rendering data */
     container.append('g')
                 .selectAll('path')
-                .data(topojson.features(county, county.bojects.counties).features)
-                .enter().append('path');
-                
+                .data(topojson.feature(county, county.objects.counties).features)
+                .enter().append('path')
+                .attr('d', path)
 
 /*
 .on('mouseover', (d) => {
