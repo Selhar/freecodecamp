@@ -53,11 +53,12 @@ function ready (error, county, education) {
     let container = d3.select('.graph').append('svg')
                     .attr('width', svg.width)
                     .attr('height', svg.height);
+    let data_threshold = d3.range(2.6, 75.1, (75.1-2.6)/8);
     
     let color = d3.scaleThreshold()
-                    .domain(d3.range(2.6, 75.1, (75.1-2.6)/8))
+                    .domain(data_threshold)
                     .range(d3.schemeGreens[7]);
-    
+
     /* Rendering data */
     container.append('g')
                 .selectAll('path')
@@ -86,7 +87,37 @@ function ready (error, county, education) {
                         })
                     .style("left", (d3.event.pageX) + "px")		
                     .style("top", (d3.event.pageY - 28) + "px")
-                }).on('mouseout', (d) => {
-                    tooltip_block.transition().duration(150).style('opacity', 0);
+                })
+                .on('mouseout', (d) => {
+                    tooltip_block
+                        .transition()
+                        .duration(150)
+                        .style('opacity', 0);
                 });
+    /* Legend */
+    let xScale = d3.scaleLinear()
+                    .domain([ data_threshold[0],
+                              data_threshold[-1] 
+                            ])
+                    .range(color.range);
+
+    let legendNode = {
+        width: 300,
+        node_width: 300 / 9
+    }
+    let legend = d3.select('.legend')
+                    .attr('width', 5*9)
+                    .attr('height', 5)    
+    
+    legend.append('g')
+            .selectAll('.legendNode')
+            .data(data_threshold)
+            .enter().append('rect')
+                .attr('class', '.legendNode')
+                .attr('x', (d,i) => i * legendNode.node_width)
+                .attr('y',15)
+                .attr('width', legend.node_width)
+                .attr('height', legend.node_width)
+                .attr('fill', (d,i) => color(d));
+
 }

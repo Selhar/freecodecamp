@@ -5,7 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkslateblue;
+    flex-direction: column;
 }
 
 * {
