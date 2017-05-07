@@ -38,6 +38,8 @@ function ready (error, data, fallback) {
     data.forEach({
         
     });
+
+    /* Data scaling */
     let xScale = d3.scaleLinear()
                     .domain([min, max])
                     .range([min, max]);
@@ -53,9 +55,10 @@ function ready (error, data, fallback) {
                         .attr('width', svg_dimensions.width)
                         .attr('height', svg_dimensions.height );
     
+    /* Rendering */
     container.append('g')
                 .call(xAxis);
     
     container.append('g')
                 .call(yAxis);
-});
+}

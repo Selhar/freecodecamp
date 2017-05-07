@@ -8,15 +8,23 @@ const container_dimensions = {
     width: container_styles.getPropertyValue("width").slice(0,-2),
     height: container_styles.getPropertyValue("height").slice(0,-2)
 }
-
-const svg_dimensions = {
-    width: container_dimensions.width-100,
-    height: container_dimensions.height-100,
-    padding: 40,
-    padding_right: 60
+const padding_divisor = 10;
+const svg = {
+    width: container_dimensions.width,
+    height: container_dimensions.height,
+    padding: {
+        height: container_dimensions.height / padding_divisor,
+        width: container_dimensions.width / padding_divisor,
+        //total padding divided by 2 = padding from each individual side
+        width_side: (container_dimensions.width / padding_divisor) / 2,
+        height_side: (container_dimensions.height / padding_divisor) / 2
+    }
 }
 
-let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
+let tooltip_block = d3.select("body")
+                        .append("div")
+                        .attr("class", "tooltip")
+                        .style("opacity", 0);
 
 const json_data= {
     education: 'https://raw.githubusercontent.com/no-stack-dub-sack/testable-projects-fcc/master/src/data/choropleth_map/for_user_education.json',
@@ -26,38 +34,22 @@ const json_data= {
 d3.queue()
     .defer(d3.json, json_data.county)
     .defer(d3.json, json_data.education)
-    .defer('d3')
     .await(ready);
     
 function ready (error, county, education) {
-    if(error){console.log(error)}
+    if(error){ throw error}
         
+    console.log(county, education);
     /* Data formatting */
-    let api_data = {};
-
-    data.forEach({
-        
-    });
-    let xScale = d3.scaleLinear()
-                    .domain([min, max])
-                    .range([min, max]);
-
-    let yScale = d3.scaleTime()
-                    .domain([min,max])
-                    .range([min, max]);
-
-    let xAxis = d3.axisBottom(xScale);
-    let yAxis = d3.axisLeft(yScale);
-
     let container = d3.select('.graph').append('svg')
-                        .attr('width', svg_dimensions.width)
-                        .attr('height', svg_dimensions.height );
-    
+                    .attr('width', svg.width)
+                    .attr('height', svg.height);
+    /* Rendering data */
     container.append('g')
-                .call(xAxis);
-    
-    container.append('g')
-                .call(yAxis);
+                .selectAll('path')
+                .data(topojson.features(county, county.bojects.counties).features)
+                .enter().append('path');
+                
 
 /*
 .on('mouseover', (d) => {
