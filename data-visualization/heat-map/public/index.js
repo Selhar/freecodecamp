@@ -77,7 +77,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                     .domain([new Date(2012, 0, 1), new Date(2012, 11, 31)])
                     .range([0, svg.height - svg.padding.height]);
 
-    let xAxis = d3.axisBottom(xScale);
+    let xAxis = d3.axisBottom(xScale).tickFormat((d) => {let date = new Date(); date.setUTCFullYear(d); return d3.timeFormat(d)});
     
     let yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat('%b'));
 
@@ -94,7 +94,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                 .call(yAxis);
 
     container.append('g')
-            .attr('transform', 'translate('+(svg.padding.width_side - node.width)+','+(- svg.padding.height_side/2)+')')
+            .attr('transform', 'translate('+(svg.padding.width_side - (node.width / 2))+','+(- svg.padding.height_side/1.95)+')')
         .selectAll('rect').data(data.monthlyVariance).enter().append('rect')
             .attr('y', (item, index) => item.month * node.height)
             .attr('x', (item, index) => (item.year - api_data.year[0] + 1) * node.width)
@@ -103,13 +103,34 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
             .style('fill', (d, i) => color(d.variance))
         .on('mouseover', (d) => {
             tooltip_block.transition().duration(150).style('opacity', 0.9);
-            
-            let date = new Date(d.year, d.month);
+            let date = new Date(d.year, d.month-1);
             tooltip_block.html("<span class='date'>" + d3.timeFormat("%Y - %B")(date) + "</span>" + "<br />"
                                 + "<span class='temperature'>" + d3.format(".1f")(data.baseTemperature + d.variance) 
                                 + "&#8451;" + "</span>" + "<br />"
                                 + "<span class='variance'>" + d3.format("+.1f")(d.variance) + "&#8451;" + "</span>")
                             .style("left", (d3.event.pageX) + "px")		
-                            .style("top", (d3.event.pageY - 28) + "px")
-        })
+                            .style("top", (d3.event.pageY - 28) + "px")})
+        .on('mouseout', (d) => {
+            tooltip_block.transition().duration(150).style('opacity', 0);
+        });
+    
+    let legend_node = {
+        width: 25
+    }
+    xScaleLegend = d3.scaleLinear().domain(threshold).range([0, 100]);
+    xAxisLegend = d3.axisBottom(xScaleLegend);
+
+    let legend = d3.select('.legendField').append('svg')
+                    .attr('width', svg.width / 4)
+                    .attr('height', 150)
+                    .call(xAxisLegend)
+                .selectAll('.legend')
+                    .data(threshold)
+                    .enter().append('rect')
+                        .attr('class', '.legend')
+                        .attr('x', (d,i) => i * legend_node.width)
+                        .attr('y',15)
+                        .attr('width', legend_node.width)
+                        .attr('height', legend_node.width)
+                        .attr('fill', (d,i) => color(d));
 });
