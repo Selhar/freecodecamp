@@ -46,7 +46,7 @@ function ready (error, county, education) {
     
     let color = d3.scaleThreshold()
                     .domain(d3.range(2.6, 75.1, (75.1-2.6)/8))
-                    .range(d3.schemeGreens[6]);
+                    .range(d3.schemeGreens[7]);
     
     /* Rendering data */
     container.append('g')
