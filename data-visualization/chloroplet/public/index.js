@@ -99,13 +99,13 @@ function ready (error, county, education) {
                     .domain([ data_threshold[0],
                               data_threshold[-1] 
                             ])
-                    .range(color.range);
+                    .range(d3.schemeGreens[7]);
 
     let legendNode = {
         width: 300,
         node_width: 300 / 9
     }
-    let legend = d3.select('.legend')
+    let legend = d3.select('.legend').append('svg')
                     .attr('width', 5*9)
                     .attr('height', 5)    
     
@@ -113,11 +113,10 @@ function ready (error, county, education) {
             .selectAll('.legendNode')
             .data(data_threshold)
             .enter().append('rect')
-                .attr('class', '.legendNode')
+                .attr('class', 'legendNode')
                 .attr('x', (d,i) => i * legendNode.node_width)
-                .attr('y',15)
-                .attr('width', legend.node_width)
-                .attr('height', legend.node_width)
+                .attr('y', 15)
+                .attr('width', 33)
+                .attr('height', 33)
                 .attr('fill', (d,i) => color(d));
-
 }
