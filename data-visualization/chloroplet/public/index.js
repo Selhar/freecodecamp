@@ -95,29 +95,36 @@ function ready (error, county, education) {
                         .style('opacity', 0);
                 });
     /* Legend */
-    let xScale = d3.scaleLinear()
-                    .domain([ data_threshold[0],
-                              data_threshold[-1] 
-                            ])
-                    .range(d3.schemeGreens[7]);
-
     let legendNode = {
         width: 300,
-        node_width: 300 / 9
+        node_width: 300 / 9,
+        padding: 5
     }
+    let xScale = d3.scaleLinear()
+                    .domain([1, 900
+                            ])
+                    .range(0, legendNode.width);
+    let xAxis = d3.axisBottom(xScale).tickSize(15);
+
+
     let legend = d3.select('.legend').append('svg')
-                    // 5 padding for xScale
-                    .attr('width', legendNode.width + 5)
-                    .attr('height', legendNode.node_width + 5)    
+                    .attr('width', legendNode.width + legendNode.padding)
+                    .attr('height', legendNode.node_width + legendNode.padding)    
     
     legend.append('g')
-            .selectAll('.legendNode')
-            .data(data_threshold)
-            .enter().append('rect')
-                .attr('class', 'legendNode')
-                .attr('x', (d,i) => i * (legendNode.node_width + 1))
-                .attr('y', 0)
-                .attr('width', legendNode.node_width)
-                .attr('height', legendNode.node_width)
-                .attr('fill', (d,i) => color(d));
+            .attr('transform', 'translate('+100+','+0+')')
+            .attr('height', 16)
+            .attr('width', legendNode.width)
+            .call(xAxis);
+
+    // legend.append('g')
+    //         .selectAll('.legendNode')
+    //         .data(data_threshold)
+    //         .enter().append('rect')
+    //             .attr('class', 'legendNode')
+    //             .attr('x', (d,i) => i * (legendNode.node_width + 1))
+    //             .attr('y', 0)
+    //             .attr('width', legendNode.node_width)
+    //             .attr('height', legendNode.node_width)
+    //             .attr('fill', (d,i) => color(d));
 }

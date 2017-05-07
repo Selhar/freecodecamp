@@ -127,7 +127,9 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         width: 250,
         node_width: 250 / threshold.length
     }
-    xScaleLegend = d3.scaleLinear().domain(threshold.map((item) => (item + data.baseTemperature))).range([0, legend.node_width ]);
+    xScaleLegend = d3.scaleLinear()
+                    .domain(threshold.map((item) => (item + data.baseTemperature)))
+                    .range([0, legend.node_width ]);
     xAxisLegend = d3.axisBottom(xScaleLegend).tickSize(15);
 
     let legend_svg = d3.select('.legendField').append('svg')
