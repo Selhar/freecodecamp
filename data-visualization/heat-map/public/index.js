@@ -1,4 +1,9 @@
-/* 
+/*
+    Author: Selhar
+    Date: 2017
+    Contact: selhar@protonmail.com
+    License: GPL
+
     Configuration variables
 */
 const container_div = document.querySelector(".container");

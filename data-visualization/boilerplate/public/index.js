@@ -1,4 +1,9 @@
 /* 
+    Author: Selhar
+    Date: 2017
+    Contact: selhar@protonmail.com
+    License: GPL
+
     Configuration variables
 */
 const container_div = document.querySelector(".container");
@@ -17,23 +22,16 @@ const svg_dimensions = {
 }
 
 let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
-
-let fallback_data = {};
-
-d3.json('./data_fallback.json', (error, data) => {
-    if(error){
-        console.log("Fallback error: "+error);
-    }
-    fallback_data = data;
-});
-
-d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json', (error, data) => {
+d3.queue()
+    .defer(d3.json, './data_fallback.json')
+    .defer(d3.json, 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json')
+    .await(ready);
+    
+function ready (error, data, fallback) {
     if(error){
         console.log(error);
         alert('An error ocurred with the remote API, using local fallback data from march 2017');
-        data = fallback_data;
-    }
-        
+    }        
     /* Data formatting */
     let api_data = {};
 
