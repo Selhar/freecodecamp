@@ -77,7 +77,11 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                     .domain([new Date(2012, 0, 1), new Date(2012, 11, 31)])
                     .range([0, svg.height - svg.padding.height]);
 
-    let xAxis = d3.axisBottom(xScale).tickFormat((d) => {let date = new Date(); date.setUTCFullYear(d); return d3.timeFormat(d)});
+    let xAxis = d3.axisBottom(xScale).tickFormat((d) => {
+        let date = new Date();
+        date.setUTCFullYear(d); 
+        return d3.timeFormat(d);
+    });
     
     let yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat('%b'));
 
@@ -114,23 +118,31 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
             tooltip_block.transition().duration(150).style('opacity', 0);
         });
     
-    let legend_node = {
-        width: 25
+    let legend = {
+        width: 250,
+        node_width: 250 / threshold.length
     }
-    xScaleLegend = d3.scaleLinear().domain(threshold).range([0, 100]);
-    xAxisLegend = d3.axisBottom(xScaleLegend);
+    xScaleLegend = d3.scaleLinear().domain(threshold.map((item) => (item + data.baseTemperature))).range([0, legend.node_width ]);
+    xAxisLegend = d3.axisBottom(xScaleLegend).tickSize(15);
 
-    let legend = d3.select('.legendField').append('svg')
-                    .attr('width', svg.width / 4)
-                    .attr('height', 150)
-                    .call(xAxisLegend)
+    let legend_svg = d3.select('.legendField').append('svg')
+                    .attr('width', legend.width)
+                    .attr('height', 150);
+    legend_svg.append('g')
+                    .attr('transform', 'translate('+16+','+(legend.node_width)+')')
+                    .attr('height', 35)
+                    .attr('width', legend.width)
+                    .call(xAxisLegend);
+    legend_svg.append('g')
                 .selectAll('.legend')
                     .data(threshold)
                     .enter().append('rect')
                         .attr('class', '.legend')
-                        .attr('x', (d,i) => i * legend_node.width)
+                        .attr('x', (d,i) => i * legend.node_width)
                         .attr('y',15)
-                        .attr('width', legend_node.width)
-                        .attr('height', legend_node.width)
+                        .attr('width', legend.node_width)
+                        .attr('height', legend.node_width)
                         .attr('fill', (d,i) => color(d));
+
+
 });
