@@ -25,7 +25,6 @@ let tooltip_block = d3.select("body")
                         .append("div")
                         .attr("class", "tooltip")
                         .style("opacity", 0);
-let path = d3.geoPath();
 
 const json_data = {
     education: 'https://raw.githubusercontent.com/no-stack-dub-sack/testable-projects-fcc/master/src/data/choropleth_map/for_user_education.json',
@@ -44,12 +43,31 @@ function ready (error, county, education) {
     let container = d3.select('.graph').append('svg')
                     .attr('width', svg.width)
                     .attr('height', svg.height);
+    
+    let color = d3.scaleThreshold()
+                    .domain(d3.range(2.6, 75.1, (75.1-2.6)/8))
+                    .range(d3.schemeGreens[6]);
+    
     /* Rendering data */
     container.append('g')
                 .selectAll('path')
                 .data(topojson.feature(county, county.objects.counties).features)
                 .enter().append('path')
-                .attr('d', path)
+                .attr('d', d3.geoPath())
+                .attr('fill', (d) => {
+                    //d.id refers to physical area from the county data
+                    //if an id matches a fips, it means that data is references
+                    //a specific area. If nothing is found, no data is present for this area.
+                    let county_education = education.filter((area) => {
+                        return area.fips == d.id;
+                    });
+
+                    if(county_education[0]){ 
+                        return color(county_education[0].bachelorsOrHigher);
+                    }
+                    //if no data is found, paint it black
+                    return "#000";
+                })
 
 /*
 .on('mouseover', (d) => {
