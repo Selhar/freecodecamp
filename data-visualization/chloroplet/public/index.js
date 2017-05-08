@@ -53,6 +53,7 @@ function ready (error, county, education) {
     let container = d3.select('.graph').append('svg')
                     .attr('width', svg.width)
                     .attr('height', svg.height);
+                    
     let data_threshold = d3.range(2.6, 75.1, (75.1-2.6)/8);
     
     let color = d3.scaleThreshold()
