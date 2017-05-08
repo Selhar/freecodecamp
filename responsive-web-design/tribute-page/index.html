@@ -3,6 +3,13 @@
     Date: 2017
     Contact: selhar@protonmail.com
     License: GPL
+
+    TODO:
+        Add CSS
+        Add pure.css
+        Add header
+        Add links
+        Fix readme
 -->
 
 <!doctype html>
@@ -14,13 +21,17 @@
     <meta name="description" content="Tribute page">
     <title>Transmetropolitan tribute page</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/milligram.css.css">
     <link rel="stylesheet" href="style/index.css">
 </head>
 
 <body class="columns is-marginless">
-    
-    <main class="column is-8 is-offset-2">
+    <header>
+        <p>You can view the original source code here: </p>
+        <p>This project is my implementation of freecodecamp's new curriculum, you can see my other solutions here: </p>
+    </header>
+    <main>
         <header>
             <h1 class="title">Transmetropolitan <img class="image is 15x15" src="https://res.cloudinary.com/selhar/image/upload/v1488698189/smile-face_vhatwz.png" /></h1>
             <img src="http://res.cloudinary.com/selhar/image/upload/v1488698189/splash_xns2x5.jpg" alt="Transmetropolitan comic cover" />
@@ -37,6 +48,19 @@
                 <a id="tribute-link" href="https://en.wikipedia.org/wiki/Transmetropolitan " target="_blank">Transmetropolitan's wikipedia page</a></p>
         </footer>
     </main>
+    <footer>
+        <div class="contact">
+            <a href="https://github.com/GregoryGoncalves" target="_blank">
+                <span class="icon"><i class="fa fa-github"></i></span>
+            </a>
+            <a href="http://codepen.io/Selhar/#" target="_blank">
+                <span class="icon"><i class="fa fa-codepen"></i></span>
+            </a>
+            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>

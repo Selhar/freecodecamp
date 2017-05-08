@@ -3,6 +3,13 @@
     Date: 2017
     Contact: selhar@protonmail.com
     License: GPL
+
+    TODO:
+        Add CSS
+        Add pure.css
+        Add header
+        Add links
+        Fix readme
 -->
 
 <!doctype html>
@@ -17,11 +24,15 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 
 </head>
 
 <body class="columns">
+    <header>
+        <p>You can view the original source code here: </p>
+        <p>This project is my implementation of freecodecamp's new curriculum, you can see my other solutions here: </p>
+    </header>
     <aside>
         <ul class="column menu menu-list is-12" id="menu">
             <li>
@@ -85,8 +96,21 @@
         <section class="content" id="main-content">
         </section>
     </main>
+     <footer>
+        <div class="contact">
+            <a href="https://github.com/GregoryGoncalves" target="_blank">
+                <span class="icon"><i class="fa fa-github"></i></span>
+            </a>
+            <a href="http://codepen.io/Selhar/#" target="_blank">
+                <span class="icon"><i class="fa fa-codepen"></i></span>
+            </a>
+            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+            </a>
+        </div>
+    </footer>
 </body>
-<script src="js/js.js"></script>
+<script src="index.js"></script>
 
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenLite.min.js"></script>

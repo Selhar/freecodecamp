@@ -50,42 +50,32 @@ function ready (error, kickstarter, movie, video) {
 
 
 
-var treemap = d3.treemap()
+
+   var root = d3.hierarchy(current_datasource)
+                .eachBefore(function(d) {
+                    d.data.id = (d.parent 
+                    ? d.parent.data.id + '.'
+                    : '') + d.data.name; 
+                })
+                .sum((d) => d.value)
+                .sort(function(a, b) { return b.height - a.height 
+                                            || b.value - a.value; });
+
+  d3.treemap(root)
     .size([svg.width, svg.height])
     .paddingInner(1);
 
-   var root = d3.hierarchy(current_datasource)
-      .eachBefore(function(d) {
-        d.data.id = (d.parent ? d.parent.data.id + "." : "") + d.data.name; 
-      })
-      .sum((d) => d.value)
-      .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
-
-  treemap(root);
-
-  var cell = container.selectAll("g")
+  let cell = container.selectAll('g')
     .data(root.leaves())
-    .enter().append("g")
+    .enter().append('g')
       .attr("class", "group")
-      .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; });
+      .attr("transform", (d) => { 
+                return "translate(" + d.x0 + "," + d.y0 + ")"; 
+            });
 
-  var tile = cell.append("rect")
-      .attr("id", function(d) { return d.data.id; })
-      .attr("class", "tile")
+  let tile = cell.append("rect")
       .attr("width", function(d) { return d.x1 - d.x0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
-      .attr("data-name", function(d){
-        return d.data.name;
-      })
-      .attr("data-category", function(d){
-        return d.data.category;
-      })
-      .attr("data-value", function(d){
-        return d.data.value;
-      })
-      .attr("fill", function(d) { 
-        return color(d.data.category); 
-      })
       .on("mousemove", function(d) {  
         console.log("mouseover");    
         tooltip.style("opacity", .9); 

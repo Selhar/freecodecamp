@@ -51,8 +51,7 @@ function ready(fn) {
 }
 
 //Copied the DOM from the rust book website directly
-//Some useless classess will show up tho, but it's irrelevant.
-//The idea is to use this data as a glorified lorem ipsum, nothing else.
+//This is just lorem-ipsum like data to showcase the project, not an actual implementation of the rust book page.
 const chapters = {
     "introduction": `
             <h1>Introduction</h1>
