@@ -23,11 +23,12 @@ const svg_dimensions = {
 
 let tooltip_block = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 d3.queue()
-    .defer(d3.json, './data_fallback.json')
-    .defer(d3.json, 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json')
+    .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json')
+    .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/movie-data.json')
+    .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/video-game-sales-data.json')
     .await(ready);
     
-function ready (error, data, fallback) {
+function ready (error, kickstarter, movie, video) {
     if(error){
         console.log(error);
         alert('An error ocurred with the remote API, using local fallback data from march 2017');

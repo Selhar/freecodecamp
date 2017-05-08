@@ -41,8 +41,8 @@ function ready (error, county, education) {
     
     /* Data formatting */
     function county_education (county_id){
-        //d.id refers to physical area from the county data
-        //if an id matches a fips, it means that data is references
+        //county refers to physical area from the county data
+        //if an id matches a fips, it means that data references
         //a specific area. If nothing is found, no data is present for this area.
 
         return education.filter((area) => {
