@@ -20,7 +20,8 @@ const svg = {
         height_side: (container_dimensions.height / padding_divisor) / 2
     }
 }
-
+//i need an early reference to container so i can redraw the screen
+let container;
 let data_storage = {
     kickstarter : '',
     movie: '',
@@ -32,6 +33,7 @@ let tooltip_block = d3.select("body")
                     .attr("class", "tooltip")
                     .style("opacity", 0);
 
+/* data fetching and formatting */
 d3.queue()
     .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json')
     .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/movie-data.json')
@@ -47,16 +49,16 @@ function render_data (error, kickstarter, movie, video, user_input) {
         data_storage.kickstarter = kickstarter;
         data_storage.movie = movie;
         data_storage.video = video;
-        console.log(data_storage)
         render(data_storage.kickstarter)
     }else{
+        container.remove();
         render(data_storage[user_input]);
     }
     
 }
-
+/* Data rendering */
 function render (data) {    
-    let container = d3.select('.graph').append('svg')
+    container = d3.select('.graph').append('svg')
                     .attr('width', svg.width)
                     .attr('height', svg.height );
     
