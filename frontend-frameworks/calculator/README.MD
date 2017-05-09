@@ -1,4 +1,5 @@
-Installation: `git clone https://github.com/GregoryGoncalves/freecodecamp/tree/master/frontend-frameworks/calculator`, `yarn install` or `npm install`
+Installation: `git clone https://github.com/GregoryGoncalves/freecodecamp/tree/master/frontend-frameworks/calculator`
+then `yarn install` or `npm install`
 
 development: `yarn run dev` or `npm run dev`  
 
