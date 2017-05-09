@@ -5,7 +5,7 @@ $board-height: 500px;
 $board-width: 400px;
 $display-height: 100px;
 $button-width: $board-width / 4;
-$button-height: ($board-height - $display-height) / 5;
+$button-height: round(($board-height - $display-height) / 5);
 
 html,
 body,
@@ -34,10 +34,11 @@ body{
 }
 
 .button{
+    padding: 0;
     margin: 0;
     display: inline-block;
     width: $button-width;
     height: $button-height;
     background-color: lightgoldenrodyellow;
-    border: 1px solid black;
+    border: 0.5px solid black;
 }
