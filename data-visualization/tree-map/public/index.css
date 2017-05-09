@@ -4,25 +4,26 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;    
+    align-items: center; 
     font-size: 10px;
 }
 
 * {
     box-sizing: border-box;
 }
-span{
-}
+
 .container{
     text-align: center;
     width: 960px;
     height: 600px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-.bar { fill: #484d8b; }
-
+.legend{
+    margin-top: 100px;
+}
 div.tooltip {	
     position: absolute;			
     text-align: center;						

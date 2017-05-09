@@ -20,6 +20,7 @@ const svg = {
         height_side: (container_dimensions.height / padding_divisor) / 2
     }
 }
+
 //i need an early reference to container so i can redraw the screen
 let container;
 let data_storage = {
@@ -101,18 +102,44 @@ function render (data) {
                     tooltip_block.transition()
                         .duration(150).style('opacity', 0);
                 });
-        
-const body_selector = document.querySelector("body");
-const body_styles = window.getComputedStyle(body_selector);
-const font_size = body_styles.getPropertyValue("font-size").slice(0,-2);
-const font_padding = 5;
+            
+    const body_selector = document.querySelector("body");
+    const body_styles = window.getComputedStyle(body_selector);
+    const font_size = body_styles.getPropertyValue("font-size").slice(0,-2);
+    const font_padding = 10;
+    const legend_color_width = 15;
+    cell.append("text")
+        .selectAll("tspan")
+        .data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g))
+        .enter().append("tspan")
+        .attr("x", font_padding)
+        .attr("y", (d, i) => font_size * i + 10)
+        .text(function(d) { return d; });
 
-cell.append("text")
-    .selectAll("tspan")
-    .data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g))
-    .enter().append("tspan")
-    .attr("x", font_padding)
-    .attr("y", (d, i) => font_size * i + 10)
-    .text(function(d) { return d; });
+    var categories = root.leaves().map(function(nodes){
+    return nodes.data.category;
+    });
+    categories = categories.filter(function(category, index, self){
+    return self.indexOf(category)===index;    
+    })
+
+    let legend_container = d3.select('.legend').append('svg')
+                    .attr('width', svg.width /4)
+                    .attr('height', svg.height );
+
+    let legend = legend_container.append('g')
+        .selectAll('g')
+        .data(categories)
+        .enter().append('g')
+            .append('rect')
+            .attr('width', legend_color_width)
+            .attr('height', legend_color_width)
+            .attr('x', 20)
+            .attr('y', (d, i) => position = (legend_color_width + 15) * i)
+            .attr('fill', (d) => color(d));
+    legend.append('text')
+        .attr('x', 25)
+        .attr('y', (d, i) => position = (legend_color_width + 15) * i)
+        .text((d => d))
     
 }
