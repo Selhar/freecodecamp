@@ -11,10 +11,9 @@ export default (state = defaultState, action) => {
                 ...state,
                 display_value: action.display_value
             }
-        case "actionTypes.TODO":
+        case actionTypes.clear:
             return {
-                ...state,
-                //TODO
+                display_value: defaultState.display_value
             }
         default: 
             return state;
