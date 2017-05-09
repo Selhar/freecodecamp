@@ -4,6 +4,8 @@
 $board-height: 500px;
 $board-width: 400px;
 $display-height: 100px;
+$button-width: $board-width / 4;
+$button-height: ($board-height - $display-height) / 5;
 
 html,
 body,
@@ -29,4 +31,13 @@ body{
     background-color: black;
     width: 100%;
     height: $display-height;
+}
+
+.button{
+    margin: 0;
+    display: inline-block;
+    width: $button-width;
+    height: $button-height;
+    background-color: lightgoldenrodyellow;
+    border: 1px solid black;
 }
