@@ -22,8 +22,21 @@ body {
 }
 
 .legend{
-    margin-top: 100px;
+    margin-top: 50px;
 }
+
+.container h1{
+    align-self: center;
+    position: absolute;
+    top: 50px;
+}
+
+.controls{
+    align-self: center;
+    top: 100px;
+    position: absolute;
+}
+
 div.tooltip {	
     position: absolute;			
     text-align: center;						
