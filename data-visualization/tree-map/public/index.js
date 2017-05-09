@@ -28,6 +28,9 @@ let data_storage = {
     video: ''
 }
 
+let fader = (color) => d3.interpolateRgb(color, "#fff")(0.2);
+let color = d3.scaleOrdinal(d3.schemeCategory20.map(fader));
+
 let tooltip_block = d3.select("body")
                     .append("div")
                     .attr("class", "tooltip")
@@ -81,19 +84,35 @@ function render (data) {
                 });
 
      let tile = cell.append("rect")
-                .attr("width", function(d) { return d.x1 - d.x0; })
-                .attr("height", function(d) { return d.y1 - d.y0; })
-                .on("mousemove", function(d) {  
-                    tooltip_block.style("opacity", .9); 
+                .attr("width", (d) => d.x1 - d.x0)
+                .attr("height", (d) => d.y1 - d.y0)
+                .attr('fill', (d) => color(d.data.category))
+                .on("mousemove", (d) => {  
+                    tooltip_block.style("opacity", 0.9); 
                     tooltip_block.html(
                         'Name: ' + d.data.name + 
-                        '<br>Category: ' + d.data.category + 
-                        '<br>Value: ' + d.data.value
+                        '</br>Category: ' + d.data.category + 
+                        '</br>Value: ' + d.data.value
                     )
                     .style("left", (d3.event.pageX) + "px")		
                     .style("top", (d3.event.pageY - 28) + "px")
                 })    
                 .on("mouseout", function(d) { 
-                    tooltip_block.transition().duration(150).style('opacity', 0);
-                })
+                    tooltip_block.transition()
+                        .duration(150).style('opacity', 0);
+                });
+        
+const body_selector = document.querySelector("body");
+const body_styles = window.getComputedStyle(body_selector);
+const font_size = body_styles.getPropertyValue("font-size").slice(0,-2);
+const font_padding = 5;
+
+cell.append("text")
+    .selectAll("tspan")
+    .data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g))
+    .enter().append("tspan")
+    .attr("x", font_padding)
+    .attr("y", (d, i) => font_size * i + 10)
+    .text(function(d) { return d; });
+    
 }

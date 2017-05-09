@@ -5,13 +5,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column;    
+    font-size: 10px;
 }
 
 * {
     box-sizing: border-box;
 }
-
+span{
+}
 .container{
     text-align: center;
     width: 960px;
