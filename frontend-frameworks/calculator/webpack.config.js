@@ -34,7 +34,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'CHANGE ME FUCKHEAD OY CHANGE ME IM AT ./webpack.config.js CHANGE ME DONT FORGET TO CHANGE ME CHANGE ME DONT YOU IGNORE ME CHANGE ME FUCKHEAD',
+            title: 'Calculator',
             minify: {
                 collapseWhitespace: false
             },
