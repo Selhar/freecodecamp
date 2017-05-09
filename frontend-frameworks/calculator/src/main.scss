@@ -40,10 +40,16 @@ body{
 }
 
 .button{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
     padding: 0;
     margin: 0;
     width: $button-width;
     height: $button-height;
     background-color: lightgoldenrodyellow;
-    border: 0.5px solid black;
+    border: 0.5px solid black;   
+    &:last-of-type{
+        width: $button-width * 2;
+    }
 }
