@@ -1,15 +1,5 @@
 /* Document
    ========================================================================== */
-html,
-body,
-#main {
-    height: 100%;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 html {
   font-family: sans-serif; /* 1 */
   line-height: 1.15; /* 2 */

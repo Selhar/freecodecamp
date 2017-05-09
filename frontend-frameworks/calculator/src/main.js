@@ -12,24 +12,7 @@ import Index from './components/indexComponent';
 import store from './store';
 
 const css = require('./main.scss');
-/*
-Visuals/Components:
-  Board []
-  
-  Display{
-    State{
-      value;
-    }
-    Actions{
-      changeState;
-    }
-  } []
-  
-  Buttons{
-    Numbers(changeState) []
-    Modifiers(changeState) []
-    } []
-*/
+
 render(
   <Provider store={store}>
     <Index />

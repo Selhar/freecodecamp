@@ -1,2 +1,32 @@
 //custom normalize, global rules are in there
 @import "./helpers/normalize.css";
+
+$board-height: 500px;
+$board-width: 400px;
+$display-height: 100px;
+
+html,
+body,
+#main {
+    height: 100%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+* {
+    box-sizing: border-box;
+}
+
+#main {
+    height: $board-height;
+    width: $board-width;
+    background-color: lightcoral;
+}
+
+.display {
+    background-color: black;
+    width: 100%;
+    height: $display-height;
+}
