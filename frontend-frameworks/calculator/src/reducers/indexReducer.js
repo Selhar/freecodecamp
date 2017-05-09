@@ -1,7 +1,7 @@
 import {actionTypes} from '../actions/indexAction'
 
 const defaultState = {
-    //TODO
+    display_value: 0
 };
 
 export default (state = defaultState, action) => {
