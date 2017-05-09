@@ -35,7 +35,7 @@ d3.queue()
 function ready (error, kickstarter, movie, video) {
     if(error){
         console.log(error);
-        alert('An error ocurred with the remote API, using local fallback data from march 2017');
+        return alert('An error ocurred with the remote API, using local fallback data from march 2017');
     }        
     /* Data formatting */
     let current_datasource = kickstarter;
@@ -52,23 +52,19 @@ function ready (error, kickstarter, movie, video) {
 
 
    var root = d3.hierarchy(current_datasource)
-                .eachBefore(function(d) {
-                    d.data.id = (d.parent 
-                    ? d.parent.data.id + '.'
-                    : '') + d.data.name; 
-                })
                 .sum((d) => d.value)
                 .sort(function(a, b) { return b.height - a.height 
                                             || b.value - a.value; });
 
-  d3.treemap(root)
+  let treemap = d3.treemap()
     .size([svg.width, svg.height])
     .paddingInner(1);
+
+treemap(root);
 
   let cell = container.selectAll('g')
     .data(root.leaves())
     .enter().append('g')
-      .attr("class", "group")
       .attr("transform", (d) => { 
                 return "translate(" + d.x0 + "," + d.y0 + ")"; 
             });
