@@ -1,9 +1,12 @@
-Installation: `git clone https://github.com/GregoryGoncalves/freecodecamp/tree/master/frontend-frameworks/calculator`
-then `yarn install` or `npm install`
+Installation: 
+1. `git clone https://github.com/GregoryGoncalves/freecodecamp/tree/master/frontend-frameworks/calculator`
+2. `yarn install` or `npm install`
 
-development: `yarn run dev` or `npm run dev`  
+development: 
+1. `yarn run dev` or `npm run dev`  
 
-production: `yarn run prod` or `npm run prod`  
+production: 
+1. `yarn run prod` or `npm run prod`  
 
 `Public` folder is automatically generated.
 
