@@ -1,6 +1,6 @@
 Installation:
 
-0. Go to a terminal, install git and npm or yarn. 
+0. Install git and npm or yarn. Run the following on a terminal.
 1. `git clone https://github.com/GregoryGoncalves/freecodecamp/tree/master/frontend-frameworks/calculator`
 2. `yarn install` or `npm install`
 
