@@ -6,10 +6,10 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
     switch (action.type){
-        case "actionTypes.TODO":
+        case actionTypes.change_display_value:
             return {
-                ...state
-                //TODO
+                ...state,
+                display_value: action.display_value
             }
         case "actionTypes.TODO":
             return {

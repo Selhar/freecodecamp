@@ -1,7 +1,10 @@
 export const actionTypes = {
-    //TODO
+    change_display_value: "CHANGE_DISPLAY"
 }
 
-export default () => {
-    //TODO
+export const change_display_value = (value) => {
+    return{
+        type: actionTypes.change_display_value,
+        value
+    }
 }

@@ -16,6 +16,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center; 
+    background-color: lightcoral;
 }
 * {
     box-sizing: border-box;
@@ -24,11 +25,11 @@ body{
 #main {
     height: $board-height;
     width: $board-width;
-    background-color: lightcoral;
 }
 
 .display {
-    background-color: black;
+    background-color: white;
+    border: 1px black;
     width: 100%;
     height: $display-height;
 }
