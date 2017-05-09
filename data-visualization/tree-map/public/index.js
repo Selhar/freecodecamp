@@ -22,7 +22,9 @@ const svg = {
 }
 
 //i need an early reference to container so i can redraw the screen
+let legend_container;
 let container;
+
 let data_storage = {
     kickstarter : '',
     movie: '',
@@ -56,6 +58,7 @@ function render_data (error, kickstarter, movie, video, user_input) {
         render(data_storage.kickstarter)
     }else{
         container.remove();
+        legend_container.remove();
         render(data_storage[user_input]);
     }
     
@@ -123,23 +126,26 @@ function render (data) {
     return self.indexOf(category)===index;    
     })
 
-    let legend_container = d3.select('.legend').append('svg')
+    legend_container = d3.select('.legend').append('svg')
                     .attr('width', svg.width /4)
                     .attr('height', svg.height );
 
     let legend = legend_container.append('g')
         .selectAll('g')
         .data(categories)
-        .enter().append('g')
-            .append('rect')
-            .attr('width', legend_color_width)
-            .attr('height', legend_color_width)
-            .attr('x', 20)
-            .attr('y', (d, i) => position = (legend_color_width + 15) * i)
-            .attr('fill', (d) => color(d));
+        .enter().append('g');
+    
+    legend.append('rect')
+                .attr('width', legend_color_width)
+                .attr('height', legend_color_width)
+                .attr('x', 20)
+                .attr('y', (d, i) => position = (legend_color_width + 15) * i)
+                .attr('fill', (d) => color(d));
+    
     legend.append('text')
-        .attr('x', 25)
-        .attr('y', (d, i) => position = (legend_color_width + 15) * i)
+        .attr('transform', 'translate(0, 10)')  
+        .attr('x', 40)
+        .attr('y', (d, i) => (legend_color_width + 15) * i)
         .text((d => d))
     
 }
