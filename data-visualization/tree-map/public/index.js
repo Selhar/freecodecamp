@@ -21,6 +21,12 @@ const svg = {
     }
 }
 
+let data_storage = {
+    kickstarter : '',
+    movie: '',
+    video: ''
+}
+
 let tooltip_block = d3.select("body")
                     .append("div")
                     .attr("class", "tooltip")
@@ -30,21 +36,31 @@ d3.queue()
     .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json')
     .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/movie-data.json')
     .defer(d3.json, 'https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/video-game-sales-data.json')
-    .await(ready);
-    
-function ready (error, kickstarter, movie, video) {
+    .await(render_data);
+
+function render_data (error, kickstarter, movie, video, user_input) {
     if(error){
         console.log(error);
         return alert('An error ocurred with the remote API, using local fallback data from march 2017');
-    }        
-    let current_datasource = kickstarter;
+    }
+    if(data_storage.kickstarter === ''){
+        data_storage.kickstarter = kickstarter;
+        data_storage.movie = movie;
+        data_storage.video = video;
+        console.log(data_storage)
+        render(data_storage.kickstarter)
+    }else{
+        render(data_storage[user_input]);
+    }
+    
+}
 
-
+function render (data) {    
     let container = d3.select('.graph').append('svg')
                     .attr('width', svg.width)
                     .attr('height', svg.height );
     
-    let root = d3.hierarchy(current_datasource)
+    let root = d3.hierarchy(data)
                 .sum((d) => d.value)
                 .sort(function(a, b) { return b.height - a.height 
                                             || b.value - a.value; });
@@ -78,5 +94,4 @@ function ready (error, kickstarter, movie, video) {
                 .on("mouseout", function(d) { 
                     tooltip_block.transition().duration(150).style('opacity', 0);
                 })
-
 }
