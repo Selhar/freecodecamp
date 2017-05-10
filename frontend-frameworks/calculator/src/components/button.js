@@ -10,7 +10,6 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
         let output;
         let isDisplayZero = display_value == 0 ? true : false;
         let current_operation = operation;
-        let hasOperand = false;
         const operations = {
             '−': (operator, operand) => Number(operator) - Number(operand),
             'X': (operator, operand) => Number(operator) * Number(operand),
@@ -20,11 +19,10 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
 
         switch(domain){
             case 'number':
-                if (!isDisplayZero && !hasOperand) {
+                if (!isDisplayZero) {
                     output = "" + display_value + label;
                 }else{
                     output = label;
-                    hasOperand = false;
                 }
                 change_display = () => this.props.change_display_value(output);
                 break;
@@ -63,7 +61,7 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
                     change_display = () => {
                         this.props.set_operand(display_value);
                         this.props.change_operation(output);
-                        hasOperand = true;
+                        this.props.change_display_value(0);
                     }
                 }
                 break;
