@@ -17,7 +17,7 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
         let {label, domain, display_value, operation, operand} = this.props;
         let output;
         let isDisplayZero = display_value == 0 ? true : false;
-                const operations = {
+        const operations = {
             '−': (operator, operand) => Number(operator) - Number(operand),
             'X': (operator, operand) => Number(operator) * Number(operand),
             '÷': (operator, operand) => Number(operator) / Number(operand),
@@ -60,7 +60,7 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
                     this.props.set_operand(display_value);
                     this.props.change_operation(label.toString());
                 }else if(operand && operation && label.toString() == '='){
-                    let evaluation = operations[label](operand, display_value);
+                    let evaluation = operations[operation](operand, display_value);
                     this.props.change_display_value(evaluation);
                     this.props.set_operand(evaluation);
                 }
