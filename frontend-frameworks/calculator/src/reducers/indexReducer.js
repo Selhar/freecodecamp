@@ -3,8 +3,7 @@ import {actionTypes} from '../actions/indexAction'
 const defaultState = {
     display_value: 0,
     operation: null,
-    operand: 0,
-    operator: 0
+    operand: 0
 };
 
 export default (state = defaultState, action) => {
@@ -24,11 +23,8 @@ export default (state = defaultState, action) => {
                 ...state,
                 operand: action.operand
             }
-        case actionTypes.set_operator:
-            return{
-                ...state,
-                operand: action.operator
-            }
+        case actionTypes.clear:
+            return defaultState;
         default: 
             return state;
     }

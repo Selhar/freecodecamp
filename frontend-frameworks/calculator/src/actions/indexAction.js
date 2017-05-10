@@ -2,7 +2,7 @@ export const actionTypes = {
     change_display_value: "CHANGE_DISPLAY",
     change_operation: "CHANGE_OPERATION",
     set_operand: "SET_OPERAND",
-    set_operator: "SET_OPERATOR"
+    clear: "CLEAR"
 }
 
 export const change_display_value = (display_value) => {
@@ -26,9 +26,8 @@ export const set_operand = (operand) => {
     }
 }
 
-export const set_operator = (operator) => {
+export const clear = () => {
     return{
-        type: actionTypes.operator,
-        operator
+        type: actionTypes.clear
     }
 }
