@@ -36,6 +36,10 @@ import {change_display_value} from '../actions/indexAction';
                     change_display = () => this.props.change_display_value(output);
                 }
                 break;
+            case 'percent':
+                output = display_value / 100;
+                change_display = () => this.props.change_display_value(output);
+                break;
         }
         return(
         <div className="button" onClick={change_display}>
