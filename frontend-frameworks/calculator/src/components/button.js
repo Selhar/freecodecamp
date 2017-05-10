@@ -4,72 +4,78 @@ import {connect} from 'react-redux';
 import {change_display_value, change_operation, set_operand, clear} from '../actions/indexAction';
 
  class Button extends Component{
-    render(){
+    constructor(props){
+        super(props);
+
+        let {label, domain} = this.props;
+        this.label = label;
+        this.domain = domain;
+        this.change_display.bind(this)
+    };
+
+    change_display() {
         let {label, domain, display_value, operation, operand} = this.props;
-        let change_display;
         let output;
         let isDisplayZero = display_value == 0 ? true : false;
-        let current_operation = operation;
-        const operations = {
+                const operations = {
             '−': (operator, operand) => Number(operator) - Number(operand),
             'X': (operator, operand) => Number(operator) * Number(operand),
             '÷': (operator, operand) => Number(operator) / Number(operand),
             '+': (operator, operand) => Number(operator) + Number(operand)
         }
-
         switch(domain){
             case 'number':
-                if (!isDisplayZero) {
-                    output = "" + display_value + label;
-                }else{
+                if (isDisplayZero) {
                     output = label;
+                }else{
+                    output = "" + display_value + label;
                 }
-                change_display = () => this.props.change_display_value(output);
-                break;
+                
+                return this.props.change_display_value(output);
             case 'clear':
                 if(!isDisplayZero)
-                    change_display = () => this.props.clear();
+                    return this.props.clear();
                 break;
 
             case 'toggle':
                 if(!isDisplayZero){
                     output = display_value * -1;
-                    change_display = () => this.props.change_display_value(output);
+                    return this.props.change_display_value(output);
                 }
                 break;
             case 'dot':
                 if(display_value.toString().indexOf('.') < 0){
                     output = display_value + '.';
-                    change_display = () => this.props.change_display_value(output);
+                    return this.props.change_display_value(output);
                 }
                 break;
             case 'percent':
                 if(!isDisplayZero){
                     output = display_value / 100;
-                    change_display = () => this.props.change_display_value(output);
+                    return this.props.change_display_value(output);
                 }
                 break;
             case 'operation':
-                if(current_operation){
-                    change_display = () => {
-                        let operator = display_value;
-                        this.props.change_display_value(operations[label](operand, operator));
-                    }
-                }
-                else if(!isDisplayZero){
-                    output = label.toString();
-                    change_display = () => {
+                if(!isDisplayZero && label.toString() != '='){
+                    return () => {
                         this.props.set_operand(display_value);
-                        this.props.change_operation(output);
-                        this.props.change_display_value(0);
+                        this.props.change_operation(label.toString());
+                    }
+                }else if(operand && operation && label.toString() == '='){
+                    console.log("LUCIFER", label);
+                    let evaluation = operations[label](operand, display_value);
+                    return () => {
+                        this.props.change_display_value(evaluation);
+                        this.props.set_operand(evaluation);
                     }
                 }
                 break;
         }
-
+    }
+    render(){
         return(
-        <div className="button" onClick={change_display}>
-            {label}
+        <div className="button" onClick={ () => this.change_display()}>
+            {this.label}
         </div>
     )}
 }
