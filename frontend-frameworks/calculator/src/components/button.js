@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {change_display_value} from '../actions/indexAction';
+import {change_display_value, change_operation} from '../actions/indexAction';
 
  class Button extends Component{
     render(){
@@ -21,7 +21,8 @@ import {change_display_value} from '../actions/indexAction';
                 break;
 
             case 'clear':
-                change_display = () => this.props.change_display_value(0);
+                if(!isDisplayZero)
+                    change_display = () => this.props.change_display_value(0);
                 break;
 
             case 'toggle':
@@ -37,10 +38,19 @@ import {change_display_value} from '../actions/indexAction';
                 }
                 break;
             case 'percent':
-                output = display_value / 100;
-                change_display = () => this.props.change_display_value(output);
+                if(!isDisplayZero){
+                    output = display_value / 100;
+                    change_display = () => this.props.change_display_value(output);
+                }
+                break;
+            case 'operation':
+                if(!isDisplayZero){
+                    output = label.toString();
+                    change_display = () => this.props.change_operation(output);
+                }
                 break;
         }
+
         return(
         <div className="button" onClick={change_display}>
             {label}
@@ -53,6 +63,7 @@ export default connect(
        display_value: state.display_value
    }),
    dispatch => ({
-     change_display_value: bindActionCreators(change_display_value, dispatch)
+     change_display_value: bindActionCreators(change_display_value, dispatch),
+     change_operation: bindActionCreators(change_operation, dispatch)
    })
 )(Button);
