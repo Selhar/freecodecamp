@@ -22,7 +22,7 @@ export default () => (
         <Button label="3" domain="number"/>
         <Button label="+" domain="operator"/>
         <Button label="0" domain="number"/>  
-        <Button label="●" domain="number"/>
+        <Button label="●" domain="dot"/>
         <Button label="=" domain="result"/>
     </div>
 )

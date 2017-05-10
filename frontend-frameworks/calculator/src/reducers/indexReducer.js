@@ -11,10 +11,6 @@ export default (state = defaultState, action) => {
                 ...state,
                 display_value: action.display_value
             }
-        case actionTypes.clear:
-            return {
-                display_value: defaultState.display_value
-            }
         default: 
             return state;
     }
