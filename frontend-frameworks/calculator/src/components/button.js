@@ -5,11 +5,20 @@ import {change_display_value, clear} from '../actions/indexAction';
 
  class Button extends Component{
     render(){
-        const {label, domain} = this.props;
+        let {label, domain, display_value} = this.props;
         let change_display;
+        let output;
+
         switch(domain){
             case 'number':
-                change_display = () => this.props.change_display_value(label);
+
+                if (display_value != 0) {
+                    output = "" + label + display_value;
+                }else{
+                    output = label;
+                }
+
+                change_display = () => this.props.change_display_value(output);
                 break;
             case 'clear':
                 change_display = () => this.props.clear_display();
@@ -24,6 +33,7 @@ import {change_display_value, clear} from '../actions/indexAction';
 
 export default connect(
    state => ({
+       display_value: state.display_value
    }),
    dispatch => ({
      change_display_value: bindActionCreators(change_display_value, dispatch),

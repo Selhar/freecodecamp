@@ -6,7 +6,7 @@ export default () => (
     <div className="board">     
         <Display />   
         <Button label="C" domain="clear"/>  
-        <Button label="±" domain="operator"/>  
+        <Button label="±" domain="toggle"/>  
         <Button label="%" domain="operator"/>  
         <Button label="÷" domain="operator"/>
         <Button label="7" domain="number"/>
