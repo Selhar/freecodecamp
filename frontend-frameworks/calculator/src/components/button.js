@@ -25,8 +25,14 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
         }
         switch(domain){
             case 'number':
-                if (isDisplayZero || operand && operation) {
+                if (isDisplayZero) {
                     output = label;
+                }else if(!operator && operation && operand){
+                    output = label;
+                    this.props.set_operator(output);
+                }else if(operator && operation && operand){
+                    output = "" + display_value + label;
+                    this.props.set_operator(output);
                 }else{
                     output = "" + display_value + label;
                 }
@@ -35,7 +41,6 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
                 if(!isDisplayZero)
                     return this.props.clear();
                 break;
-
             case 'toggle':
                 if(!isDisplayZero){
                     output = display_value * -1;
@@ -55,17 +60,15 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
                 }
                 break;
             case 'operation':
-                if(!isDisplayZero && !operand || label != '='){
+                if(!isDisplayZero && !operand && label != '='){
                     this.props.set_operand(display_value);
-                    console.log(label);
                     this.props.change_operation(label);
-                }else if(!operator){
+                }else if(label == '=' || operand && !isDisplayZero){
                     this.props.set_operator(display_value);
-                    this.props.change_operation(label);
-                }else if(label == '='){
-                    let evaluation = operations[operation](operand, operator);
+                    let evaluation = operations[operation](display_value, operand);
                     this.props.change_display_value(evaluation);
                     this.props.set_operand(evaluation);
+                    this.props.set_operator(0);
                 }
                     
                 break;
