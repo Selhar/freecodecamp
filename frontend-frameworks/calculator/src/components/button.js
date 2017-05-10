@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {change_display_value, change_operation, set_operand, clear} from '../actions/indexAction';
+import {change_display_value, change_operation, set_operand, set_operator, clear} from '../actions/indexAction';
 
  class Button extends Component{
     constructor(props){
@@ -14,7 +14,7 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
     };
 
     change_display() {
-        let {label, domain, display_value, operation, operand} = this.props;
+        let {label, domain, display_value, operation, operand, operator} = this.props;
         let output;
         let isDisplayZero = display_value == 0 ? true : false;
         const operations = {
@@ -25,12 +25,11 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
         }
         switch(domain){
             case 'number':
-                if (isDisplayZero) {
+                if (isDisplayZero || operand && operation) {
                     output = label;
                 }else{
                     output = "" + display_value + label;
                 }
-                
                 return this.props.change_display_value(output);
             case 'clear':
                 if(!isDisplayZero)
@@ -56,14 +55,19 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
                 }
                 break;
             case 'operation':
-                if(!isDisplayZero && label.toString() != '='){
+                if(!isDisplayZero && !operand || label != '='){
                     this.props.set_operand(display_value);
-                    this.props.change_operation(label.toString());
-                }else if(operand && operation && label.toString() == '='){
-                    let evaluation = operations[operation](operand, display_value);
+                    console.log(label);
+                    this.props.change_operation(label);
+                }else if(!operator){
+                    this.props.set_operator(display_value);
+                    this.props.change_operation(label);
+                }else if(label == '='){
+                    let evaluation = operations[operation](operand, operator);
                     this.props.change_display_value(evaluation);
                     this.props.set_operand(evaluation);
                 }
+                    
                 break;
         }
     }
@@ -79,12 +83,14 @@ export default connect(
    state => ({
        display_value: state.display_value,
        operation: state.operation, 
+       operator: state.operator, 
        operand: state.operand
    }),
    dispatch => ({
         change_display_value: bindActionCreators(change_display_value, dispatch),
         change_operation: bindActionCreators(change_operation, dispatch),
         set_operand: bindActionCreators(set_operand, dispatch),
+        set_operator: bindActionCreators(set_operator, dispatch),
         clear: bindActionCreators(clear, dispatch)
    })
 )(Button);
