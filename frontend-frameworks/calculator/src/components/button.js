@@ -57,17 +57,12 @@ import {change_display_value, change_operation, set_operand, clear} from '../act
                 break;
             case 'operation':
                 if(!isDisplayZero && label.toString() != '='){
-                    return () => {
-                        this.props.set_operand(display_value);
-                        this.props.change_operation(label.toString());
-                    }
+                    this.props.set_operand(display_value);
+                    this.props.change_operation(label.toString());
                 }else if(operand && operation && label.toString() == '='){
-                    console.log("LUCIFER", label);
                     let evaluation = operations[label](operand, display_value);
-                    return () => {
-                        this.props.change_display_value(evaluation);
-                        this.props.set_operand(evaluation);
-                    }
+                    this.props.change_display_value(evaluation);
+                    this.props.set_operand(evaluation);
                 }
                 break;
         }
