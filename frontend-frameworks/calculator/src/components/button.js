@@ -13,7 +13,7 @@ import {change_display_value} from '../actions/indexAction';
         switch(domain){
             case 'number':
                 if (!isDisplayZero) {
-                    output = "" + label + display_value;
+                    output = "" + display_value + label;
                 }else{
                     output = label;
                 }
@@ -31,8 +31,8 @@ import {change_display_value} from '../actions/indexAction';
                 }
                 break;
             case 'dot':
-                if(display_value.toString().slice(0,1) != "."){
-                    output = "." + display_value;
+                if(display_value.toString().indexOf('.') < 0){
+                    output = display_value + '.';
                     change_display = () => this.props.change_display_value(output);
                 }
                 break;

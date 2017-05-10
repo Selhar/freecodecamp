@@ -7,7 +7,7 @@ export default () => (
         <Display />   
         <Button label="C" domain="clear"/>  
         <Button label="±" domain="toggle"/>  
-        <Button label="%" domain="operator"/>  
+        <Button label="%" domain="percent"/>  
         <Button label="÷" domain="operator"/>
         <Button label="7" domain="number"/>
         <Button label="8" domain="number"/>        
