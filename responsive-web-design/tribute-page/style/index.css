@@ -4,31 +4,7 @@ body {
     background-color: #026475;
     font-family: Helvetica;
 }
-/* INFO */
-.personal_info{
-    text-align: center;
-    margin: 0 auto;
-    background-color: white;
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px 40px 25px 0;
-}
-.personal_info p{
-    margin: 0;
-    display: block;
-}
 
-.personal_info a span{
-    font-size: 2rem;
-}
-
-.personal_info a span:first-of-type{
-    margin-left: 15px;
-    color: #333;
-}
-/* INFO */
 p {
     margin-top: 20px;
     line-height: 27px;
@@ -105,3 +81,31 @@ h2 {
     width: 35px;
 }
 
+/* INFO */
+.contact {
+    text-align: center;
+    padding: 15px;
+}
+
+footer {
+    color: white;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 2rem;
+}
+
+footer a {
+    margin: 15px;
+    color: white;
+}
+
+footer a:focus {
+    outline: none;
+}
+
+footer a:hover {
+    color: #666;
+}
+/* INFO */

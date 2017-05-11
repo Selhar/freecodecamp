@@ -28,6 +28,11 @@ body {
     font-size: 3rem;
 }
 
+span.contact-email{
+    font-size: 1.1rem;
+    color: black;
+}
+
 /**************
     Splash
 ***************/
