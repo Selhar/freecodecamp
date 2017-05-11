@@ -7,7 +7,6 @@ function animate_gallery_layer() {
     for(let gallery of galleries){
         gallery = gallery.children;
         for (let figure of gallery) {
-
             let hover_layer = figure.children[0];
             let tags = hover_layer.children[0];
             let from = {backgroundColor: "rgba(0,0,0,0.5)"};
