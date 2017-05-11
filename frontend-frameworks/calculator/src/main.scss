@@ -32,6 +32,12 @@ body{
     border: 1px black;
     width: 100%;
     height: $display-height;
+    text-align: right;
+    word-wrap: break-word;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .board{
@@ -52,5 +58,18 @@ body{
     border: 0.5px solid black;   
     &:last-of-type{
         width: $button-width * 2;
+        background-color: red;
     }
+    &:nth-child(4n+1){
+        background-color: red;
+    }
+}
+
+.calculator_value{
+    position: absolute;
+    font-size: 80px;
+    padding: 0 15px 0 15px;
+    right: 0;
+    transform-origin: right;
+    display: inline-block;
 }

@@ -2,6 +2,7 @@ import {actionTypes} from '../actions/indexAction'
 
 const defaultState = {
     display_value: 0,
+    display_scale: 1,
     operation: null,
     operand: 0,
     operator: 0
@@ -28,6 +29,11 @@ export default (state = defaultState, action) => {
             return{
                 ...state,
                 operator: action.operator
+            }
+        case actionTypes.set_scale:
+            return{
+                ...state,
+                display_scale: action.display_scale
             }
         case actionTypes.clear:
             return defaultState;
