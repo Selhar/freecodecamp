@@ -20,6 +20,7 @@ section {
 
 body {
     font-family: 'Fira Sans', sans-serif;
+    padding-bottom: 20px;
 }
 
 
@@ -105,6 +106,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     position: relative;
+    margin-bottom: 50px;
 }
 
 .image.is-256x256 {
@@ -115,7 +117,7 @@ body {
     color: white;
     position: absolute;
     width: 256px;
-    height: 0;
+    height: 256px;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0);
 }
@@ -139,8 +141,10 @@ body {
 }
 
 footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 footer a {
@@ -158,7 +162,7 @@ footer a:hover {
 
 
 /**********************
-Responsivitynessissity
+    Responsivity, if that word exists, maybe it's responsiveness. Maybe neither.
 **********************/
 
 @media screen and (max-width: 550px) {

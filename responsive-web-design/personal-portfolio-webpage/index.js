@@ -13,21 +13,21 @@ function animate_gallery_layer() {
 
         let hover_layer = figure.children[0];
         let tags = hover_layer.children[0];
-        let from = { height: "256px", backgroundColor: "rgba(0,0,0,0.5)" };
-        let to = { height: "0px", backgroundColor: 0 };
+        let from = {backgroundColor: "rgba(0,0,0,0.5)"};
+        let to = { backgroundColor: "rgba(0,0,0,0.0)"};
         let clickCount = 0;
 
         figure.addEventListener("click", () => {
-            TweenLite.to(hover_layer, 0.4, from);
+            TweenLite.to(hover_layer, 0.3, from);
         });
 
         figure.addEventListener("mouseover", () => {
-            TweenLite.to(hover_layer, 0.4, from);
-            TweenLite.to(tags, 0.4, { opacity: 1 });
+            TweenLite.to(hover_layer, 0.3, from);
+            TweenLite.to(tags, 0.3, { opacity: 1 });
         });
         figure.addEventListener("mouseout", () => {
-            TweenLite.to(hover_layer, 0.4, to);
-            TweenLite.to(tags, 0.4, { opacity: 0 });
+            TweenLite.to(hover_layer, 0.3, to);
+            TweenLite.to(tags, 0.3, { opacity: 0 });
         });
     }
 

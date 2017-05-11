@@ -16,7 +16,7 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
     change_display() {
         let {label, domain, display_value, operation, operand, operator} = this.props;
         let output;
-        let isDisplayZero = display_value == 0 ? true : false;
+        let isDisplayZero = display_value == 0 && label != 0 ? true : false;
         const operations = {
             '−': (operator, operand) => Number(operand) - Number(operator),
             'x': (operator, operand) => Number(operand) * Number(operator),
