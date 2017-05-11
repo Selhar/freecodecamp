@@ -1,0 +1,210 @@
+/**************
+    Globals
+***************/
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:100,300,400,600');
+html,
+body {
+    height: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+section {
+    position: relative;
+}
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+    padding-bottom: 20px;
+}
+
+.project{
+    color: rebeccapurple;
+    font-size: 3rem;
+}
+
+/**************
+    Splash
+***************/
+
+#splash {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#splash header {
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+}
+
+#splash header *:hover {
+    cursor: default;
+}
+.title{
+    margin-top: 20px;
+}
+.title.is-1 {
+    letter-spacing: 6px;
+}
+
+.title-lines {
+    width: 0;
+    margin: 0;
+}
+
+.title-lines:first-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.title-lines:last-of-type {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle.is-3 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.scroll-button {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.button:active,
+.button:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.scroll-button a {
+    border: none;
+}
+
+.scroll-button .icon {
+    font-size: 2rem;
+}
+
+
+/**************
+    Gallery
+***************/
+
+#gallery {
+    padding-top: 50px;
+    height: 100%;
+}
+
+.image-node {
+    width: 1064px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.image.is-100x100 {
+    padding: 5px;
+}
+
+.hover-layer {
+    color: white;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.tags {
+    opacity: 0;
+}
+
+.tag {
+    margin: 5px;
+}
+
+
+/**************
+     Footer
+***************/
+
+.contact {
+    text-align: center;
+    padding: 15px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+footer a {
+    margin: 15px;
+    color: black;
+}
+
+footer a:focus {
+    outline: none;
+}
+
+footer a:hover {
+    color: #666;
+}
+
+
+/**********************
+    Responsivity, if that word exists, maybe it's responsiveness. Maybe neither.
+**********************/
+
+@media screen and (max-width: 550px) {
+    #gallery {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    .image-node {
+        width: 264px;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 803px) {
+    #gallery {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    .image-node {
+        width: 532px;
+    }
+}
+
+@media screen and (min-width: 804px) and (max-width: 1063px) {
+    .image-node {
+        width: 798px;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .title.is-1 {
+        font-size: 2rem;
+    }
+    .subtitle.is-3 span {
+        font-size: 1.5rem;
+    }
+    #splash header {
+        width: 90%;
+    }
+}
