@@ -7,7 +7,9 @@ $secondary-color: #78382a;
 $inner-background: #9f4936;
 $font-color: #ccc;
 $pad-size: 275px;
-
+#main{
+    margin-bottom: 50px;
+}
 h1{
     margin-bottom: 1rem;
 }
@@ -71,4 +73,29 @@ body{
         font-size: 2rem;
         margin: 0.7rem;
     }
+}
+/**************
+     Footer
+***************/
+
+.contact {
+    text-align: center;
+}
+
+footer {
+    color: #43246a;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 2rem;
+}
+
+footer a {
+    margin: 15px;
+    color: $font-color;
+}
+
+footer a:focus {
+    outline: none;
 }

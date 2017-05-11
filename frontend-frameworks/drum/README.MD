@@ -1,6 +1,10 @@
-development: `yarn run dev` or `npm run dev`  
+You can view a live version of this project here: http://selhar-drumkit.surge.sh/
+To install it, do the following:
 
-production: `yarn run prod` or `npm run prod`  
+1. on your terminal, type: `git clone https://github.com/GregoryGoncalves/freecodecamp.git`
 
-`Public` folder is automatically generated.
+2. go to this project's folder (located in freecodecamp/frontend-frameworks/calculator), and in your terminal type: `yarn install`
 
+To run the project in the development environment, use `yarn run dev`, to create the bundle and minify, use `yarn run prod`. 
+
+obs. `npm` can be used instead of yarn for any of the instructions above.

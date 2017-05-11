@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "github.com/GregoryGoncalves/freecodecamp/tree/master/frontend-frameworks/calculator"
+    "url": "github.com/GregoryGoncalves/freecodecamp"
   },
   "scripts": {
     "dev": "webpack-dev-server",
