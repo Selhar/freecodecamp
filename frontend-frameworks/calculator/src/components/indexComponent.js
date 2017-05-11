@@ -12,7 +12,7 @@ export default () => (
         <Button label="7" domain="number"/>
         <Button label="8" domain="number"/>        
         <Button label="9" domain="number"/>  
-        <Button label="X" domain="operation"/>  
+        <Button label="x" domain="operation"/>  
         <Button label="4" domain="number"/>  
         <Button label="5" domain="number"/>
         <Button label="6" domain="number"/>

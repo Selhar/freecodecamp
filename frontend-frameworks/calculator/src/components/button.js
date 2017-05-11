@@ -19,7 +19,7 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
         let isDisplayZero = display_value == 0 ? true : false;
         const operations = {
             '−': (operator, operand) => Number(operand) - Number(operator),
-            'X': (operator, operand) => Number(operand) * Number(operator),
+            'x': (operator, operand) => Number(operand) * Number(operator),
             '÷': (operator, operand) => Number(operand) / Number(operator),
             '+': (operator, operand) => Number(operand) + Number(operator)
         }
