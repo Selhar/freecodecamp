@@ -72,6 +72,9 @@ code {
     bottom: 0;
     left: 0;
     right: 0;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .contact a:first-of-type {
@@ -82,9 +85,12 @@ code {
     padding-left: 15px;
 }
 
-.contact {
-    padding-top: 5px;
-    padding-bottom: 5px;
+.contact p{
+    color: #c8c9db;
+}
+
+.contact a:hover{
+    color: #e69f67;
 }
 
 aside {
