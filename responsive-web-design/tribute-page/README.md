@@ -1,5 +1,8 @@
-#Tribute page
+You can view a live version of this project here: http://codepen.io/Selhar/full/JWKZbL/
 
-To run the project, do the following:
-1. `git clone <link>`
+To install it, do the following:
+
+1. on your terminal, type: `git clone https://github.com/GregoryGoncalves/freecodecamp.git`
 2. open index.html
+
+
