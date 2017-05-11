@@ -1,3 +1,29 @@
+/* INFO */
+.personal_info{
+    text-align: center;
+    margin: 0 auto;
+    background-color: white;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 40px 25px 0;
+}
+.personal_info p{
+    margin: 0;
+    display: block;
+}
+
+.personal_info a span{
+    font-size: 2rem;
+}
+
+.personal_info a span:first-of-type{
+    margin-left: 15px;
+    color: #333;
+}
+/* INFO */
+
 /************* 
     Globals
  ************/
