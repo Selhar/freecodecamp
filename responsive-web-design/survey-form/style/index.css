@@ -1,26 +1,28 @@
 /* INFO */
-.personal_info{
+.contact {
     text-align: center;
-    margin: 0 auto;
-    background-color: white;
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px 40px 25px 0;
-}
-.personal_info p{
-    margin: 0;
-    display: block;
+    padding-top: 15px;
 }
 
-.personal_info a span{
+footer {
+    color: white;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
     font-size: 2rem;
 }
 
-.personal_info a span:first-of-type{
-    margin-left: 15px;
-    color: #333;
+footer a {
+    color: white;
+}
+
+footer a:focus {
+    outline: none;
+}
+
+footer a:hover {
+    color: #DDD;
 }
 /* INFO */
 
@@ -34,7 +36,8 @@ body {
   margin: 0;
   background-color: dimgrey;
   font-family: "Open Sans", sans-serif;
-  font-size: 16px; }
+  font-size: 16px; 
+  }
 
 * {
   box-sizing: border-box; }
