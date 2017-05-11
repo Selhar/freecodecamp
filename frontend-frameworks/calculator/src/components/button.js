@@ -18,10 +18,10 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
         let output;
         let isDisplayZero = display_value == 0 ? true : false;
         const operations = {
-            '−': (operator, operand) => Number(operator) - Number(operand),
-            'X': (operator, operand) => Number(operator) * Number(operand),
-            '÷': (operator, operand) => Number(operator) / Number(operand),
-            '+': (operator, operand) => Number(operator) + Number(operand)
+            '−': (operator, operand) => Number(operand) - Number(operator),
+            'X': (operator, operand) => Number(operand) * Number(operator),
+            '÷': (operator, operand) => Number(operand) / Number(operator),
+            '+': (operator, operand) => Number(operand) + Number(operator)
         }
         switch(domain){
             case 'number':
@@ -64,11 +64,13 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
                     this.props.set_operand(display_value);
                     this.props.change_operation(label);
                 }else if(label == '=' || operand && !isDisplayZero){
+                    let current_operation = label == '=' ? operation : label;
                     this.props.set_operator(display_value);
-                    let evaluation = operations[operation](display_value, operand);
+                    let evaluation = operations[current_operation](display_value, operand);
                     this.props.change_display_value(evaluation);
                     this.props.set_operand(evaluation);
                     this.props.set_operator(0);
+                    this.props.change_operation(label);
                 }
                     
                 break;
