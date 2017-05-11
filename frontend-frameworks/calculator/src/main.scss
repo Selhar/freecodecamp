@@ -28,6 +28,9 @@ body{
 }
 
 .display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: white;
     border: 1px black;
     width: 100%;
@@ -35,9 +38,6 @@ body{
     text-align: right;
     word-wrap: break-word;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .board{
@@ -61,6 +61,9 @@ body{
         background-color: red;
     }
     &:nth-child(4n+1){
+        background-color: red;
+    }
+    &:active{
         background-color: red;
     }
 }
