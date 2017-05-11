@@ -5,6 +5,6 @@ To install it, do the following:
 
 2. go to this project's folder (located in freecodecamp/frontend-frameworks/calculator), and in your terminal type: `yarn install`
 
-To run the project in the development environment, use `yarn run dev`, to run for bundle and minify, use `yarn run prod`. 
+To run the project in the development environment, use `yarn run dev`, to create the bundle and minify, use `yarn run prod`. 
 
-obs. `npm` can be used instead of npm for any of the instructions above.
+obs. `npm` can be used instead of yarn for any of the instructions above.
