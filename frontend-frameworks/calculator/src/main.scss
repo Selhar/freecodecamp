@@ -1,5 +1,6 @@
 //custom normalize, global rules are in there
 @import "./helpers/normalize.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 $board-height: 500px;
 $board-width: 400px;
@@ -13,13 +14,14 @@ body,
     height: 100%;
 }
 body{
+    background-color: #BCDB95;
     display: flex;
     justify-content: center;
     align-items: center; 
-    background-color: lightcoral;
 }
 * {
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #main {
@@ -28,11 +30,11 @@ body{
 }
 
 .display {
+    background-color: #d7f2cb;
+    color: #4f2781;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: white;
-    border: 1px black;
     width: 100%;
     height: $display-height;
     text-align: right;
@@ -53,18 +55,14 @@ body{
     padding: 0;
     margin: 0;
     width: $button-width;
+    color: #BCDB95;
     height: $button-height;
-    background-color: lightgoldenrodyellow;
-    border: 0.5px solid black;   
+    background-color: #43246a;
     &:last-of-type{
         width: $button-width * 2;
-        background-color: red;
-    }
-    &:nth-child(4n+1){
-        background-color: red;
     }
     &:active{
-        background-color: red;
+        background-color: #4f2781;
     }
 }
 
