@@ -4,29 +4,31 @@ body {
     background-color: #026475;
     font-family: Helvetica;
 }
-.github_info{
+/* INFO */
+.personal_info{
     text-align: center;
     margin: 0 auto;
     background-color: white;
-    height: 40px;
+    height: 60px;
     margin-bottom: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.github_info p{
+.personal_info p{
     margin: 0;
     display: block;
 }
 
-.github_info a span{
+.personal_info a span{
     font-size: 2rem;
 }
 
-.github_info a span:first-of-type{
+.personal_info a span:first-of-type{
     margin-left: 15px;
     color: #333;
 }
+/* INFO */
 p {
     margin-top: 20px;
     line-height: 27px;
@@ -37,12 +39,10 @@ a{
 #title {
     font-family: 'Bevan', cursive;
     margin: 80px 0 0 0;
-    text-color: #F0D800;
 }
 
 hr {
     margin-bottom: 50px;
-    text-color: #333;
     width: 80%;
 }
 
