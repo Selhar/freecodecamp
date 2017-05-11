@@ -1,0 +1,1 @@
+To run these projects just paste them your javascript environment of preference.
