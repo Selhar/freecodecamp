@@ -5,9 +5,10 @@ let images_enum = {
     /*  This enum solution is only necessary because i'll upload this project to codepen
         each image has to be uploaded to a third party server and since i can't predict 
         how each URL is going to be like, i had to hardcode it in after uploading each image.
-        For the gallery to work i need a relation between the button thumbnail and the fullscreen image
-        so i used enums. In a server the filepath should be used, instead of hardcoded path-to-file.
-        .*/
+        For the gallery to work i need a relation between the button thumbnail and the fullscreen image.
+        In a server the filepath string should be used, instead of hardcoded path-to-file.
+    */
+    
     'url("http://res.cloudinary.com/selhar/image/upload/v1487737607/cupcake1-thumb_hfwyi0.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737627/cupcake1_k0bvig.jpg")',
     'url("http://res.cloudinary.com/selhar/image/upload/v1487737608/cupcake2-thumb_vlza22.jpg")': 'url("https://res.cloudinary.com/selhar/image/upload/v1487737639/cupcake2_eu8jv5.jpg")',
     'url("http://res.cloudinary.com/selhar/image/upload/v1487910173/cupcake3-thumb_ctqzwy.jpg")': 'url("http://res.cloudinary.com/selhar/image/upload/v1487910173/cupcake3_fd11r6.jpg")',

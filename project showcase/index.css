@@ -152,15 +152,17 @@ span.contact-email{
 }
 
 footer {
+    color: white;
     position: relative;
     bottom: 0;
     left: 0;
     right: 0;
+    font-size: 2rem;
 }
 
 footer a {
     margin: 15px;
-    color: black;
+    color: white;
 }
 
 footer a:focus {
@@ -170,7 +172,6 @@ footer a:focus {
 footer a:hover {
     color: #666;
 }
-
 
 /**********************
     Responsivity, if that word exists, maybe it's responsiveness. Maybe neither.

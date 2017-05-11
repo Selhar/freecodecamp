@@ -14,7 +14,6 @@ body {
 }
 
 section {
-    height: 100%;
     position: relative;
 }
 
@@ -95,8 +94,7 @@ body {
 ***************/
 
 #gallery {
-    padding-top: 10%;
-    height: 100%;
+    padding-top: 10%
 }
 
 .image-node {
@@ -137,19 +135,19 @@ body {
 
 .contact {
     text-align: center;
-    padding: 15px;
 }
 
 footer {
-    position: fixed;
+    color: #333;
     bottom: 0;
     left: 0;
     right: 0;
+    font-size: 2rem;
 }
 
 footer a {
     margin: 15px;
-    color: black;
+    color: #333;
 }
 
 footer a:focus {
@@ -166,20 +164,12 @@ footer a:hover {
 **********************/
 
 @media screen and (max-width: 550px) {
-    #gallery {
-        overflow: scroll;
-        overflow-x: hidden;
-    }
     .image-node {
         width: 264px;
     }
 }
 
 @media screen and (min-width: 551px) and (max-width: 803px) {
-    #gallery {
-        overflow: scroll;
-        overflow-x: hidden;
-    }
     .image-node {
         width: 532px;
     }
