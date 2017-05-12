@@ -31,8 +31,20 @@ footer a {
 }
 
 /* threads */
-.threadlist{
-    border: 1px solid black;
+.thread{
+    background-color: #DDD;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.reply form{
+    margin: 0;
+}
+.reply{
+    background-color: #AAA;
+    width: 400px;
+    margin: 0 auto;
 }
 /* input */
 .inputfield{

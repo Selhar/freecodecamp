@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anonymous imageboard</title>
+    <title>Anonymous textboard</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <h1 class="title">Anonymous imageboard mock project</h1>
+    <h1 class="title">Anonymous textboard mock board project</h1>
     <div id="main">
         <h3>Submit a new thread:</h3>
         <div class="inputfield">
@@ -24,11 +24,25 @@
             </form>
         </div>
         <div class="threadlist">
-            <%data.forEach((item) => {%>
+            <%data.forEach((thread) => {%>
             <div class="thread">
-            
+                <%thread.replies.forEach((reply) => {%>
+                <div class="replies">
+                        <span> <%=reply.text%> </span>
+                        <input type='text' readonly placeholder='optional password'><br>
+                        <input type="submit" value="Delete">
+                        <input type="submit" value="Report">
+                </div>
+                <%})%>
+                <div class="reply">
+                    <form method="post" action="/" name='thread'>
+                        <textarea rows="8" cols="120" type='text' placeholder='Text' name='text'></textarea><br>
+                        <input type='text' placeholder='optional password'><br>
+                        <input type="submit" value="Reply">
+                    </form>
+                </div>
             </div>
-            <%})%>
+            <%});%>
             
             
         </div>        
