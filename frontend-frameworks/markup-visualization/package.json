@@ -1,15 +1,19 @@
 {
   "name": "react-env-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Markdown previewer in react/redux",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "github.com/GregoryGoncalves/freecodecamp"
+  },
   "scripts": {
     "dev": "webpack-dev-server",
     "prod": "webpack -p"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Selhar <selhar@protonmail.com>",
+  "license": "GPL",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.23.1",
