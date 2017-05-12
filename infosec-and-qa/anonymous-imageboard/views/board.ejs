@@ -15,14 +15,23 @@
     <h1 class="title">Anonymous imageboard mock project</h1>
     <div id="main">
         <h3>Submit a new thread:</h3>
-            <div class="newthread">
-                <form method="post" action="/" name='thread'>
-                    <input type='text' placeholder='Subject' name='title'></textarea><br>
-                    <textarea rows="8" cols="120" type='text' placeholder='Text' name='text'></textarea><br>
-                    <input type='text' placeholder='optional password'><br>
-                    <input type="submit" value="Submit">
-                </form>
+        <div class="inputfield">
+            <form method="post" action="/" name='thread'>
+                <input type='text' placeholder='Subject' name='title'></textarea><br>
+                <textarea rows="8" cols="120" type='text' placeholder='Text' name='text'></textarea><br>
+                <input type='text' placeholder='optional password'><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="threadlist">
+            <%data.forEach((item) => {%>
+            <div class="thread">
+            
             </div>
+            <%})%>
+            
+            
+        </div>        
     </div>
     <footer>
         <a href="https://github.com/GregoryGoncalves" target="_blank">

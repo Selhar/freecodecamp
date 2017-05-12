@@ -29,3 +29,16 @@ h1{
 footer a {
     font-size: 2.5rem;
 }
+
+/* threads */
+.threadlist{
+    border: 1px solid black;
+}
+/* input */
+.inputfield{
+    width: 250px;
+}
+.inputfield *{
+    margin: 5px 0;
+    padding: 0;
+}
