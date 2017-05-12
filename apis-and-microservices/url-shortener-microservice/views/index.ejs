@@ -9,24 +9,18 @@
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 <body>
+    <h1 class="title">URL Shortener microservice</h1>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
-        <h1>Add new address to the database:</h1>
-        <p>POST: <code>/api/shorturl/[your url]</code></p>
+        <span class="step">Add new address to the database: <strong>POST</strong> to <code>/api/shorturl/[your url]</code></span>
+        <span class="step">Access a shortened address: <strong>GET</strong> to <code>/api/shorturl/[your url]</code></span>
+        <span class="step">Delete an address from the database: <strong>DELETE</strong> to <code>/api/shorturl/[your url]</code></span>
         <form action="api/shorturl/new" method="POST">
           <label for="url_input">This is intended as an API, but you can try it out here:</label>
           <input id="url_input" type="text" name="url" value="https://www.freecodecamp.com">
           <input type="submit" value="POST URL">
         </form>
-        <h1>Retrieve an address from the database:</h1>
-        <p>GET<code>/api/shorturl/[your url]</code></p>
-        <h1>Delete an address from the database:</h1>
-        <p>DELETE<code>/api/shorturl/[your url]</code></p>
         <footer>
             <a href="https://github.com/GregoryGoncalves" target="_blank">
                 <span class="icon"><i class="fa fa-github"></i></span>
