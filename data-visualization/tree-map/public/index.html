@@ -18,18 +18,23 @@
   </head>
 
   <body>    
-    <div class='container'>
-      <h1>Tree map data visualization</h1>
+      
+    <h1>Tree map data visualization</h1>
+
         <div class="controls">
             <button onclick="render_data(null, null, null, null, 'kickstarter')">Switch to kickstarter overview</button> 
             <button onclick="render_data(null, null, null, null, 'movie')">Switch to movies overview</button> 
             <button onclick="render_data(null, null, null, null, 'video')">Switch to video overview</button> 
         </div>
+    <div class='container'>
+
         <div class='graph'></div>
-            </div>
-        <footer>
-        <div class="contact">
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
+
+        <div class='legend'></div>    
+    </div>
+    <footer>
+      <div class="contact">
+            <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/data-visualization/tree-map" target="_blank">
                 <span class="icon"><i class="fa fa-github"></i></span>
             </a>
             <a href="http://codepen.io/Selhar/#" target="_blank">
@@ -40,8 +45,6 @@
             </a>
         </div>
     </footer>
-    </div>
-    <div class='legend'></div>
   </body>
   
   <script src="../libraries/d3.min.js"></script>
