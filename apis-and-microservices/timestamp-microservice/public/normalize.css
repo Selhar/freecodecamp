@@ -3,11 +3,18 @@
 html,
 body,
 #main {
-    height: 100%;
+    text-align: center;
+    margin-top: 50px;
 }
-
+.step{
+  font-size: 1.9rem;
+}
 * {
     box-sizing: border-box;
+}
+
+form{
+  margin-top: 50px;
 }
 
 html {
