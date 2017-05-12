@@ -134,7 +134,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
 
     let legend_svg = d3.select('.legendField').append('svg')
                     .attr('width', legend.width)
-                    .attr('height', 150);
+                    .attr('height', 80);
     legend_svg.append('g')
                     .attr('transform', 'translate('+16+','+(legend.node_width)+')')
                     .attr('height', 35)

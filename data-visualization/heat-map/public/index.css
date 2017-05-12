@@ -30,3 +30,20 @@ div.tooltip {
     border-radius: 8px;			
     pointer-events: none;			
 }
+/**************
+     Footer
+***************/
+
+.contact {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.contact a {
+    margin: 15px;
+    color: #333;
+}
+
+.contact a:focus {
+    outline: none;
+}

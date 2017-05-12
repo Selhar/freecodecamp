@@ -13,7 +13,6 @@ class Display extends Component{
         let display_div = document.getElementsByClassName("display")[0];
         let value_div = document.getElementsByClassName("calculator_value")[0];
         let current_scale = display_div.offsetWidth / value_div.offsetWidth;
-        console.log(this.props.display_scale);
         if(current_scale < 1){
             this.props.set_scale(current_scale);
         }else if(this.props.display_scale < 1){
