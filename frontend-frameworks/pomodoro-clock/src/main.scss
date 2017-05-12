@@ -6,18 +6,22 @@ $secondary-color: #828282;
 $optional-color: #682877;
 
 html,
-body {
+body {   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     height: 100%;
     margin: 0;
     font-size: 16px;
     background-color: $main-color;
+
 }
 * {
     box-sizing: border-box;
 }
 
 #main {
-    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -53,3 +57,25 @@ body {
         }
     }
 }
+
+.contact {
+    text-align: center;
+}
+
+footer {
+    margin-top: 50px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 2rem;
+}
+
+footer a {
+    margin: 15px;
+    color: $optional-color;
+}
+
+footer a:focus {
+    outline: none;
+} 

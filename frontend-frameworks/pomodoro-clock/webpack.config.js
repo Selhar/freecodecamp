@@ -34,7 +34,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Random quote generator',
+            title: 'Pomodoro clock',
             minify: {
                 collapseWhitespace: false
             },

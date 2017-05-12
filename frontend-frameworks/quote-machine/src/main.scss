@@ -13,6 +13,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 * {
     box-sizing: border-box;
@@ -38,10 +39,9 @@ $text-color: white;
     position: relative;
     text-align: center;
     height: 500px;
-    width: 1000px;
+    width: 700px;
     border-radius: 8px;
     background-color: $main-color;
-    padding: $board-padding;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -54,8 +54,6 @@ $text-color: white;
 
 .footer-quote{
     position: absolute;
-    width: calc(100% - #{$board-padding * 2});
-    bottom: calc(0% + #{$board-padding});
     text-align: left;
     .button:last-of-type{
         position: absolute;
@@ -94,4 +92,33 @@ $text-color: white;
         color: $main-color;
         background-color: $optional-color;
     }
+}
+/**************
+     Footer
+***************/
+
+.contact {
+    text-align: center;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 2rem;
+    margin-top: 25px;
+}
+
+footer a {
+    margin: 25px;
+    color:white;
+}
+
+footer a:focus {
+    outline: none;
+}
+
+footer a:hover {
+    color: $secondary-color;
 }
