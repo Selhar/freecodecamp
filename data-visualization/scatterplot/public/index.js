@@ -81,11 +81,10 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     container.selectAll('.circle')
         .data(data)
         .enter().append('circle')
-        .attr('class', 'circle')
         .attr('opacity', 0.75)
-        .attr('r', 6)
         .attr('cx', (d) => {return x_axis_builder(d.Year);})
         .attr('cy', (d) => {return y_axis_builder(d.Time);})
+        .attr('r', 6)
         .style('fill', (d) => {return color(d.Doping != "");})
         .on('mouseover', (d) => {
             tooltip_block.transition().duration(150)
@@ -105,9 +104,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
         
 
     let legend = container.selectAll('.legend')
-        .data(color.domain())
-        .enter().append('g')
-        .attr('class', 'legend')
+        .data(color.domain()).enter().append('g')
         .attr('transform', (d,i) => {return 'translate(0,' + (container_dimensions.height/2 - i * 20)+')';});
     
     legend.append('rect')
@@ -119,7 +116,6 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     legend.append('text')
             .attr("x", svg_dimensions.width - 25)
             .attr("y", 9)
-            .attr("dy", ".35em")
         .style("text-anchor", "end")
             .text((isDopingPositive) => {
                 if(isDopingPositive) 

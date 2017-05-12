@@ -5,6 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: darkslateblue;
 }
 
@@ -32,4 +33,20 @@ div.tooltip {
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
+}
+
+
+.contact {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 40px;
+}
+
+.contact a {
+    margin: 15px;
+    color: #CCC;
+}
+
+.contact a:focus {
+    outline: none;
 }

@@ -122,11 +122,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
             .attr('transform', 'translate('+svg_dimensions.padding+', 0)');
 
     let data_bars = d3.select('svg').selectAll('rect')
-                        .data(gdpScale)
-                        .enter()
-                        .append('rect')
-                        .attr('date-date', (gdp_array_item, index) => {return data.data[index][0]})
-                        .attr('date-gdp', (gdp_array_item, index) => {return data.data[index][1]})
+                        .data(gdpScale).enter().append('rect')
                         .attr('class', 'bar')
                             .attr('x', (gdp_array_item, index) => {return (index * bar_width)})
                             .attr('y', (gdp_array_item, index) => {return (svg_dimensions.height- gdp_array_item) - svg_dimensions.padding})

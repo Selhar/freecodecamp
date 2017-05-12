@@ -1,4 +1,4 @@
-You can view a live version of this project here: http://codepen.io/Selhar/full/GmxLoQ/
+You can view a live version of this project here: http://codepen.io/Selhar/full/RpRdpr/
 
 To install it, do the following:
 
