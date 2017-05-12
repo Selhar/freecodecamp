@@ -178,18 +178,12 @@ footer a:hover {
 **********************/
 
 @media screen and (max-width: 550px) {
-    #gallery {
-        overflow-x: hidden;
-    }
     .image-node {
         width: 264px;
     }
 }
 
 @media screen and (min-width: 551px) and (max-width: 803px) {
-    #gallery {
-        overflow-x: hidden;
-    }
     .image-node {
         width: 532px;
     }

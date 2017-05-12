@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>Exercise tracker</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,20 +12,14 @@
 
 </head>
 <body>
+    <h1 class="title">Exercise tracker</h1>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/timestamp-microservice" target="_blank">github</a></p>
-        </header>
-
-        <h1>Create a new user:</h1>
-        <p><code>POST: /api/exercise/new-user</code></p>
+        <span class="step">Add new user: <strong>POST</strong> <code>/api/exercise/new-user</code></span>
         <form action="/api/exercise/new-user" method="post">
             <input id="username" type="text" name="username" placeholder="Username">
             <input type="submit" value="Submit">
-        </form>
-
-        <h1>Create a new exercise</h1>
-        <p><code>POST: /api/exercise/add</code></p>
+        </form>     
+        <span class="step">Add a new exercise for an existing user: <strong>POST</strong> <code>/api/exercise/add</code></span>
         <form action="/api/exercise/add" method="post">
             <input id="username" type="text" name="username" placeholder='username*'>
             <input id="description" type="text" name="description" placeholder="description*">
@@ -33,8 +27,10 @@
             <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd, defaults to today)">
             <input type="submit" value="Submit">
         </form>
+         <span class="step">Fetch an existing user's exercise log: <strong>GET</strong> <code>/api/exercise/log/username/[from]/[to]/[limit]</code>
+        </br>from/to date format:(yyyy-mm-dd), [] optional</span>
         <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
+            <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/exercise-tracker" target="_blank">
                 <span class="icon"><i class="fa fa-github"></i></span>
             </a>
             <a href="http://codepen.io/Selhar/#" target="_blank">

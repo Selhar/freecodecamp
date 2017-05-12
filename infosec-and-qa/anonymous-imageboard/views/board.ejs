@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>Anonymous imageboard</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,25 +12,28 @@
 
 </head>
 <body>
+    <h1 class="title">Anonymous imageboard mock project</h1>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
-        <h1>Example input</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <h1>Example output</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-github"></i></span>
-            </a>
-            <a href="http://codepen.io/Selhar/#" target="_blank">
-                <span class="icon"><i class="fa fa-codepen"></i></span>
-            </a>
-            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
-            </a>
-        </footer>
+        <h3>Submit a new thread:</h3>
+            <div class="newthread">
+                <form method="post" action="/" name='thread'>
+                    <input type='text' placeholder='Subject' name='title'></textarea><br>
+                    <textarea rows="8" cols="120" type='text' placeholder='Text' name='text'></textarea><br>
+                    <input type='text' placeholder='optional password'><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
     </div>
+    <footer>
+        <a href="https://github.com/GregoryGoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span>
+        </a>
+        <a href="http://codepen.io/Selhar/#" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+        </a>
+    </footer>
 </body>
 </html>
