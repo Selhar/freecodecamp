@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>File metadata</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,22 +12,19 @@
 
 </head>
 <body>
+    <h1 class="title">File metadata microservice</h1>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
         <p>
           Please Upload a File ...
         </p>
-        <div class="view">
-          <h4 id="output"></h4>
+       <span class="step"><h4 id="output"></span>
           <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
             <input id="inputfield" type="file" name="upfile">
             <input id="button" type="submit" value="Upload">
           </form>
         </div>
         <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
+            <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/file-metadata" target="_blank">
                 <span class="icon"><i class="fa fa-github"></i></span>
             </a>
             <a href="http://codepen.io/Selhar/#" target="_blank">
