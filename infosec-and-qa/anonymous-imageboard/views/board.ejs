@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <h1 class="title">Anonymous mock board project</h1>
+    <h1 class="title">Mock anonymous board project</h1>
 
     <footer>
         <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/infosec-and-qa/anonymous-imageboard" target="_blank">
@@ -38,9 +38,29 @@
         <div class="threadlist">
             <%data.forEach((thread) => {%>
             <div class="thread">
+            <%
+                let max = 30;
+                let temp = thread.title.split(' ');
+                if(temp.length > max){
+                  temp.text = temp.slice(0, max);
+                  temp = temp.text.join(' ');
+                  temp += '...';
+                  thread.title = temp;
+                }
+            %>
             <span class="thread_title"> <strong><%=thread.title%></strong> 
             <a class="thread_link" href="/<%=thread._id%>">reply</a> |
             <a class="report" href="/report/<%=thread._id%>"><strong>report</strong></a></span> 
+            <%
+                max = 60;
+                temp = thread.text.split(' ');
+                if(temp.length > max){
+                  temp.text = temp.slice(0, max);
+                  temp = temp.text.join(' ');
+                  temp += '...';
+                  thread.text = temp;
+                }
+            %>
             <span class="thread_text"> <%=thread.text%> </span> 
                 <%thread.replies.forEach((reply) => {
                     let isTextShortened = false;

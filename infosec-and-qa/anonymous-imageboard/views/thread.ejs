@@ -12,6 +12,16 @@
 
 </head>
 <body>
+        <%
+          let max = 15;
+          let temp = data.title.split(' ');
+          if(temp.length > max){
+            temp.text = temp.slice(0, max);
+            temp = temp.text.join(' ');
+            temp += '...';
+            data.title = temp;
+          }
+      %>
     <h1 class="title"><%=data.title%></h1>
     <footer>
         <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/infosec-and-qa/anonymous-imageboard" target="_blank">
