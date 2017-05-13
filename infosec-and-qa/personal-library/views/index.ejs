@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>Personal library</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,25 +12,40 @@
 
 </head>
 <body>
+  <h1 class="title">Personal library API</h1>
+    <footer>
+        <a href="https://github.com/GregoryGoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span>
+        </a>
+        <a href="http://codepen.io/Selhar/#" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+        </a>
+    </footer>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
-        <h1>Example input</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <h1>Example output</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-github"></i></span>
-            </a>
-            <a href="http://codepen.io/Selhar/#" target="_blank">
-                <span class="icon"><i class="fa fa-codepen"></i></span>
-            </a>
-            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
-            </a>
-        </footer>
+        <form action="/api/books" method="post">
+            <span class="step">Add a new book</span>
+            <input type="text" name="title" placeholder="Book title"><br>
+            <input type="submit" value="Submit">
+        </form>
+      <form action="/api/books/noid" method="post">
+        <span class="step">Add a comment to an existing book</span>
+        <input type="text" name="id" placeholder="book ID">
+        <input type="text" name="comment" placeholder="comment">
+        <input type="submit" value="Submit">
+      </form>
+      <form action="/api/books/noid" method="get">
+        <span class="step">Fetch an existing book</span>
+        <input type="text" name="id" placeholder="book ID">
+        <input type="submit" value="Submit">
+      </form>
+      <form action="/api/books" method="get">
+        <span class="step">Get all books</span>
+        <input type="submit" value="Submit">
+      </form>
+
     </div>
 </body>
 </html>

@@ -29,9 +29,10 @@ exports.fetch = (request, response) => {
 }
 
 exports.fetchById = (request, response) => {
+    let id = request.query.id || request.params.id;
     waterfall([
         function fetchBookByID(callback){
-            BookModel.findById(request.params.id, (error, book) =>{
+            BookModel.findById(id, (error, book) =>{
                 if(error){
                     return callback(error);
                 }else if(book){

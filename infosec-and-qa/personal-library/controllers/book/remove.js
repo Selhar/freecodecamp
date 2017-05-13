@@ -3,9 +3,10 @@ const waterfall = require("async/waterfall");
 const BookModel = require('../../models/book');
 
 exports.remove = (request, response) => {
+    let id = request.query.id || request.params.id;
     waterfall([
         function deleteBook(callback){
-            BookModel.findByIdAndRemove(request.params.id, (error, book) => {
+            BookModel.findByIdAndRemove(id, (error, book) => {
                 if(error)
                     return callback(error)
                 else

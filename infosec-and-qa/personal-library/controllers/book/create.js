@@ -3,9 +3,11 @@ const BookModel = require('../../models/book');
 const waterfall = require("async/waterfall");
 
 exports.create = (request, response) => {
+    let title = request.query.title || request.body.title;
+    console.log(title);
     waterfall([ 
         function isBookInDB(callback){
-            BookModel.findOne( {title: request.body.title}, (error, book) =>{
+            BookModel.findOne( {title: title}, (error, book) =>{
                 if(error){
                     return callback(error);
                 }else if(book){
@@ -17,7 +19,7 @@ exports.create = (request, response) => {
       }, function saveBook(callback){
 
             let new_book = new BookModel({
-                title: request.body.title
+                title: title
             });
             new_book.save((error) => {
                 if(error){
@@ -38,9 +40,13 @@ exports.create = (request, response) => {
 }
 
 exports.createComment = (request, response) => {
+    let book_id = request.body.id || request.params.id;
+    let comment = request.body.comment || request.params.comment;
     waterfall([ 
         function addComment(callback) {
-            BookModel.findByIdAndUpdate(request.params.id, {$push: {comment: request.body.comment}, $inc: {commentCount: 1}}, (error, book) => {
+            BookModel.findByIdAndUpdate(book_id, {$push: 
+                {comment: comment}, 
+                $inc: {commentCount: 1}}, (error, book) => {
                 if(error){
                     callback(error);
                 }else if(book){
