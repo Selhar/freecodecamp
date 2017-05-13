@@ -4,7 +4,7 @@ const waterfall = require("async/waterfall");
 const IssueModel = require('../models/issue');
 
 exports.fetch = (request, response) => {
-    let project_name = request.query.title || request.params.project;
+    let project_name = request.params.project ||request.query.title;
     waterfall([
         function isProjectInDB(callback){
             ProjectModel.findOne( {name: project_name}, (error, project) =>{
@@ -30,6 +30,6 @@ exports.fetch = (request, response) => {
             console.log('\n\n\n **** error ***** \n\n\n'+error+'\n\n\n');
             return response.send(error);
         }
-        return response.json(result);
+        return response.render('../views/issue.ejs', {data: result, home_url:'http://'+request.headers.host});
     }
 }

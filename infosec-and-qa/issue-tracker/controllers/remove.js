@@ -6,17 +6,17 @@ const IssueModel = require('../models/issue');
 exports.remove = (request, response) => {
     waterfall([
         function isProjectInDB(callback){
-            ProjectModel.findOne( {name: request.params.project}, (error, project) =>{
+            ProjectModel.findOne( {name: request.params.project || request.query.title}, (error, project) =>{
                 if(error){
                     return callback(error);
                 }else if(project){
                     return callback(null, project);
                 }else{
-                    return done("there are no projects with the name "+request.params.project);
+                    return done("there are no projects with the name "+request.params.project || request.query.title);
                 }
             });
       }, function deleteQuery(project, callback){
-            let id = request.body.id;
+            let id = request.body.id || request.query.id;
             
             IssueModel.findByIdAndRemove(id, (error, issue) => {
                 if(error)

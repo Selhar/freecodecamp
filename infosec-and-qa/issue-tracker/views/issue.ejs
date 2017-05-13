@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous textboard</title>
+    <link href="/public/normalize.css" rel="stylesheet" type="text/css">
+    <link href="/public/milligram.css" rel="stylesheet" type="text/css">
+    <link href="/public/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <h1 class="title"><%=data[0].title%></h1>
+    <footer>
+        <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/infosec-and-qa/anonymous-imageboard" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span>
+        </a>
+        <a href="http://codepen.io/Selhar/#" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+        </a>
+    </footer>
+    <div id="main">
+    <a href="<%=home_url%>">Home</a>
+        <div class="thread">
+            <span class="thread_text"> Issues </span> 
+            <%data.forEach((issue) => {%>
+            <div class="issues">
+                <span class="data"> <strong>Text</strong>:<%=issue.text%> </span> 
+                <span class="data"> <strong>Author</strong>: <%=issue.author%> </span> 
+                <span class="data"> <strong>Status</strong>: <%=issue.status%> </span> 
+                <span class="data"> <strong>Assignee</strong>: <%=issue.assignee%> </span> 
+                <span class="data"> <strong>Last update</strong>: <%=issue.latest_update%> </span> 
+                <span class="data"> <strong>id:</strong>: <%=issue._id%> </span> 
+            </div>
+            <%})%>
+</body>
+</html>

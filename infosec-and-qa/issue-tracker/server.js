@@ -32,6 +32,7 @@ server.post('/api/issues/update/put', issue.update);
 server.get('/api/issues/:project', issue.fetch);
 server.get('/api/issues/fetch/project', issue.fetch);
 server.delete('/api/issues/:project', issue.remove);
+server.get('/api/issues/remove/project', issue.remove);
 
 
 

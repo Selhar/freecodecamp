@@ -54,6 +54,12 @@
             <input type="text" name="assignee" placeholder="Assignee">
             <button type="submit">Create project</button>
         </form>
+        <form method="get" action="/api/issues/remove/project">
+            <span class="step">Delete an existing issue</span>
+            <input type="text" name="title" placeholder="*Project title">
+            <input type="text" name="id" placeholder="issue id">
+            <button type="submit">Create project</button>
+        </form>
     </div>
 </body>
 </html>

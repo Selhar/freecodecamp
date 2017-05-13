@@ -63,7 +63,7 @@ exports.create = (request, response) => {
 
         let shouldRenderEjs = request.params.project == 'noid' ? true : false;
         if(shouldRenderEjs){
-            return response.render('../views/issue.ejs', result);
+            return response.render('../views/issue.ejs', {data: result});
         }
         return response.json(result);
     }
