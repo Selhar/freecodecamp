@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>Issue tracker</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,25 +12,33 @@
 
 </head>
 <body>
+    <h1 class="title">Issue tracker</h1>
+    <footer>
+        <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/infosec-and-qa/issue-tracker" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span>
+        </a>
+        <a href="http://codepen.io/Selhar/#" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+        </a>
+    </footer>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
-        <h1>Example input</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <h1>Example output</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-github"></i></span>
-            </a>
-            <a href="http://codepen.io/Selhar/#" target="_blank">
-                <span class="icon"><i class="fa fa-codepen"></i></span>
-            </a>
-            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
-            </a>
-        </footer>
+        <span class="step">Create a new project: <strong>POST</strong> /api/issues/project_name</span> <br>
+        <span class="step">Update project: <strong>PUT</strong> /api/issues/project_name</span> <br>
+        <span class="step">Fetch project: <strong>GET</strong> /api/issues/project_name</span> <br>
+        <span class="step">Fetch project: <strong>DELETE</strong> /api/issues/project_name</span> 
+        
+        <form method="post" action="/api/issues/noid">
+            <span class="step">Create a new project and an issue</span>
+            <input type="text" name="title" placeholder="*Title">
+            <input type="text" name="text" placeholder="*Text">
+            <input type="text" name="author" placeholder="*Author">
+            <input type="text" name="status" placeholder="Status">
+            <input type="text" name="assignee" placeholder="Assignee">
+            <button type="submit">Create project</button>
+        </form>
     </div>
 </body>
 </html>

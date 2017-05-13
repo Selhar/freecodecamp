@@ -6,8 +6,9 @@ const IssueModel = require('../models/issue');
 exports.create = (request, response) => {
     waterfall([ 
       function isProjectInDB(callback){
-
-        ProjectModel.findOne( {name: request.params.project}, (error, project) =>{
+        let project_name = request.body.title || request.params.project;
+        
+        ProjectModel.findOne( {name: project_name}, (error, project) =>{
           if(error){
               return callback(error);
           }else if(project){
@@ -17,12 +18,12 @@ exports.create = (request, response) => {
           }
         });
       }, function saveProject(isProjectInDB, project, callback){
-
+        let project_name = request.body.title || request.params.project_title;
           if(isProjectInDB){
             return callback(null, project);
           }else{
             let new_project = new ProjectModel({
-                name: request.params.project
+                name: project_name
             });
             new_project.save((error) => {
                 if(error){
@@ -32,7 +33,6 @@ exports.create = (request, response) => {
             });
           }
       }, function create_issue(project, callback){
-
           const issue_object = {
             title: request.body.title,
             text: request.body.text,
@@ -59,6 +59,11 @@ exports.create = (request, response) => {
         if(error){
             console.log('\n\n\n **** error ***** \n\n\n'+error+'\n\n\n');
             return response.json({error: "an unidentified error ocurred."});
+        }
+
+        let shouldRenderEjs = request.params.project == 'noid' ? true : false;
+        if(shouldRenderEjs){
+            return response.render('../views/issue.ejs', result);
         }
         return response.json(result);
     }
