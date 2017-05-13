@@ -24,9 +24,13 @@ server.get('/', (request, response) => {
     response.render(root + '/views/index.ejs');
 });
 
+//Redundancy is to make it possible to render the pages and do the tests
+//since HTML can't send in PUT/DELETE requests.
 server.post('/api/issues/:project', issue.create);
 server.put('/api/issues/:project', issue.update);
+server.post('/api/issues/update/put', issue.update);
 server.get('/api/issues/:project', issue.fetch);
+server.get('/api/issues/fetch/project', issue.fetch);
 server.delete('/api/issues/:project', issue.remove);
 
 

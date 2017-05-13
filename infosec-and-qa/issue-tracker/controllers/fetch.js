@@ -4,15 +4,16 @@ const waterfall = require("async/waterfall");
 const IssueModel = require('../models/issue');
 
 exports.fetch = (request, response) => {
+    let project_name = request.query.title || request.params.project;
     waterfall([
         function isProjectInDB(callback){
-            ProjectModel.findOne( {name: request.params.project}, (error, project) =>{
+            ProjectModel.findOne( {name: project_name}, (error, project) =>{
                 if(error){
                     return callback(error);
                 }else if(project){
                     return callback(null, project);
                 }else{
-                    return done("there are no projects with the name "+request.params.project);
+                    return done("there are no projects with the name "+project_name);
                 }
             });
       }, function fetchQuery(project, callback){

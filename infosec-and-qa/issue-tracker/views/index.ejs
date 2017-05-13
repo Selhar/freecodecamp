@@ -32,9 +32,24 @@
         
         <form method="post" action="/api/issues/noid">
             <span class="step">Create a new project and an issue</span>
-            <input type="text" name="title" placeholder="*Title">
+            <input type="text" name="title" placeholder="*Project Title">
             <input type="text" name="text" placeholder="*Text">
             <input type="text" name="author" placeholder="*Author">
+            <input type="text" name="status" placeholder="Status">
+            <input type="text" name="assignee" placeholder="Assignee">
+            <button type="submit">Create project</button>
+        </form>
+        <form method="get" action="/api/issues/fetch/project">
+            <span class="step">Find all issues from a project</span>
+            <input type="text" name="title" placeholder="*Project name">
+            <button type="submit">Fetch issues</button>
+        </form>
+        <form method="post" action="/api/issues/update/put">
+            <span class="step">Update an existing issue</span>
+            <input type="text" name="title" placeholder="*Project title">
+            <input type="text" name="issue_id" placeholder="*Issue ID">
+            <input type="text" name="text" placeholder="issue text">
+            <input type="text" name="author" placeholder="issue author">
             <input type="text" name="status" placeholder="Status">
             <input type="text" name="assignee" placeholder="Assignee">
             <button type="submit">Create project</button>
