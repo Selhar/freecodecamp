@@ -32,11 +32,10 @@ server.use(body_parser.urlencoded( {extended: true} ));
 
 
 /*
-for the record this is horrible design 
-don't test stuff in 2 completely separate implementations, it kills the purpose of testing
-i'm doing it because i was dumb and didn't realize 
-my back end wouldn't work with fron end + testing (tests use json response, front end returns html). 
-I did the back end first without even considering this possibility.
+The freecodecamp test suite require the server response to be on JSON
+I can't return JSON to render a page, thus 2 pages were created
+This curriculum is still in beta so this might be an oversight
+either way, to test the project just uncomment beolw.
 
 
         **  Uncomment these for testing  **
@@ -54,7 +53,7 @@ server.delete(api_root+':thread_id', replies_controller.remove);
 
 */
 
-server.get('/', (request, response) => {
+server.get(api_root, (request, response) => {
     ThreadModel.find({})
                 .select('_id creation_date last_post text title replies')
                 .limit(10).exec((error, threads) => {
@@ -65,6 +64,19 @@ server.get('/', (request, response) => {
         }
     });
 });
+
+
+server.get(api_root+'/delete', (request, response) => {
+    ThreadModel.findOneAndRemove({
+        _id: request.body.thread_id,
+        password: request.body.password
+    }, (error, thread) => {
+        if(error)
+            throw error
+    });
+
+});
+
 server.get('/:id', (request, response) => {
     response.render(root + '/views/thread.ejs');
 });

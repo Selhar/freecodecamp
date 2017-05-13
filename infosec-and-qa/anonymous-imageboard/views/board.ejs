@@ -38,22 +38,33 @@
         <div class="threadlist">
             <%data.forEach((thread) => {%>
             <div class="thread">
-            <span class="thread_text"> <%=thread.text%> </span>
+            <span class="thread_text"> <%=thread.text%> </span> <a class="thread_link" href="#"> reply</a>
                 <%thread.replies.forEach((reply) => {
                     let max_words = 100;
                     let temp_replies = reply.text.split(' ');
+                    let isTextShortened = false;
                     if(temp_replies.length > max_words){
                         temp_replies.text = temp_replies.slice(0, max_words);
                         temp_replies = temp_replies.text.join(' ');
                         temp_replies += '...';
                         reply.text = temp_replies;
+                        isTextShortened = true;
                     }
                     %>
                 <div class="replies">
-                        <span class="text_reply"> <%=reply.text%> </span>
+                        <span class="text_reply"> <%=reply.text%> </span> 
+                        <%if(isTextShortened){ %>
+                            <a class="thread_link" href="#"> more</a>
+                        <%} %>
+
+                    <form method="POST" action="/" name='delete_thread'>
                         <div class="reply_controls"> 
-                            <input type='text' readonly placeholder='optional password'><input type="submit" value="Delete"><input type="submit" value="Report">
+                            <input value='<%=thread._id%>' name="thread_id" type="hidden"/>
+                            <input type='text' value='' name="password"  placeholder='optional password'>
+                            <input class="thread_delete" type="submit" value="Delete">
                         </div>
+                    </form>
+                    <input class="thread_report" type="submit" value="Report">
                 </div>
                 <%})%>
                 <div class="reply">

@@ -92,3 +92,7 @@ input[type="submit"]{
 input[type="submit"]:hover{
     background-color: #c64841;
 }
+
+input[type="text"]:focus, textarea:focus{
+    border-color: #98261E;
+}
