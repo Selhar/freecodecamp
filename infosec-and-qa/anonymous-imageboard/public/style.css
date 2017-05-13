@@ -38,7 +38,7 @@ footer a {
 }
 .thread{
     border: 1px #DDD solid;
-    width: 80%;
+    width: 700px;
     margin: 25px auto 25px auto;
     padding: 20px;
     position: relative;
@@ -60,8 +60,8 @@ footer a {
     margin: 0;
 }
 .reply{
-    width: 400px;
-    margin: 0 auto;
+    width: 300px;
+    margin: 35px auto 0 auto;
 }
 /* input */
 .inputfield{

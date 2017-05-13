@@ -26,6 +26,7 @@ server.use(helmet({
 }));
 
 server.use('/public', express.static(root + '/public'));
+server.use(body_parser());
 server.use(body_parser.json());
 server.use(body_parser.urlencoded( {extended: true} ));
 
@@ -36,6 +37,8 @@ The freecodecamp test suite require the server response to be on JSON
 I can't return JSON to render a page, thus 2 pages were created
 This curriculum is still in beta so this might be an oversight
 either way, to test the project just uncomment beolw.
+
+Also, routes are slightly different because you can't DELETE through http forms
 
 
         **  Uncomment these for testing  **
@@ -56,6 +59,7 @@ server.delete(api_root+':thread_id', replies_controller.remove);
 server.get(api_root, (request, response) => {
     ThreadModel.find({})
                 .select('_id creation_date last_post text title replies')
+                .sort({creation_date: '-1'})
                 .limit(10).exec((error, threads) => {
         if(error){
             throw error;
@@ -65,14 +69,50 @@ server.get(api_root, (request, response) => {
     });
 });
 
-
-server.get(api_root+'/delete', (request, response) => {
-    ThreadModel.findOneAndRemove({
-        _id: request.body.thread_id,
+server.post(api_root, (request, response) => {
+    let url_user_came_from = request.protocol + '://' + request.get('Host');
+    
+    let new_thread = new ThreadModel({
+        title: request.body.title,
+        text: request.body.text,
         password: request.body.password
+    });
+
+    new_thread.save((error) => {
+        if(error){
+            throw error;
+        }
+        response.redirect(url_user_came_from+'/'+new_thread._id);
+    });
+});
+
+server.post(api_root+':thread', (request, response) => {
+    let url_user_came_from = request.protocol + '://' + request.get('Host');
+    
+    let new_thread = new ThreadModel({
+        title: request.body.title,
+        text: request.body.text,
+        password: request.body.password
+    });
+
+    new_thread.save((error) => {
+        if(error){
+            throw error;
+        }
+        response.redirect(url_user_came_from+'/'+new_thread._id);
+    });
+});
+
+server.get(api_root+'delete', (request, response) => {
+    let url_user_came_from = request.protocol + '://' + request.get('Host');
+    ThreadModel.findOneAndRemove({
+        _id: request.query.thread_id,
+        password: request.query.password
     }, (error, thread) => {
         if(error)
             throw error
+        else
+            response.redirect(url_user_came_from);
     });
 
 });
