@@ -70,7 +70,8 @@ exports.processInput = (input) => {
 }
 
 exports.convert = (request, response) => {
-  const processed_input = this.processInput(request.params.data);
+  let input = request.params.data || request.query.data;
+  const processed_input = this.processInput(input);
   const conversion_object = this.conversion_values[processed_input.type];
   const initial_value = processed_input.value;
   const final_value = initial_value * conversion_object.ratio;

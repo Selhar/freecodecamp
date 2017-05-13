@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>Imperial metric converter</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,25 +12,27 @@
 
 </head>
 <body>
+
+    <h1 class="title">Imperial to metric converter</h1>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
-        <h1>Example input</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <h1>Example output</h1>
-        <p><code>PLACEHOLDER</code></p>
+    
+        <span class="step">Example input: <strong>3.1mi</strong></span>
+        <span class="step">Example output: <code>{"initNum":"3.1","initUnit":"mi","returnNum":4.9910000000000005,"returnUnit":"km","string":"3.1 mile(s) converts to 4.9910000000000005 kilometer(s)"}</code></span>
+        <form method="get" action="/api/convert">
+            <input type="text" name="data" placeholder="10kg">
+            <button type="Submit">Convert</button>
+        </form>
         <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-github"></i></span>
-            </a>
-            <a href="http://codepen.io/Selhar/#" target="_blank">
-                <span class="icon"><i class="fa fa-codepen"></i></span>
-            </a>
-            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
-            </a>
-        </footer>
+        <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/infosec-and-qa/imperial-metric-converter" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span>
+        </a>
+        <a href="http://codepen.io/Selhar/#" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+        </a>
+    </footer>
     </div>
 </body>
 </html>

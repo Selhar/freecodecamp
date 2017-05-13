@@ -23,6 +23,8 @@ server.get('/', (request, response) => {
 });
 
 server.get('/api/convert/:data', converter.convert);
+//second one added for the front end version
+server.get('/api/convert', converter.convert);
 
 server.get('*', (request, response) => {
     response.send('<p>Bad, bad user. No donuts for you.</p>');

@@ -4,7 +4,9 @@
     Contact: selhar@protonmail.com
     License: GPL
 
-    TODO: default password;
+    TODO: 
+    default password;
+    truncating text;
 */
 
 const express = require('express');
