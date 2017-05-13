@@ -52,7 +52,6 @@ server.post(api_root, thread_controller.create);
 server.delete(api_root, thread_controller.remove);
 server.put(api_root, thread_controller.report);
 
-//replies
 server.post(api_root+':thread', replies_controller.create); 
 server.put(api_root+':thread_id', replies_controller.report);
 server.delete(api_root+':thread_id', replies_controller.remove);
@@ -142,6 +141,23 @@ server.post(api_root+':thread', (request, response) => {
         else
             response.redirect(url_user_came_from+'/'+request.body.thread_id);
     })
+});
+
+//Delete a comment
+server.get(api_root+'delete/:thread', (request, response) => {
+    ThreadModel.update({'_id': request.params.thread}, 
+        {'$pull': 
+            {'replies': 
+                {'_id': request.query.reply_id}
+            }
+        }, (error) => {
+            if(error){
+                callback(error);
+            }else{
+                response.redirect('http://'+request.headers.host);
+            }
+        }
+    );
 });
 
 server.get('*', (request, response) => {
