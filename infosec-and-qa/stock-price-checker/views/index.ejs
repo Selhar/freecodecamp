@@ -4,24 +4,27 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>Stock price checker</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 <body>
+        <h1 class="title">Stock price checker</h1>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
-        <h1>Example input</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <h1>Example output</h1>
-        <p><code>PLACEHOLDER</code></p>
+
+      <span class="step">Example input: <strong>/api/stock-prices?stock=goog&like=true</strong></span>
+      <span class="step">Example output: <code>{"stockData":{"stock":"GOOG","price":"786.90","likes":1}}</code></span>
+      
+      <form action="/api/stock-prices" method="get">
+            <input type="text" name="stock" placeholder="goog">
+            <input type="checkbox" name="like" value=true> Like?
+            <button type="submit">Get Price</button>
+      </form>
         <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
+            <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/infosec-and-qa/stock-price-checker" target="_blank">
                 <span class="icon"><i class="fa fa-github"></i></span>
             </a>
             <a href="http://codepen.io/Selhar/#" target="_blank">

@@ -16,8 +16,8 @@ const index = require('./controllers/index');
 
 server.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'"],
-        styleSrc: ["'self'"]
+        defaultSrc: ["'self'", 'maxcdn.bootstrapcdn.com'],
+        styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
     }
 }));
 
