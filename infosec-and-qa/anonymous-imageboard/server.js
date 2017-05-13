@@ -125,6 +125,19 @@ server.get(api_root+'delete', (request, response) => {
 
 });
 
+//report a thread
+server.get(api_root+'report/:thread', (request, response) => {
+    ThreadModel.findByIdAndUpdate(request.params.thread, 
+                {isReported: true}, (error, thread) => {
+        if(error)
+            throw error;
+        else if(thread)
+            response.send('Report successful.');
+        else
+            response.send('Thread ID not found');
+    });
+});
+
 //Make a new comment
 server.post(api_root+':thread', (request, response) => {
     let url_user_came_from = request.protocol + '://' + request.get('Host');
@@ -155,6 +168,21 @@ server.get(api_root+'delete/:thread', (request, response) => {
                 callback(error);
             }else{
                 response.redirect('http://'+request.headers.host);
+            }
+        }
+    );
+});
+
+//report a comment
+server.get(api_root+'reportcomment/:reply', (request, response) => {
+    ThreadModel.update({'replies._id': request.params.reply}, 
+        {'$set': {'replies.$.isReported': true}}, (error, thread) => {
+            if(error){
+                throw error;
+            }else if(thread){
+                response.send("Reported successfully");
+            }else{
+                response.send("Report not successful");
             }
         }
     );

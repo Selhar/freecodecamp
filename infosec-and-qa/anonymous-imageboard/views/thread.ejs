@@ -14,7 +14,7 @@
 <body>
     <h1 class="title"><%=data.title%></h1>
     <footer>
-        <a href="https://github.com/GregoryGoncalves" target="_blank">
+        <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/infosec-and-qa/anonymous-imageboard" target="_blank">
             <span class="icon"><i class="fa fa-github"></i></span>
         </a>
         <a href="http://codepen.io/Selhar/#" target="_blank">
@@ -32,6 +32,7 @@
             <%data.replies.forEach((reply) => {%>
             <div class="replies">
                 <span class="text_reply"> <%=reply.text%> </span> 
+                <a class="report" href="/reportcomment/<%=reply._id%>"><strong>report</strong></a>
                 <form method="GET" action="/delete/<%data._id%>">
                     <div class="reply_controls"> 
                         <input value='<%=reply._id%>' name="reply_id" type="hidden"/>
@@ -40,7 +41,6 @@
                     </div>
                 </form>
             </div>
-
 
             <%});%>
             <div class="reply">
