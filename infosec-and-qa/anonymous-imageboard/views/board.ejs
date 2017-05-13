@@ -38,10 +38,10 @@
         <div class="threadlist">
             <%data.forEach((thread) => {%>
             <div class="thread">
-            <span class="thread_title"> <strong><%=thread.title%></strong> </span> 
-            
+            <span class="thread_title"> <strong><%=thread.title%></strong> 
+            <a class="thread_link" href="/<%=thread._id%>">reply</a> |
+            <a class="report" href="/report/<%=thread._id%>"><strong>report</strong></a></span> 
             <span class="thread_text"> <%=thread.text%> </span> 
-            <a class="thread_link" href="/<%=thread._id%>"> reply</a>
                 <%thread.replies.forEach((reply) => {
                     let isTextShortened = false;
                     if(reply.text){
@@ -59,9 +59,9 @@
                 <div class="replies">
                         <span class="text_reply"> <%=reply.text%> </span> 
                         <%if(isTextShortened){ %>
-                            <a class="thread_link" href="/<%=thread._id%>"> more</a>
+                            <a class="thread_link" href="/<%=thread._id%>">more</a> |
                         <%} %>
-
+                            <a class="report" href="/reportcomment/<%=thread._id%>/<%=reply._id%>"><strong>report</strong></a>
                     <form method="GET" action="/delete/<%=thread._id%>">
                         <div class="reply_controls"> 
                             <input value='<%=reply._id%>' name="reply_id" type="hidden"/>
@@ -69,7 +69,6 @@
                             <input class="thread_delete" type="submit" value="Delete">
                         </div>
                     </form>
-                    <input class="thread_report" type="submit" value="Report">
                 </div>
                 <%})%>
                 <div class="reply">
