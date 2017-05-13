@@ -12,20 +12,33 @@
 
 </head>
 <body>
-    <h1 class="title">Anonymous textboard mock board project</h1>
+    <h1 class="title">Anonymous mock board project</h1>
+
+    <footer>
+        <a href="https://github.com/GregoryGoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span>
+        </a>
+        <a href="http://codepen.io/Selhar/#" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+        </a>
+    </footer>
     <div id="main">
-        <h3>Submit a new thread:</h3>
         <div class="inputfield">
+        <h3>Submit a new thread:</h3>
             <form method="post" action="/" name='thread'>
                 <input type='text' placeholder='Subject' name='title'></textarea><br>
                 <textarea rows="8" cols="120" type='text' placeholder='Text' name='text'></textarea><br>
                 <input type='text' placeholder='optional password'><br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Post">
             </form>
         </div>
         <div class="threadlist">
             <%data.forEach((thread) => {%>
             <div class="thread">
+            <span class="thread_text"> <%=thread.text%> </span>
                 <%thread.replies.forEach((reply) => {
                     let max_words = 100;
                     let temp_replies = reply.text.split(' ');
@@ -56,16 +69,5 @@
             
         </div>        
     </div>
-    <footer>
-        <a href="https://github.com/GregoryGoncalves" target="_blank">
-            <span class="icon"><i class="fa fa-github"></i></span>
-        </a>
-        <a href="http://codepen.io/Selhar/#" target="_blank">
-            <span class="icon"><i class="fa fa-codepen"></i></span>
-        </a>
-        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
-            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
-        </a>
-    </footer>
 </body>
 </html>

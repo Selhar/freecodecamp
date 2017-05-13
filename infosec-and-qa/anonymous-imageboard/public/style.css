@@ -33,15 +33,25 @@ footer a {
 }
 
 /* threads */
+.threadlist{
+    margin-top: 50px;
+}
 .thread{
-    background-color: #DDD;
+    border: 1px #DDD solid;
     width: 80%;
-    margin: 0 auto;
+    margin: 25px auto 25px auto;
     padding: 20px;
-    margin-bottom: 25px;
+    position: relative;
+}
+.replies{
+    background-color: #F0E0D6;
+    margin: 25px 25px 25px 50px;
+    padding: 15px;
+    position: relative;
 }
 .reply_controls input[type='text']{
     width:200px;
+    margin-top: 15px;
 }
 .reply_controls{
     text-align: center;
@@ -50,15 +60,35 @@ footer a {
     margin: 0;
 }
 .reply{
-    background-color: #AAA;
     width: 400px;
     margin: 0 auto;
 }
 /* input */
 .inputfield{
-    width: 250px;
+    width: 350px;
+    background-color: #EEAA88;
+    padding: 25px 25px 0px 15px;
+    color: #98261E;
+    text-align: center;
+    
 }
-.inputfield *{
-    margin: 5px 0;
-    padding: 0;
+.inputfield input, .inputfield textarea{
+    background-color: #FFF;
+    color: #98261E;
+}
+
+a{
+    color: #98261E
+}
+a:hover{
+    color: #c64841;
+}
+input[type="submit"]{
+    color: #FFF;
+    background-color: #98261E;
+    border: 0;
+}
+
+input[type="submit"]:hover{
+    background-color: #c64841;
 }
