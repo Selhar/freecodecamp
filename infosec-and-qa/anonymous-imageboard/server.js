@@ -76,15 +76,19 @@ server.get(api_root, (request, response) => {
 
 //Show a single thread
 server.get(api_root+':thread_id', (request, response) => {
+
     ThreadModel.findById(request.params.thread_id)
                 .select('_id creation_date last_post text title replies')
-                .exec((error, threads) =>{
+                .exec((error, thread) =>{
         if(error){
-            return callback(error);
-        }else if(threads){
-            return callback(null, threads);
+            response.send("Bad, bad user. No donuts for you.")
+        }else if(thread){
+            response.render(root + '/views/thread.ejs', {
+                data: thread,
+                home_url: 'http://'+request.headers.host
+            });
         }else{
-            return callback("There isn't a thread with this ID.");
+            response.send("thread not found");
         }
     });
 });
@@ -107,24 +111,6 @@ server.post(api_root, (request, response) => {
     });
 });
 
-//Make a new comment
-server.post(api_root+':thread', (request, response) => {
-    let url_user_came_from = request.protocol + '://' + request.get('Host');
-    let id = new ObjectId();
-    ThreadModel.findByIdAndUpdate(request.body.thread_id, {
-        $push: {replies: {
-            text: request.body.text, 
-            password: request.body.password,
-            _id: id
-        }}
-    }, (error, data) => {
-        if(error)
-            throw error;
-        else
-            response.redirect(url_user_came_from+'/'+id);
-    })
-});
-
 //Delete a thread
 server.get(api_root+'delete', (request, response) => {
     let url_user_came_from = request.protocol + '://' + request.get('Host');
@@ -138,6 +124,24 @@ server.get(api_root+'delete', (request, response) => {
             response.redirect(url_user_came_from);
     });
 
+});
+
+//Make a new comment
+server.post(api_root+':thread', (request, response) => {
+    let url_user_came_from = request.protocol + '://' + request.get('Host');
+    let reply = {
+            text: request.body.text, 
+            password: request.body.password,
+            _id: new ObjectId()
+    }
+    ThreadModel.findByIdAndUpdate(request.body.thread_id, {
+        $push: {replies: reply}
+    }, (error, data) => {
+        if(error)
+            throw error;
+        else
+            response.redirect(url_user_came_from+'/'+request.body.thread_id);
+    })
 });
 
 server.get('*', (request, response) => {

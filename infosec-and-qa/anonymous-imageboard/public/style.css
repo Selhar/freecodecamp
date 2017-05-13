@@ -43,6 +43,10 @@ footer a {
     padding: 20px;
     position: relative;
 }
+.thread_title{
+    display:block;
+    text-align: center;
+}
 .replies{
     background-color: #F0E0D6;
     margin: 25px 25px 25px 50px;

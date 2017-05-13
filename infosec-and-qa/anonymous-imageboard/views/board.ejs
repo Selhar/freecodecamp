@@ -38,23 +38,28 @@
         <div class="threadlist">
             <%data.forEach((thread) => {%>
             <div class="thread">
-            <span class="thread_text"> <%=thread.text%> </span> <a class="thread_link" href="#"> reply</a>
+            <span class="thread_title"> <strong><%=thread.title%></strong> </span> 
+            
+            <span class="thread_text"> <%=thread.text%> </span> 
+            <a class="thread_link" href="/<%=thread._id%>"> reply</a>
                 <%thread.replies.forEach((reply) => {
-                    let max_words = 100;
-                    let temp_replies = reply.text.split(' ');
                     let isTextShortened = false;
-                    if(temp_replies.length > max_words){
-                        temp_replies.text = temp_replies.slice(0, max_words);
-                        temp_replies = temp_replies.text.join(' ');
-                        temp_replies += '...';
-                        reply.text = temp_replies;
-                        isTextShortened = true;
+                    if(reply.text){
+                        let max_words = 100;
+                        let temp_replies = reply.text.split(' ');
+                        if(temp_replies.length > max_words){
+                            temp_replies.text = temp_replies.slice(0, max_words);
+                            temp_replies = temp_replies.text.join(' ');
+                            temp_replies += '...';
+                            reply.text = temp_replies;
+                            isTextShortened = true;
+                        }
                     }
                     %>
                 <div class="replies">
                         <span class="text_reply"> <%=reply.text%> </span> 
                         <%if(isTextShortened){ %>
-                            <a class="thread_link" href="#"> more</a>
+                            <a class="thread_link" href="/<%=thread._id%>"> more</a>
                         <%} %>
 
                     <form method="GET" action="/delete">
@@ -68,7 +73,7 @@
                 </div>
                 <%})%>
                 <div class="reply">
-                    <form method="post" action='/+<%=thread._id %>' name='thread'>
+                    <form method="post" action='/<%=thread._id %>' name='thread'>
                         <input value='<%=thread._id%>' name="thread_id" type="hidden"/>
                         <textarea type='text' rows="8" placeholder='Text' name='text'></textarea><br>
                         <input type='text' name='password' placeholder='optional password'><br>
