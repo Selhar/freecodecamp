@@ -26,12 +26,21 @@
         <div class="threadlist">
             <%data.forEach((thread) => {%>
             <div class="thread">
-                <%thread.replies.forEach((reply) => {%>
+                <%thread.replies.forEach((reply) => {
+                    let max_words = 100;
+                    let temp_replies = reply.text.split(' ');
+                    if(temp_replies.length > max_words){
+                        temp_replies.text = temp_replies.slice(0, max_words);
+                        temp_replies = temp_replies.text.join(' ');
+                        temp_replies += '...';
+                        reply.text = temp_replies;
+                    }
+                    %>
                 <div class="replies">
-                        <span> <%=reply.text%> </span>
-                        <input type='text' readonly placeholder='optional password'><br>
-                        <input type="submit" value="Delete">
-                        <input type="submit" value="Report">
+                        <span class="text_reply"> <%=reply.text%> </span>
+                        <div class="reply_controls"> 
+                            <input type='text' readonly placeholder='optional password'><input type="submit" value="Delete"><input type="submit" value="Report">
+                        </div>
                 </div>
                 <%})%>
                 <div class="reply">

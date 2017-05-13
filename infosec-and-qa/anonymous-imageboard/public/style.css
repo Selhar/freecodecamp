@@ -5,6 +5,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    color: #222;
+    text-align: left;
 }
 
 #main header{
@@ -36,8 +38,14 @@ footer a {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
+    margin-bottom: 25px;
 }
-
+.reply_controls input[type='text']{
+    width:200px;
+}
+.reply_controls{
+    text-align: center;
+}
 .reply form{
     margin: 0;
 }
