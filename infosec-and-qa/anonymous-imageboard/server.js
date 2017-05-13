@@ -3,6 +3,8 @@
     Date: 2017
     Contact: selhar@protonmail.com
     License: GPL
+
+    TODO: default password;
 */
 
 const express = require('express');
