@@ -68,9 +68,10 @@
                 </div>
                 <%})%>
                 <div class="reply">
-                    <form method="post" action="/" name='thread'>
-                        <textarea rows="8" type='text' placeholder='Text' name='text'></textarea><br>
-                        <input type='text' placeholder='optional password'><br>
+                    <form method="post" action='/+<%=thread._id %>' name='thread'>
+                        <input value='<%=thread._id%>' name="thread_id" type="hidden"/>
+                        <textarea type='text' rows="8" placeholder='Text' name='text'></textarea><br>
+                        <input type='text' name='password' placeholder='optional password'><br>
                         <input type="submit" value="Quick reply">
                     </form>
                 </div>

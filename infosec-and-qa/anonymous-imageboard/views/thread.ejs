@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thread</title>
+    <title>Anonymous textboard</title>
     <link href="/public/normalize.css" rel="stylesheet" type="text/css">
     <link href="/public/milligram.css" rel="stylesheet" type="text/css">
     <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -12,25 +12,63 @@
 
 </head>
 <body>
+    <footer>
+        <a href="https://github.com/GregoryGoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span>
+        </a>
+        <a href="http://codepen.io/Selhar/#" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span>
+        </a>
+    </footer>
     <div id="main">
-        <header>
-            <p>You can view the source code for this project on <a href="https://github.com/GregoryGoncalves/freecodecamp/tree/master/apis-and-microservices/boilerplate" target="_blank">my github</a></p>
-        </header>
-        <h1>Example input</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <h1>Example output</h1>
-        <p><code>PLACEHOLDER</code></p>
-        <footer>
-            <a href="https://github.com/GregoryGoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-github"></i></span>
-            </a>
-            <a href="http://codepen.io/Selhar/#" target="_blank">
-                <span class="icon"><i class="fa fa-codepen"></i></span>
-            </a>
-            <a href="https://www.freecodecamp.com/gregorygoncalves" target="_blank">
-                <span class="icon"><i class="fa fa-free-code-camp"></i></span>
-            </a>
-        </footer>
+        <div class="threadlist">
+            <%data.forEach((thread) => {%>
+            <div class="thread">
+            <span class="thread_text"> <%=thread.text%> </span> <a class="thread_link" href="#"> reply</a>
+                <%thread.replies.forEach((reply) => {
+                    let max_words = 100;
+                    let temp_replies = reply.text.split(' ');
+                    let isTextShortened = false;
+                    if(temp_replies.length > max_words){
+                        temp_replies.text = temp_replies.slice(0, max_words);
+                        temp_replies = temp_replies.text.join(' ');
+                        temp_replies += '...';
+                        reply.text = temp_replies;
+                        isTextShortened = true;
+                    }
+                    %>
+                <div class="replies">
+                        <span class="text_reply"> <%=reply.text%> </span> 
+                        <%if(isTextShortened){ %>
+                            <a class="thread_link" href="#"> more</a>
+                        <%} %>
+
+                    <form method="GET" action="/delete">
+                        <div class="reply_controls"> 
+                            <input value='<%=reply._id%>' name="thread_id" type="hidden"/>
+                            <input type='text' value='' name="password"  placeholder='optional password'>
+                            <input class="thread_delete" type="submit" value="Delete">
+                        </div>
+                    </form>
+                    <input class="thread_report" type="submit" value="Report">
+                </div>
+                <%})%>
+                <div class="reply">
+                    <form method="post" action='/+<%=thread._id %>' name='thread'>
+                        <input value='<%=thread._id%>' name="thread_id" type="hidden"/>
+                        <textarea type='text' rows="8" placeholder='Text' name='text'></textarea><br>
+                        <input type='text' name='password' placeholder='optional password'><br>
+                        <input type="submit" value="Quick reply">
+                    </form>
+                </div>
+            </div>
+            <%});%>
+            
+            
+        </div>        
     </div>
 </body>
 </html>
