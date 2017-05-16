@@ -18,21 +18,23 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
         let output;
         let isDisplayZero = display_value == 0 && label != 0 ? true : false;
         const operations = {
-            '−': (operator, operand) => Number(operand) - Number(operator),
-            'x': (operator, operand) => Number(operand) * Number(operator),
-            '÷': (operator, operand) => Number(operand) / Number(operator),
-            '+': (operator, operand) => Number(operand) + Number(operator)
+            '−': (operand, operator) => Number(operand) - Number(operator),
+            'x': (operand, operator) => Number(operand) * Number(operator),
+            '÷': (operand, operator) => Number(operand) / Number(operator),
+            '+': (operand, operator) => Number(operand) + Number(operator)
         }
         switch(domain){
             case 'number':
-                if (isDisplayZero) {
-                    output = label;
+                if (display_value == 0 && label == 0) {
+                    output = 0;
                 }else if(!operator && operation && operand){
                     output = label;
                     this.props.set_operator(output);
                 }else if(operator && operation && operand){
                     output = "" + display_value + label;
                     this.props.set_operator(output);
+                }else if(isDisplayZero){
+                    output = label;
                 }else{
                     output = "" + display_value + label;
                 }
@@ -63,14 +65,15 @@ import {change_display_value, change_operation, set_operand, set_operator, clear
                 if(!isDisplayZero && !operand && label != '='){
                     this.props.set_operand(display_value);
                     this.props.change_operation(label);
+                }else if(operand && !operator && display_value == operand && label != "="){
+                    this.props.change_operation(label);
                 }else if(label == '=' || operand && !isDisplayZero){
                     let current_operation = label == '=' ? operation : label;
-                    this.props.set_operator(display_value);
-                    let evaluation = operations[current_operation](display_value, operand);
+                    let evaluation = operations[operation](operand, operator);
                     this.props.change_display_value(evaluation);
                     this.props.set_operand(evaluation);
                     this.props.set_operator(0);
-                    this.props.change_operation(label);
+                    this.props.change_operation(current_operation);
                 }
                     
                 break;
