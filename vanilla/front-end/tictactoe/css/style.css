@@ -1,0 +1,55 @@
+/****************
+      Global
+****************/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+* {
+    box-sizing: border-box;
+}
+
+footer {
+    margin-top: 25px;
+    font-size: 1.8em;
+}
+/****************
+      Board
+****************/
+.board {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.node {
+    border: solid 3px black;
+    margin: 0;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+}
+
+.node:nth-child(-n+3), .node:nth-child(5){
+    border-top: none;
+}
+
+.node:nth-last-child(-n+3){
+    border-bottom: none;
+    border-top: none;
+}
+
+.node:nth-child(3n), .node:nth-child(3n+1){
+    border-right: none;
+    border-top: none;
+    border-left: none;
+}
+
+
