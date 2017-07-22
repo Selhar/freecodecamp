@@ -1,5 +1,5 @@
 /****************
-       Global
+      Global
 ****************/
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -12,3 +12,16 @@ html {
     box-sizing: border-box;
 }
 
+/****************
+      Board
+****************/
+.board {
+    width: 150px;
+}
+.node {
+    border: solid 1px black;
+    margin: 0;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
