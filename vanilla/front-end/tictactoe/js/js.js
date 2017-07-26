@@ -1,13 +1,15 @@
 const O = 1;
 const X = 2;
+let player;
 let move_count = 0;
 
 let board_state = [[0,0,0],
                    [0,0,0],
                    [0,0,0]];
+const original_state = board_state;
 
 function manage_game(id){
-    
+
     process_move(id);
     move_count++;
 
@@ -106,4 +108,16 @@ function is_won(){
 
     }
     return game_over ? sum : false;
+}
+
+function choose_symbol(choice){
+    player = choice == "X" ? 2 : 1;
+
+    let hidden = document.getElementsByClassName("hidden");
+    let options = document.getElementsByClassName("options");
+    options[0].style.display = "none";
+
+    for(i = 0; i < hidden.length; i++){
+        hidden[i].style.display = "block";
+    }
 }

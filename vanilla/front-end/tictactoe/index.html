@@ -19,7 +19,11 @@
 </head>
 
 <body>
-    <section>
+    <div class="options">
+        <span class="choice" id="X" onClick="choose_symbol(id)">X</span>
+        <span class="choice" id="O" onClick="choose_symbol(id)">O</span>
+    </div>
+    <section class="hidden">
         <div class="board">
             <div id="1" class="node" onClick="manage_game(id)"></div>
             <div id="2" class="node" onClick="manage_game(id)"></div>
@@ -32,7 +36,7 @@
             <div id="9" class="node" onClick="manage_game(id)"></div>
         </div>
     </section>
-    <footer>
+    <footer class="hidden">
         <a href="https://github.com/GregoryGoncalves" target="_blank"><i class="fa fa-github"> </i></a> </li>
         <a href="http://codepen.io/Selhar/#" target="_blank"><i class="fa fa-codepen"> </i></a></li>
         <a href="https://github.com/GregoryGoncalves" target="_blank"><i class="fa fa-free-code-camp"> </i></a> </li>

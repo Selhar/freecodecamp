@@ -11,6 +11,8 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: #0E0B16;
+    color: #4717F6;
 }
 * {
     box-sizing: border-box;
@@ -20,9 +22,14 @@ footer {
     margin-top: 25px;
     font-size: 1.8em;
 }
+
 /****************
       Board
 ****************/
+
+.hidden{
+    display: none;
+}
 .board {
     width: 300px;
     display: flex;
@@ -32,7 +39,7 @@ footer {
 .node {
     text-align: center;
     font-size: 7em;
-    border: solid 3px black;
+    border: solid 3px #4717F6;
     margin: 0;
     height: 100px;
     width: 100px;
@@ -54,4 +61,14 @@ footer {
     border-left: none;
 }
 
+/****************
+      Menu
+****************/
+.options{
+    font-size: 2.5em;
+}
 
+.choice{
+    cursor: pointer;
+    margin: 25px;    
+}
