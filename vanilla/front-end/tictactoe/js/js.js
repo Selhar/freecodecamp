@@ -14,7 +14,7 @@ function manage_game(id){
     if(move_count >= 3 && is_won()){
         console.log("won");
     }else{
-        console.log("not won");
+        console.log(board_state);
     }
 }
 
@@ -39,15 +39,26 @@ function process_move(id) {
 function is_won(){
     //The sum of a winning move is always 3 or 6, according to X and O's value.
     //The sum of a losing move is always modulus > 0
-    if(board_state[0][0] + board_state[0][1] + board_state[0][2] % 3 == 0 ||
-       board_state[1][0] + board_state[1][1] + board_state[1][2] % 3 == 0 ||
-       board_state[2][0] + board_state[2][1] + board_state[2][2] % 3 == 0 ||
-       board_state[0][1] + board_state[0][1] + board_state[0][1] % 3 == 0 ||
-       board_state[1][1] + board_state[1][1] + board_state[1][1] % 3 == 0 ||
-       board_state[2][1] + board_state[2][1] + board_state[2][1] % 3 == 0 ||
-       board_state[0][0] + board_state[1][1] + board_state[2][2] % 3 == 0 ||
-       board_state[0][2] + board_state[1][1] + board_state[2][0] % 3 == 0){
-           return true;
-       }
+
+    let position_1 = 0;
+    let position_2 = 0;
+    let sum = 0;
+    let i = 0;
+    let j = 0;
+
+    //Horizontal verification
+    for(i = 0; i<board_state.length; i++){
+        sum = 0;
+        for(j = 0; j<board_state.length; j++){
+            sum += board_state[i][j];
+        }
+        if(sum > 0 && sum % 3 == 0)
+            break;
+    }
+    console.log(sum);
+    if(sum > 0 && sum % 3 == 0){
+        return true;
+    }
+    
     return false;
 }
