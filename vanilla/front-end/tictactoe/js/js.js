@@ -25,14 +25,13 @@ function process_move(id) {
     if(id <= 3){
         position_1 = 0;
         position_2 = id-1;
-    }else if(id <=6){
+    }else if(id <= 6){
         position_1 = 1;
-        position_2 = id % 3;
+        position_2 = Math.floor((id-1) % 3);
     }else{
         position_1 = 2;
-        position_2 = id % 3;
+        position_2 = Math.floor((id-1) % 3);
     }
-
     board_state[position_1][position_2] = X;
 }
 
@@ -55,10 +54,26 @@ function is_won(){
         if(sum > 0 && sum % 3 == 0)
             break;
     }
+
+    if(sum > 0 && sum % 3 == 0){
+        return true;
+    }
+
+    //Vertical verification
+    for(i = 0; i<board_state.length; i++){
+        sum = 0;
+        for(j = 0; j<board_state.length; j++){
+            sum += board_state[j][i];
+        }
+        if(sum > 0 && sum % 3 == 0)
+            break;
+    }
     console.log(sum);
     if(sum > 0 && sum % 3 == 0){
         return true;
     }
+
+
     
     return false;
 }
