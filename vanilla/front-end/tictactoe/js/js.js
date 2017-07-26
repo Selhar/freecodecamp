@@ -68,12 +68,38 @@ function is_won(){
         if(sum > 0 && sum % 3 == 0)
             break;
     }
-    console.log(sum);
+
     if(sum > 0 && sum % 3 == 0){
         return true;
     }
 
+    //Diagonal verification
+    i = 0;
+    j = 0;
+    sum = 0;
+        //right
+    while(i <= 2){
+        sum += board_state[i][j];
+        i++;
+        j++;
+    }
+    if(sum > 0 && sum % 3 == 0){
+        return true;
+    }
 
+    i = 0;
+    j = 2;
+    sum = 0;
+        //left
+    while(i <= 2){
+        sum += board_state[i][j];
+        i++;
+        j--;
+    }
+
+    if(sum > 0 && sum % 3 == 0){
+        return true;
+    }
     
     return false;
 }
