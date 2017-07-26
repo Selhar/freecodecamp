@@ -12,7 +12,7 @@ function manage_game(id){
     move_count++;
 
     if(move_count >= 3 && is_won()){
-        console.log("won");
+        console.log(is_won());
     }else{
         console.log(board_state);
     }
@@ -44,6 +44,7 @@ function is_won(){
     let sum = 0;
     let i = 0;
     let j = 0;
+    let game_over = false;
 
     //Horizontal verification
     for(i = 0; i<board_state.length; i++){
@@ -51,55 +52,58 @@ function is_won(){
         for(j = 0; j<board_state.length; j++){
             sum += board_state[i][j];
         }
-        if(sum > 0 && sum % 3 == 0)
+        if(sum > 0 && sum % 3 == 0){
+            game_over = true;
             break;
-    }
-
-    if(sum > 0 && sum % 3 == 0){
-        return true;
-    }
-
-    //Vertical verification
-    for(i = 0; i<board_state.length; i++){
-        sum = 0;
-        for(j = 0; j<board_state.length; j++){
-            sum += board_state[j][i];
         }
-        if(sum > 0 && sum % 3 == 0)
-            break;
     }
 
-    if(sum > 0 && sum % 3 == 0){
-        return true;
+    if(!game_over){
+    //Vertical verification
+        for(i = 0; i<board_state.length; i++){
+            sum = 0;
+            for(j = 0; j<board_state.length; j++){
+                sum += board_state[j][i];
+            }
+            if(sum > 0 && sum % 3 == 0){
+                game_over = true;
+                break;
+            }
+        }
     }
 
-    //Diagonal verification
-    i = 0;
-    j = 0;
-    sum = 0;
-        //right
-    while(i <= 2){
-        sum += board_state[i][j];
-        i++;
-        j++;
-    }
-    if(sum > 0 && sum % 3 == 0){
-        return true;
+    if(!game_over){
+    //Right side diagonal verification
+        i = 0;
+        j = 0;
+        sum = 0;
+        
+        while(i <= 2){
+            sum += board_state[i][j];
+            i++;
+            j++;
+        }
+
+        if(sum > 0 && sum % 3 == 0){
+            game_over = true;
+        }
     }
 
-    i = 0;
-    j = 2;
-    sum = 0;
-        //left
-    while(i <= 2){
-        sum += board_state[i][j];
-        i++;
-        j--;
-    }
+    if(!game_over){
+    //Left side diagonal verification
+        i = 0;
+        j = 2;
+        sum = 0;
+            
+        while(i <= 2){
+            sum += board_state[i][j];
+            i++;
+            j--;
+        }
+        if(sum > 0 && sum % 3 == 0){
+            game_over = true;
+        }
 
-    if(sum > 0 && sum % 3 == 0){
-        return true;
     }
-    
-    return false;
+    return game_over ? sum : false;
 }
