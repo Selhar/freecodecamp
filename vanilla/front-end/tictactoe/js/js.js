@@ -10,9 +10,10 @@ const original_state = board_state;
 
 function manage_game(id){
 
+    fill_node(id);
     process_move(id);
     move_count++;
-
+    
     if(move_count >= 3 && is_won()){
         console.log(is_won());
     }else{
@@ -35,6 +36,13 @@ function process_move(id) {
         position_2 = Math.floor((id-1) % 3);
     }
     board_state[position_1][position_2] = X;
+}
+
+function fill_node(id){
+    let symbol = player == 1 ? "O" : "X";
+    let node = document.getElementById(id);
+
+    node.innerHTML = symbol;
 }
 
 function is_won(){

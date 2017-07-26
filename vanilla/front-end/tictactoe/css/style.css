@@ -11,8 +11,8 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #0E0B16;
-    color: #4717F6;
+    background-color: #11060f;
+    color: #324c95;
 }
 * {
     box-sizing: border-box;
@@ -21,6 +21,10 @@ html {
 footer {
     margin-top: 25px;
     font-size: 1.8em;
+}
+
+a{
+    color: #eecbd7;
 }
 
 /****************
@@ -38,12 +42,13 @@ footer {
 
 .node {
     text-align: center;
-    font-size: 7em;
-    border: solid 3px #4717F6;
+    font-size: 5em;
+    border: solid 3px #324c95;
     margin: 0;
     height: 100px;
     width: 100px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .node:nth-child(-n+3), .node:nth-child(5){
