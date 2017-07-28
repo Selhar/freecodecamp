@@ -19,15 +19,32 @@ function manage_game(id){
 }
 
 function enemy_move(){
+  let isRowValid = true;
+  let validPosition = [];
+
   for(let i = 0; i<board_state.length; i++){
-    let isRowValid = true;
-    let validPosition = [];
     for(let j = 0; j<board_state.length; j++){
       if(board_state[i][j] == player){
         isRowValid = false;
         break;
       }else if(board_state[i][j] == 0){
         validPosition = [i,j];
+      }
+    }
+    if(isRowValid){
+      let valid_id = (validPosition[0] * 3) + validPosition[1] +1; 
+      process_move(valid_id, "O");
+      break;
+    }
+  }
+
+  for(let i = 0; i<board_state.length; i++){
+    for(let j = 0; j<board_state.length; j++){
+      if(board_state[j][i] == player){
+        isRowValid = false;
+        break;
+      }else if(board_state[j][i] == 0){
+        validPosition = [j,i];
       }
     }
     if(isRowValid){
