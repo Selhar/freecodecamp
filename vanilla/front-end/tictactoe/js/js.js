@@ -32,26 +32,30 @@ function enemy_move(){
       }
     }
     if(isRowValid){
-      let valid_id = (validPosition[0] * 3) + validPosition[1] +1; 
-      process_move(valid_id, "O");
+      draw(validPosition);
       break;
     }
   }
-
-  for(let i = 0; i<board_state.length; i++){
-    for(let j = 0; j<board_state.length; j++){
-      if(board_state[j][i] == player){
-        isRowValid = false;
+  if(!isRowValid){
+    for(let i = 0; i<board_state.length; i++){
+      for(let j = 0; j<board_state.length; j++){
+        if(board_state[j][i] == player){
+          isRowValid = false;
+          break;
+        }else if(board_state[j][i] == 0){
+          validPosition = [j,i];
+        }
+      }
+      if(isRowValid){
+        draw(validPosition);
         break;
-      }else if(board_state[j][i] == 0){
-        validPosition = [j,i];
       }
     }
-    if(isRowValid){
-      let valid_id = (validPosition[0] * 3) + validPosition[1] +1; 
+  }
+
+  function draw(valid_position) {
+      let valid_id = (valid_position[0] * 3) + valid_position[1] +1; 
       process_move(valid_id, "O");
-      break;
-    }
   }
 }
 
