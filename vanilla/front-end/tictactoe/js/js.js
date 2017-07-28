@@ -7,42 +7,38 @@ let turn = 0;
 let board_state = [[0,0,0],
                    [0,0,0],
                    [0,0,0]];
-const original_state = board_state;
 
 function manage_game(id){
-  process_move(id);
+  process_move(id, "X");
   enemy_move();
   turn++;
     
   if(turn >= 3 && is_won()){
-    console.log(is_won());
-  }else{
-    console.log(board_state);
+  //  console.log(is_won());
   }
 }
 
 function enemy_move(){
- let isRowValid;
- let validPosition;
   for(let i = 0; i<board_state.length; i++){
-    isRowValid = true;
-    validPosition = [];
+    let isRowValid = true;
+    let validPosition = [];
     for(let j = 0; j<board_state.length; j++){
       if(board_state[i][j] == player){
         isRowValid = false;
+        break;
       }else if(board_state[i][j] == 0){
         validPosition = [i,j];
       }
     }
     if(isRowValid){
-      let valid_id = (validPosition[0] * 3) + validPosition[1]; 
-      fill_node(valid_id, "O");
+      let valid_id = (validPosition[0] * 3) + validPosition[1] +1; 
+      process_move(valid_id, "O");
       break;
     }
   }
 }
 
-function process_move(id) {
+function process_move(id, symbol) {
   let position_1;
   let position_2;
 
@@ -56,8 +52,8 @@ function process_move(id) {
       position_1 = 2;
       position_2 = Math.floor((id-1) % 3);
   }
-  board_state[position_1][position_2] = player;
-  fill_node(id, "X");
+  board_state[position_1][position_2] = symbol;
+  fill_node(id, symbol);
 }
 
 function fill_node(id, symbol){
