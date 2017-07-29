@@ -7,7 +7,7 @@ let PLAYER = {symbol: "", value: 1};
 
 // assigns the choosen symbol to the human player
 // the other symbol automatically goes to the machine
-// after assignment, the DOM is updated with the game board
+// after assignment, the DOM transitions into the game.
 function assign_symbol(id){
   PLAYER.symbol = id;
   MACHINE.symbol = id = "X" ? "X" : "O";
@@ -21,7 +21,7 @@ function assign_symbol(id){
   }
 }
 
-// Receives user input, processes, then makes the machine's move
+// Receives user input, updates GAME_STATE and the DOM, then makes the machine's move
 function manage_game(id){
   game_action(id, PLAYER);
   //enemy_movement();
@@ -31,15 +31,18 @@ function manage_game(id){
 // and draws the user's choice on the DOM
 function game_action(id, user) {
   let board_coordinate = id_to_coordinate(id);
-  GAME_STATE = GAME_STATE[board_coordinate[0]][board_coordinate[1]] = user.symbol;
-  draw_node_to_DOM();
+  let is_tile_empty = GAME_STATE[board_coordinate[0]][board_coordinate[1]]
+  
+  if(is_tile_empty === 0){
+    GAME_STATE[board_coordinate[0]][board_coordinate[1]] = user.symbol;
+    draw_node_to_DOM();  
+  }
   
   // receives a tile ID and returns it's coordinate equivalent
   function id_to_coordinate() {
     let offset_id = id-1;
     let row = Math.floor(offset_id / 3);
     let column = offset_id % 3;
-
     return [row, column];
   }
 
