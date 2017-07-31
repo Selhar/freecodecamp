@@ -54,53 +54,26 @@ function game_action(id, user) {
 }
 
 function enemy_movement() {
-  game_action(fetch_valid_tile(), MACHINE);
+  if(fetch_valid_tile()){
+    game_action(fetch_valid_tile(), MACHINE);
+  }
 
   // Looks through the board for a valid tile and returns it's ID
-  // "valid tile" means that the slot is empty and it's row or column 
-  // has not yet been used by the opponent.
+  // currently, "valid tile" only implies in an empty tile. 
   function fetch_valid_tile() {
-    let is_row_valid;
     let valid_tile;
 
-    function horizontal_analysis(){
-      for(let i = 0; i < GAME_STATE.length; i++){
-        is_row_valid = true;
-        valid_tile = false;
-        for(let j = 0; j < GAME_STATE.length; j++){
-          if(GAME_STATE[i][j] == PLAYER.value){
-            is_row_valid = false;
-            break;
-          }
-          if(GAME_STATE[i][j] == 0 && is_row_valid){
-            valid_tile = {row: i, column: j};
-          }
-        }
-        if(is_row_valid && valid_tile !== false){
+    for(let i = 0; i < GAME_STATE.length; i++){
+      valid_tile = false;
+      for(let j = 0; j < GAME_STATE.length; j++){
+        if(GAME_STATE[i][j] == 0){
+          valid_tile = {row: i, column: j};
           break;
         }
       }
-      return coordinate_to_id(valid_tile);
-    }
-
-    function vertical_analysis(){
-      for(let i = 0; i < GAME_STATE.length; i++){
-        is_row_valid = true;
-        valid_tile = false;
-        for(let j = 0; j < GAME_STATE.length; j++){
-          if(GAME_STATE[j][i] == PLAYER.value){
-            is_row_valid = false;
-            break;
-          }
-          if(GAME_STATE[j][i] == 0 && is_row_valid){
-            valid_tile = {row: i, column: j};
-          }
-        }
-        if(is_row_valid && valid_tile !== false){
-          break;
-        }
+      if(valid_tile !== false){
+        break;
       }
-      return coordinate_to_id(valid_tile);
     }
 
     // turns a column/row coordinate into a valid tile ID
@@ -109,6 +82,14 @@ function enemy_movement() {
       return id;
     }
 
-    return horizontal_analysis() || vertical_analysis();
+    return valid_tile ? coordinate_to_id(valid_tile) : null;
+  }
+}
+
+function is_over(){
+  for(let i = 0; i < GAME_STATE.length; i++){
+    for(let i = 0; i < GAME_STATE.length; i++){
+      
+    }
   }
 }
