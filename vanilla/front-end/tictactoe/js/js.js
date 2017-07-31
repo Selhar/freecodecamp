@@ -63,22 +63,44 @@ function enemy_movement() {
     let is_row_valid;
     let valid_tile;
 
-    for(let i = 0; i < GAME_STATE.length; i++){
-      is_row_valid = true;
-      valid_tile = false;
-      for(let j = 0; j < GAME_STATE.length; j++){
-        //console.log(`STATE: ${GAME_STATE[i][j]}, I:${i} J:${j}`);
-        if(GAME_STATE[i][j] == PLAYER.value){
-          is_row_valid = false;
+    function horizontal_analysis(){
+      for(let i = 0; i < GAME_STATE.length; i++){
+        is_row_valid = true;
+        valid_tile = false;
+        for(let j = 0; j < GAME_STATE.length; j++){
+          if(GAME_STATE[i][j] == PLAYER.value){
+            is_row_valid = false;
+            break;
+          }
+          if(GAME_STATE[i][j] == 0 && is_row_valid){
+            valid_tile = {row: i, column: j};
+          }
+        }
+        if(is_row_valid && valid_tile !== false){
           break;
         }
-        if(GAME_STATE[i][j] == 0 && is_row_valid){
-          valid_tile = {row: i, column: j};
+      }
+      return coordinate_to_id(valid_tile);
+    }
+
+    function vertical_analysis(){
+      for(let i = 0; i < GAME_STATE.length; i++){
+        is_row_valid = true;
+        valid_tile = false;
+        for(let j = 0; j < GAME_STATE.length; j++){
+          if(GAME_STATE[j][i] == PLAYER.value){
+            is_row_valid = false;
+            break;
+          }
+          if(GAME_STATE[j][i] == 0 && is_row_valid){
+            valid_tile = {row: i, column: j};
+          }
+        }
+        if(is_row_valid && valid_tile !== false){
+          break;
         }
       }
-      if(is_row_valid && valid_tile !== false){
-        break;
-      }
+      return coordinate_to_id(valid_tile);
     }
 
     // turns a column/row coordinate into a valid tile ID
@@ -87,6 +109,6 @@ function enemy_movement() {
       return id;
     }
 
-    return coordinate_to_id(valid_tile);
+    return horizontal_analysis() || vertical_analysis();
   }
 }
