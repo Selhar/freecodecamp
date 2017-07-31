@@ -10,7 +10,7 @@ let PLAYER = {symbol: "", value: 1};
 // after assignment, the DOM transitions into the game.
 function assign_symbol(id){
   PLAYER.symbol = id;
-  MACHINE.symbol = id = "X" ? "X" : "O";
+  MACHINE.symbol = id = "X" ? "O" : "X";
 
   let game_elements = document.getElementsByClassName("hidden");
   let assign_screen = document.getElementsByClassName("options");
@@ -54,37 +54,39 @@ function game_action(id, user) {
 }
 
 function enemy_movement() {
-  analyse_valid_tile();
+  game_action(fetch_valid_tile(), MACHINE);
 
-  // turns a column/row coordinate into a valid tile ID
-
-  function coordinate_to_id() {
-    
-  }
   // Looks through the board for a valid tile and returns it's ID
   // "valid tile" means that the slot is empty and it's row or column 
   // has not yet been used by the opponent.
-  function analyse_valid_tile() {
-    let is_row_valid = true;
-    let valid_tile = false;
+  function fetch_valid_tile() {
+    let is_row_valid;
+    let valid_tile;
+
     for(let i = 0; i < GAME_STATE.length; i++){
+      is_row_valid = true;
+      valid_tile = false;
       for(let j = 0; j < GAME_STATE.length; j++){
+        //console.log(`STATE: ${GAME_STATE[i][j]}, I:${i} J:${j}`);
         if(GAME_STATE[i][j] == PLAYER.value){
           is_row_valid = false;
           break;
         }
-        if(GAME_STATE[i][j] == 0){
-          valid_tile = {column: i, row: j};
+        if(GAME_STATE[i][j] == 0 && is_row_valid){
+          valid_tile = {row: i, column: j};
         }
       }
       if(is_row_valid && valid_tile !== false){
         break;
       }
     }
-    return valid_tile_ID;
-  }
-}
 
-function update_game_state(id){
-  
+    // turns a column/row coordinate into a valid tile ID
+    function coordinate_to_id(coordinate) {
+      let id = ((coordinate.row * 3) + coordinate.column) + 1;
+      return id;
+    }
+
+    return coordinate_to_id(valid_tile);
+  }
 }
