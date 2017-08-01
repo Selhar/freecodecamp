@@ -25,6 +25,7 @@ function assign_symbol(id){
 function manage_game(id){
   game_action(id, PLAYER);
   enemy_movement();
+  console.log(game_over());
 }
 
 // based on tile ID, updates the internal board
@@ -86,10 +87,39 @@ function enemy_movement() {
   }
 }
 
-function is_over(){
-  for(let i = 0; i < GAME_STATE.length; i++){
+// analyses GAME_STATE to find out if the match is over
+// currently it does not look for a locked game
+function game_over(){
+  let game_over = is_the_board_full();
+
+  //If there are no more empty spaces, the game is over
+  function is_the_board_full() {
+    let is_game_over;
     for(let i = 0; i < GAME_STATE.length; i++){
-      
+      for(let j = 0; j < GAME_STATE.length; j++){
+        if(GAME_STATE[i][j] == 0){
+          return false;
+        }
+
+        if(i == GAME_STATE.length-1 && j == GAME_STATE.length-1 && is_game_over === undefined){
+          return true;
+        }
+      }
     }
+  }
+
+  // looks for a winner in the horizontal position
+  function horizontal_analysis(){
+
+  }
+
+  // looks for a winner in the vertical position
+  function vertical_analysis(){
+
+  }
+
+  // looks for a winner in the diagonal position
+  function diagonal_analysis(){
+    
   }
 }
