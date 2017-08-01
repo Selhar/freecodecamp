@@ -90,9 +90,8 @@ function enemy_movement() {
 // analyses GAME_STATE to find out if the match is over
 // currently it does not look for a locked game
 function game_over(){
-  let game_over = is_the_board_full();
-  let winner;
-  is_game_won();
+  let winner = is_game_won() || is_the_board_full();
+  return winner;
   //If there are no more empty spaces, the game is over
   function is_the_board_full() {
     let is_game_over;
@@ -103,8 +102,7 @@ function game_over(){
         }
 
         if(i == GAME_STATE.length-1 && j == GAME_STATE.length-1 && is_game_over === undefined){
-          winner = "Draw";
-          return true;
+          return "Draw";
         }
       }
     }
@@ -127,7 +125,6 @@ function game_over(){
         }else if(GAME_STATE[i][j] == MACHINE.value){
           computer_horizontal++;
         }
-
         if(GAME_STATE[j][i] == PLAYER.value){
           human_vertical++;
         }else if (GAME_STATE[j][i] == MACHINE.value){
@@ -135,9 +132,9 @@ function game_over(){
         }
       }
       if(human_horizontal == 3 || human_vertical == 3){
-        console.log("human won");
+        return "Human";
       }else if (computer_horizontal == 3 || computer_vertical == 3){
-        console.log("machine won");
+        return "Computer";
       }
     }
   }
