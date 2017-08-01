@@ -24,6 +24,11 @@
         <span class="choice" id="O" onClick="assign_symbol(id)">O</span>
     </div>
     <section class="hidden">
+        <div class="information">
+            <span>Winner: <span id="winner"> ??? </span></span>
+            <br/>
+            <span id="reset" onClick="reset_game()">Restart</button>
+        </div>
         <div class="board">
             <div id="1" class="node" onClick="manage_game(id)"></div>
             <div id="2" class="node" onClick="manage_game(id)"></div>

@@ -25,7 +25,12 @@ function assign_symbol(id){
 function manage_game(id){
   game_action(id, PLAYER);
   enemy_movement();
-  console.log(game_over());
+
+  let game_status = game_over();
+  if(game_status){
+    let winner_div = document.getElementById("winner");
+    winner_div.innerHTML = game_status;
+  }
 }
 
 // based on tile ID, updates the internal board
@@ -100,7 +105,6 @@ function game_over(){
         if(GAME_STATE[i][j] == 0){
           return false;
         }
-
         if(i == GAME_STATE.length-1 && j == GAME_STATE.length-1 && is_game_over === undefined){
           return "Draw";
         }
@@ -138,4 +142,20 @@ function game_over(){
       }
     }
   }
+}
+
+//Resets the game state and re-draws the DOM
+function reset_game(){
+  GAME_STATE = [[0,0,0],
+                [0,0,0],
+                [0,0,0]];
+
+  let nodes = document.getElementsByClassName("node");
+  let winner_div = document.getElementById("winner");
+
+  for(let i = 0; i < nodes.length; i++){
+    nodes[i].innerHTML = "";
+  }
+
+  winner_div.innerHTML = "???";  
 }

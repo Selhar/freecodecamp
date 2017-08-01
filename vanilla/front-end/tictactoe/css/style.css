@@ -66,6 +66,21 @@ a{
     border-left: none;
 }
 
+.information {
+    font-size: 2em;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#winner {
+    color: #eecbd7;
+}
+
+#reset {
+    color: #fff;
+    cursor: pointer;
+}
+
 /****************
       Menu
 ****************/
