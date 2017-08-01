@@ -5,7 +5,7 @@ let GAME_STATE = [[0,0,0],
 let MACHINE = {symbol: "", value: 2};
 let PLAYER = {symbol: "", value: 1};
 
-// assigns the choosen symbol to the human player,
+// assigns the choosen symbol to the human_horizontal player,
 // the other symbol automatically goes to the machine.
 // after assignment, the DOM transitions into the game.
 function assign_symbol(id){
@@ -91,7 +91,8 @@ function enemy_movement() {
 // currently it does not look for a locked game
 function game_over(){
   let game_over = is_the_board_full();
-
+  let winner;
+  is_game_won();
   //If there are no more empty spaces, the game is over
   function is_the_board_full() {
     let is_game_over;
@@ -102,24 +103,42 @@ function game_over(){
         }
 
         if(i == GAME_STATE.length-1 && j == GAME_STATE.length-1 && is_game_over === undefined){
+          winner = "Draw";
           return true;
         }
       }
     }
   }
+  // analyses if someone won the game yet
+  function is_game_won(){
+    let human_horizontal;
+    let human_vertical;
+    let computer_horizontal;
+    let computer_vertical;
 
-  // looks for a winner in the horizontal position
-  function horizontal_analysis(){
+    for(i = 0; i < GAME_STATE.length; i++){
+      human_horizontal = 0;
+      human_vertical = 0;
+      computer_horizontal = 0;
+      computer_vertical = 0;
+      for(j = 0; j < GAME_STATE.length; j++){
+        if(GAME_STATE[i][j] == PLAYER.value){
+          human_horizontal++;
+        }else if(GAME_STATE[i][j] == MACHINE.value){
+          computer_horizontal++;
+        }
 
-  }
-
-  // looks for a winner in the vertical position
-  function vertical_analysis(){
-
-  }
-
-  // looks for a winner in the diagonal position
-  function diagonal_analysis(){
-    
+        if(GAME_STATE[j][i] == PLAYER.value){
+          human_vertical++;
+        }else if (GAME_STATE[j][i] == MACHINE.value){
+          computer_vertical++;
+        }
+      }
+      if(human_horizontal == 3 || human_vertical == 3){
+        console.log("human won");
+      }else if (computer_horizontal == 3 || computer_vertical == 3){
+        console.log("machine won");
+      }
+    }
   }
 }
