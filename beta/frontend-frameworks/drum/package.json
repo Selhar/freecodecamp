@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "github.com/GregoryGoncalves/freecodecamp"
+    "url": "github.com/selhar/freecodecamp"
   },
   "scripts": {
     "dev": "webpack-dev-server",
